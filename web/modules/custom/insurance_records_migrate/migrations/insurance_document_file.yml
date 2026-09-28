@@ -1,0 +1,39 @@
+id: insurance_document_file
+label: 'Insurance: document PDFs'
+migration_tags:
+  - insurance
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - 'private://insurance-import/insurance.json'
+  item_selector: documents
+  track_changes: true
+  ids:
+    id:
+      type: string
+  fields:
+    - { name: id, label: 'Document key', selector: id }
+    - { name: source_path, label: 'Source path', selector: source_path }
+    - { name: destination, label: 'Destination URI', selector: destination }
+process:
+  uri:
+    plugin: file_copy
+    source:
+      - source_path
+      - destination
+    file_exists: replace
+    move: false
+  filename:
+    plugin: callback
+    callable: basename
+    source: destination
+  status:
+    plugin: default_value
+    default_value: 1
+  uid:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:file'

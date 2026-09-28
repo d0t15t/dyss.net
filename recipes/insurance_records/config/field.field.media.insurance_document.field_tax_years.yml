@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_tax_years
+    - media.type.insurance_document
+id: media.insurance_document.field_tax_years
+field_name: field_tax_years
+entity_type: media
+bundle: insurance_document
+label: 'Tax years'
+description: 'Tax years this document is needed for (Einkommensteuererklärung).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 2000
+  max: 2100
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_benefit_start
+    - node.type.insurance_policy
+  module:
+    - datetime
+id: node.insurance_policy.field_benefit_start
+field_name: field_benefit_start
+entity_type: node
+bundle: insurance_policy
+label: 'Benefit / pension start'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Insurance parties'
+vid: insurance_party
+description: 'Household members and organisations that hold, are insured by, or pay for a policy.'
+weight: 0
+new_revision: false

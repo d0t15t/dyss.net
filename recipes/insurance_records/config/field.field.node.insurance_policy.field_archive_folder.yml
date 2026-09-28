@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_archive_folder
+    - node.type.insurance_policy
+id: node.insurance_policy.field_archive_folder
+field_name: field_archive_folder
+entity_type: node
+bundle: insurance_policy
+label: 'Archive folder'
+description: 'Folder name under "Insurance All Docs/Policies" on the local archive. Also the stable key for migrations.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.insurance_documents
+  module:
+    - node
+    - views
+  theme:
+    - dyssembler
+id: dyssembler_insurance_policy_documents
+theme: dyssembler
+region: content
+weight: 10
+provider: null
+plugin: 'views_block:insurance_documents-policy_documents'
+settings:
+  id: 'views_block:insurance_documents-policy_documents'
+  label: Documents
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: null
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      insurance_policy: insurance_policy

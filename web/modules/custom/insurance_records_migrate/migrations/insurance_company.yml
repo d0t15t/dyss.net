@@ -1,0 +1,22 @@
+id: insurance_company
+label: 'Insurance: insurers'
+migration_tags:
+  - insurance
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - 'private://insurance-import/insurance.json'
+  item_selector: companies
+  track_changes: true
+  ids:
+    name:
+      type: string
+  fields:
+    - { name: name, label: Name, selector: name }
+process:
+  name: name
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: insurance_company

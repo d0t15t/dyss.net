@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_document_type
+    - media.type.insurance_document
+  module:
+    - options
+id: media.insurance_document.field_document_type
+field_name: field_document_type
+entity_type: media
+bundle: insurance_document
+label: 'Document type'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

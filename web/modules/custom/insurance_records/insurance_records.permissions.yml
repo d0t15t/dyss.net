@@ -1,0 +1,4 @@
+view insurance records:
+  title: 'View insurance records'
+  description: 'See insurance policies, insurance documents (including the scanned PDFs) and the insurance vocabularies. Everyone else gets "access denied" and never sees them in listings.'
+  restrict access: true

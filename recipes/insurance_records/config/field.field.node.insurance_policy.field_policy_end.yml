@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_policy_end
+    - node.type.insurance_policy
+  module:
+    - datetime
+id: node.insurance_policy.field_policy_end
+field_name: field_policy_end
+entity_type: node
+bundle: insurance_policy
+label: 'End date'
+description: 'Contract end or effective cancellation date.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

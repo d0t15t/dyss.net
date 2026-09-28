@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_open_points
+    - node.type.insurance_policy
+  module:
+    - text
+id: node.insurance_policy.field_open_points
+field_name: field_open_points
+entity_type: node
+bundle: insurance_policy
+label: 'Action items'
+description: 'Open to-dos and questions for this policy.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

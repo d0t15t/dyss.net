@@ -1,0 +1,144 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.insurance_document.field_document_date
+    - field.field.media.insurance_document.field_document_type
+    - field.field.media.insurance_document.field_insurance_file
+    - field.field.media.insurance_document.field_ocr_text
+    - field.field.media.insurance_document.field_policy
+    - field.field.media.insurance_document.field_reported_premium
+    - field.field.media.insurance_document.field_reported_value
+    - field.field.media.insurance_document.field_scan_note
+    - field.field.media.insurance_document.field_scan_source
+    - field.field.media.insurance_document.field_tax_years
+    - field.field.media.insurance_document.field_value_date
+    - media.type.insurance_document
+  module:
+    - datetime
+    - file
+id: media.insurance_document.default
+targetEntityType: media
+bundle: insurance_document
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_document_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_document_type:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_insurance_file:
+    type: file_generic
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_ocr_text:
+    type: string_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 10
+      placeholder: ''
+    third_party_settings: {  }
+  field_policy:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_reported_premium:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_reported_value:
+    type: number
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_scan_note:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_scan_source:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_tax_years:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_value_date:
+    type: datetime_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 13
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  path: true

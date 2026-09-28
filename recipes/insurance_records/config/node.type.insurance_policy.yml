@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Insurance policy'
+type: insurance_policy
+description: 'One insurance contract or pension entitlement: who holds it, who is insured, what it costs, and an English overview. Private: only visible with "View insurance records".'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

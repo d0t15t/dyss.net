@@ -1,0 +1,9 @@
+name: 'Insurance records'
+type: module
+description: 'Keeps insurance policies, insurance documents and their vocabularies private to users with the "View insurance records" permission.'
+package: Custom
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - drupal:media
+  - drupal:node
+  - drupal:taxonomy

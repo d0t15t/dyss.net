@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_name
+    - node.type.insurance_policy
+id: node.insurance_policy.field_product_name
+field_name: field_product_name
+entity_type: node
+bundle: insurance_policy
+label: Product
+description: 'The insurer''s product/tariff name, e.g. "VarioRent plus – Fonds ohne Gesundheitsprüfung".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

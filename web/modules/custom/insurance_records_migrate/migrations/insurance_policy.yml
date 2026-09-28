@@ -1,0 +1,97 @@
+id: insurance_policy
+label: 'Insurance: policies'
+migration_tags:
+  - insurance
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - 'private://insurance-import/insurance.json'
+  item_selector: policies
+  track_changes: true
+  ids:
+    id:
+      type: string
+  fields:
+    - { name: id, label: 'Archive key', selector: id }
+    - { name: title, label: Title, selector: title }
+    - { name: number, label: 'Policy number', selector: number }
+    - { name: insurer, label: Insurer, selector: insurer }
+    - { name: category, label: Category, selector: category }
+    - { name: product, label: Product, selector: product }
+    - { name: status, label: Status, selector: status }
+    - { name: policyholder, label: Policyholder, selector: policyholder }
+    - { name: insured, label: 'Insured persons', selector: insured }
+    - { name: paid_by, label: 'Paid by', selector: paid_by }
+    - { name: premium, label: Premium, selector: premium }
+    - { name: interval, label: Interval, selector: interval }
+    - { name: start, label: Start, selector: start }
+    - { name: end, label: End, selector: end }
+    - { name: benefit_start, label: 'Benefit start', selector: benefit_start }
+    - { name: folder, label: 'Archive folder', selector: folder }
+    - { name: overview, label: Overview, selector: overview }
+    - { name: contacts, label: Contacts, selector: contacts }
+    - { name: action_items, label: 'Action items', selector: action_items }
+process:
+  title: title
+  field_policy_number: number
+  field_insurer:
+    plugin: migration_lookup
+    migration: insurance_company
+    source: insurer
+    no_stub: true
+  field_insurance_category:
+    plugin: migration_lookup
+    migration: insurance_category
+    source: category
+    no_stub: true
+  field_product_name: product
+  field_policy_status: status
+  field_policyholder:
+    plugin: migration_lookup
+    migration: insurance_party
+    source: policyholder
+    no_stub: true
+  field_insured_persons:
+    plugin: migration_lookup
+    migration: insurance_party
+    source: insured
+    no_stub: true
+  field_premium_payer:
+    plugin: migration_lookup
+    migration: insurance_party
+    source: paid_by
+    no_stub: true
+  field_premium_amount: premium
+  field_premium_interval: interval
+  field_policy_start: start
+  field_policy_end: end
+  field_benefit_start: benefit_start
+  field_archive_folder: folder
+  body/value: overview
+  body/format:
+    plugin: default_value
+    default_value: full_html
+  field_contacts/value: contacts
+  field_contacts/format:
+    plugin: default_value
+    default_value: full_html
+  field_open_points/value: action_items
+  field_open_points/format:
+    plugin: default_value
+    default_value: full_html
+  status:
+    plugin: default_value
+    default_value: 1
+  uid:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:node'
+  default_bundle: insurance_policy
+migration_dependencies:
+  required:
+    - insurance_party
+    - insurance_company
+    - insurance_category

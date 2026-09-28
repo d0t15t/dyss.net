@@ -1,0 +1,29 @@
+uuid: 7c23fbb6-c80f-41e4-921c-e473fb180aa4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tags
+    - node.type.dj_mix
+    - taxonomy.vocabulary.tags
+id: node.dj_mix.field_tags
+field_name: field_tags
+entity_type: node
+bundle: dj_mix
+label: Tags
+description: Tags.
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,23 @@
+uuid: 4e7fefa6-dc96-4b58-b47a-493903ded58d
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: Z7asV8eCbRUdPVtfCKG2JPKw2uJbfJCLFLLsUXal4VU
+id: media.field_artist
+field_name: field_artist
+entity_type: media
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

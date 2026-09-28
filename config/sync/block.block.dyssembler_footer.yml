@@ -1,0 +1,20 @@
+uuid: e1fdf40f-043f-495a-9252-2acf1c8c6001
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - dyssembler
+id: dyssembler_footer
+theme: dyssembler
+region: footer
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

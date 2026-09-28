@@ -1,0 +1,83 @@
+uuid: 302c2084-4463-4c77-93ef-a8a293b4e2e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dj_mix.body
+    - field.field.node.dj_mix.field_cover_image
+    - field.field.node.dj_mix.field_genre
+    - field.field.node.dj_mix.field_mix_date
+    - field.field.node.dj_mix.field_tags
+    - field.field.node.dj_mix.field_tracks
+    - image.style.wide
+    - node.type.dj_mix
+  module:
+    - datetime
+    - image
+    - text
+    - user
+_core:
+  default_config_hash: Sn6OActmfZLe07WHT3UFPLPDE8KKHPVGwuiAgTowWIQ
+id: node.dj_mix.default
+targetEntityType: node
+bundle: dj_mix
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_cover_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: wide
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_genre:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_mix_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_tracks:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: track_row
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

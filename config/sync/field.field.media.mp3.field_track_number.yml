@@ -1,0 +1,25 @@
+uuid: 64159ce1-d46a-478b-8e53-dbde0de2a03c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_track_number
+    - media.type.mp3
+_core:
+  default_config_hash: UnLf-uH4GTE63tWOUxigGcj1XlSP82R5yGx8tVYg3qQ
+id: media.mp3.field_track_number
+field_name: field_track_number
+entity_type: media
+bundle: mp3
+label: 'Track number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

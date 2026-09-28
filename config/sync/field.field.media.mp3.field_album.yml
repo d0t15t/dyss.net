@@ -1,0 +1,21 @@
+uuid: 1bfa46f2-f8b2-4f1e-b792-84cb8b9f0577
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_album
+    - media.type.mp3
+_core:
+  default_config_hash: VUXaRARfLqtfifMq3hqEZSEEOfXH3FzBD59nUvj5Ivc
+id: media.mp3.field_album
+field_name: field_album
+entity_type: media
+bundle: mp3
+label: Album
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,13 @@
+uuid: a9709682-f296-406c-80c8-fc8344de267c
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: _lbIrJWCUwGbM-EduDPcOiiWHEs1p5PJnH_LCfXYv-o
+id: media.track_row
+label: 'Track row'
+description: null
+targetEntityType: media
+cache: true

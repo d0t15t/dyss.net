@@ -1,0 +1,20 @@
+uuid: 97eab242-6d7f-42b6-a7f3-1890e6f3c604
+langcode: en
+status: true
+dependencies:
+  module:
+    - persistent_player
+  theme:
+    - dyssembler
+id: dyssembler_player
+theme: dyssembler
+region: player
+weight: 0
+provider: null
+plugin: persistent_player
+settings:
+  id: persistent_player
+  label: 'Persistent media player'
+  label_display: '0'
+  provider: persistent_player
+visibility: {  }

@@ -1,0 +1,24 @@
+uuid: c5ec6de1-07fc-4ccc-8384-60b0b2b02e2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - node.type.frontpage
+  module:
+    - text
+id: node.frontpage.field_body
+field_name: field_body
+entity_type: node
+bundle: frontpage
+label: Body
+description: 'The body field is the primary text.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

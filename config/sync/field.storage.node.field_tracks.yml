@@ -1,0 +1,22 @@
+uuid: 3fbc6130-1d11-4808-9913-09910dabef13
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+_core:
+  default_config_hash: 46_tY2sKqEdXIi1hxLeRydbpcA95YSuwn_oTmFS8QK4
+id: node.field_tracks
+field_name: field_tracks
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

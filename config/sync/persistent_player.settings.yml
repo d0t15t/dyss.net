@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: Ae1EqKa00Gq4n5rWodEsyKfOizR2UUKA-L0Efh6r8SU
+content_selector: '#pjax-content'
+enabled_pjax_nav: true
+excluded_path_patterns:
+  - '/admin*'
+  - '/user/*/edit'
+  - '/*/edit'
+  - '/*/delete'
+  - /user/login
+  - /user/logout

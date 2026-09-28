@@ -1,0 +1,22 @@
+uuid: d540bf5c-93d7-416f-84f9-4736825670e1
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: y0FfkoK6h1B27DQhdXk6ZgLN_n_AL3lQeROangPMMEI
+id: media.field_track_number
+field_name: field_track_number
+entity_type: media
+type: integer
+settings:
+  unsigned: true
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,18 @@
+uuid: 4383e375-2a59-4867-8f6e-dfa60304a277
+langcode: en
+status: true
+dependencies:
+  theme:
+    - dyssembler
+id: dyssembler_page_title
+theme: dyssembler
+region: content
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

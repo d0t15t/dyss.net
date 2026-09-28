@@ -1,0 +1,23 @@
+uuid: fc5f4840-6ab4-493a-8ee7-7ab759168ef0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_release_date
+    - media.type.mp3
+  module:
+    - datetime
+_core:
+  default_config_hash: gblwfAxfuwP2xH8-wa4NPRFm7Mi-HCL2vId0Sfc98ww
+id: media.mp3.field_release_date
+field_name: field_release_date
+entity_type: media
+bundle: mp3
+label: 'Release date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

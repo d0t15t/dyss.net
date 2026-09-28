@@ -1,0 +1,32 @@
+uuid: ca4f6781-ca7e-4c4f-87aa-7001e6d05d73
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - media
+_core:
+  default_config_hash: qQ_0auO1meGVA1o90LQrrHNmfk2Qw0rFoRtWPwXKPT0
+id: media.field_cover_art
+field_name: field_cover_art
+entity_type: media
+type: image
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

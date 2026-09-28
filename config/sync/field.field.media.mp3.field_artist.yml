@@ -1,0 +1,21 @@
+uuid: a385794c-9300-4e92-8267-632fc9889211
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_artist
+    - media.type.mp3
+_core:
+  default_config_hash: 6Lx0AbeZmTuMcT0Ol0Yyw3oOsDEa3ZxALu7YXMjNb6U
+id: media.mp3.field_artist
+field_name: field_artist
+entity_type: media
+bundle: mp3
+label: Artist
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

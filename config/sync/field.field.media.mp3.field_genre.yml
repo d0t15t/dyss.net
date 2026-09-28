@@ -1,0 +1,21 @@
+uuid: f99a8da9-5700-4875-a4e0-7834c304beab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_genre
+    - media.type.mp3
+_core:
+  default_config_hash: o8oMZojSWhK2k9JlsBUHiGgr53LdhiQ8mtIbhygfNTE
+id: media.mp3.field_genre
+field_name: field_genre
+entity_type: media
+bundle: mp3
+label: Genre
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

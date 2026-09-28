@@ -1,0 +1,22 @@
+uuid: 0d52cfc4-2b0d-4f12-92f4-4bac9de1d176
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+_core:
+  default_config_hash: 7p_k3CR-RAkXXJ9_K3r6h9zO7_pW9wGpz1aN-tdQoUU
+id: node.field_mix_date
+field_name: field_mix_date
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

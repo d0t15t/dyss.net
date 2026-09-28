@@ -1,0 +1,23 @@
+uuid: 49ceb490-1ed8-4870-b2b0-2a6cc03fbff5
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: 14-gNie2CCVcQyEp1g8KBmkbZx_4AtWEW2zl5c13DC8
+id: media.field_album
+field_name: field_album
+entity_type: media
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

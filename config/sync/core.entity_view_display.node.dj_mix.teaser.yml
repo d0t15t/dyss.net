@@ -1,0 +1,44 @@
+uuid: 0db911d5-518d-457c-a781-04db13b40e17
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dj_mix.body
+    - field.field.node.dj_mix.field_cover_image
+    - field.field.node.dj_mix.field_genre
+    - field.field.node.dj_mix.field_mix_date
+    - field.field.node.dj_mix.field_tags
+    - field.field.node.dj_mix.field_tracks
+    - image.style.medium
+    - node.type.dj_mix
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: x-qjJzGZLEANqRw1MAk-AEA_seZx1HKQloqpPFAbTPo
+id: node.dj_mix.teaser
+targetEntityType: node
+bundle: dj_mix
+mode: teaser
+content:
+  field_cover_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_genre: true
+  field_mix_date: true
+  field_tags: true
+  field_tracks: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

@@ -1,0 +1,25 @@
+uuid: 64ed9ce3-1b6b-4b52-916d-f866a0ae397e
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - media
+_core:
+  default_config_hash: qZV_oUR-icd_SRhZ5Q41a0C6GiW5y3URDkU_gsFrRv4
+id: media.field_media_mp3_file
+field_name: field_media_mp3_file
+entity_type: media
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

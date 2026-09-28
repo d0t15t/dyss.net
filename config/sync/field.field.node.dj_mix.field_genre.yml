@@ -1,0 +1,21 @@
+uuid: 21e6e856-b234-4c13-b76c-1d384d13b843
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_genre
+    - node.type.dj_mix
+_core:
+  default_config_hash: yUeLA7ZcztG63m3vDNIRp1uQirDZvsQ1buiM5imZTt8
+id: node.dj_mix.field_genre
+field_name: field_genre
+entity_type: node
+bundle: dj_mix
+label: Genre
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

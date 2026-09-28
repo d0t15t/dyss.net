@@ -1,0 +1,16 @@
+uuid: 22188a84-c1fb-4d23-87a7-0a3d190590cd
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: BAtVGsft-OcE2awBbIxZ1LKET1qlnSrvSaQx8CL2Scw
+id: mp3
+label: MP3
+description: 'An MP3 audio file with track metadata.'
+source: audio_file
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_media_mp3_file
+field_map:
+  name: name

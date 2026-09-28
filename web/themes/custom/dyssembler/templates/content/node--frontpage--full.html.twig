@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * The single frontpage: DYSS graphic, site name and the editable body.
+ *
+ * The page title and header branding blocks are hidden on <front> (see their
+ * block visibility), so this hero is the page's only logo and <h1>. The body
+ * (Full HTML) holds the intro and the grouped link lists styled in site.css.
+ */
+#}
+<article{{ attributes.addClass('node', 'node--type-frontpage', 'frontpage') }}>
+  <header class="frontpage__hero">
+    <img class="frontpage__logo" src="{{ file_url(directory ~ '/images/dyss-logo.jpg') }}" width="240" height="240" alt="DYSS" fetchpriority="high" />
+    {{ title_prefix }}
+    <h1{{ title_attributes.addClass('frontpage__title') }}>{{ label }}</h1>
+    {{ title_suffix }}
+  </header>
+
+  <div{{ content_attributes.addClass('frontpage__content') }}>
+    {{ content }}
+  </div>
+</article>

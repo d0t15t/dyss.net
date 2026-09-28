@@ -1,0 +1,29 @@
+uuid: 7b45b3ab-f619-45b2-90dc-36354241c2b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+_core:
+  default_config_hash: 0boVVXUbxXQ1YkwoWzs51N7AjXPce0J9XDe5zVhbnBE
+id: taxonomy_term.field_party_type
+field_name: field_party_type
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: person
+      label: Person
+    -
+      value: organisation
+      label: Organisation
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

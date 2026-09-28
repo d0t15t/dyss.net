@@ -1,0 +1,11 @@
+uuid: 8b0fd845-2ab2-444a-922f-13693035031e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vdEqiCftnJUALePA19neKFOJoYhJP-K_6jihhchfHBs
+name: 'Insurance categories'
+vid: insurance_category
+description: 'Kind of cover, e.g. Private pension, Disability, Health & dental, Home & liability.'
+weight: 0
+new_revision: false

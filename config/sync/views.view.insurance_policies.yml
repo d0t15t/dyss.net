@@ -1,0 +1,308 @@
+uuid: 92dcd0c2-4269-4d8f-bf5a-04441aaa35d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_insurance_category
+    - field.storage.node.field_insured_persons
+    - field.storage.node.field_insurer
+    - field.storage.node.field_policy_number
+    - field.storage.node.field_policy_status
+    - field.storage.node.field_premium_amount
+    - field.storage.node.field_premium_interval
+    - node.type.insurance_policy
+    - taxonomy.vocabulary.insurance_category
+    - taxonomy.vocabulary.insurance_party
+  module:
+    - node
+    - options
+    - taxonomy
+    - user
+_core:
+  default_config_hash: R3N2EuP8JZUpdD3glQWnqsKPMMnA7H9LaeEs8LankT0
+id: insurance_policies
+label: 'Insurance policies'
+module: views
+description: 'Private list of all insurance policies, filterable by status, insured person and category.'
+tag: insurance
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Insurance policies'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: Policy
+          type: string
+          settings:
+            link_to_entity: true
+        field_insurer:
+          id: field_insurer
+          table: node__field_insurer
+          field: field_insurer
+          plugin_id: field
+          label: Insurer
+          type: entity_reference_label
+          settings:
+            link: false
+        field_insurance_category:
+          id: field_insurance_category
+          table: node__field_insurance_category
+          field: field_insurance_category
+          plugin_id: field
+          label: Category
+          type: entity_reference_label
+          settings:
+            link: false
+        field_policy_number:
+          id: field_policy_number
+          table: node__field_policy_number
+          field: field_policy_number
+          plugin_id: field
+          label: Number
+          type: string
+          settings:
+            link_to_entity: false
+        field_insured_persons:
+          id: field_insured_persons
+          table: node__field_insured_persons
+          field: field_insured_persons
+          plugin_id: field
+          label: Insured
+          type: entity_reference_label
+          settings:
+            link: false
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+        field_policy_status:
+          id: field_policy_status
+          table: node__field_policy_status
+          field: field_policy_status
+          plugin_id: field
+          label: Status
+          type: list_default
+        field_premium_amount:
+          id: field_premium_amount
+          table: node__field_premium_amount
+          field: field_premium_amount
+          plugin_id: field
+          label: Premium
+          type: number_decimal
+          settings:
+            thousand_separator: ','
+            decimal_separator: .
+            scale: 2
+            prefix_suffix: true
+        field_premium_interval:
+          id: field_premium_interval
+          table: node__field_premium_interval
+          field: field_premium_interval
+          plugin_id: field
+          label: Per
+          type: list_default
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'view insurance records'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'No insurance policies found.'
+      sorts: {  }
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            insurance_policy: insurance_policy
+          group: 1
+        field_policy_status_value:
+          id: field_policy_status_value
+          table: node__field_policy_status
+          field: field_policy_status_value
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_policy_status_value_op
+            label: Status
+            identifier: status
+            remember: false
+            multiple: false
+            reduce: false
+        field_insured_persons_target_id:
+          id: field_insured_persons_target_id
+          table: node__field_insured_persons
+          field: field_insured_persons_target_id
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_insured_persons_target_id_op
+            label: 'Insured person'
+            identifier: insured
+            remember: false
+            multiple: false
+            reduce: false
+          vid: insurance_party
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_insurance_category_target_id:
+          id: field_insurance_category_target_id
+          table: node__field_insurance_category
+          field: field_insurance_category_target_id
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_insurance_category_target_id_op
+            label: Category
+            identifier: category
+            remember: false
+            multiple: false
+            reduce: false
+          vid: insurance_category
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            title: title
+            field_insurer: field_insurer
+            field_insurance_category: field_insurance_category
+            field_policy_number: field_policy_number
+            field_insured_persons: field_insured_persons
+            field_policy_status: field_policy_status
+            field_premium_amount: field_premium_amount
+            field_premium_interval: field_premium_interval
+          default: title
+          info:
+            title:
+              sortable: true
+              default_sort_order: asc
+            field_insurer:
+              sortable: true
+              default_sort_order: asc
+            field_insurance_category:
+              sortable: true
+              default_sort_order: asc
+            field_policy_status:
+              sortable: true
+              default_sort_order: asc
+            field_premium_amount:
+              sortable: true
+              default_sort_order: desc
+          override: true
+          sticky: true
+          summary: ''
+          empty_table: true
+          caption: ''
+          description: ''
+      row:
+        type: fields
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_insurance_category'
+        - 'config:field.storage.node.field_insured_persons'
+        - 'config:field.storage.node.field_insurer'
+        - 'config:field.storage.node.field_policy_number'
+        - 'config:field.storage.node.field_policy_status'
+        - 'config:field.storage.node.field_premium_amount'
+        - 'config:field.storage.node.field_premium_interval'
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: insurance
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_insurance_category'
+        - 'config:field.storage.node.field_insured_persons'
+        - 'config:field.storage.node.field_insurer'
+        - 'config:field.storage.node.field_policy_number'
+        - 'config:field.storage.node.field_policy_status'
+        - 'config:field.storage.node.field_premium_amount'
+        - 'config:field.storage.node.field_premium_interval'

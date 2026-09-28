@@ -1,0 +1,450 @@
+uuid: e3ec64d8-a174-4308-b61c-6821cc29737a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_document_date
+    - field.storage.media.field_document_type
+    - field.storage.media.field_insurance_file
+    - field.storage.media.field_policy
+    - field.storage.media.field_reported_value
+    - field.storage.media.field_tax_years
+    - media.type.insurance_document
+    - node.type.insurance_policy
+  module:
+    - datetime
+    - file
+    - media
+    - options
+    - user
+_core:
+  default_config_hash: ZbhJYqyMA6RjKo2hECU_NVDcurU4iz8wikRr1ISBIn8
+id: insurance_documents
+label: 'Insurance documents'
+module: views
+description: 'Private list of scanned insurance documents, plus a block listing the documents of the policy being viewed.'
+tag: insurance
+base_table: media_field_data
+base_field: mid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Insurance documents'
+      fields:
+        field_document_date:
+          id: field_document_date
+          table: media__field_document_date
+          field: field_document_date
+          plugin_id: field
+          label: Date
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: html_date
+        name:
+          id: name
+          table: media_field_data
+          field: name
+          entity_type: media
+          entity_field: name
+          plugin_id: field
+          label: Document
+          type: string
+          settings:
+            link_to_entity: false
+        field_policy:
+          id: field_policy
+          table: media__field_policy
+          field: field_policy
+          plugin_id: field
+          label: Policy
+          type: entity_reference_label
+          settings:
+            link: true
+        field_document_type:
+          id: field_document_type
+          table: media__field_document_type
+          field: field_document_type
+          plugin_id: field
+          label: Type
+          type: list_default
+        field_reported_value:
+          id: field_reported_value
+          table: media__field_reported_value
+          field: field_reported_value
+          plugin_id: field
+          label: Value
+          type: number_decimal
+          settings:
+            thousand_separator: ','
+            decimal_separator: .
+            scale: 2
+            prefix_suffix: true
+        field_tax_years:
+          id: field_tax_years
+          table: media__field_tax_years
+          field: field_tax_years
+          plugin_id: field
+          label: 'Tax years'
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: false
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+        field_insurance_file:
+          id: field_insurance_file
+          table: media__field_insurance_file
+          field: field_insurance_file
+          plugin_id: field
+          label: PDF
+          type: file_default
+          settings:
+            use_description_as_link_text: true
+        edit_media:
+          id: edit_media
+          table: media
+          field: edit_media
+          entity_type: media
+          plugin_id: entity_link_edit
+          label: ''
+          text: Edit
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 50
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'view insurance records'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'No insurance documents found.'
+      sorts:
+        field_document_date_value:
+          id: field_document_date_value
+          table: media__field_document_date
+          field: field_document_date_value
+          plugin_id: datetime
+          order: DESC
+          granularity: day
+      filters:
+        bundle:
+          id: bundle
+          table: media_field_data
+          field: bundle
+          entity_type: media
+          entity_field: bundle
+          plugin_id: bundle
+          value:
+            insurance_document: insurance_document
+          group: 1
+        name:
+          id: name
+          table: media_field_data
+          field: name
+          entity_type: media
+          entity_field: name
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: 'Title contains'
+            identifier: title
+            remember: false
+            multiple: false
+        field_document_type_value:
+          id: field_document_type_value
+          table: media__field_document_type
+          field: field_document_type_value
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_document_type_value_op
+            label: Type
+            identifier: type
+            remember: false
+            multiple: false
+            reduce: false
+        field_tax_years_value:
+          id: field_tax_years_value
+          table: media__field_tax_years
+          field: field_tax_years_value
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_tax_years_value_op
+            label: 'Tax year'
+            identifier: tax_year
+            remember: false
+            multiple: false
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            field_document_date: field_document_date
+            name: name
+            field_policy: field_policy
+            field_document_type: field_document_type
+            field_reported_value: field_reported_value
+            field_tax_years: field_tax_years
+            field_insurance_file: field_insurance_file
+            edit_media: edit_media
+          default: field_document_date
+          info:
+            field_document_date:
+              sortable: true
+              default_sort_order: desc
+            name:
+              sortable: true
+              default_sort_order: asc
+            field_document_type:
+              sortable: true
+              default_sort_order: asc
+          override: true
+          sticky: true
+          summary: ''
+          empty_table: true
+          caption: ''
+          description: ''
+      row:
+        type: fields
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags:
+        - 'config:field.storage.media.field_document_date'
+        - 'config:field.storage.media.field_document_type'
+        - 'config:field.storage.media.field_insurance_file'
+        - 'config:field.storage.media.field_policy'
+        - 'config:field.storage.media.field_reported_value'
+        - 'config:field.storage.media.field_tax_years'
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: insurance/documents
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags:
+        - 'config:field.storage.media.field_document_date'
+        - 'config:field.storage.media.field_document_type'
+        - 'config:field.storage.media.field_insurance_file'
+        - 'config:field.storage.media.field_policy'
+        - 'config:field.storage.media.field_reported_value'
+        - 'config:field.storage.media.field_tax_years'
+  policy_documents:
+    id: policy_documents
+    display_title: 'Documents of this policy'
+    display_plugin: block
+    position: 2
+    display_options:
+      title: Documents
+      fields:
+        field_document_date:
+          id: field_document_date
+          table: media__field_document_date
+          field: field_document_date
+          plugin_id: field
+          label: Date
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: html_date
+        name:
+          id: name
+          table: media_field_data
+          field: name
+          entity_type: media
+          entity_field: name
+          plugin_id: field
+          label: Document
+          type: string
+          settings:
+            link_to_entity: false
+        field_document_type:
+          id: field_document_type
+          table: media__field_document_type
+          field: field_document_type
+          plugin_id: field
+          label: Type
+          type: list_default
+        field_reported_value:
+          id: field_reported_value
+          table: media__field_reported_value
+          field: field_reported_value
+          plugin_id: field
+          label: Value
+          type: number_decimal
+          settings:
+            thousand_separator: ','
+            decimal_separator: .
+            scale: 2
+            prefix_suffix: true
+        field_insurance_file:
+          id: field_insurance_file
+          table: media__field_insurance_file
+          field: field_insurance_file
+          plugin_id: field
+          label: PDF
+          type: file_default
+          settings:
+            use_description_as_link_text: true
+      pager:
+        type: none
+        options:
+          offset: 0
+      empty: {  }
+      arguments:
+        field_policy_target_id:
+          id: field_policy_target_id
+          table: media__field_policy
+          field: field_policy_target_id
+          plugin_id: entity_target_id
+          default_action: default
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options: {  }
+          specify_validation: true
+          validate:
+            type: 'entity:node'
+            fail: 'not found'
+          validate_options:
+            bundles:
+              insurance_policy: insurance_policy
+            access: true
+            operation: view
+            multiple: 0
+          break_phrase: false
+          not: false
+          target_entity_type_id: node
+      filters:
+        bundle:
+          id: bundle
+          table: media_field_data
+          field: bundle
+          entity_type: media
+          entity_field: bundle
+          plugin_id: bundle
+          value:
+            insurance_document: insurance_document
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            field_document_date: field_document_date
+            name: name
+            field_document_type: field_document_type
+            field_reported_value: field_reported_value
+            field_insurance_file: field_insurance_file
+          default: ''
+          info: {  }
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+          class: ''
+      row:
+        type: fields
+        options: {  }
+      defaults:
+        empty: false
+        title: false
+        pager: false
+        style: false
+        row: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      block_description: 'Insurance: documents of the current policy'
+      block_category: Insurance
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user.permissions
+      tags:
+        - 'config:field.storage.media.field_document_date'
+        - 'config:field.storage.media.field_document_type'
+        - 'config:field.storage.media.field_insurance_file'
+        - 'config:field.storage.media.field_reported_value'

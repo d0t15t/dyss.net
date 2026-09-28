@@ -1,0 +1,22 @@
+uuid: 8251bfc1-c53b-435f-9d79-e5c743965624
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+_core:
+  default_config_hash: myrmCgEyo5q3C9VLZlmfLYLs1XtQmQgCzXNsD9QYYxc
+id: media.field_policy
+field_name: field_policy
+entity_type: media
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

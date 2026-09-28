@@ -1,0 +1,22 @@
+uuid: 3ba0c3fb-250c-47aa-a359-3f32f4a8122a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: bS_Rf3CzRCnp90RtntBKLNpLq-0W7pka4vhA2t9i6SE
+id: node.field_insurance_category
+field_name: field_insurance_category
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

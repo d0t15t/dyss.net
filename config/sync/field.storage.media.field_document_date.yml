@@ -1,0 +1,22 @@
+uuid: 6b4d9155-dde1-4ab7-a2ac-5ef4dee97f11
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - media
+_core:
+  default_config_hash: v8rMtneXScbgX58YCtfcJCRv6PJYMFvLVLuCWFsbBMI
+id: media.field_document_date
+field_name: field_document_date
+entity_type: media
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

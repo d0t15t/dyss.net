@@ -1,0 +1,25 @@
+uuid: 92495412-44b9-4b2b-94f6-22c809ec2f8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_premium_amount
+    - node.type.insurance_policy
+_core:
+  default_config_hash: oNeL61fkTI-QQKiG3rd0XOBJ5TYuGkzCjwczEdZG79M
+id: node.insurance_policy.field_premium_amount
+field_name: field_premium_amount
+entity_type: node
+bundle: insurance_policy
+label: 'Current premium'
+description: 'Gross premium per interval, in EUR.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' EUR'
+field_type: decimal

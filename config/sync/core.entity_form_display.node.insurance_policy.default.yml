@@ -1,0 +1,206 @@
+uuid: 16d1507c-7d88-47a2-b9eb-fe12c7e494a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.insurance_policy.body
+    - field.field.node.insurance_policy.field_archive_folder
+    - field.field.node.insurance_policy.field_benefit_start
+    - field.field.node.insurance_policy.field_contacts
+    - field.field.node.insurance_policy.field_insurance_category
+    - field.field.node.insurance_policy.field_insured_persons
+    - field.field.node.insurance_policy.field_insurer
+    - field.field.node.insurance_policy.field_open_points
+    - field.field.node.insurance_policy.field_policy_end
+    - field.field.node.insurance_policy.field_policy_number
+    - field.field.node.insurance_policy.field_policy_start
+    - field.field.node.insurance_policy.field_policy_status
+    - field.field.node.insurance_policy.field_policyholder
+    - field.field.node.insurance_policy.field_premium_amount
+    - field.field.node.insurance_policy.field_premium_interval
+    - field.field.node.insurance_policy.field_premium_payer
+    - field.field.node.insurance_policy.field_product_name
+    - node.type.insurance_policy
+  module:
+    - datetime
+    - path
+    - text
+_core:
+  default_config_hash: kZKsZmfqpUE1eAoxAmK2Fw9zRWx43MiUonOnehPauoY
+id: node.insurance_policy.default
+targetEntityType: node
+bundle: insurance_policy
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 14
+    region: content
+    settings:
+      rows: 12
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_archive_folder:
+    type: string_textfield
+    weight: 17
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_benefit_start:
+    type: datetime_default
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_contacts:
+    type: text_textarea
+    weight: 16
+    region: content
+    settings:
+      rows: 4
+      placeholder: ''
+    third_party_settings: {  }
+  field_insurance_category:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_insured_persons:
+    type: options_buttons
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_insurer:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_open_points:
+    type: text_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_policy_end:
+    type: datetime_default
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_policy_number:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_policy_start:
+    type: datetime_default
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_policy_status:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_policyholder:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_premium_amount:
+    type: number
+    weight: 9
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_premium_interval:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_premium_payer:
+    type: options_buttons
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_product_name:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 18
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 19
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  promote: true
+  sticky: true

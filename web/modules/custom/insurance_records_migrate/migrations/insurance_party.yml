@@ -1,0 +1,27 @@
+id: insurance_party
+label: 'Insurance: parties'
+migration_tags:
+  - insurance
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - 'private://insurance-import/insurance.json'
+  item_selector: parties
+  track_changes: true
+  ids:
+    id:
+      type: string
+  fields:
+    - { name: id, label: ID, selector: id }
+    - { name: name, label: Name, selector: name }
+    - { name: type, label: Type, selector: type }
+    - { name: relationship, label: Relationship, selector: relationship }
+process:
+  name: name
+  field_party_type: type
+  field_relationship: relationship
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: insurance_party

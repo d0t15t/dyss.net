@@ -1,0 +1,10 @@
+name: 'Insurance records migration'
+type: module
+description: 'Imports the local insurance archive (private://insurance-import/insurance.json, written by export_for_drupal.py) into insurance parties, insurers, categories, policies and documents. Run with: drush migrate:import --tag=insurance'
+package: Custom
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - drupal:migrate
+  - insurance_records:insurance_records
+  - migrate_plus:migrate_plus
+  - migrate_tools:migrate_tools

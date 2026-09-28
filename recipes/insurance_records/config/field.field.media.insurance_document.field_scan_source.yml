@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_scan_source
+    - media.type.insurance_document
+id: media.insurance_document.field_scan_source
+field_name: field_scan_source
+entity_type: media
+bundle: insurance_document
+label: 'Source scan'
+description: 'Original scan file and page range, e.g. "Insurance dump 2.pdf, p. 11-16".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

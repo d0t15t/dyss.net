@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_scan_note
+    - media.type.insurance_document
+id: media.insurance_document.field_scan_note
+field_name: field_scan_note
+entity_type: media
+bundle: insurance_document
+label: 'Scan note'
+description: 'E.g. "page 2 of 7 missing".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

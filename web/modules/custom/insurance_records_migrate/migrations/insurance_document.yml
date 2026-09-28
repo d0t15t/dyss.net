@@ -1,0 +1,62 @@
+id: insurance_document
+label: 'Insurance: documents'
+migration_tags:
+  - insurance
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - 'private://insurance-import/insurance.json'
+  item_selector: documents
+  track_changes: true
+  ids:
+    id:
+      type: string
+  fields:
+    - { name: id, label: 'Document key', selector: id }
+    - { name: policy, label: Policy, selector: policy }
+    - { name: name, label: Title, selector: name }
+    - { name: date, label: Date, selector: date }
+    - { name: type, label: Type, selector: type }
+    - { name: tax_years, label: 'Tax years', selector: tax_years }
+    - { name: value, label: Value, selector: value }
+    - { name: value_date, label: 'Value date', selector: value_date }
+    - { name: premium, label: Premium, selector: premium }
+    - { name: scan_note, label: 'Scan note', selector: scan_note }
+    - { name: scan_source, label: 'Scan source', selector: scan_source }
+    - { name: ocr, label: 'OCR text', selector: ocr }
+process:
+  name: name
+  field_insurance_file/target_id:
+    plugin: migration_lookup
+    migration: insurance_document_file
+    source: id
+    no_stub: true
+  field_policy/target_id:
+    plugin: migration_lookup
+    migration: insurance_policy
+    source: policy
+    no_stub: true
+  field_document_date: date
+  field_document_type: type
+  field_tax_years: tax_years
+  field_reported_value: value
+  field_value_date: value_date
+  field_reported_premium: premium
+  field_scan_note: scan_note
+  field_scan_source: scan_source
+  field_ocr_text: ocr
+  status:
+    plugin: default_value
+    default_value: 1
+  uid:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:media'
+  default_bundle: insurance_document
+migration_dependencies:
+  required:
+    - insurance_document_file
+    - insurance_policy

@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall hooks for the Insurance records module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * This module adds node grants, so node access records have to be rebuilt
+ * for existing content (which keeps its default "published = public" grant).
+ */
+function insurance_records_install() {
+  node_access_rebuild();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function insurance_records_uninstall() {
+  node_access_rebuild();
+}

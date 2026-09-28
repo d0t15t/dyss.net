@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+id: insurance_document
+label: 'Insurance document'
+description: 'A scanned insurance letter, statement or invoice (PDF, stored privately) with its OCR text and key figures. Private: only visible with "View insurance records".'
+source: file
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_insurance_file
+field_map:
+  name: name

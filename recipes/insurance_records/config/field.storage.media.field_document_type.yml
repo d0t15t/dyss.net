@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - options
+id: media.field_document_type
+field_name: field_document_type
+entity_type: media
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: annual_statement
+      label: 'Annual statement'
+    -
+      value: pension_information
+      label: 'Pension information'
+    -
+      value: invoice
+      label: 'Premium invoice'
+    -
+      value: policy_document
+      label: 'Policy document / amendment'
+    -
+      value: cancellation
+      label: 'Cancellation / settlement'
+    -
+      value: tax_certificate
+      label: 'Tax certificate'
+    -
+      value: payment_notice
+      label: 'Payment notice'
+    -
+      value: sustainability
+      label: 'Sustainability report'
+    -
+      value: correspondence
+      label: 'Other correspondence'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

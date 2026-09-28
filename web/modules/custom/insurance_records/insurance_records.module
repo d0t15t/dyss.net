@@ -1,0 +1,148 @@
+<?php
+
+/**
+ * @file
+ * Restricts insurance content to users with "view insurance records".
+ *
+ * The site is public and anonymous users have "access content" and
+ * "view media", so the insurance bundles need their own access layer:
+ * - Nodes: node grants, so policies are also filtered out of every node
+ *   query (Views listings, search, entity reference autocomplete).
+ * - Media: hook_media_access() for direct access - which also governs
+ *   downloads of the private PDF files, since private file access defers to
+ *   the referencing media entity - plus a query alter for media listings.
+ * - Taxonomy: hook_taxonomy_term_access() for the insurance vocabularies,
+ *   which name household members and insurers.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Database\Query\AlterableInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Node bundles only visible with "view insurance records".
+ */
+const INSURANCE_RECORDS_NODE_BUNDLES = ['insurance_policy'];
+
+/**
+ * Media bundles only visible with "view insurance records".
+ */
+const INSURANCE_RECORDS_MEDIA_BUNDLES = ['insurance_document'];
+
+/**
+ * Vocabularies only visible with "view insurance records".
+ */
+const INSURANCE_RECORDS_VOCABULARIES = ['insurance_company', 'insurance_category', 'insurance_party'];
+
+/**
+ * Node access realm and grant ID used for insurance nodes.
+ */
+const INSURANCE_RECORDS_REALM = 'insurance_records';
+const INSURANCE_RECORDS_GID = 1;
+
+/**
+ * Implements hook_node_grants().
+ */
+function insurance_records_node_grants(AccountInterface $account, $operation) {
+  $grants = [];
+  if ($operation === 'view' && $account->hasPermission('view insurance records')) {
+    $grants[INSURANCE_RECORDS_REALM] = [INSURANCE_RECORDS_GID];
+  }
+  return $grants;
+}
+
+/**
+ * Implements hook_node_access_records().
+ *
+ * Only insurance nodes get a record here. All other nodes get no records
+ * from this module, so core keeps giving them the default grant (published
+ * content visible to anyone with "access content").
+ */
+function insurance_records_node_access_records(NodeInterface $node) {
+  if (!in_array($node->bundle(), INSURANCE_RECORDS_NODE_BUNDLES, TRUE)) {
+    return [];
+  }
+  return [
+    [
+      'realm' => INSURANCE_RECORDS_REALM,
+      'gid' => INSURANCE_RECORDS_GID,
+      'grant_view' => 1,
+      'grant_update' => 0,
+      'grant_delete' => 0,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_node_access().
+ *
+ * Grants only cover listings and published nodes. This also denies viewing
+ * unpublished insurance nodes and their revisions without the permission.
+ */
+function insurance_records_node_access(NodeInterface $node, $operation, AccountInterface $account) {
+  return _insurance_records_access(in_array($node->bundle(), INSURANCE_RECORDS_NODE_BUNDLES, TRUE), $account);
+}
+
+/**
+ * Implements hook_media_access().
+ */
+function insurance_records_media_access(EntityInterface $media, $operation, AccountInterface $account) {
+  return _insurance_records_access(in_array($media->bundle(), INSURANCE_RECORDS_MEDIA_BUNDLES, TRUE), $account);
+}
+
+/**
+ * Implements hook_taxonomy_term_access().
+ */
+function insurance_records_taxonomy_term_access(EntityInterface $term, $operation, AccountInterface $account) {
+  return _insurance_records_access(in_array($term->bundle(), INSURANCE_RECORDS_VOCABULARIES, TRUE), $account);
+}
+
+/**
+ * Implements hook_query_TAG_alter() for media_access.
+ *
+ * Media has no grants system, so hide insurance media from media listings
+ * (media overview, media library, entity reference selection) instead.
+ */
+function insurance_records_query_media_access_alter(AlterableInterface $query) {
+  if (\Drupal::currentUser()->hasPermission('view insurance records')) {
+    return;
+  }
+  foreach ($query->getTables() as $alias => $table) {
+    if (in_array($table['table'] ?? NULL, ['media', 'media_field_data'], TRUE)) {
+      $query->condition("$alias.bundle", INSURANCE_RECORDS_MEDIA_BUNDLES, 'NOT IN');
+      return;
+    }
+  }
+}
+
+/**
+ * Implements hook_query_TAG_alter() for taxonomy_term_access.
+ */
+function insurance_records_query_taxonomy_term_access_alter(AlterableInterface $query) {
+  if (\Drupal::currentUser()->hasPermission('view insurance records')) {
+    return;
+  }
+  foreach ($query->getTables() as $alias => $table) {
+    if (in_array($table['table'] ?? NULL, ['taxonomy_term_data', 'taxonomy_term_field_data'], TRUE)) {
+      $query->condition("$alias.vid", INSURANCE_RECORDS_VOCABULARIES, 'NOT IN');
+      return;
+    }
+  }
+}
+
+/**
+ * Forbids any operation on insurance entities without the permission.
+ *
+ * Forbidden wins over every other access result, so even "administer
+ * media" or "bypass node access" can't reveal the records without it.
+ * The administrator role still has it, as admin roles get all permissions.
+ */
+function _insurance_records_access(bool $is_insurance, AccountInterface $account) {
+  if (!$is_insurance) {
+    return AccessResult::neutral();
+  }
+  return AccessResult::forbiddenIf(!$account->hasPermission('view insurance records'))
+    ->cachePerPermissions();
+}

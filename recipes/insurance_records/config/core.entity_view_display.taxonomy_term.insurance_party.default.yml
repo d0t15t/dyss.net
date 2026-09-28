@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.insurance_party.field_party_type
+    - field.field.taxonomy_term.insurance_party.field_relationship
+    - taxonomy.vocabulary.insurance_party
+  module:
+    - options
+    - text
+id: taxonomy_term.insurance_party.default
+targetEntityType: taxonomy_term
+bundle: insurance_party
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_party_type:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_relationship:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

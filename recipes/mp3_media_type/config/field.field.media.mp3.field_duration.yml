@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_duration
+    - media.type.mp3
+id: media.mp3.field_duration
+field_name: field_duration
+entity_type: media
+bundle: mp3
+label: Duration
+description: 'Track length, e.g. 3:45.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

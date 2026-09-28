@@ -1,0 +1,9 @@
+name: 'Content search index'
+description: 'A Search API index ("content") covering DJ Mix and Page nodes, indexed on the "solr" server. Requires recipes/search_solr to be applied first.'
+type: 'Search'
+install:
+  - search_api
+  - search_api_solr
+config:
+  strict:
+    - search_api.index.content

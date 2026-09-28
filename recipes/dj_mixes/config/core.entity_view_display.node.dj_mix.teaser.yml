@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dj_mix.field_cover_image
+    - image.style.medium
+    - node.type.dj_mix
+  module:
+    - image
+id: node.dj_mix.teaser
+targetEntityType: node
+bundle: dj_mix
+mode: teaser
+content:
+  field_cover_image:
+    type: image
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: content
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_genre: true
+  field_mix_date: true
+  field_tags: true
+  field_tracks: true
+  langcode: true
+  links: true

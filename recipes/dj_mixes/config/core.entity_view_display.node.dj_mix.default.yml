@@ -1,0 +1,71 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.media.mp3.track_row
+    - field.field.node.dj_mix.body
+    - field.field.node.dj_mix.field_cover_image
+    - field.field.node.dj_mix.field_genre
+    - field.field.node.dj_mix.field_mix_date
+    - field.field.node.dj_mix.field_tracks
+    - image.style.wide
+    - node.type.dj_mix
+  module:
+    - datetime
+    - image
+    - text
+    - user
+id: node.dj_mix.default
+targetEntityType: node
+bundle: dj_mix
+mode: default
+content:
+  field_cover_image:
+    type: image
+    label: hidden
+    settings:
+      image_style: wide
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_mix_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_genre:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_tracks:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: track_row
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

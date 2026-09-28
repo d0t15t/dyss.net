@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.mp3.field_cover_art
+    - field.field.media.mp3.field_media_mp3_file
+    - image.style.thumbnail
+    - media.type.mp3
+  module:
+    - image
+id: media.mp3.media_library
+targetEntityType: media
+bundle: mp3
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_album: true
+  field_artist: true
+  field_cover_art: true
+  field_duration: true
+  field_genre: true
+  field_media_mp3_file: true
+  field_release_date: true
+  field_track_number: true
+  name: true
+  uid: true

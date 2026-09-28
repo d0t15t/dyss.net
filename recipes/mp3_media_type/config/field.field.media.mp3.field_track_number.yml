@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_track_number
+    - media.type.mp3
+id: media.mp3.field_track_number
+field_name: field_track_number
+entity_type: media
+bundle: mp3
+label: 'Track number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

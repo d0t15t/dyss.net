@@ -1,0 +1,37 @@
+name: 'MP3 media'
+description: 'Provides an "MP3" media type for storing an MP3 file along with track metadata (artist, album, track number, genre, release date, duration, cover art).'
+type: 'Media type'
+install:
+  - datetime
+  - image
+  - media_library
+  - path
+  - views
+config:
+  strict:
+    # Treat field storages strictly, since they influence the database layout.
+    - field.storage.media.field_media_mp3_file
+    - field.storage.media.field_artist
+    - field.storage.media.field_album
+    - field.storage.media.field_track_number
+    - field.storage.media.field_genre
+    - field.storage.media.field_release_date
+    - field.storage.media.field_duration
+    - field.storage.media.field_cover_art
+  import:
+    file:
+      - views.view.files
+    media_library:
+      - core.entity_view_mode.media.media_library
+      - core.entity_form_mode.media.media_library
+      - image.style.media_library
+      - views.view.media_library
+    media:
+      - core.entity_view_mode.media.full
+      - system.action.media_delete_action
+      - system.action.media_publish_action
+      - system.action.media_save_action
+      - system.action.media_unpublish_action
+      - views.view.media
+    image:
+      - image.style.thumbnail

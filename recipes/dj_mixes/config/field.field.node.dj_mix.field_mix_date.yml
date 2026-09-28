@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mix_date
+    - node.type.dj_mix
+  module:
+    - datetime
+id: node.dj_mix.field_mix_date
+field_name: field_mix_date
+entity_type: node
+bundle: dj_mix
+label: 'Mix date'
+description: 'When this mix was recorded or aired.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

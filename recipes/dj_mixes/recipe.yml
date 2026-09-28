@@ -1,0 +1,38 @@
+name: 'DJ Mixes'
+description: 'Provides the "DJ Mix" content type - a tracklist of MP3 media items with description and cover art - its per-track playback display, and a "DJ Mixes" listing page linked into the main menu.'
+type: 'Content type'
+install:
+  - dj_mixes
+config:
+  strict:
+    - field.storage.node.field_tracks
+    - field.storage.node.field_cover_image
+    - field.storage.node.field_mix_date
+    - field.storage.node.field_genre
+  actions:
+    # field_tags already exists on dj_mix (added by hand, targeting the
+    # `tags` vocabulary) but has no widget/formatter configured yet.
+    core.entity_form_display.node.dj_mix.default:
+      setComponent:
+        name: field_tags
+        options:
+          type: entity_reference_autocomplete_tags
+          weight: 5
+          region: content
+          settings:
+            match_operator: CONTAINS
+            match_limit: 10
+            size: 60
+            placeholder: ''
+          third_party_settings: {  }
+    core.entity_view_display.node.dj_mix.default:
+      setComponent:
+        name: field_tags
+        options:
+          type: entity_reference_label
+          label: above
+          settings:
+            link: true
+          third_party_settings: {  }
+          weight: 6
+          region: content

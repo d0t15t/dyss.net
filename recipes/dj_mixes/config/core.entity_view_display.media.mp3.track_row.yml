@@ -1,0 +1,97 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.track_row
+    - field.field.media.mp3.field_album
+    - field.field.media.mp3.field_artist
+    - field.field.media.mp3.field_cover_art
+    - field.field.media.mp3.field_duration
+    - field.field.media.mp3.field_genre
+    - field.field.media.mp3.field_release_date
+    - field.field.media.mp3.field_track_number
+    - image.style.thumbnail
+    - media.type.mp3
+  module:
+    - datetime
+    - image
+id: media.mp3.track_row
+targetEntityType: media
+bundle: mp3
+mode: track_row
+content:
+  field_cover_art:
+    type: image
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_track_number:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_artist:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_album:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_genre:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_duration:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_release_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 7
+    region: content
+hidden:
+  created: true
+  field_media_mp3_file: true
+  status: true
+  thumbnail: true
+  uid: true

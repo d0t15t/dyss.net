@@ -1,0 +1,9 @@
+name: 'Solr search server'
+description: 'Enables Search API + Search API Solr and configures a server connecting to the ddev/ddev-drupal-solr add-on''s Solr container (classic standalone mode, host "solr", core "dev"). Requires the ddev-drupal-solr add-on to be installed and DDEV restarted first.'
+type: 'Search'
+install:
+  - search_api
+  - search_api_solr
+config:
+  strict:
+    - search_api.server.solr

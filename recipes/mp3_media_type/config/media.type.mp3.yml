@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mp3
+label: MP3
+description: 'An MP3 audio file with track metadata.'
+source: audio_file
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_media_mp3_file
+field_map:
+  name: name

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_album
+    - media.type.mp3
+id: media.mp3.field_album
+field_name: field_album
+entity_type: media
+bundle: mp3
+label: Album
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,11 @@
+name: 'DJ Mixes search view'
+description: 'Replaces the plain DJ Mixes listing with a Solr-backed search view (Search API): an exposed Name filter plus a Tags facet, positioned as part of the view itself (below the Name filter, above the results) via a small custom Views area plugin that embeds the Facets block. Same URL and main-menu entry as before. Requires recipes/dj_mixes and recipes/search_index_content to be applied first.'
+type: 'Search'
+install:
+  - dj_mixes
+  - facets
+  - search_api
+config:
+  strict:
+    - views.view.dj_mixes
+    - facets.facet.field_tags

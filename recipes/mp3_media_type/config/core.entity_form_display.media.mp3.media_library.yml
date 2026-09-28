@@ -1,0 +1,82 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.mp3.field_album
+    - field.field.media.mp3.field_artist
+    - field.field.media.mp3.field_cover_art
+    - field.field.media.mp3.field_duration
+    - field.field.media.mp3.field_genre
+    - field.field.media.mp3.field_media_mp3_file
+    - field.field.media.mp3.field_release_date
+    - field.field.media.mp3.field_track_number
+    - media.type.mp3
+  module:
+    - datetime
+    - image
+id: media.mp3.media_library
+targetEntityType: media
+bundle: mp3
+mode: media_library
+content:
+  field_album:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_artist:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_cover_art:
+    type: image_image
+    weight: 7
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_duration:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 10
+      placeholder: '3:45'
+    third_party_settings: {  }
+  field_genre:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_release_date:
+    type: datetime_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_track_number:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_mp3_file: true
+  name: true
+  path: true
+  status: true
+  uid: true

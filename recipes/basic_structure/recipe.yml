@@ -1,0 +1,112 @@
+name: 'Basic site structure'
+description: 'Sets Dyssembler as the site theme and places the main menu, footer, and persistent player blocks.'
+type: 'Themes'
+install:
+  - dyssembler
+  - persistent_player
+config:
+  # Leave any pre-existing blocks/menus as-is.
+  strict: false
+  actions:
+    system.theme:
+      simpleConfigUpdate:
+        default: dyssembler
+    persistent_player.settings:
+      simpleConfigUpdate:
+        content_selector: '#pjax-content'
+    block.block.dyssembler_branding:
+      createIfNotExists:
+        theme: dyssembler
+        plugin: system_branding_block
+        settings:
+          id: system_branding_block
+          label: 'Site branding'
+          label_display: '0'
+          provider: system
+          use_site_logo: true
+          use_site_name: true
+          use_site_slogan: true
+      setRegion: header
+      setStatus: true
+    block.block.dyssembler_main_menu:
+      createIfNotExists:
+        theme: dyssembler
+        plugin: 'system_menu_block:main'
+        settings:
+          id: 'system_menu_block:main'
+          label: 'Main navigation'
+          label_display: '0'
+          provider: system
+          level: 1
+          depth: 2
+          expand_all_items: true
+      setRegion: primary_menu
+      setStatus: true
+    block.block.dyssembler_content:
+      createIfNotExists:
+        theme: dyssembler
+        plugin: system_main_block
+        settings:
+          id: system_main_block
+          label: 'Main page content'
+          label_display: '0'
+          provider: system
+      setRegion: content
+      setStatus: true
+    block.block.dyssembler_page_title:
+      createIfNotExists:
+        theme: dyssembler
+        plugin: page_title_block
+        settings:
+          id: page_title_block
+          label: 'Page title'
+          label_display: '0'
+          provider: core
+      setRegion: content
+      setStatus: true
+      setWeight: -5
+    block.block.dyssembler_messages:
+      createIfNotExists:
+        theme: dyssembler
+        plugin: system_messages_block
+        settings:
+          id: system_messages_block
+          label: 'Status messages'
+          label_display: '0'
+          provider: system
+      setRegion: highlighted
+      setStatus: true
+      setWeight: -5
+    block.block.dyssembler_breadcrumbs:
+      createIfNotExists:
+        theme: dyssembler
+        plugin: system_breadcrumb_block
+        settings:
+          id: system_breadcrumb_block
+          label: Breadcrumbs
+          label_display: '0'
+          provider: system
+      setRegion: breadcrumb
+      setStatus: true
+    block.block.dyssembler_footer:
+      createIfNotExists:
+        theme: dyssembler
+        plugin: system_powered_by_block
+        settings:
+          id: system_powered_by_block
+          label: 'Powered by Drupal'
+          label_display: '0'
+          provider: system
+      setRegion: footer
+      setStatus: true
+    block.block.dyssembler_player:
+      createIfNotExists:
+        theme: dyssembler
+        plugin: persistent_player
+        settings:
+          id: persistent_player
+          label: 'Persistent media player'
+          label_display: '0'
+          provider: persistent_player
+      setRegion: player
+      setStatus: true

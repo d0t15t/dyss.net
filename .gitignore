@@ -1,0 +1,46 @@
+# Ignore configuration files that may contain sensitive information
+/web/sites/*/*settings*.php
+/web/sites/*/*services*.yml
+
+# Ignore paths that may contain user-generated content
+/web/sites/*/files
+/web/sites/*/public
+
+# Ignore paths that may contain temporary files
+/web/sites/*/translations
+
+# Ignore drupal core (if not versioning drupal sources)
+/web/vendor
+/web/core
+/web/modules/contrib
+/web/profiles/contrib
+/web/sites/development.services.yml
+/web/sites/example.settings.local.php
+/web/sites/example.sites.php
+/web/sites/README.txt
+/web/themes/README.txt
+/web/themes/contrib
+/web/example.gitignore
+/web/index.php
+/web/INSTALL.txt
+/web/LICENSE.txt
+/web/README.txt
+/web/update.php
+/web/web.config
+
+# Ignore vendor dependencies and scripts
+/vendor
+
+# Database dump files
+*.sql
+*.sql.gz
+
+# Ignore IDE and editor specific files
+.idea/
+*.swp
+
+# Ignore .zip files
+*.zip
+
+# Import tmp
+import-tmp

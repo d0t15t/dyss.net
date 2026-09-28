@@ -1,0 +1,271 @@
+/**
+ * @file
+ * Basic site-wide styling: font, layout padding, breadcrumb, menu, and
+ * DJ Mix page presentation. Deliberately minimal - a readable, tidy
+ * baseline rather than a full visual design.
+ */
+
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --color-text: #1a1a1a;
+  --color-muted: #666666;
+  --color-border: #e0e0e0;
+  --color-link: #1d4ed8;
+  --color-link-hover: #1e3a8a;
+  --content-max-width: 46rem;
+  --gutter: 1.25rem;
+}
+
+/* ----- Base / reset ----- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-link);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-link-hover);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+h2 {
+  font-size: 1.375rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+/* ----- Layout padding ----- */
+/* #pjax-content is every route's content wrapper (see page.html.twig);
+   padding it, rather than <main>, keeps header/footer full-bleed. */
+
+.site-header__inner__container,
+#pjax-content,
+.site-footer__inner,
+#persistent-player {
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+#pjax-content {
+  padding-block: 1.5rem;
+}
+
+/* The persistent player is a fixed-position bar spanning the full
+   viewport width, not an in-flow block, so it needs its own inline
+   padding instead of inheriting the max-width centering above. */
+#persistent-player.persistent-player {
+  max-width: none;
+  margin-inline: 0;
+}
+
+/* ----- Header & main menu ----- */
+
+.site-header__inner__container {
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.primary-menu,
+.secondary-menu {
+  margin-block-start: 0.5rem;
+}
+
+ul.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-item {
+  padding-top: 0;
+}
+
+ul.menu a {
+  display: inline-block;
+  padding-block: 0.25rem;
+  text-decoration: none;
+  color: var(--color-text);
+  border-bottom: 2px solid transparent;
+}
+
+ul.menu a:hover {
+  color: var(--color-link);
+}
+
+ul.menu a.is-active {
+  font-weight: 600;
+  border-bottom-color: var(--color-text);
+}
+
+/* ----- Breadcrumb ----- */
+
+.breadcrumb {
+  padding-block: 0.75rem 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.breadcrumb a {
+  color: var(--color-muted);
+}
+
+.breadcrumb li {
+  color: var(--color-border);
+}
+
+.breadcrumb li::before {
+  color: var(--color-border);
+  margin-inline: 0.4em;
+}
+
+/* ----- Footer ----- */
+
+.site-footer__inner {
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+/* ----- DJ Mix pages ----- */
+
+.page-node-type-dj-mix .field--name-field-cover-image {
+  margin-block-end: 1rem;
+}
+
+.page-node-type-dj-mix .field--name-field-cover-image img {
+  border-radius: 4px;
+}
+
+.page-node-type-dj-mix .field--name-field-mix-date,
+.page-node-type-dj-mix .field--name-field-genre,
+.page-node-type-dj-mix .field--name-field-tags {
+  display: inline-block;
+  margin-inline-end: 1.5rem;
+  margin-block-end: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.page-node-type-dj-mix .field--name-field-mix-date .field__label,
+.page-node-type-dj-mix .field--name-field-genre .field__label,
+.page-node-type-dj-mix .field--name-field-tags .field__label {
+  font-weight: 600;
+  margin-inline-end: 0.35em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--color-muted);
+}
+
+.page-node-type-dj-mix .field--name-field-tracks {
+  margin-block-start: 1.5rem;
+}
+
+.page-node-type-dj-mix .field--name-field-tracks > .field__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-muted);
+  margin-block-end: 0.5rem;
+}
+
+/* ----- DJ Mixes card grid ----- */
+/* A card grid wants more horizontal room than the readable-prose max-width
+   used elsewhere, so widen the content column on this one page. */
+
+.path-dj-mixes #pjax-content {
+  max-width: 68rem;
+}
+
+.view-id-dj_mixes .view-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.view-id-dj_mixes article.node--view-mode-teaser {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.view-id-dj_mixes article.node--view-mode-teaser:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.view-id-dj_mixes article.node--view-mode-teaser > .node__content {
+  order: -1;
+  line-height: 0;
+}
+
+.view-id-dj_mixes .field--name-field-cover-image a {
+  display: block;
+}
+
+.view-id-dj_mixes .field--name-field-cover-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.view-id-dj_mixes article.node--view-mode-teaser h2 {
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.view-id-dj_mixes article.node--view-mode-teaser h2 a {
+  color: var(--color-text);
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.view-id-dj_mixes article.node--view-mode-teaser h2 a:hover {
+  color: var(--color-link);
+}

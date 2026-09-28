@@ -1,0 +1,39 @@
+name: Dyssembler
+type: theme
+'base theme': false
+version: 1.0.0
+libraries:
+  - dyssembler/base
+  - dyssembler/site
+  - dyssembler/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - dyssembler/user
+  core/drupal.dropbutton:
+    - dyssembler/dropbutton
+  core/drupal.dialog:
+    - dyssembler/dialog
+  file/drupal.file:
+    - dyssembler/file
+  core/drupal.item-list:
+    - dyssembler/item-list
+  core/drupal.progress:
+    - dyssembler/progress
+  core/drupal.tablesort:
+    - dyssembler/drupal.tablesort
+description: 'Bare-bones custom theme for the DYSSEMBLER site.'
+core_version_requirement: ^11
+generator: 'starterkit_theme:11.4.5'
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: Footer
+  player: Player

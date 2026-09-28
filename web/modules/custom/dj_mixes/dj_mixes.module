@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * @file
+ * Provides the DJ Mix content type's track-row rendering and playback wiring.
+ */
+
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Implements hook_theme().
+ *
+ * Drupal's static theme registry only associates a template *file* with a
+ * hook suggestion name (e.g. media--mp3--track-row.html.twig with
+ * "media__mp3__track_row") if that suggestion name already exists in the
+ * registry cache when it scans the templates directory
+ * (see drupal_find_theme_templates()). Runtime suggestions from
+ * hook_theme_suggestions_media() alone are not enough for a *new* template
+ * file to be discovered - the suggestion has to be pre-declared here too.
+ */
+function dj_mixes_theme() {
+  return [
+    'media__mp3__track_row' => [
+      'base hook' => 'media',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_media__mp3__track_row().
+ *
+ * Builds the `track` variable the media--mp3--track-row.html.twig template
+ * uses to render a play button, without duplicating what the already
+ * -configured field formatters in the track_row view mode do for the rest
+ * of the row (title, artist, album, etc. still come from {{ content }}).
+ */
+function dj_mixes_preprocess_media__mp3__track_row(array &$variables) {
+  /** @var \Drupal\media\MediaInterface $media */
+  $media = $variables['elements']['#media'];
+
+  $file = $media->hasField('field_media_mp3_file') && !$media->get('field_media_mp3_file')->isEmpty()
+    ? $media->get('field_media_mp3_file')->entity
+    : NULL;
+  $cover = $media->hasField('field_cover_art') && !$media->get('field_cover_art')->isEmpty()
+    ? $media->get('field_cover_art')->entity
+    : NULL;
+
+  $cover_url = '';
+  if ($cover) {
+    $style = ImageStyle::load('thumbnail');
+    $cover_url = $style
+      ? $style->buildUrl($cover->getFileUri())
+      : \Drupal::service('file_url_generator')->generateAbsoluteString($cover->getFileUri());
+  }
+
+  $variables['track'] = [
+    'media_id' => $media->id(),
+    'title' => $media->label(),
+    'artist' => $media->hasField('field_artist') ? $media->get('field_artist')->value : '',
+    'album' => $media->hasField('field_album') ? $media->get('field_album')->value : '',
+    'src' => $file ? \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri()) : '',
+    'cover_url' => $cover_url,
+  ];
+
+  $variables['#attached']['library'][] = 'dj_mixes/track-buttons';
+}
+
+/**
+ * Implements hook_views_data().
+ *
+ * Registers the "Block" area handler (src/Plugin/views/area/Block.php) as a
+ * usable Views field. Area handlers are looked up by Views via table+field
+ * against hook_views_data(), not by plugin ID directly - defining the
+ * #[ViewsArea] plugin alone is not enough, or the handler silently falls
+ * back to "Broken" when a view references it.
+ */
+function dj_mixes_views_data() {
+  $data['views']['dj_mixes_block'] = [
+    'title' => t('Block'),
+    'help' => t('Embeds an arbitrary block, by plugin ID, as a Views area.'),
+    'area' => [
+      'id' => 'dj_mixes_block',
+    ],
+  ];
+  return $data;
+}

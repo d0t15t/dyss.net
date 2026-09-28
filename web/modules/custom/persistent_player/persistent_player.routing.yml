@@ -1,0 +1,7 @@
+persistent_player.settings:
+  path: '/admin/config/media/persistent-player'
+  defaults:
+    _form: '\Drupal\persistent_player\Form\SettingsForm'
+    _title: 'Persistent Player settings'
+  requirements:
+    _permission: 'administer site configuration'

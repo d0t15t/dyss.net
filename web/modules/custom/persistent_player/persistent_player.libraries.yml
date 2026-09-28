@@ -1,0 +1,20 @@
+pjax-nav:
+  version: 1.x
+  js:
+    js/pjax-nav.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/drupalSettings
+
+persistent-player:
+  version: 1.x
+  css:
+    component:
+      css/persistent-player.css: {}
+  js:
+    js/persistent-player.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/drupalSettings

@@ -1,0 +1,9 @@
+name: 'DJ Mixes'
+type: module
+description: 'Provides the "DJ Mix" content type: a tracklist of MP3 media items, rendered with play controls wired to the persistent player.'
+package: Custom
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - drupal:media
+  - drupal:node
+  - persistent_player:persistent_player

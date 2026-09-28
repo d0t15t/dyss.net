@@ -1,0 +1,9 @@
+content_selector: '#pjax-content'
+enabled_pjax_nav: true
+excluded_path_patterns:
+  - '/admin*'
+  - '/user/*/edit'
+  - '/*/edit'
+  - '/*/delete'
+  - '/user/login'
+  - '/user/logout'

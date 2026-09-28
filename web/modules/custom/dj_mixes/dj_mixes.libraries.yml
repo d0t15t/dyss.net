@@ -1,0 +1,11 @@
+track-buttons:
+  version: 1.x
+  css:
+    component:
+      css/dj-mixes.css: {}
+  js:
+    js/dj-mixes.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - persistent_player/persistent-player

@@ -1,0 +1,7 @@
+name: 'Persistent Player'
+type: module
+description: 'A persistent media player and same-site AJAX navigation layer, so playback survives the visitor navigating to a new page.'
+package: Media
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - drupal:block

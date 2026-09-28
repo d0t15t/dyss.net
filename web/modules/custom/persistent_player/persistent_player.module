@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * A persistent media player and same-site AJAX navigation layer.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function persistent_player_help($route_name, RouteMatchInterface $route_match) {
+  if ($route_name === 'help.page.persistent_player') {
+    $output = '<p>' . t('The Persistent Player module provides a single, page-wide media player that keeps playing while the visitor navigates to other pages on the site, by intercepting same-site link clicks and only swapping the part of the page configured as the "content selector".') . '</p>';
+    $output .= '<p>' . t('See the README.md file included with this module for the full JavaScript API (<code>Drupal.persistentPlayer</code>) and the list of <code>persistentplayer:*</code> events other modules can listen for.') . '</p>';
+    $output .= '<p>' . t('Configure it at <a href=":url">Persistent Player settings</a>.', [':url' => '/admin/config/media/persistent-player']) . '</p>';
+    return $output;
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function persistent_player_theme() {
+  return [
+    'persistent_player' => [
+      'variables' => [],
+    ],
+  ];
+}

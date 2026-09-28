@@ -1,0 +1,9 @@
+{
+    "name": "drupal/persistent_player",
+    "description": "A persistent media player and same-site AJAX navigation layer, so playback survives the visitor navigating to a new page.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^10.3 || ^11"
+    }
+}

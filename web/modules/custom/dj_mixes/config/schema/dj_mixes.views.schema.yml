@@ -1,0 +1,7 @@
+views.area.dj_mixes_block:
+  type: views_area
+  label: 'Block'
+  mapping:
+    block_id:
+      type: string
+      label: 'Block plugin ID'

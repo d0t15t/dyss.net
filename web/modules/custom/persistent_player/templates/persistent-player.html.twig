@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * The persistent media player chrome.
+ *
+ * This markup is rendered once and lives outside the region that same-site
+ * navigation replaces, so the <audio> element inside it is never destroyed by
+ * a client-side page transition. It starts hidden; persistent-player.js shows
+ * it the first time something plays.
+ */
+#}
+<div id="persistent-player" class="persistent-player" hidden>
+  <button type="button" class="persistent-player__play-pause" aria-label="{{ 'Play'|t }}"></button>
+  <img class="persistent-player__artwork" alt="" src="" hidden>
+  <div class="persistent-player__meta">
+    <span class="persistent-player__title"></span>
+    <span class="persistent-player__subtitle"></span>
+  </div>
+  <progress class="persistent-player__progress" value="0" max="100"></progress>
+  <button type="button" class="persistent-player__stop" aria-label="{{ 'Stop'|t }}"></button>
+  <audio id="persistent-player-audio" preload="none"></audio>
+</div>

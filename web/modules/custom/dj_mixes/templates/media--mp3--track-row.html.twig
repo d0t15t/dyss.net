@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * A single track row within a DJ Mix's tracklist.
+ *
+ * Extends the default media.html.twig: {{ content }} still renders every
+ * field the "Track row" (track_row) view mode is configured to show (title,
+ * artist, album, genre, duration, cover art - all ordinary field
+ * formatters). The only thing added here is a play button wired to the
+ * persistent player via data attributes; see js/dj-mixes.js.
+ *
+ * Available variables (in addition to the standard media.html.twig ones):
+ * - track: {media_id, title, artist, album, src, cover_url}, built in
+ *   dj_mixes_preprocess_media__mp3__track_row().
+ *
+ * @see media.html.twig
+ * @see dj_mixes_preprocess_media__mp3__track_row()
+ */
+#}
+<div{{ attributes.addClass('track-row') }}>
+  {{ title_suffix.contextual_links }}
+  {{ content }}
+  <button type="button" class="track-row__play-btn"
+    data-media-id="{{ track.media_id }}"
+    data-track-src="{{ track.src }}"
+    data-track-title="{{ track.title }}"
+    data-track-artist="{{ track.artist }}"
+    data-track-cover="{{ track.cover_url }}">
+    <span class="visually-hidden">{{ 'Play'|t }}</span>
+  </button>
+</div>

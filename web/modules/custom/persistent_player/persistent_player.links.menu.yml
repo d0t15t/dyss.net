@@ -1,0 +1,5 @@
+persistent_player.settings:
+  title: 'Persistent Player'
+  parent: system.admin_config_media
+  description: 'Configure the persistent player and same-site navigation.'
+  route_name: persistent_player.settings

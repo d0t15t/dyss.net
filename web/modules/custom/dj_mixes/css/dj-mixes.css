@@ -1,0 +1,29 @@
+.track-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.5em 0;
+  border-block-end: 1px solid #e0e0e0;
+}
+
+.track-row__play-btn {
+  flex: 0 0 auto;
+  width: 1.75em;
+  height: 1.75em;
+  margin-inline-start: auto;
+  border: 1px solid #999;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+
+.track-row__play-btn::before {
+  content: '\25B6';
+  display: block;
+  font-size: 0.75em;
+}
+
+.track-row__play-btn.is-playing::before {
+  content: '\23F8';
+}

@@ -1,0 +1,21 @@
+uuid: 292b82e8-b003-4011-aab6-37b35d68a392
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_policy_number
+    - node.type.insurance_policy
+_core:
+  default_config_hash: Y6MHlgeG6NHexnOSAfpAfjHS6ZqzjacQJcPsrz_OEvA
+id: node.insurance_policy.field_policy_number
+field_name: field_policy_number
+entity_type: node
+bundle: insurance_policy
+label: 'Policy number'
+description: 'As printed by the insurer, e.g. 02-542922-60.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

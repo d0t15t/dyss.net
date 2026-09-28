@@ -1,0 +1,23 @@
+uuid: ba53b0db-5d5e-4af3-b7b8-19b4e99d4277
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_benefit_start
+    - node.type.insurance_policy
+  module:
+    - datetime
+_core:
+  default_config_hash: Z7YwpgENhyizwX3jMCnd0WBtqc0L-bTvzCnM6l5-K-c
+id: node.insurance_policy.field_benefit_start
+field_name: field_benefit_start
+entity_type: node
+bundle: insurance_policy
+label: 'Benefit / pension start'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

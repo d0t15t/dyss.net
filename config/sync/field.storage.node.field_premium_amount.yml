@@ -1,0 +1,22 @@
+uuid: 5881289e-ca3e-4c42-80a9-6a4bd88bf7a6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: AgNMCt2nQVJCsUiAgY3T4IvhqWYAHKI2WefvM3RlOQ4
+id: node.field_premium_amount
+field_name: field_premium_amount
+entity_type: node
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

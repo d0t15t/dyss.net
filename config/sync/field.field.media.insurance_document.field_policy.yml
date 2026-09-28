@@ -1,0 +1,31 @@
+uuid: 132ddd53-70bf-494c-b1cb-68ce21d16d17
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_policy
+    - media.type.insurance_document
+    - node.type.insurance_policy
+_core:
+  default_config_hash: amOvrYyV1F6EdanPzjfOau3R_cvfRPvQSMtfF3CYen8
+id: media.insurance_document.field_policy
+field_name: field_policy
+entity_type: media
+bundle: insurance_document
+label: Policy
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      insurance_policy: insurance_policy
+    sort:
+      field: title
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

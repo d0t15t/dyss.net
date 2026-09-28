@@ -1,0 +1,31 @@
+uuid: 1fd03d07-3256-4ffe-8a59-5b3b3187151f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_premium_payer
+    - node.type.insurance_policy
+    - taxonomy.vocabulary.insurance_party
+_core:
+  default_config_hash: Hu60xFC8YjQnHyqOgXsSPqitXQDnHgTTZoNeM0SCEGA
+id: node.insurance_policy.field_premium_payer
+field_name: field_premium_payer
+entity_type: node
+bundle: insurance_policy
+label: 'Paid by'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      insurance_party: insurance_party
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

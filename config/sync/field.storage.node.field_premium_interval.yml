@@ -1,0 +1,35 @@
+uuid: 095fd928-00bc-40c7-9564-f620982d199b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: 7TJlLJ-hMs0EU7NWRNa_Lab_8T9FPrE3-phyKHFFWDg
+id: node.field_premium_interval
+field_name: field_premium_interval
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: monthly
+      label: Monthly
+    -
+      value: quarterly
+      label: Quarterly
+    -
+      value: yearly
+      label: Yearly
+    -
+      value: none
+      label: 'No premium'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

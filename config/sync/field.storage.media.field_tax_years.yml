@@ -1,0 +1,22 @@
+uuid: 86c81bf9-003d-4e19-ac36-02f8dfe24b76
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: qYh7-LnYxp3Dsc586ql5V3aB0QRc9sk0dsexDakJy6M
+id: media.field_tax_years
+field_name: field_tax_years
+entity_type: media
+type: integer
+settings:
+  unsigned: true
+  size: small
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

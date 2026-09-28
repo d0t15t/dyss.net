@@ -1,0 +1,31 @@
+uuid: 2f06aae1-3306-4bc1-bed2-4ad4de2a5e82
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_insurance_category
+    - node.type.insurance_policy
+    - taxonomy.vocabulary.insurance_category
+_core:
+  default_config_hash: 5rVZdefFZbM3rtmBJRCHvISXvi71Vx6BND7rxNATNWg
+id: node.insurance_policy.field_insurance_category
+field_name: field_insurance_category
+entity_type: node
+bundle: insurance_policy
+label: Category
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      insurance_category: insurance_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: insurance_category
+field_type: entity_reference

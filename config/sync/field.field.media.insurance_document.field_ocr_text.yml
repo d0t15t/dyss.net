@@ -1,0 +1,21 @@
+uuid: b527e5ce-e98a-49ea-bba1-3b278fa4dda5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_ocr_text
+    - media.type.insurance_document
+_core:
+  default_config_hash: vVCff4QoGQjYTROyQmGs_9f5tldqLpDkcmfQkRFa3G0
+id: media.insurance_document.field_ocr_text
+field_name: field_ocr_text
+entity_type: media
+bundle: insurance_document
+label: 'OCR text'
+description: 'Text recognised from the scan. May contain OCR errors.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

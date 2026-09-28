@@ -1,0 +1,21 @@
+uuid: 6ab84ed1-7df8-482f-b525-e033e48c8ded
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+_core:
+  default_config_hash: A2DKibhA2f3uD2Xb_b8KZr5Co4-4VLPk0816mWmrzes
+id: node.field_open_points
+field_name: field_open_points
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

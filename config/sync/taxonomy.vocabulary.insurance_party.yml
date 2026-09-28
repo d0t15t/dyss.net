@@ -1,0 +1,11 @@
+uuid: 22122b9f-186b-4416-8c79-b730ba45a61d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ThuNjzEFS8g1Eaq2z1NtZvI3GSVWJwtXttJUojzdh6k
+name: 'Insurance parties'
+vid: insurance_party
+description: 'Household members and organisations that hold, are insured by, or pay for a policy.'
+weight: 0
+new_revision: false

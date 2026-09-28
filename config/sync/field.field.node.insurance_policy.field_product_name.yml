@@ -1,0 +1,21 @@
+uuid: 8b053946-3b89-490e-8d1a-69e5ab5c7819
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_name
+    - node.type.insurance_policy
+_core:
+  default_config_hash: bscRBa9lOtJSl-RSeSFK0MUzJyy6RbNxJ6-jDbY-t9c
+id: node.insurance_policy.field_product_name
+field_name: field_product_name
+entity_type: node
+bundle: insurance_policy
+label: Product
+description: 'The insurer''s product/tariff name, e.g. "VarioRent plus – Fonds ohne Gesundheitsprüfung".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

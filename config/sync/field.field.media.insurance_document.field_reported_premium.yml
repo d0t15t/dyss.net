@@ -1,0 +1,25 @@
+uuid: 616b99be-2892-4d62-b02f-608b6894271e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_reported_premium
+    - media.type.insurance_document
+_core:
+  default_config_hash: lwZ7zihKXcyBETj-kJCQj5D7-94ee8_WVqu0rZeaYgg
+id: media.insurance_document.field_reported_premium
+field_name: field_reported_premium
+entity_type: media
+bundle: insurance_document
+label: 'Premium stated'
+description: 'Premium per interval stated in the document, in EUR.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' EUR'
+field_type: decimal

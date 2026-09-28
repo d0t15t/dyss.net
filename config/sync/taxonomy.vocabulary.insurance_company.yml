@@ -1,0 +1,11 @@
+uuid: d83794af-b7d3-427d-af3b-d14a4155e8b8
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9sblXvKxUxQATp5_kK_hlzHTavha1PKAN-YNKalmyNg
+name: 'Insurance companies'
+vid: insurance_company
+description: 'Insurers and pension institutions, e.g. Gothaer, AXA, Deutsche Rentenversicherung.'
+weight: 0
+new_revision: false

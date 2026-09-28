@@ -1,0 +1,25 @@
+uuid: 0becf1e6-7756-47b4-ae1a-8d304259698e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_reported_value
+    - media.type.insurance_document
+_core:
+  default_config_hash: Jn9Xpy04iZOpDqz4wXjQIoJKf2HqXWDFlLMHCh3_6CU
+id: media.insurance_document.field_reported_value
+field_name: field_reported_value
+entity_type: media
+bundle: insurance_document
+label: 'Contract / fund value'
+description: 'Value stated in the document (fund value, contract value, surrender value), in EUR.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' EUR'
+field_type: decimal

@@ -1,0 +1,23 @@
+uuid: 5aeb3822-6f8e-4867-820f-0666de0f0bc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_value_date
+    - media.type.insurance_document
+  module:
+    - datetime
+_core:
+  default_config_hash: LGW2Pi6rDpbzKOaysKKxJ2AtPlpqp3u_iA2CyrNiqi8
+id: media.insurance_document.field_value_date
+field_name: field_value_date
+entity_type: media
+bundle: insurance_document
+label: 'Value as of'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

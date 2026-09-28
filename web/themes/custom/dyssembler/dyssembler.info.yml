@@ -23,6 +23,7 @@ libraries-extend:
   core/drupal.tablesort:
     - dyssembler/drupal.tablesort
 description: 'Bare-bones custom theme for the DYSSEMBLER site.'
+logo: images/dyss-logo.jpg
 core_version_requirement: ^11
 generator: 'starterkit_theme:11.4.5'
 regions:

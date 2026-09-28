@@ -68,6 +68,8 @@ h3 {
    padding it, rather than <main>, keeps header/footer full-bleed. */
 
 .site-header__inner__container,
+.region-header,
+.region-primary-menu,
 #pjax-content,
 .site-footer__inner,
 #persistent-player {
@@ -93,6 +95,32 @@ h3 {
 .site-header__inner__container {
   padding-block: 1rem;
   border-bottom: 1px solid var(--color-border);
+}
+
+/* Site branding: the DYSS graphic (the theme logo) at badge size next to
+   the site name. Hidden on the frontpage, which has its own large hero. */
+.region-header {
+  padding-block: 1rem 0.25rem;
+}
+
+.block-system-branding-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-logo img {
+  display: block;
+  width: 3.25rem;
+  height: auto;
+}
+
+.site-name a {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  text-decoration: none;
 }
 
 .primary-menu,
@@ -206,7 +234,9 @@ ul.menu a.is-active {
 /* A card grid wants more horizontal room than the readable-prose max-width
    used elsewhere, so widen the content column on this one page. */
 
-.path-dj-mixes #pjax-content {
+.path-dj-mixes #pjax-content,
+.path-dj-mixes .region-header,
+.path-dj-mixes .region-primary-menu {
   max-width: 68rem;
 }
 
@@ -268,4 +298,175 @@ ul.menu a.is-active {
 
 .view-id-dj_mixes article.node--view-mode-teaser h2 a:hover {
   color: var(--color-link);
+}
+
+/* ----- Frontpage ----- */
+/* The site's single landing page (node--frontpage--full.html.twig). Link
+   groups each get an accent colour, a nod to the coloured bullets of the
+   old dyss.net page. */
+
+.path-frontpage #pjax-content {
+  max-width: 56rem;
+  padding-block: 2.5rem 4rem;
+}
+
+.path-frontpage .region-primary-menu {
+  max-width: 56rem;
+}
+
+/* The hero carries the logo and name here. Hidden with CSS rather than block
+   visibility: the header lives outside #pjax-content, so pjax navigation
+   never re-renders it - but it does swap the body classes. */
+.path-frontpage .region-header {
+  display: none;
+}
+
+.frontpage__hero {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-block-end: 1.5rem;
+}
+
+.frontpage__logo {
+  width: 7.5rem;
+  height: auto;
+  flex: none;
+}
+
+.frontpage__title {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.frontpage-intro {
+  max-width: 40rem;
+  margin-block: 0 2.5rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.link-groups {
+  display: grid;
+  gap: 2.5rem 3rem;
+}
+
+@media (min-width: 48rem) {
+  .link-groups {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* "Listen" is the biggest group: give it the full width, in two columns.
+     "Work" then fills the right column next to "Releases" and "Contact". */
+  .link-group--listen {
+    grid-column: 1 / -1;
+  }
+
+  .link-group--work {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+  }
+
+  .link-group--listen .link-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 3rem;
+  }
+}
+
+.link-group {
+  --accent: var(--color-text);
+}
+
+.link-group--listen {
+  --accent: #ac027d;
+}
+
+.link-group--releases {
+  --accent: #e95800;
+}
+
+.link-group--work {
+  --accent: #321abc;
+}
+
+.link-group--contact {
+  --accent: #1099a8;
+}
+
+.link-group h2 {
+  margin: 0 0 1rem;
+  padding-block-end: 0.4rem;
+  border-bottom: 3px solid var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-list > li {
+  position: relative;
+  padding-inline-start: 1.1rem;
+}
+
+.link-list > li + li {
+  margin-block-start: 1.25rem;
+}
+
+@media (min-width: 48rem) {
+  .link-group--listen .link-list > li + li {
+    margin-block-start: 0;
+  }
+}
+
+.link-list > li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.55em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.link-list a {
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.link-list a:hover,
+.link-list a:focus {
+  color: var(--accent);
+}
+
+.link-list p {
+  margin: 0.3rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.925rem;
+  line-height: 1.45;
+}
+
+/* The on-site DJ mixes archive is the one link that stays on dyss.net. */
+.link-list__item--featured a::after {
+  content: " →";
+}
+
+@media (max-width: 30rem) {
+  .frontpage__hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

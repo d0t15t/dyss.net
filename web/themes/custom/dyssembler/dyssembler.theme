@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Theme hooks for Dyssembler.
+ */
+
+/**
+ * Implements hook_preprocess_html().
+ *
+ * The frontpage node is titled plainly "DYSSEMBLER", which would otherwise
+ * give the browser tab "DYSSEMBLER | DYSSEMBLER". Name the person behind it
+ * instead, and add a meta description for search results and link previews.
+ */
+function dyssembler_preprocess_html(array &$variables) {
+  if (!\Drupal::service('path.matcher')->isFrontPage()) {
+    return;
+  }
+  $variables['head_title'] = ['title' => 'DYSSEMBLER / Isaac Bigsby Trogdon'];
+  $variables['page']['#attached']['html_head'][] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'description',
+        'content' => 'Dyssembler is the umbrella for projects by Isaac Bigsby Trogdon: a radio show, a record label and music events. DJ mixes, releases and code from Berlin.',
+      ],
+    ],
+    'dyssembler_front_description',
+  ];
+}

@@ -1,0 +1,515 @@
+uuid: 51416a12-dbfe-4b52-9bdc-48f7c9427ae4
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.admin
+  module:
+    - ai_chatlog
+    - user
+_core:
+  default_config_hash: WgMTJeWRREyrklyzYeGF51DTUMsKwNZ3ETrUoIT0wPI
+id: ai_conversations
+label: 'AI Conversations'
+module: views
+description: 'Reports page listing AI assistant conversations projected from observability logs.'
+tag: ''
+base_table: ai_conversation
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'AI Conversations'
+      fields:
+        thread_id:
+          id: thread_id
+          table: ai_conversation
+          field: thread_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Thread
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: true
+            path: 'admin/reports/ai-conversations/{{ thread_id__value }}'
+            absolute: false
+          element_label_colon: true
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: ai_chatlog_thread_id_short
+          settings: {  }
+        uid:
+          id: uid
+          table: ai_conversation
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: User
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+          element_label_colon: true
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          type: entity_reference_label
+          settings:
+            link: true
+        assistant_id:
+          id: assistant_id
+          table: ai_conversation
+          field: assistant_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Assistant
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+          element_label_colon: true
+          element_default_classes: true
+          empty: '-'
+          hide_empty: false
+          empty_zero: false
+        first_message:
+          id: first_message
+          table: ai_conversation
+          field: first_message
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'First message'
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+            max_length: 80
+            word_boundary: true
+            ellipsis: true
+            trim: true
+          element_label_colon: true
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+        message_count:
+          id: message_count
+          table: ai_conversation
+          field: message_count
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Messages
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+          element_label_colon: true
+          element_default_classes: true
+          empty: '0'
+          hide_empty: false
+          empty_zero: false
+        first_time:
+          id: first_time
+          table: ai_conversation
+          field: first_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Started
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+          element_label_colon: true
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          type: timestamp
+          settings:
+            date_format: short
+            custom_date_format: ''
+            timezone: ''
+        last_time:
+          id: last_time
+          table: ai_conversation
+          field: last_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Last activity'
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+          element_label_colon: true
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          type: timestamp
+          settings:
+            date_format: short
+            custom_date_format: ''
+            timezone: ''
+        total_tokens:
+          id: total_tokens
+          table: ai_conversation
+          field: total_tokens
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Tokens
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+          element_label_colon: true
+          element_default_classes: true
+          empty: '0'
+          hide_empty: false
+          empty_zero: false
+          type: number_integer
+          settings:
+            thousand_separator: ','
+            prefix_suffix: false
+        unresolved:
+          id: unresolved
+          table: ai_conversation
+          field: unresolved
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Unresolved
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+          element_label_colon: true
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          type: boolean
+          settings:
+            format: yes-no
+            format_custom_false: ''
+            format_custom_true: ''
+        delete_link:
+          id: delete_link
+          table: ai_conversation
+          field: delete_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: ai_chatlog_conversation_delete_link
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+          element_label_colon: false
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 50
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          quantity: 9
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'view ai conversations'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        last_time:
+          id: last_time
+          table: ai_conversation
+          field: last_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+          exposed: false
+      arguments: {  }
+      filters:
+        uid:
+          id: uid
+          table: ai_conversation
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: uid_op
+            label: User
+            description: ''
+            use_operator: false
+            operator: uid_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: uid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+        assistant_id:
+          id: assistant_id
+          table: ai_conversation
+          field: assistant_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: assistant_id_op
+            label: Assistant
+            description: ''
+            use_operator: false
+            operator: assistant_id_op
+            identifier: assistant
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+        last_time:
+          id: last_time
+          table: ai_conversation
+          field: last_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: between
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: last_time_op
+            label: 'Activity between'
+            description: ''
+            use_operator: false
+            operator: last_time_op
+            identifier: last_time
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+      style:
+        type: table
+        options:
+          row_class: ''
+          default_row_class: true
+          columns:
+            id: id
+            thread_id: thread_id
+            uid: uid
+            assistant_id: assistant_id
+            first_message: first_message
+            message_count: message_count
+            first_time: first_time
+            last_time: last_time
+            total_tokens: total_tokens
+            unresolved: unresolved
+          default: last_time
+          info:
+            id:
+              sortable: false
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            thread_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            uid:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            assistant_id:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            first_message:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            message_count:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            first_time:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            last_time:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            total_tokens:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            unresolved:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: true
+          caption: ''
+          description: ''
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+      relationships: {  }
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {  }
+  page:
+    id: page
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: admin/reports/ai-conversations
+      menu:
+        type: normal
+        title: 'AI Conversations'
+        description: 'Browse AI assistant conversations.'
+        weight: 0
+        expanded: false
+        menu_name: admin
+        parent: system.admin_reports
+        context: '0'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags: {  }

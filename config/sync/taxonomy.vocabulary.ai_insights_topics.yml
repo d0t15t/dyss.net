@@ -1,0 +1,9 @@
+uuid: a8c85ae1-8258-4e85-863e-59ec6592ad10
+langcode: en
+status: true
+dependencies: {  }
+name: 'AI Conversation Topics'
+vid: ai_insights_topics
+description: 'Topics discovered by LLM classification of AI conversations.'
+weight: 0
+new_revision: false

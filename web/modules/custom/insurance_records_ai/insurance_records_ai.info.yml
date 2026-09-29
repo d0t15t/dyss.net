@@ -1,0 +1,10 @@
+name: 'Insurance records AI'
+type: module
+description: 'AI tools (function calls) that let an AI agent search and read the private insurance documents via the Solr index, plus access control for the insurance AI search block. All tools require the "View insurance records" permission.'
+package: Custom
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - ai:ai
+  - ai_agents:ai_agents
+  - insurance_records:insurance_records
+  - search_api:search_api

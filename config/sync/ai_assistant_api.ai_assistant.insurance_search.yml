@@ -1,0 +1,24 @@
+uuid: 5c58ad60-096b-43df-9dc6-479a57db61f2
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: QufOkyxmNxqWgBGnFMN65uLXCkgvn-E5xab4eC4Ra4Q
+id: insurance_search
+label: 'Insurance search'
+description: 'AI answers above the /insurance/search results, based on the private insurance documents.'
+system_prompt: ''
+pre_action_prompt: ''
+instructions: ''
+allow_history: none
+history_context_length: '2'
+error_message: 'The AI search could not answer right now. The regular search results below still work.'
+specific_error_messages: {  }
+llm_provider: anthropic
+llm_model: claude-sonnet-5
+llm_configuration: {  }
+actions_enabled: {  }
+roles:
+  administrator: administrator
+use_function_calling: true
+ai_agent: insurance_research

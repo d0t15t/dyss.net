@@ -1,15 +1,23 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - search_api.index.content
+    - views.view.dj_mixes
+  module:
+    - search_api
 id: field_tags
 name: Tags
-url_alias: tags
 weight: 0
 min_count: 1
 missing: false
 missing_label: Other
+url_alias: tags
 facet_source_id: 'search_api:views_page__dj_mixes__page_1'
 field_identifier: field_tags
+query_operator: or
+hard_limit: 0
+exclude: false
 use_hierarchy: false
 keep_hierarchy_parents_active: false
 hierarchy:
@@ -17,33 +25,36 @@ hierarchy:
   config: {  }
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
-exclude: false
-query_operator: or
-hard_limit: 0
-show_only_one_result: false
-only_visible_when_facet_source_is_visible: true
 widget:
   type: links
   config:
     show_numbers: true
     soft_limit: 0
+    show_reset_link: true
+    reset_text: 'Reset tags'
     soft_limit_settings:
       show_less_label: 'Show less'
       show_more_label: 'Show more'
-    show_reset_link: true
-    reset_text: 'Reset tags'
+empty_behavior:
+  behavior: none
+only_visible_when_facet_source_is_visible: true
+show_only_one_result: false
+show_title: true
 processor_configs:
-  translate_entity:
-    processor_id: translate_entity
-    weights:
-      build: 5
-    settings: {  }
   display_value_widget_order:
     processor_id: display_value_widget_order
     weights:
       sort: 60
     settings:
       sort: ASC
-empty_behavior:
-  behavior: none
-show_title: true
+  translate_entity:
+    processor_id: translate_entity
+    weights:
+      build: 5
+    settings: {  }
+  url_processor_handler:
+    processor_id: url_processor_handler
+    weights:
+      pre_query: 50
+      build: 15
+    settings: {  }

@@ -1,53 +1,7 @@
 /**
  * @file
- * The insurance listings under /admin/content/insurance, in Claro.
+ * The insurance listings under /admin/content/insurances, in Claro.
  */
-
-/* Search: Claro has no sidebar, so the facet blocks form a row of columns
-   above the results. */
-.region-content:has(> [id^="block-claro-facet-insurance"]) {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 2rem;
-  align-items: start;
-}
-
-.region-content:has(> [id^="block-claro-facet-insurance"]) > * {
-  flex: 1 1 100%;
-}
-
-.region-content > [id^="block-claro-facet-insurance"] {
-  flex: 1 1 10rem;
-  margin-block-end: 1.5rem;
-}
-
-[id^="block-claro-facet-insurance"] h2 {
-  margin: 0 0 0.4rem;
-  font-size: var(--font-size-xs, 0.79rem);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-gray-800, #55565b);
-}
-
-[id^="block-claro-facet-insurance"] ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: var(--font-size-s, 0.889rem);
-}
-
-[id^="block-claro-facet-insurance"] li {
-  margin: 0;
-  padding-block: 0.1rem;
-}
-
-[id^="block-claro-facet-insurance"] .facet-item__count {
-  color: var(--color-gray-800, #55565b);
-}
-
-[id^="block-claro-facet-insurance"] .is-active .facet-item__value {
-  font-weight: 700;
-}
 
 /* AI answer (ai_assistant_ui "AI Assistant answer" Views area) above the
    Solr results. */

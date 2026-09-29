@@ -151,7 +151,7 @@ function _insurance_records_access(bool $is_insurance, AccountInterface $account
 /**
  * Implements hook_views_pre_render().
  *
- * Styles the insurance listings under /admin/content/insurance.
+ * Styles the insurance listings under /admin/content/insurances.
  */
 function insurance_records_views_pre_render(ViewExecutable $view) {
   if (in_array($view->id(), ['insurance_policies', 'insurance_documents', 'insurance_search'], TRUE)) {

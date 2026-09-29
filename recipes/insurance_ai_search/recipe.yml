@@ -1,5 +1,5 @@
 name: 'Insurance AI search'
-description: 'Adds an AI answer above the /admin/content/insurance/search results: the ai_assistant_ui "AI Assistant answer" Views area in the view header, which sends the search keywords and the active facets ("Active filters") to the assistant, so the answer matches the results. An "Insurance research" AI agent (Claude via the Anthropic provider) answers from the private insurance records through three tools in the insurance_records_ai module: Solr document search, read document and list policies. The assistant is restricted to administrators and every tool requires "View insurance records". The Anthropic API key is read from the ANTHROPIC_API_KEY environment variable. Requires recipes/search_insurance_documents.'
+description: 'Adds an AI answer above the /admin/content/insurances/search results: the ai_assistant_ui "AI Assistant answer" Views area in the view header, which sends the search keywords and the active facet filters ("Active filters") to the assistant, so the answer matches the results. An "Insurance research" AI agent (Claude via the Anthropic provider) answers from the private insurance records through three tools in the insurance_records_ai module: Solr document search, read document and list policies. The assistant is restricted to administrators and every tool requires "View insurance records". The Anthropic API key is read from the ANTHROPIC_API_KEY environment variable. Requires recipes/search_insurance_documents.'
 type: 'Search'
 install:
   - insurance_records_ai
@@ -28,7 +28,7 @@ config:
           ai_assistant: insurance_search
           keyword_filters: {  }
           include_exposed_filters: true
-          facets_param: f
+          facets_param: ''
           no_query_text: '<p>Ask a question, e.g. <em>What was the surrender value of the PrivatRente?</em> or <em>Which documents do I need for my 2025 tax return?</em> The AI answer appears here; the matching documents are listed below.</p>'
           stream: true
           cache_results: true

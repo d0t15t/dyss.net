@@ -6,6 +6,7 @@ dependencies:
     - search_api.index.content
     - system.menu.main
   module:
+    - dj_mixes
     - search_api
     - user
 _core:
@@ -252,7 +253,7 @@ display:
         type: normal
         title: 'DJ Mixes'
         description: 'Browse all DJ mixes.'
-        weight: 0
+        weight: -49
         menu_name: main
         parent: ''
     cache_metadata:

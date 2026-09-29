@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.insurance_tax_year
+  module:
+    - facets
+    - system
+  theme:
+    - dyssembler
+id: dyssembler_facet_insurance_tax_year
+theme: dyssembler
+region: sidebar_first
+weight: 1
+provider: null
+plugin: 'facet_block:insurance_tax_year'
+settings:
+  id: 'facet_block:insurance_tax_year'
+  label: 'Tax year'
+  label_display: '0'
+  provider: facets
+  block_id: dyssembler_facet_insurance_tax_year
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /insurance/search

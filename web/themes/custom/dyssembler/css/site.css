@@ -322,8 +322,9 @@ ul.menu a.is-active {
   white-space: nowrap;
 }
 
-/* AI answer (ai_assistant_ui search results block) above the Solr results. */
-.path-insurance .block-ai-assistant-search-results {
+/* AI answer (ai_assistant_ui "AI Assistant answer" Views area) above the
+   Solr results. */
+.path-insurance .view-header .ai-assistant-search-results {
   margin-block-end: 1.75rem;
   padding: 1rem 1.25rem;
   border: 1px solid var(--color-border);
@@ -332,35 +333,39 @@ ul.menu a.is-active {
   background: #f7f6fd;
 }
 
-.path-insurance .block-ai-assistant-search-results > h2 {
-  margin: 0 0 0.5rem;
+.path-insurance .view-header .ai-assistant-search-results::before {
+  content: "AI answer";
+  display: block;
+  margin-block-end: 0.5rem;
   font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #321abc;
 }
 
-/* Search: facets in a sidebar next to the search box and results. */
+/* Search: facet blocks in the first sidebar, next to the view. */
 @media (min-width: 56rem) {
-  .view-id-insurance_search {
+  .path-insurance main:has(> .layout-sidebar-first) {
     display: grid;
     grid-template-columns: 14rem minmax(0, 1fr);
     gap: 0 2.5rem;
     align-items: start;
   }
 
-  .view-id-insurance_search > .view-header {
+  .path-insurance main > .layout-sidebar-first {
     grid-column: 1;
-    grid-row: 1 / span 10;
+    grid-row: 1;
   }
 
-  .view-id-insurance_search > :not(.view-header) {
+  .path-insurance main > .layout-content {
     grid-column: 2;
+    grid-row: 1;
   }
 }
 
-.view-id-insurance_search > .view-header h2,
-.view-id-insurance_search > .view-header h3 {
+.path-insurance .layout-sidebar-first h2,
+.path-insurance .layout-sidebar-first h3 {
   margin: 1.25rem 0 0.4rem;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
@@ -368,22 +373,22 @@ ul.menu a.is-active {
   color: var(--color-muted);
 }
 
-.view-id-insurance_search .item-list__links {
+.path-insurance .layout-sidebar-first .item-list__links {
   margin: 0;
   padding: 0;
   list-style: none;
   font-size: 0.9rem;
 }
 
-.view-id-insurance_search .item-list__links li {
+.path-insurance .layout-sidebar-first .item-list__links li {
   padding-block: 0.1rem;
 }
 
-.view-id-insurance_search .facet-item__count {
+.path-insurance .layout-sidebar-first .facet-item__count {
   color: var(--color-muted);
 }
 
-.view-id-insurance_search .is-active .facet-item__value {
+.path-insurance .layout-sidebar-first .is-active .facet-item__value {
   font-weight: 700;
 }
 

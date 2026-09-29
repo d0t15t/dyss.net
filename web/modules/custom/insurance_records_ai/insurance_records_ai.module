@@ -2,23 +2,26 @@
 
 /**
  * @file
- * Access control for the insurance AI search block.
+ * Readable search filters for the insurance AI answer.
  */
 
-use Drupal\block\BlockInterface;
-use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Session\AccountInterface;
+use Drupal\field\Entity\FieldStorageConfig;
 
 /**
- * Implements hook_block_access().
+ * Implements hook_ai_assistant_ui_search_context_alter().
  *
- * The AI search block on /insurance/search would otherwise still render (and
- * call the assistant) on that path's 403 page for visitors without access.
+ * The AI answer on /insurance/search receives the active facets as "Facet:
+ * raw value" lines. Document types arrive as machine names; show their
+ * labels instead so the assistant reads "Document type: Annual statement".
  */
-function insurance_records_ai_block_access(BlockInterface $block, $operation, AccountInterface $account) {
-  if ($operation !== 'view' || !str_starts_with($block->id(), 'dyssembler_insurance_ai')) {
-    return AccessResult::neutral();
+function insurance_records_ai_ai_assistant_ui_search_context_alter(array &$context, array $settings): void {
+  if (($settings['ai_assistant'] ?? '') !== 'insurance_search') {
+    return;
   }
-  return AccessResult::forbiddenIf(!$account->hasPermission('view insurance records'))
-    ->cachePerPermissions();
+  $labels = FieldStorageConfig::loadByName('media', 'field_document_type')?->getSetting('allowed_values') ?? [];
+  foreach ($context['filters'] as &$filter) {
+    if (preg_match('/^Document type: (\S+)$/', $filter, $m) && isset($labels[$m[1]])) {
+      $filter = 'Document type: ' . $labels[$m[1]];
+    }
+  }
 }

@@ -1,0 +1,299 @@
+uuid: 0124d398-9861-4915-a566-e583d682d117
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_document_date
+    - field.storage.media.field_document_type
+    - field.storage.media.field_insurance_file
+    - field.storage.media.field_policy
+    - field.storage.media.field_reported_value
+    - search_api.index.insurance_documents
+  module:
+    - datetime
+    - dj_mixes
+    - file
+    - options
+    - search_api
+    - user
+_core:
+  default_config_hash: d5uHt1q_jUWkzZq1ykoVb4e0UssKKK7H8YR65UEsbVg
+id: insurance_search
+label: 'Insurance search'
+module: views
+description: 'Private Solr search across insurance documents: full text incl. OCR, with facets for type, tax year, insurer and insured person.'
+tag: insurance
+base_table: search_api_index_insurance_documents
+base_field: search_api_id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Search insurance documents'
+      fields:
+        field_document_date:
+          id: field_document_date
+          table: search_api_index_insurance_documents
+          field: field_document_date
+          plugin_id: search_api_field
+          label: Date
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: html_date
+          field_rendering: true
+        name:
+          id: name
+          table: search_api_index_insurance_documents
+          field: name
+          plugin_id: search_api_field
+          label: Document
+          type: string
+          settings:
+            link_to_entity: false
+          field_rendering: true
+        field_policy:
+          id: field_policy
+          table: search_api_index_insurance_documents
+          field: field_policy
+          plugin_id: search_api_field
+          label: Policy
+          type: entity_reference_label
+          settings:
+            link: true
+          field_rendering: true
+        field_document_type:
+          id: field_document_type
+          table: search_api_index_insurance_documents
+          field: field_document_type
+          plugin_id: search_api_field
+          label: Type
+          type: list_default
+          settings: {  }
+          field_rendering: true
+        field_reported_value:
+          id: field_reported_value
+          table: search_api_index_insurance_documents
+          field: field_reported_value
+          plugin_id: search_api_field
+          label: Value
+          type: number_decimal
+          settings:
+            thousand_separator: ','
+            decimal_separator: .
+            scale: 2
+            prefix_suffix: true
+          field_rendering: true
+        field_insurance_file:
+          id: field_insurance_file
+          table: search_api_datasource_insurance_documents_entity_media
+          field: field_insurance_file
+          entity_type: media
+          plugin_id: search_api_field
+          label: PDF
+          alter:
+            alter_text: true
+            text: PDF
+            make_link: true
+            path: '{{ field_insurance_file }}'
+            target: _blank
+          type: file_url_plain
+          settings: {  }
+          field_rendering: true
+        search_api_excerpt:
+          id: search_api_excerpt
+          table: search_api_index_insurance_documents
+          field: search_api_excerpt
+          plugin_id: search_api_text
+          label: Match
+          link_to_item: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 25
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Search
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'view insurance records'
+      cache:
+        type: search_api_none
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'No insurance documents match your search.'
+      sorts:
+        search_api_relevance:
+          id: search_api_relevance
+          table: search_api_index_insurance_documents
+          field: search_api_relevance
+          plugin_id: search_api
+          order: DESC
+        field_document_date:
+          id: field_document_date
+          table: search_api_index_insurance_documents
+          field: field_document_date
+          plugin_id: search_api
+          order: DESC
+      filters:
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_insurance_documents
+          field: search_api_fulltext
+          plugin_id: search_api_fulltext
+          operator: and
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_op
+            label: Search
+            description: ''
+            use_operator: false
+            operator: search_api_fulltext_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: search
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            expose_fields: false
+            placeholder: 'e.g. Rückkaufswert, 02-542922-60, Steuerbescheinigung'
+            searched_fields_id: search_api_fulltext_searched_fields
+            value_maxlength: 128
+          parse_mode: terms
+          min_length: null
+          fields: {  }
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            field_document_date: field_document_date
+            name: name
+            field_policy: field_policy
+            field_document_type: field_document_type
+            field_reported_value: field_reported_value
+            field_insurance_file: field_insurance_file
+            search_api_excerpt: name
+          default: '-1'
+          info:
+            name:
+              separator: '<br>'
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+      row:
+        type: fields
+        options: {  }
+      query:
+        type: search_api_query
+        options:
+          bypass_access: false
+          skip_access: false
+          preserve_facet_query_args: false
+      header:
+        facet_insurance_document_type:
+          id: facet_insurance_document_type
+          table: views
+          field: dj_mixes_block
+          admin_label: 'Document type facet'
+          plugin_id: dj_mixes_block
+          empty: true
+          block_id: 'facet_block:insurance_document_type'
+        facet_insurance_tax_year:
+          id: facet_insurance_tax_year
+          table: views
+          field: dj_mixes_block
+          admin_label: 'Tax year facet'
+          plugin_id: dj_mixes_block
+          empty: true
+          block_id: 'facet_block:insurance_tax_year'
+        facet_insurance_insurer:
+          id: facet_insurance_insurer
+          table: views
+          field: dj_mixes_block
+          admin_label: 'Insurer facet'
+          plugin_id: dj_mixes_block
+          empty: true
+          block_id: 'facet_block:insurance_insurer'
+        facet_insurance_insured:
+          id: facet_insurance_insured
+          table: views
+          field: dj_mixes_block
+          admin_label: 'Insured person facet'
+          plugin_id: dj_mixes_block
+          empty: true
+          block_id: 'facet_block:insurance_insured'
+      footer:
+        result:
+          id: result
+          table: views
+          field: result
+          plugin_id: result
+          empty: false
+          content: 'Showing @start–@end of @total documents'
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags:
+        - 'config:field.storage.media.field_document_date'
+        - 'config:field.storage.media.field_document_type'
+        - 'config:field.storage.media.field_insurance_file'
+        - 'config:field.storage.media.field_policy'
+        - 'config:field.storage.media.field_reported_value'
+        - 'config:search_api.index.insurance_documents'
+        - 'search_api_list:insurance_documents'
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: insurance/search
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags:
+        - 'config:field.storage.media.field_document_date'
+        - 'config:field.storage.media.field_document_type'
+        - 'config:field.storage.media.field_insurance_file'
+        - 'config:field.storage.media.field_policy'
+        - 'config:field.storage.media.field_reported_value'
+        - 'config:search_api.index.insurance_documents'
+        - 'search_api_list:insurance_documents'

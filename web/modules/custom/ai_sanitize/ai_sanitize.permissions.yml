@@ -1,0 +1,4 @@
+administer ai sanitize:
+  title: 'Administer AI Sanitize'
+  description: 'Choose which kinds of sensitive data are replaced before AI requests are sent, and manage allowlists and custom patterns.'
+  restrict access: true

@@ -1,0 +1,7 @@
+ai_sanitize.settings:
+  path: '/admin/config/ai/sanitize'
+  defaults:
+    _form: '\Drupal\ai_sanitize\Form\SettingsForm'
+    _title: 'AI Sanitize'
+  requirements:
+    _permission: 'administer ai sanitize'

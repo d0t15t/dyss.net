@@ -1,0 +1,16 @@
+enabled_detectors:
+  - iban
+  - credit_card
+  - email
+  - kvnr
+  - pension_insurance_number
+  - tax_id
+  - date_of_birth
+  - secret
+placeholder_format: '[@type_@n]'
+operation_types: []
+bypass_tags: []
+allowlist: []
+always_redact: []
+custom_patterns: []
+log_counts: true

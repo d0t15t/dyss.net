@@ -1,0 +1,47 @@
+ai_sanitize.settings:
+  type: config_object
+  label: 'AI Sanitize settings'
+  mapping:
+    enabled_detectors:
+      type: sequence
+      label: 'Enabled detector plugins'
+      sequence:
+        type: string
+    placeholder_format:
+      type: string
+      label: 'Placeholder format (@type, @n)'
+    operation_types:
+      type: sequence
+      label: 'Operation types to sanitize (empty = all)'
+      sequence:
+        type: string
+    bypass_tags:
+      type: sequence
+      label: 'Request tags that skip sanitizing'
+      sequence:
+        type: string
+    allowlist:
+      type: sequence
+      label: 'Values that are never replaced'
+      sequence:
+        type: string
+    always_redact:
+      type: sequence
+      label: 'Exact values that are always replaced'
+      sequence:
+        type: string
+    custom_patterns:
+      type: sequence
+      label: 'Custom patterns'
+      sequence:
+        type: mapping
+        mapping:
+          label:
+            type: string
+            label: 'Placeholder type'
+          pattern:
+            type: string
+            label: 'PCRE pattern'
+    log_counts:
+      type: boolean
+      label: 'Log how many values were replaced (never the values)'

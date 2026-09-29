@@ -1,0 +1,19 @@
+services:
+  plugin.manager.ai_sanitize.detector:
+    class: Drupal\ai_sanitize\Detector\DetectorManager
+    parent: default_plugin_manager
+
+  ai_sanitize.sanitizer:
+    class: Drupal\ai_sanitize\Sanitizer
+    arguments: ['@plugin.manager.ai_sanitize.detector', '@config.factory']
+  Drupal\ai_sanitize\Sanitizer: '@ai_sanitize.sanitizer'
+
+  ai_sanitize.provider_request_subscriber:
+    class: Drupal\ai_sanitize\EventSubscriber\ProviderRequestSubscriber
+    arguments: ['@ai_sanitize.sanitizer', '@config.factory', '@event_dispatcher', '@logger.channel.ai_sanitize']
+    tags:
+      - { name: event_subscriber }
+
+  logger.channel.ai_sanitize:
+    parent: logger.channel_base
+    arguments: ['ai_sanitize']

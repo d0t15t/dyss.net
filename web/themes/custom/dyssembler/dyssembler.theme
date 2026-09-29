@@ -6,6 +6,21 @@
  */
 
 /**
+ * Implements hook_page_attachments_alter().
+ *
+ * The favicon itself is favicon.svg, set in the theme settings. Safari and
+ * home screen shortcuts want a PNG instead.
+ */
+function dyssembler_page_attachments_alter(array &$attachments) {
+  $attachments['#attached']['html_head_link'][] = [
+    [
+      'rel' => 'apple-touch-icon',
+      'href' => base_path() . \Drupal::service('extension.list.theme')->getPath('dyssembler') . '/apple-touch-icon.png',
+    ],
+  ];
+}
+
+/**
  * Implements hook_preprocess_html().
  *
  * The frontpage node is titled plainly "DYSSEMBLER", which would otherwise

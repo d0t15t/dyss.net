@@ -1,0 +1,12 @@
+--- a/src/Base/AiVdbProviderClientBase.php
++++ b/src/Base/AiVdbProviderClientBase.php
+@@ -348,6 +348,9 @@
+         // Merge the base array structure with the individual chunk array
+         // structure and add additional details.
+         $embedding = array_merge_recursive($embedding, $itemBase);
++        // Start every record empty: otherwise metadata keys of an earlier item
++        // (e.g. a field only the previous entity type has) leak into this one.
++        $data = [];
+         $data['drupal_long_id'] = $embedding['id'];
+         $data['drupal_entity_id'] = $item_id;
+         $data['vector'] = $embedding['values'];

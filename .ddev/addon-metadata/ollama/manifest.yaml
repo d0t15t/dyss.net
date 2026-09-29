@@ -1,0 +1,9 @@
+name: ollama
+repository: tyler36/ddev-ollama
+version: "0.2"
+install_date: "2026-09-29T10:35:09+02:00"
+project_files:
+    - docker-compose.ollama.yaml
+    - commands
+global_files: []
+removal_actions: []

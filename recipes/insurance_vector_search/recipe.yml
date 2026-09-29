@@ -1,0 +1,27 @@
+name: 'Insurance vector search'
+description: 'Semantic (vector) search over the private insurance records: a Milvus Search API server (AI Search backend, contextual chunks, cosine similarity) with local Ollama embeddings (paraphrase-multilingual, 768 dimensions), and an "Insurance vectors" index of insurance policies and documents. Each indexed bundle gets a "Vector index" view mode, copied from its default display, which is what gets embedded. Requires recipes/insurance_records and the milvus and ollama DDEV services (.ddev/docker-compose.milvus.yaml, tyler36/ddev-ollama) with `ddev exec -s ollama ollama pull paraphrase-multilingual`.'
+type: 'Search'
+install:
+  - insurance_records
+  - ai
+  - ai_search
+  - ai_provider_ollama
+  - ai_vdb_provider_milvus
+  - search_api
+config:
+  strict:
+    - search_api.index.insurance_vectors
+  actions:
+    ai_provider_ollama.settings:
+      simpleConfigUpdate:
+        host_name: 'http://ollama'
+        port: 11434
+    ai_vdb_provider_milvus.settings:
+      simpleConfigUpdate:
+        server: 'http://milvus'
+        port: 19530
+        api_key: ''
+    ai.settings:
+      simpleConfigUpdate:
+        default_providers.embeddings.provider_id: ollama
+        default_providers.embeddings.model_id: 'paraphrase-multilingual:latest'

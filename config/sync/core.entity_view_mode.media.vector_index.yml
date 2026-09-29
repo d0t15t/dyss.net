@@ -1,0 +1,13 @@
+uuid: c91ae664-dc84-4477-b320-f6094543544d
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: staKjShDlPG4PVlF3cDYpkKE86lyqmUMXmMjSVJyG-w
+id: media.vector_index
+label: 'Vector index'
+description: 'What is embedded into the vector (Milvus) search index. Starts as a copy of the default display; hide fields here to keep them out of the vectors.'
+targetEntityType: media
+cache: true

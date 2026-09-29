@@ -1,0 +1,22 @@
+--- a/modules/ai_assistant_api/src/Service/AgentRunner.php
++++ b/modules/ai_assistant_api/src/Service/AgentRunner.php
+@@ -137,9 +137,17 @@
+     $message = new ChatMessage('assistant', $response ?? '');
+ 
+     if ($history = $agent->getChatHistory()) {
+-      // Get the last message from the history.
+-      $message = end($history);
++      // Use the last message only if it is the agent's answer. When the agent
++      // failed (e.g. the provider refused the request), the last message is
++      // the user's own question, which must not be returned as the answer.
++      $last = end($history);
++      if ($last instanceof ChatMessage && $last->getRole() === 'assistant') {
++        $message = $last;
++      }
+     }
++    if (trim($message->getText()) === '' && !$message->getTools()) {
++      throw new \RuntimeException('The agent did not produce an answer.');
++    }
+     return new ChatOutput(
+       $message,
+       [$response],

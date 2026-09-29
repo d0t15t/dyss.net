@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.vector_index
+label: 'Vector index'
+description: 'What is embedded into the vector (Milvus) search index. Starts as a copy of the default display; hide fields here to keep them out of the vectors.'
+targetEntityType: media
+cache: true

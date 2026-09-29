@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ai_search
+    - ai_vdb_provider_milvus
+id: milvus
+name: 'Milvus (DDEV)'
+description: 'Vector database for semantic search. Milvus runs as a DDEV service (http://milvus:19530); embeddings come from Ollama (paraphrase-multilingual, local).'
+backend: search_api_ai_search
+backend_config:
+  chat_model: anthropic__claude-sonnet-5
+  database: milvus
+  database_settings:
+    database_name: default
+    collection: insurance_vectors
+    metric: cosine_similarity
+  embeddings_engine: ollama__paraphrase_multilingual_latest
+  embeddings_engine_configuration:
+    set_dimensions: false
+    dimensions: 768
+  embedding_strategy: contextual_chunks
+  embedding_strategy_configuration:
+    chunk_size: '256'
+    chunk_min_overlap: '50'
+    contextual_content_max_percentage: '30'
+    skip_moderation: true
+  include_raw_embedding_vector: false

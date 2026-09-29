@@ -1,0 +1,13 @@
+uuid: 17975181-e82b-42b7-9152-e839e371dea0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: x1ZjLXAnVN8J09B9WFXQmmfuWdP3TXfEHE0neDOPiy8
+id: node.vector_index
+label: 'Vector index'
+description: 'What is embedded into the vector (Milvus) search index. Starts as a copy of the default display; hide fields here to keep them out of the vectors.'
+targetEntityType: node
+cache: true

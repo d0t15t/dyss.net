@@ -1,0 +1,25 @@
+--- a/src/Plugin/VdbProvider/MilvusProvider.php
++++ b/src/Plugin/VdbProvider/MilvusProvider.php
+@@ -561,15 +561,18 @@
+         $normalizedValues = implode(',', $values);
+       }
+       if ($isMultiple) {
++        // AI Search stores a multi-value field with a single value as a
++        // scalar, not a one-element list, so match both forms.
+         if ($condition->getOperator() === '=') {
+-          $filters[] = 'JSON_CONTAINS_ALL(' . $identifier . ', [' . $normalizedValues . '])';
++          $filters[] = '(JSON_CONTAINS_ALL(' . $identifier . ', [' . $normalizedValues . '])'
++            . (count($values) === 1 ? ' || ' . $identifier . ' == ' . $normalizedValues : '') . ')';
+         }
+-        if ($condition->getOperator() === 'IN') {
+-          $filters[] = 'JSON_CONTAINS_ANY(' . $identifier . ', [' . $normalizedValues . '])';
++        elseif ($condition->getOperator() === 'IN') {
++          $filters[] = '(JSON_CONTAINS_ANY(' . $identifier . ', [' . $normalizedValues . ']) || ' . $identifier . ' IN [' . $normalizedValues . '])';
+         }
+         else {
+           $this->messenger->addWarning('The vector database @name does not support negative operator on multiple fields.', [
+-            '@name' => $this->getClient()->getPluginId(),
++            '@name' => $this->getPluginId(),
+           ]);
+         }
+       }

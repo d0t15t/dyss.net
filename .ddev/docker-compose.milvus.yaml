@@ -1,0 +1,39 @@
+# Milvus vector database (standalone, embedded etcd, local storage).
+#
+# A single container instead of the usual milvus + etcd + minio trio, to keep
+# memory use low in DDEV. Reachable from the web container at
+# http://milvus:19530 (gRPC/REST) and http://milvus:9091/healthz.
+# Data lives in the "milvus" Docker volume and survives `ddev restart`;
+# `ddev delete` removes it.
+services:
+  milvus:
+    image: milvusdb/milvus:v2.5.27
+    container_name: ddev-${DDEV_SITENAME}-milvus
+    command: ["milvus", "run", "standalone"]
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      ETCD_USE_EMBED: "true"
+      ETCD_DATA_DIR: /var/lib/milvus/etcd
+      ETCD_CONFIG_PATH: /milvus/configs/embedEtcd.yaml
+      COMMON_STORAGETYPE: local
+    volumes:
+      - milvus:/var/lib/milvus
+      - ./milvus/embedEtcd.yaml:/milvus/configs/embedEtcd.yaml:ro
+      - ./milvus/user.yaml:/milvus/configs/user.yaml:ro
+    expose:
+      - "19530"
+      - "9091"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 15s
+      timeout: 10s
+      start_period: 60s
+      retries: 5
+    restart: "no"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: ${DDEV_APPROOT}
+
+volumes:
+  milvus: {}

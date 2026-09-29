@@ -1,0 +1,49 @@
+{
+    "_hash": "f6d3dc53749b577c7681c6cab55c3fd904d66d152d7d360a711416c7fc62ca3c",
+    "patches": {
+        "drupal/ai_vdb_provider_milvus": [
+            {
+                "package": "drupal/ai_vdb_provider_milvus",
+                "description": "Fix filtering on multi-value fields (missing elseif, getPluginId() on the client, single values stored as scalars)",
+                "url": "patches/ai_vdb_provider_milvus-multivalue-filter.patch",
+                "sha256": "339288f7c88522c1ff008e021d50f72096d696d6dc30e419dce3f89fa71efe3b",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/ai": [
+            {
+                "package": "drupal/ai",
+                "description": "AI Search: don't Markdown-escape plain metadata values (breaks vector DB filters on values with underscores)",
+                "url": "patches/ai-ai_search-plain-metadata-values.patch",
+                "sha256": "34bc0a9b97e84b952c2ec7b2c650419341c41320ce01f949cfdac0714e4de05a",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            },
+            {
+                "package": "drupal/ai",
+                "description": "VDB indexing: reset record data per chunk (metadata leaks between items)",
+                "url": "patches/ai-vdb-reset-record-metadata.patch",
+                "sha256": "546d856571957458bd6017df7b39f92e3c6a8f1aee37ee17e5598d76746f2bfb",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            },
+            {
+                "package": "drupal/ai",
+                "description": "Assistant API: don't return the user's question as the agent's answer when the agent fails",
+                "url": "patches/ai-assistant-api-agent-no-echo.patch",
+                "sha256": "7162dd5d611ff950f44298a61264c99c009aef7826ce30493901f1a8edc89432",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

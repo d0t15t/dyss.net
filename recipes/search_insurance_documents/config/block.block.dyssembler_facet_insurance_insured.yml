@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.insurance_insured
+  module:
+    - facets
+    - system
+  theme:
+    - dyssembler
+id: dyssembler_facet_insurance_insured
+theme: dyssembler
+region: sidebar_first
+weight: 3
+provider: null
+plugin: 'facet_block:insurance_insured'
+settings:
+  id: 'facet_block:insurance_insured'
+  label: 'Insured person'
+  label_display: '0'
+  provider: facets
+  block_id: dyssembler_facet_insurance_insured
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /insurance/search

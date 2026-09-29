@@ -10,8 +10,8 @@ dependencies:
     - field.storage.media.field_reported_value
     - search_api.index.insurance_documents
   module:
+    - ai_assistant_ui
     - datetime
-    - dj_mixes
     - file
     - options
     - search_api
@@ -216,38 +216,24 @@ display:
           skip_access: false
           preserve_facet_query_args: false
       header:
-        facet_insurance_document_type:
-          id: facet_insurance_document_type
+        ai_assistant_answer:
+          id: ai_assistant_answer
           table: views
-          field: dj_mixes_block
-          admin_label: 'Document type facet'
-          plugin_id: dj_mixes_block
+          field: ai_assistant_answer
+          relationship: none
+          group_type: group
+          admin_label: 'AI answer'
+          plugin_id: ai_assistant_answer
           empty: true
-          block_id: 'facet_block:insurance_document_type'
-        facet_insurance_tax_year:
-          id: facet_insurance_tax_year
-          table: views
-          field: dj_mixes_block
-          admin_label: 'Tax year facet'
-          plugin_id: dj_mixes_block
-          empty: true
-          block_id: 'facet_block:insurance_tax_year'
-        facet_insurance_insurer:
-          id: facet_insurance_insurer
-          table: views
-          field: dj_mixes_block
-          admin_label: 'Insurer facet'
-          plugin_id: dj_mixes_block
-          empty: true
-          block_id: 'facet_block:insurance_insurer'
-        facet_insurance_insured:
-          id: facet_insurance_insured
-          table: views
-          field: dj_mixes_block
-          admin_label: 'Insured person facet'
-          plugin_id: dj_mixes_block
-          empty: true
-          block_id: 'facet_block:insurance_insured'
+          ai_assistant: insurance_search
+          keyword_filters: {  }
+          include_exposed_filters: true
+          facets_param: f
+          no_query_text: '<p>Ask a question, e.g. <em>What was the surrender value of the PrivatRente?</em> or <em>Which documents do I need for my 2025 tax return?</em> The AI answer appears here; the matching documents are listed below.</p>'
+          stream: true
+          cache_results: true
+          max_height: ''
+          allowed_html: 'a b blockquote br code del em h1 h2 h3 h4 h5 h6 hr i img li ol p pre strong table tbody td th thead tr ul'
       footer:
         result:
           id: result

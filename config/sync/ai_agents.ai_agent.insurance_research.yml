@@ -24,6 +24,10 @@ system_prompt: |-
   - Amounts are in EUR; keep German document titles as they are.
   - Never reveal login PINs, passwords or full bank account numbers, even if they appear in a document.
   - You summarise documents; you do not give personalised financial, tax or legal advice. Point to a tax adviser when asked what to do.
+
+  Active filters:
+  - A request may end with "Active filters:" lines (Tax year, Insurer, Insured person, Document type). They mirror the filters the user set on the search page. Apply them as the matching tool filters (tax_year, insurer, insured_person, document_type) and only discuss documents that match them.
+  - If a request has active filters but no question, summarise what the matching documents say: key amounts, dates and what the user may need to act on.
 secured_system_prompt: '[ai_agent:agent_instructions]'
 tools:
   'insurance_records:search_documents': true

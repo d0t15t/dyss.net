@@ -10,7 +10,6 @@ dependencies:
     - search_api.index.insurance_documents
   module:
     - datetime
-    - dj_mixes
     - file
     - options
     - search_api
@@ -212,39 +211,7 @@ display:
           bypass_access: false
           skip_access: false
           preserve_facet_query_args: false
-      header:
-        facet_insurance_document_type:
-          id: facet_insurance_document_type
-          table: views
-          field: dj_mixes_block
-          admin_label: 'Document type facet'
-          plugin_id: dj_mixes_block
-          empty: true
-          block_id: 'facet_block:insurance_document_type'
-        facet_insurance_tax_year:
-          id: facet_insurance_tax_year
-          table: views
-          field: dj_mixes_block
-          admin_label: 'Tax year facet'
-          plugin_id: dj_mixes_block
-          empty: true
-          block_id: 'facet_block:insurance_tax_year'
-        facet_insurance_insurer:
-          id: facet_insurance_insurer
-          table: views
-          field: dj_mixes_block
-          admin_label: 'Insurer facet'
-          plugin_id: dj_mixes_block
-          empty: true
-          block_id: 'facet_block:insurance_insurer'
-        facet_insurance_insured:
-          id: facet_insurance_insured
-          table: views
-          field: dj_mixes_block
-          admin_label: 'Insured person facet'
-          plugin_id: dj_mixes_block
-          empty: true
-          block_id: 'facet_block:insurance_insured'
+      header: {  }
       footer:
         result:
           id: result

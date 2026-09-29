@@ -13,6 +13,7 @@
 /web/vendor
 /web/core
 /web/modules/contrib
+/web/libraries
 /web/profiles/contrib
 /web/sites/development.services.yml
 /web/sites/example.settings.local.php

@@ -1,5 +1,5 @@
 name: 'Insurance records'
-description: 'Provides a private insurance knowledge base: the "Insurance policy" content type, the "Insurance document" media type (scanned PDFs stored in the private file system, with OCR text and key figures), vocabularies for insurers, categories and insured parties, the policy and document listings under Content (/admin/content/insurance, with Policies and Documents tabs), and a per-policy documents block. Everything is hidden from users without the "View insurance records" permission.'
+description: 'Provides a private insurance knowledge base: the "Insurance policy" content type, the "Insurance document" media type (scanned PDFs stored in the private file system, with OCR text and key figures), vocabularies for insurers, categories and insured parties, the policy and document listings under Content (/admin/content/insurances, with Policies and Documents tabs), and a per-policy documents block. Everything is hidden from users without the "View insurance records" permission.'
 type: 'Content type'
 install:
   - insurance_records

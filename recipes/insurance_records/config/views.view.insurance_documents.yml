@@ -280,7 +280,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/content/insurance/documents
+      path: admin/content/insurances/documents
       menu:
         type: none
         title: ''

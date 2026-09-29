@@ -10,6 +10,7 @@ dependencies:
     - search_api.index.insurance_documents
   module:
     - datetime
+    - facets_exposed_filters
     - file
     - options
     - search_api
@@ -178,6 +179,191 @@ display:
           parse_mode: terms
           min_length: null
           fields: {  }
+        facets_field_document_type:
+          id: facets_field_document_type
+          table: search_api_index_insurance_documents
+          field: facets_field_document_type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Document type'
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: document_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            hard_limit: 0
+            min_count: 1
+            missing: false
+            missing_label: others
+            show_numbers: true
+            show_only_one_result: false
+            depends_on_exposed_filter: ''
+            processor_configs:
+              count_widget_order:
+                processor_id: count_widget_order
+                weights:
+                  sort: 30
+                settings:
+                  sort: DESC
+              list_item:
+                processor_id: list_item
+                weights:
+                  build: 5
+                settings: {  }
+        facets_field_tax_years:
+          id: facets_field_tax_years
+          table: search_api_index_insurance_documents
+          field: facets_field_tax_years
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Tax year'
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tax_year
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            hard_limit: 0
+            min_count: 1
+            missing: false
+            missing_label: others
+            show_numbers: true
+            show_only_one_result: false
+            depends_on_exposed_filter: ''
+            processor_configs:
+              raw_value_widget_order:
+                processor_id: raw_value_widget_order
+                weights:
+                  sort: 50
+                settings:
+                  sort: DESC
+        facets_insurer:
+          id: facets_insurer
+          table: search_api_index_insurance_documents
+          field: facets_insurer
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Insurer
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: insurer
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            hard_limit: 0
+            min_count: 1
+            missing: false
+            missing_label: others
+            show_numbers: true
+            show_only_one_result: false
+            depends_on_exposed_filter: ''
+            processor_configs:
+              display_value_widget_order:
+                processor_id: display_value_widget_order
+                weights:
+                  sort: 40
+                settings:
+                  sort: ASC
+        facets_insured:
+          id: facets_insured
+          table: search_api_index_insurance_documents
+          field: facets_insured
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Insured person'
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: insured
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            hard_limit: 0
+            min_count: 1
+            missing: false
+            missing_label: others
+            show_numbers: true
+            show_only_one_result: false
+            depends_on_exposed_filter: ''
+            processor_configs:
+              display_value_widget_order:
+                processor_id: display_value_widget_order
+                weights:
+                  sort: 40
+                settings:
+                  sort: ASC
       style:
         type: table
         options:
@@ -243,8 +429,11 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      defaults:
+        use_ajax: false
+      use_ajax: true
       display_extenders: {  }
-      path: admin/content/insurance/search
+      path: admin/content/insurances/search
       menu:
         type: none
         title: ''

@@ -3,7 +3,7 @@ status: true
 dependencies: {  }
 id: insurance_search
 label: 'Insurance search'
-description: 'AI answers above the /admin/content/insurance/search results, based on the private insurance documents.'
+description: 'AI answers above the /admin/content/insurances/search results, based on the private insurance documents.'
 system_prompt: ''
 pre_action_prompt: ''
 instructions: ''

@@ -32,6 +32,7 @@ module:
   help: 0
   image: 0
   insurance_records: 0
+  insurance_records_ai: 0
   insurance_records_migrate: 0
   key: 0
   language: 0

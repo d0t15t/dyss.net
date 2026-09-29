@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Access control for the insurance AI search block.
+ */
+
+use Drupal\block\BlockInterface;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_block_access().
+ *
+ * The AI search block on /insurance/search would otherwise still render (and
+ * call the assistant) on that path's 403 page for visitors without access.
+ */
+function insurance_records_ai_block_access(BlockInterface $block, $operation, AccountInterface $account) {
+  if ($operation !== 'view' || !str_starts_with($block->id(), 'dyssembler_insurance_ai')) {
+    return AccessResult::neutral();
+  }
+  return AccessResult::forbiddenIf(!$account->hasPermission('view insurance records'))
+    ->cachePerPermissions();
+}

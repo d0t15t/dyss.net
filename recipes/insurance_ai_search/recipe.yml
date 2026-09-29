@@ -1,0 +1,17 @@
+name: 'Insurance AI search'
+description: 'Adds an AI answer above the /insurance/search results, using the ai_assistant_ui "AI Assistant Search Results" block. An "Insurance research" AI agent (Claude via the Anthropic provider) answers from the private insurance records through three tools in the insurance_records_ai module: Solr document search, read document and list policies. The assistant is restricted to administrators and every tool requires "View insurance records". The Anthropic API key is read from the ANTHROPIC_API_KEY environment variable. Requires recipes/search_insurance_documents.'
+type: 'Search'
+install:
+  - insurance_records_ai
+  - ai
+  - ai_agents
+  - ai_assistant_api
+  - ai_assistant_ui
+  - ai_provider_anthropic
+  - key
+  - block
+config:
+  actions:
+    ai_provider_anthropic.settings:
+      simpleConfigUpdate:
+        api_key: anthropic_api_key

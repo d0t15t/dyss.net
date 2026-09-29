@@ -1,0 +1,39 @@
+uuid: a3689e1b-1880-4e0e-a07f-913c85387ba4
+langcode: en
+status: true
+dependencies:
+  module:
+    - ai_assistant_ui
+    - system
+  theme:
+    - dyssembler
+_core:
+  default_config_hash: 5rTpwno0ErnTnYqLBfdi_W8k9gYHvzT9YfWMSznys8Q
+id: dyssembler_insurance_ai_search
+theme: dyssembler
+region: content
+weight: -1
+provider: null
+plugin: ai_assistant_search_results
+settings:
+  id: ai_assistant_search_results
+  label: 'AI answer'
+  label_display: visible
+  provider: ai_assistant_ui
+  ai_assistant: insurance_search
+  stream: true
+  query_param: search
+  no_query_text: '<p>Ask a question, e.g. <em>What was the surrender value of the PrivatRente?</em> or <em>Which documents do I need for my 2025 tax return?</em> The AI answer appears here; the matching documents are listed below.</p>'
+  cache_results: true
+  max_height: ''
+  allowed_html: 'a b blockquote br code del em h1 h2 h3 h4 h5 h6 hr i img li ol p pre strong table tbody td th thead tr ul'
+  response_link_previews: false
+  link_preview_basic_auth_user: ''
+  link_preview_basic_auth_pass: ''
+  link_preview_wrapper_selector: .ai-assistant-search-results
+  link_preview_container_selector: '[id="ai-assistant-search-results__link-cards-wrapper"]'
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /insurance/search

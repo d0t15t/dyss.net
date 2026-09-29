@@ -1,0 +1,135 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.vector_index
+    - field.field.media.insurance_document.field_document_date
+    - field.field.media.insurance_document.field_document_type
+    - field.field.media.insurance_document.field_insurance_file
+    - field.field.media.insurance_document.field_ocr_text
+    - field.field.media.insurance_document.field_policy
+    - field.field.media.insurance_document.field_reported_premium
+    - field.field.media.insurance_document.field_reported_value
+    - field.field.media.insurance_document.field_scan_note
+    - field.field.media.insurance_document.field_scan_source
+    - field.field.media.insurance_document.field_tax_years
+    - field.field.media.insurance_document.field_value_date
+    - media.type.insurance_document
+  module:
+    - datetime
+    - file
+    - layout_builder
+    - options
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: media.insurance_document.vector_index
+targetEntityType: media
+bundle: insurance_document
+mode: vector_index
+content:
+  field_document_date:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_document_type:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_insurance_file:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_ocr_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_policy:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_reported_premium:
+    type: number_decimal
+    label: inline
+    settings:
+      thousand_separator: ','
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_reported_value:
+    type: number_decimal
+    label: inline
+    settings:
+      thousand_separator: ','
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_scan_note:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_scan_source:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_tax_years:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_value_date:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

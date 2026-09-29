@@ -1,0 +1,4 @@
+# Extra Milvus settings (merged over milvus.yaml). Kept small for DDEV.
+queryNode:
+  cache:
+    memoryLimit: 536870912

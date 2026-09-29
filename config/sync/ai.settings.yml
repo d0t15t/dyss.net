@@ -2,7 +2,10 @@ _core:
   default_config_hash: WWvo9_41v-oaqjbKdBtohSrem-s9w-7MIfvCWjZvAI4
 prompt_logging: false
 prompt_logging_tags: ''
-default_providers: {  }
+default_providers:
+  embeddings:
+    provider_id: ollama
+    model_id: 'paraphrase-multilingual:latest'
 request_timeout: 60
 allowed_hosts: {  }
 allowed_hosts_rewrite_links: false

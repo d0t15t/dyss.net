@@ -1,0 +1,8 @@
+# Keep Ollama's memory footprint small on a Docker VM with ~4 GB:
+# unload the embeddings model 2 minutes after the last request and never
+# keep more than one model loaded.
+services:
+  ollama:
+    environment:
+      - OLLAMA_KEEP_ALIVE=2m
+      - OLLAMA_MAX_LOADED_MODELS=1

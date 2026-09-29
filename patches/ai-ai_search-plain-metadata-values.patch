@@ -1,0 +1,48 @@
+--- a/modules/ai_search/src/Plugin/EmbeddingStrategy/EmbeddingBase.php
++++ b/modules/ai_search/src/Plugin/EmbeddingStrategy/EmbeddingBase.php
+@@ -438,7 +438,7 @@
+       return (float) reset($values);
+     }
+     elseif (count($values) == 1) {
+-      return $this->converter->convert((string) reset($values));
++      return $this->toMetadataValue((string) reset($values));
+     }
+     elseif (count($values) > 1) {
+ 
+@@ -447,10 +447,10 @@
+       $parts = [];
+       foreach ($values as $value) {
+         if (in_array($field->getType(), ['date', 'boolean', 'integer'])) {
+-          $parts[] = (int) $this->converter->convert((string) $value);
++          $parts[] = (int) $this->toMetadataValue((string) $value);
+         }
+         else {
+-          $parts[] = $this->converter->convert((string) $value);
++          $parts[] = $this->toMetadataValue((string) $value);
+         }
+       }
+       return $parts;
+@@ -459,6 +459,23 @@
+   }
+ 
+   /**
++   * Converts a metadata value to text for the vector database.
++   *
++   * Only values containing markup go through the HTML-to-Markdown converter:
++   * converting plain values escapes Markdown characters (e.g. "annual_statement"
++   * becomes "annual\_statement"), so filters on them could never match.
++   *
++   * @param string $value
++   *   The raw value.
++   *
++   * @return string
++   *   The value as plain text.
++   */
++  protected function toMetadataValue(string $value): string {
++    return $value !== strip_tags($value) ? $this->converter->convert($value) : $value;
++  }
++
++  /**
+    * {@inheritDoc}
+    */
+   public function getConfigurationSubform(array $configuration): array {

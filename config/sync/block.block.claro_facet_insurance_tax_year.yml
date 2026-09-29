@@ -1,3 +1,4 @@
+uuid: 000f10d3-b747-4675-8da0-ef0e5550d487
 langcode: en
 status: true
 dependencies:
@@ -7,11 +8,11 @@ dependencies:
     - facets
     - system
   theme:
-    - dyssembler
-id: dyssembler_facet_insurance_tax_year
-theme: dyssembler
-region: sidebar_first
-weight: 1
+    - claro
+id: claro_facet_insurance_tax_year
+theme: claro
+region: content
+weight: -3
 provider: null
 plugin: 'facet_block:insurance_tax_year'
 settings:
@@ -19,9 +20,9 @@ settings:
   label: 'Tax year'
   label_display: '0'
   provider: facets
-  block_id: dyssembler_facet_insurance_tax_year
+  block_id: claro_facet_insurance_tax_year
 visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /insurance/search
+    pages: /admin/content/insurance/search

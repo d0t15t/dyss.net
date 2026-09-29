@@ -1,0 +1,22 @@
+# The insurance listings live under Content, after Media, with one secondary
+# tab per listing.
+insurance_records.admin_content:
+  title: 'Insurances'
+  route_name: view.insurance_policies.page_1
+  base_route: system.admin_content
+  weight: 11
+insurance_records.admin_content.policies:
+  title: 'Policies'
+  route_name: view.insurance_policies.page_1
+  parent_id: insurance_records.admin_content
+  weight: 0
+insurance_records.admin_content.documents:
+  title: 'Documents'
+  route_name: view.insurance_documents.page_1
+  parent_id: insurance_records.admin_content
+  weight: 1
+insurance_records.admin_content.search:
+  title: 'Search'
+  route_name: view.insurance_search.page_1
+  parent_id: insurance_records.admin_content
+  weight: 2

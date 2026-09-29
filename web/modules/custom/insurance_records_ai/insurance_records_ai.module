@@ -10,7 +10,7 @@ use Drupal\field\Entity\FieldStorageConfig;
 /**
  * Implements hook_ai_assistant_ui_search_context_alter().
  *
- * The AI answer on /insurance/search receives the active facets as "Facet:
+ * The AI answer on /admin/content/insurance/search receives the active facets as "Facet:
  * raw value" lines. Document types arrive as machine names; show their
  * labels instead so the assistant reads "Document type: Annual statement".
  */

@@ -7,11 +7,11 @@ dependencies:
     - facets
     - system
   theme:
-    - dyssembler
-id: dyssembler_facet_insurance_insured
-theme: dyssembler
-region: sidebar_first
-weight: 3
+    - claro
+id: claro_facet_insurance_insured
+theme: claro
+region: content
+weight: -1
 provider: null
 plugin: 'facet_block:insurance_insured'
 settings:
@@ -19,9 +19,9 @@ settings:
   label: 'Insured person'
   label_display: '0'
   provider: facets
-  block_id: dyssembler_facet_insurance_insured
+  block_id: claro_facet_insurance_insured
 visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /insurance/search
+    pages: /admin/content/insurance/search

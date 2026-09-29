@@ -1,9 +1,10 @@
 name: 'Insurance documents search'
-description: 'A private Solr search over the insurance documents: a Search API index ("insurance_documents") with the OCR text and linked policy data, and a /insurance/search view (restricted to "View insurance records") with full-text search and highlighted excerpts, plus facet blocks for document type, tax year, insurer and insured person in the dyssembler sidebar_first region. Requires recipes/insurance_records, recipes/search_solr and the dyssembler theme.'
+description: 'A private Solr search over the insurance documents: a Search API index ("insurance_documents") with the OCR text and linked policy data, and an /admin/content/insurance/search view (the Search tab under Content → Insurance) (restricted to "View insurance records") with full-text search and highlighted excerpts, plus facet blocks for document type, tax year, insurer and insured person above the results in the Claro admin theme. Requires recipes/insurance_records and recipes/search_solr.'
 type: 'Search'
 install:
   - insurance_records
   - block
+  - claro
   - facets
   - search_api
   - search_api_solr

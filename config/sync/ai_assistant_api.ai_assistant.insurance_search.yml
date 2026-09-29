@@ -6,7 +6,7 @@ _core:
   default_config_hash: QufOkyxmNxqWgBGnFMN65uLXCkgvn-E5xab4eC4Ra4Q
 id: insurance_search
 label: 'Insurance search'
-description: 'AI answers above the /insurance/search results, based on the private insurance documents.'
+description: 'AI answers above the /admin/content/insurance/search results, based on the private insurance documents.'
 system_prompt: ''
 pre_action_prompt: ''
 instructions: ''

@@ -244,7 +244,16 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: insurance/search
+      path: admin/content/insurance/search
+      menu:
+        type: none
+        title: ''
+        description: ''
+        weight: 0
+        expanded: false
+        menu_name: main
+        parent: ''
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

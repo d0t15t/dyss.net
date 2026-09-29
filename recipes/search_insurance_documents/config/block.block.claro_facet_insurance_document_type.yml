@@ -7,11 +7,11 @@ dependencies:
     - facets
     - system
   theme:
-    - dyssembler
-id: dyssembler_facet_insurance_document_type
-theme: dyssembler
-region: sidebar_first
-weight: 0
+    - claro
+id: claro_facet_insurance_document_type
+theme: claro
+region: content
+weight: -4
 provider: null
 plugin: 'facet_block:insurance_document_type'
 settings:
@@ -19,9 +19,9 @@ settings:
   label: 'Document type'
   label_display: '0'
   provider: facets
-  block_id: dyssembler_facet_insurance_document_type
+  block_id: claro_facet_insurance_document_type
 visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /insurance/search
+    pages: /admin/content/insurance/search

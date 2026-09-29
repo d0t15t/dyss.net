@@ -1,0 +1,5 @@
+# The insurance listings under /admin/content/insurance (Claro).
+admin:
+  css:
+    theme:
+      css/insurance-admin.css: {}

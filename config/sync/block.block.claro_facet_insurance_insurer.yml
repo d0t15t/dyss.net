@@ -1,3 +1,4 @@
+uuid: 9e2f6751-f4dc-4d75-814a-d092391a6989
 langcode: en
 status: true
 dependencies:
@@ -7,11 +8,11 @@ dependencies:
     - facets
     - system
   theme:
-    - dyssembler
-id: dyssembler_facet_insurance_insurer
-theme: dyssembler
-region: sidebar_first
-weight: 2
+    - claro
+id: claro_facet_insurance_insurer
+theme: claro
+region: content
+weight: -2
 provider: null
 plugin: 'facet_block:insurance_insurer'
 settings:
@@ -19,9 +20,9 @@ settings:
   label: Insurer
   label_display: '0'
   provider: facets
-  block_id: dyssembler_facet_insurance_insurer
+  block_id: claro_facet_insurance_insurer
 visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /insurance/search
+    pages: /admin/content/insurance/search

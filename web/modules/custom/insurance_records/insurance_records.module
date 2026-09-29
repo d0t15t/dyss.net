@@ -20,6 +20,7 @@ use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
+use Drupal\views\ViewExecutable;
 
 /**
  * Node bundles only visible with "view insurance records".
@@ -146,3 +147,15 @@ function _insurance_records_access(bool $is_insurance, AccountInterface $account
   return AccessResult::forbiddenIf(!$account->hasPermission('view insurance records'))
     ->cachePerPermissions();
 }
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Styles the insurance listings under /admin/content/insurance.
+ */
+function insurance_records_views_pre_render(ViewExecutable $view) {
+  if (in_array($view->id(), ['insurance_policies', 'insurance_documents', 'insurance_search'], TRUE)) {
+    $view->element['#attached']['library'][] = 'insurance_records/admin';
+  }
+}
+

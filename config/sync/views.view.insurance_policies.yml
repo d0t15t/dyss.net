@@ -288,7 +288,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/content/insurance
+      path: admin/content/insurances
       menu:
         type: none
         title: ''

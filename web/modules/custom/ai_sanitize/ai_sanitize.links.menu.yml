@@ -1,0 +1,6 @@
+ai_sanitize.settings:
+  title: 'AI Sanitize'
+  description: 'Replace sensitive data with placeholders before it is sent to AI providers.'
+  route_name: ai_sanitize.settings
+  parent: ai.admin_config_safety
+  weight: 20

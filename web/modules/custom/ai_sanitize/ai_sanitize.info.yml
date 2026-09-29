@@ -1,0 +1,8 @@
+name: 'AI Sanitize'
+type: module
+description: 'Replaces sensitive data (IBANs, card numbers, social insurance and tax IDs, birth dates, PINs, e-mail addresses …) with placeholders in every request the AI module sends to a provider, including tool results in agent loops.'
+package: AI
+core_version_requirement: ^10.3 || ^11
+configure: ai_sanitize.settings
+dependencies:
+  - ai:ai

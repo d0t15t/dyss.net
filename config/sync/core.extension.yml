@@ -8,6 +8,7 @@ module:
   ai_chatlog: 0
   ai_insights: 0
   ai_provider_anthropic: 0
+  ai_sanitize: 0
   ai_search: 0
   ai_vdb_provider_milvus: 0
   announcements_feed: 0

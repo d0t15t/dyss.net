@@ -300,6 +300,19 @@ ul.menu a.is-active {
   color: var(--color-link);
 }
 
+/* ----- Mixcloud ----- */
+/* Mixcloud's mini player on DJ mix pages, one per part, full width. */
+
+.media--type-mixcloud iframe.media-oembed-content {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+.field--name-field-mixcloud .field__item + .field__item {
+  margin-block-start: 0.5rem;
+}
+
 /* ----- Contact ----- */
 /* The /contact form (dyss_contact module). */
 

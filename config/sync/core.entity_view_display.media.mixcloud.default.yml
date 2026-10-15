@@ -30,7 +30,7 @@ content:
     label: hidden
     settings:
       max_width: 0
-      max_height: 120
+      max_height: 60
       loading:
         attribute: lazy
     third_party_settings: {  }

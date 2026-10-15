@@ -22,3 +22,22 @@ function dyss_contact_mail($key, &$message, $params) {
   $message['body'][] = Html::escape($params['message']);
   $message['headers']['Reply-To'] = $params['email'];
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for page_title.
+ *
+ * On /contact, adds a copy button to the address in the visible heading. The
+ * route title stays plain text for the browser tab.
+ */
+function dyss_contact_preprocess_page_title(&$variables) {
+  if (\Drupal::routeMatch()->getRouteName() !== 'dyss_contact.form') {
+    return;
+  }
+  $variables['title'] = [
+    '#type' => 'inline_template',
+    '#template' => '{{ "Contact:"|t }} <span class="dyss-contact-email">{{ recipient }}<button type="button" class="dyss-contact-email__copy" hidden><svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg><span class="dyss-contact-email__label">{{ "Copy email address"|t }}</span></button></span>',
+    '#context' => ['recipient' => \Drupal::config('dyss_contact.settings')->get('recipient')],
+    '#attached' => ['library' => ['dyss_contact/copy-email']],
+    '#cache' => ['contexts' => ['route'], 'tags' => ['config:dyss_contact.settings']],
+  ];
+}

@@ -2,8 +2,10 @@ dyss_contact.form:
   path: '/contact'
   defaults:
     _form: '\Drupal\dyss_contact\Form\ContactForm'
-    _title: 'Contact'
+    _title_callback: '\Drupal\dyss_contact\Form\ContactForm::title'
   requirements:
+    # Public contact form for any visitor; spam is limited by a honeypot and
+    # flood control in ContactForm.
     _access: 'TRUE'
 
 dyss_contact.settings:

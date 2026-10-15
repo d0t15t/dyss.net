@@ -58,9 +58,21 @@ final class ContactForm extends FormBase {
   }
 
   /**
+   * The page title, naming the address messages go to.
+   *
+   * The visible heading gets a copy button from
+   * dyss_contact_preprocess_page_title().
+   */
+  public function title(): string {
+    return (string) $this->t('Contact: @recipient', ['@recipient' => $this->config('dyss_contact.settings')->get('recipient')]);
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    // The page title shows the recipient.
+    $form['#cache']['tags'][] = 'config:dyss_contact.settings';
     $form['name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Name'),

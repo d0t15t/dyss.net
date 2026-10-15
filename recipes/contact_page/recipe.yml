@@ -1,0 +1,5 @@
+name: 'Contact page'
+description: 'A /contact page (dyss_contact module) with name, email, subject and message fields, linked from the main menu. Messages are mailed from the site address, with the visitor as Reply-To, to the recipient set at Configuration » System » Contact form (default mr@dyss.net). A honeypot field and flood control (5 messages per hour per IP) keep spam down.'
+type: 'Site'
+install:
+  - dyss_contact

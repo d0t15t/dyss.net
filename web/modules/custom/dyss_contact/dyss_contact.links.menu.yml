@@ -1,0 +1,11 @@
+dyss_contact.main:
+  title: 'Contact'
+  route_name: dyss_contact.form
+  menu_name: main
+  weight: -48
+
+dyss_contact.settings:
+  title: 'Contact form'
+  description: 'Set the address contact form messages are sent to.'
+  route_name: dyss_contact.settings
+  parent: system.admin_config_system

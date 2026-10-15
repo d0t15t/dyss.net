@@ -1,0 +1,6 @@
+name: 'DYSS contact form'
+type: module
+description: 'A /contact page whose messages are mailed to a configurable address.'
+package: Custom
+core_version_requirement: ^11
+configure: dyss_contact.settings

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Mails messages from the /contact form.
+ */
+
+use Drupal\Component\Utility\Html;
+
+/**
+ * Implements hook_mail().
+ */
+function dyss_contact_mail($key, &$message, $params) {
+  if ($key !== 'contact') {
+    return;
+  }
+  $message['subject'] = '[' . \Drupal::config('system.site')->get('name') . '] ' . $params['subject'];
+  // The body is converted from HTML to plain text, which would strip anything
+  // that looks like a tag, e.g. "<name@example.com>". Escape what visitors
+  // typed so it arrives unchanged.
+  $message['body'][] = Html::escape('From: ' . $params['name'] . ' <' . $params['email'] . '>');
+  $message['body'][] = Html::escape($params['message']);
+  $message['headers']['Reply-To'] = $params['email'];
+}

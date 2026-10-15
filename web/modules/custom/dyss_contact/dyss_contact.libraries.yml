@@ -1,0 +1,10 @@
+copy-email:
+  css:
+    component:
+      css/copy-email.css: {}
+  js:
+    js/copy-email.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.announce
+    - core/once

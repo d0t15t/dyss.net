@@ -45,6 +45,9 @@ class ContactFormTest extends BrowserTestBase {
    */
   public function testMessageIsMailed(): void {
     $this->submitContactForm();
+    $this->assertSession()->titleEquals('Contact: mr@dyss.net | Drupal');
+    $this->assertSession()->elementTextEquals('css', 'h1 .dyss-contact-email', 'mr@dyss.netCopy email address');
+    $this->assertSession()->elementExists('css', 'h1 button.dyss-contact-email__copy');
     $this->assertSession()->pageTextContains('Thank you, your message has been sent.');
 
     $mails = $this->getMails(['id' => 'dyss_contact_contact']);
@@ -72,6 +75,7 @@ class ContactFormTest extends BrowserTestBase {
     $this->drupalLogout();
 
     $this->submitContactForm();
+    $this->assertSession()->titleEquals('Contact: other@example.com | Drupal');
     $mails = $this->getMails(['id' => 'dyss_contact_contact']);
     $this->assertSame('other@example.com', end($mails)['to']);
 

@@ -82,7 +82,7 @@ final class ContactForm extends FormBase {
     ];
     $form['email'] = [
       '#type' => 'email',
-      '#title' => $this->t('Email'),
+      '#title' => $this->t('E-mail'),
       '#required' => TRUE,
       '#attributes' => ['autocomplete' => 'email'],
     ];

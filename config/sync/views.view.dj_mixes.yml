@@ -254,6 +254,7 @@ display:
         title: 'DJ Mixes'
         description: 'Browse all DJ mixes.'
         weight: -49
+        enabled: false
         menu_name: main
         parent: ''
     cache_metadata:

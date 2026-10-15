@@ -1,0 +1,21 @@
+uuid: eb1c2586-bef7-44e4-9370-17f7ff93b8f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_uploaded
+    - media.type.mixcloud
+  module:
+    - datetime
+id: media.mixcloud.field_mixcloud_uploaded
+field_name: field_mixcloud_uploaded
+entity_type: media
+bundle: mixcloud
+label: Uploaded
+description: 'When the show was uploaded to Mixcloud.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,23 @@
+uuid: dc4d6c18-df07-46cc-8f1b-161875c83b56
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_listeners
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_listeners
+field_name: field_mixcloud_listeners
+entity_type: media
+bundle: mixcloud
+label: Listeners
+description: 'Listener count when last synced.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: 1d85da63-cba7-47e4-9a8d-6232b051d1ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_plays
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_plays
+field_name: field_mixcloud_plays
+entity_type: media
+bundle: mixcloud
+label: Plays
+description: 'Play count when last synced.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

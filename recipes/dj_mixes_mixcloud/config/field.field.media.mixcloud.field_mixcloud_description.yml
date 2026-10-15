@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_description
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_description
+field_name: field_mixcloud_description
+entity_type: media
+bundle: mixcloud
+label: Description
+description: 'The description on Mixcloud (the API returns at most 1,000 characters).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

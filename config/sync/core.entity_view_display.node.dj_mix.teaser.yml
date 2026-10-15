@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.dj_mix.field_cover_image
     - field.field.node.dj_mix.field_genre
     - field.field.node.dj_mix.field_mix_date
+    - field.field.node.dj_mix.field_mixcloud
     - field.field.node.dj_mix.field_tags
     - field.field.node.dj_mix.field_tracks
     - image.style.medium
@@ -37,6 +38,7 @@ hidden:
   body: true
   field_genre: true
   field_mix_date: true
+  field_mixcloud: true
   field_tags: true
   field_tracks: true
   langcode: true

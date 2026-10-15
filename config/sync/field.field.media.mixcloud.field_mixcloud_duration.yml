@@ -1,0 +1,23 @@
+uuid: 49d5e79c-8f3d-4151-81da-e8452f2f62af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_duration
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_duration
+field_name: field_mixcloud_duration
+entity_type: media
+bundle: mixcloud
+label: Duration
+description: 'Length in seconds.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,11 @@
+name: 'DJ Mixes: Mixcloud'
+type: module
+description: 'Mixcloud uploads as media (embedded player plus the API data), imported per account and linked to DJ mixes by episode number.'
+package: Custom
+core_version_requirement: ^11
+dependencies:
+  - dj_mixes:dj_mixes
+  - drupal:datetime
+  - drupal:link
+  - drupal:media
+  - drupal:media_library

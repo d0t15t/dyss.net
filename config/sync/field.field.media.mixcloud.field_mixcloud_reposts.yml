@@ -1,0 +1,23 @@
+uuid: c2a3518f-efab-42d6-8ca8-b8863acf4d71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_reposts
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_reposts
+field_name: field_mixcloud_reposts
+entity_type: media
+bundle: mixcloud
+label: Reposts
+description: 'Repost count when last synced.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

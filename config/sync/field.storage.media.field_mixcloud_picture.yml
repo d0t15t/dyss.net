@@ -1,0 +1,19 @@
+uuid: cbea0e7a-f874-4f39-9dbf-7a2d8ed4023c
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - media
+id: media.field_mixcloud_picture
+field_name: field_mixcloud_picture
+entity_type: media
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

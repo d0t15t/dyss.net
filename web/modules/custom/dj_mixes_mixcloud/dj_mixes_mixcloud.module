@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Mixcloud media for DJ mixes.
+ */
+
+/**
+ * Implements hook_media_source_info_alter().
+ *
+ * Adds a "Mixcloud" oEmbed source next to core's "Remote video". "MixCloud"
+ * is the provider's name in the oEmbed providers list.
+ */
+function dj_mixes_mixcloud_media_source_info_alter(array &$sources) {
+  $sources['oembed:mixcloud'] = [
+    'id' => 'mixcloud',
+    'label' => t('Mixcloud'),
+    'description' => t('Use a Mixcloud show URL for reusable media.'),
+    'providers' => ['MixCloud'],
+    'default_thumbnail_filename' => 'audio.png',
+  ] + $sources['oembed:video'];
+}

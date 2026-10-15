@@ -1,0 +1,20 @@
+uuid: 032a02dd-5707-460d-a268-071de7dce8d8
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_mixcloud_reposts
+field_name: field_mixcloud_reposts
+entity_type: media
+type: integer
+settings:
+  unsigned: true
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

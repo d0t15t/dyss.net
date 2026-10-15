@@ -1,0 +1,20 @@
+uuid: 36eb6b13-64e0-4d61-aeeb-1814c5a2d690
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_mixcloud_listeners
+field_name: field_mixcloud_listeners
+entity_type: media
+type: integer
+settings:
+  unsigned: true
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

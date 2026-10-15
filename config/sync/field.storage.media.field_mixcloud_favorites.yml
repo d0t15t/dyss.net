@@ -1,0 +1,20 @@
+uuid: 43e3f5fc-5762-4d4c-b876-e606ed6dad1f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_mixcloud_favorites
+field_name: field_mixcloud_favorites
+entity_type: media
+type: integer
+settings:
+  unsigned: true
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

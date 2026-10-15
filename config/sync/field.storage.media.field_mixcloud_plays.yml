@@ -1,0 +1,20 @@
+uuid: 98a88733-5148-4fd9-92ed-2f907398e71b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_mixcloud_plays
+field_name: field_mixcloud_plays
+entity_type: media
+type: integer
+settings:
+  unsigned: true
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

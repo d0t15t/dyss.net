@@ -1,0 +1,20 @@
+uuid: 4c073984-ba3b-4e03-8a5d-a4aefd3d6cb9
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_mixcloud_duration
+field_name: field_mixcloud_duration
+entity_type: media
+type: integer
+settings:
+  unsigned: true
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

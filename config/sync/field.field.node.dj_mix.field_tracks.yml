@@ -14,7 +14,7 @@ entity_type: node
 bundle: dj_mix
 label: Tracks
 description: 'The tracklist for this mix, in play order.'
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

@@ -1,0 +1,19 @@
+uuid: 83b58f32-5e8d-412d-9936-54c551e448a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_synced
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_synced
+field_name: field_mixcloud_synced
+entity_type: media
+bundle: mixcloud
+label: Synced
+description: 'When the data was last fetched from the Mixcloud API.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

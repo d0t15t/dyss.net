@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mixcloud
+label: Mixcloud
+description: 'A show on Mixcloud: the embedded player plus the data from the Mixcloud API, kept up to date by drush dj-mixes:mixcloud-import.'
+source: 'oembed:mixcloud'
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_oembed_mixcloud
+  thumbnails_directory: 'public://oembed_thumbnails/[date:custom:Y-m]'
+  providers:
+    - MixCloud
+field_map:
+  title: name
+  thumbnail_uri: thumbnail

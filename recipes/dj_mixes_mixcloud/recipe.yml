@@ -1,0 +1,32 @@
+name: 'DJ Mixes: Mixcloud'
+description: 'Mixcloud shows as media (dj_mixes_mixcloud): the "Mixcloud" media type (oEmbed player and cover) with fields for the Mixcloud API data - account, upload date, duration, description, cover colour, tags, picture and play/favorite/comment/repost/listener counts - and a "Mixcloud" field on DJ mixes, one item per part (MP3 tracks on DJ mixes become optional). drush dj-mixes:mixcloud-import <account> [--filter=...] imports or refreshes an account and links Dyssembler shows to the DJ mix with the same episode number. Requires recipes/dj_mixes.'
+type: 'Content type'
+install:
+  - dj_mixes_mixcloud
+config:
+  actions:
+    # A DJ mix can be just a Mixcloud show, without uploaded MP3s.
+    field.field.node.dj_mix.field_tracks:
+      setRequired: false
+    core.entity_form_display.node.dj_mix.default:
+      setComponent:
+        name: field_mixcloud
+        options:
+          type: media_library_widget
+          weight: 4
+          region: content
+          settings:
+            media_types: {  }
+          third_party_settings: {  }
+    core.entity_view_display.node.dj_mix.default:
+      setComponent:
+        name: field_mixcloud
+        options:
+          type: entity_reference_entity_view
+          label: above
+          settings:
+            view_mode: default
+            link: false
+          third_party_settings: {  }
+          weight: 20
+          region: content

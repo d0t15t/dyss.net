@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+  Drupal\dj_mixes_mixcloud\MixcloudClient: ~
+  Drupal\dj_mixes_mixcloud\MixcloudImporter: ~
+  Drupal\dj_mixes_mixcloud\OEmbed\ProviderRepository:
+    decorates: media.oembed.provider_repository
+    arguments: ['@.inner']

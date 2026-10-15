@@ -1,0 +1,23 @@
+uuid: 40296e8e-f886-494d-a2b2-6add0db8b979
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_comments
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_comments
+field_name: field_mixcloud_comments
+entity_type: media
+bundle: mixcloud
+label: Comments
+description: 'Comment count when last synced.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

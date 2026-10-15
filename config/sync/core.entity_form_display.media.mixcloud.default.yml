@@ -1,0 +1,177 @@
+uuid: 1292be84-5cae-496a-ae24-5c8296ffa9bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.mixcloud.field_media_oembed_mixcloud
+    - field.field.media.mixcloud.field_mixcloud_account
+    - field.field.media.mixcloud.field_mixcloud_color
+    - field.field.media.mixcloud.field_mixcloud_comments
+    - field.field.media.mixcloud.field_mixcloud_description
+    - field.field.media.mixcloud.field_mixcloud_duration
+    - field.field.media.mixcloud.field_mixcloud_favorites
+    - field.field.media.mixcloud.field_mixcloud_listeners
+    - field.field.media.mixcloud.field_mixcloud_picture
+    - field.field.media.mixcloud.field_mixcloud_plays
+    - field.field.media.mixcloud.field_mixcloud_reposts
+    - field.field.media.mixcloud.field_mixcloud_synced
+    - field.field.media.mixcloud.field_mixcloud_tags
+    - field.field.media.mixcloud.field_mixcloud_uploaded
+    - media.type.mixcloud
+  module:
+    - datetime
+    - link
+    - media
+    - path
+id: media.mixcloud.default
+targetEntityType: media
+bundle: mixcloud
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_media_oembed_mixcloud:
+    type: oembed_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_account:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_color:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_comments:
+    type: number
+    weight: 10
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_description:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_duration:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_favorites:
+    type: number
+    weight: 9
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_listeners:
+    type: number
+    weight: 12
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_picture:
+    type: link_default
+    weight: 7
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_mixcloud_plays:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_reposts:
+    type: number
+    weight: 11
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_synced:
+    type: datetime_timestamp
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_mixcloud_tags:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_uploaded:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

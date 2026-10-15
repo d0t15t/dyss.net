@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.dj_mix.field_cover_image
     - field.field.node.dj_mix.field_genre
     - field.field.node.dj_mix.field_mix_date
+    - field.field.node.dj_mix.field_mixcloud
     - field.field.node.dj_mix.field_tags
     - field.field.node.dj_mix.field_tracks
     - image.style.wide
@@ -57,6 +58,15 @@ content:
       format_type: medium
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_mixcloud:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 20
     region: content
   field_tags:
     type: entity_reference_label

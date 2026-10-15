@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_favorites
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_favorites
+field_name: field_mixcloud_favorites
+entity_type: media
+bundle: mixcloud
+label: Favorites
+description: 'Favorite count when last synced.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_oembed_mixcloud
+    - media.type.mixcloud
+id: media.mixcloud.field_media_oembed_mixcloud
+field_name: field_media_oembed_mixcloud
+entity_type: media
+bundle: mixcloud
+label: 'Mixcloud URL'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

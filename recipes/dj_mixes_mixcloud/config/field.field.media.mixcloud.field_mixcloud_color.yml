@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_color
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_color
+field_name: field_mixcloud_color
+entity_type: media
+bundle: mixcloud
+label: 'Cover colour'
+description: 'The main colour of the cover image, as #rrggbb.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

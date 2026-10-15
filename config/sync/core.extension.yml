@@ -25,6 +25,7 @@ module:
   datetime: 0
   dblog: 0
   dj_mixes: 0
+  dj_mixes_mixcloud: 0
   dynamic_page_cache: 0
   dyss_contact: 0
   editor: 0

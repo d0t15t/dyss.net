@@ -1,0 +1,15 @@
+dyss_contact.form:
+  path: '/contact'
+  defaults:
+    _form: '\Drupal\dyss_contact\Form\ContactForm'
+    _title: 'Contact'
+  requirements:
+    _access: 'TRUE'
+
+dyss_contact.settings:
+  path: '/admin/config/system/dyss-contact'
+  defaults:
+    _form: '\Drupal\dyss_contact\Form\SettingsForm'
+    _title: 'Contact form'
+  requirements:
+    _permission: 'administer site configuration'

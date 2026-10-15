@@ -26,6 +26,7 @@ module:
   dblog: 0
   dj_mixes: 0
   dynamic_page_cache: 0
+  dyss_contact: 0
   editor: 0
   facets: 0
   facets_exposed_filters: 0

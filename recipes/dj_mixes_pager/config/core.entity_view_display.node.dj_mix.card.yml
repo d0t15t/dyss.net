@@ -1,0 +1,52 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.dj_mix.body
+    - field.field.node.dj_mix.field_cover_image
+    - field.field.node.dj_mix.field_genre
+    - field.field.node.dj_mix.field_mix_date
+    - field.field.node.dj_mix.field_mixcloud
+    - field.field.node.dj_mix.field_tags
+    - field.field.node.dj_mix.field_tracks
+    - image.style.large
+    - node.type.dj_mix
+  module:
+    - datetime
+    - image
+    - user
+id: node.dj_mix.card
+targetEntityType: node
+bundle: dj_mix
+mode: card
+content:
+  field_cover_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_mix_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  body: true
+  field_genre: true
+  field_mixcloud: true
+  field_tags: true
+  field_tracks: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

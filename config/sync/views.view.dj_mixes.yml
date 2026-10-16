@@ -115,12 +115,10 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: search_api_string
-          operator: '='
+          plugin_id: search_api_options
+          operator: or
           value:
-            min: ''
-            max: ''
-            value: dj_mix
+            dj_mix: dj_mix
           group: 1
           exposed: false
           expose:
@@ -137,6 +135,7 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
+            reduce: false
           is_grouped: false
           group_info:
             label: ''
@@ -149,6 +148,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+          reduce_duplicates: false
         search_api_fulltext:
           id: search_api_fulltext
           table: search_api_index_content

@@ -1,0 +1,13 @@
+uuid: 26f5c9a0-2311-49fd-a745-8372d5378cc1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: aoFk-foWAFjqr74UNkb9nV1HZhiEnuwr8f925WLNFAE
+id: node.card
+label: Card
+description: 'A small card (cover, title, mix date), e.g. in the DJ mix pager.'
+targetEntityType: node
+cache: true

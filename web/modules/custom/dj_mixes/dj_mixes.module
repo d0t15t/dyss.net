@@ -5,7 +5,12 @@
  * Provides the DJ Mix content type's track-row rendering and playback wiring.
  */
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Render\Element;
+use Drupal\dj_mixes\DjMixPager;
 use Drupal\image\Entity\ImageStyle;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_theme().
@@ -22,6 +27,17 @@ function dj_mixes_theme() {
   return [
     'media__mp3__track_row' => [
       'base hook' => 'media',
+    ],
+    'dj_mix_pager' => [
+      'variables' => [
+        'cards' => [],
+        'previous' => NULL,
+        'next' => NULL,
+        'listing' => NULL,
+        'position' => 0,
+        'total' => 0,
+        'filtered' => FALSE,
+      ],
     ],
   ];
 }
@@ -83,4 +99,66 @@ function dj_mixes_views_data() {
     ],
   ];
   return $data;
+}
+
+/**
+ * The listing parameters for a DJ mix rendered in a listing view mode.
+ *
+ * The pager block sets "#dj_mix_query" on its cards; elsewhere (the listing
+ * itself) the parameters come from the current URL.
+ */
+function _dj_mixes_listing_query(array $element): array {
+  if (isset($element['#dj_mix_query'])) {
+    return $element['#dj_mix_query'];
+  }
+  return \Drupal::service(DjMixPager::class)->parameters(\Drupal::request());
+}
+
+/**
+ * Implements hook_entity_build_defaults_alter().
+ *
+ * Teasers and cards link with the listing parameters in the URL, so their
+ * render cache varies by them.
+ */
+function dj_mixes_entity_build_defaults_alter(array &$build, EntityInterface $entity, $view_mode) {
+  if ($entity instanceof NodeInterface && $entity->bundle() === 'dj_mix' && in_array($view_mode, DjMixPager::LINK_VIEW_MODES, TRUE)) {
+    foreach (\Drupal::service(DjMixPager::class)->parameterNames() as $name) {
+      $build['#cache']['contexts'][] = 'url.query_args:' . $name;
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter() for node.
+ *
+ * Passes the listing parameters on in the cover image link.
+ */
+function dj_mixes_node_view_alter(array &$build, NodeInterface $node, EntityViewDisplayInterface $display) {
+  if ($node->bundle() !== 'dj_mix' || !in_array($display->getMode(), DjMixPager::LINK_VIEW_MODES, TRUE)) {
+    return;
+  }
+  $query = _dj_mixes_listing_query($build);
+  if (!$query || empty($build['field_cover_image'])) {
+    return;
+  }
+  foreach (Element::children($build['field_cover_image']) as $delta) {
+    if (isset($build['field_cover_image'][$delta]['#url'])) {
+      $build['field_cover_image'][$delta]['#url']->setOption('query', $query);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.
+ *
+ * Passes the listing parameters on in the title link.
+ */
+function dj_mixes_preprocess_node(array &$variables) {
+  $node = $variables['node'];
+  if ($node->bundle() !== 'dj_mix' || !in_array($variables['view_mode'], DjMixPager::LINK_VIEW_MODES, TRUE)) {
+    return;
+  }
+  if ($query = _dj_mixes_listing_query($variables['elements'])) {
+    $variables['url'] = $node->toUrl('canonical', ['query' => $query])->toString();
+  }
 }

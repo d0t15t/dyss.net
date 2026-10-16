@@ -1,0 +1,30 @@
+uuid: 1446a348-5216-4bd0-b2dd-8c3081e630b7
+langcode: en
+status: true
+dependencies:
+  module:
+    - dj_mixes
+    - node
+  theme:
+    - dyssembler
+_core:
+  default_config_hash: P5-yM_bWAsReysogEQZduwIBw5vugI6E0_Q2OOrD46w
+id: dyssembler_dj_mix_pager
+theme: dyssembler
+region: content
+weight: 5
+provider: null
+plugin: dj_mix_pager
+settings:
+  id: dj_mix_pager
+  label: 'DJ mix pager'
+  label_display: '0'
+  provider: dj_mixes
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      dj_mix: dj_mix

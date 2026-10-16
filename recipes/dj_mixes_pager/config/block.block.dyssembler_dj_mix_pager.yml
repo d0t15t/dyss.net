@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - dj_mixes
+    - node
+  theme:
+    - dyssembler
+id: dyssembler_dj_mix_pager
+theme: dyssembler
+region: content
+weight: 5
+provider: null
+plugin: dj_mix_pager
+settings:
+  id: dj_mix_pager
+  label: 'DJ mix pager'
+  label_display: '0'
+  provider: dj_mixes
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      dj_mix: dj_mix

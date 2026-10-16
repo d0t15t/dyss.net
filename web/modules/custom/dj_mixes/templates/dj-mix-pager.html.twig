@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * The DJ mix pager: cards around the current mix with previous/next arrows.
+ *
+ * Available variables:
+ * - cards: Items in listing order, with:
+ *   - current: Whether this is the mix being viewed; it has no content and
+ *     is shown as a placeholder.
+ *   - content: The mix rendered in the "card" view mode.
+ * - previous: URL of the previous mix, or NULL.
+ * - next: URL of the next mix, or NULL.
+ * - listing: URL of the DJ mixes listing with the same filters and sorting.
+ * - position: The current mix's position in the listing (1-based).
+ * - total: The number of mixes in the listing.
+ * - filtered: Whether the listing is filtered or sorted by the visitor.
+ */
+#}
+<nav class="dj-mix-pager" aria-label="{{ 'More DJ mixes'|t }}">
+  <div class="dj-mix-pager__header">
+    {% if previous %}
+      <a class="dj-mix-pager__arrow dj-mix-pager__arrow--previous" href="{{ previous }}" rel="prev">
+        <span aria-hidden="true">&larr;</span> {{ 'Previous'|t }}
+      </a>
+    {% else %}
+      <span class="dj-mix-pager__arrow dj-mix-pager__arrow--previous is-disabled" aria-hidden="true">&larr; {{ 'Previous'|t }}</span>
+    {% endif %}
+    <span class="dj-mix-pager__summary">
+      <a class="dj-mix-pager__listing" href="{{ listing }}">{{ filtered ? 'Back to results'|t : 'All DJ mixes'|t }}</a>
+      <span class="dj-mix-pager__position">{{ '@position of @total'|t({'@position': position, '@total': total}) }}</span>
+    </span>
+    {% if next %}
+      <a class="dj-mix-pager__arrow dj-mix-pager__arrow--next" href="{{ next }}" rel="next">
+        {{ 'Next'|t }} <span aria-hidden="true">&rarr;</span>
+      </a>
+    {% else %}
+      <span class="dj-mix-pager__arrow dj-mix-pager__arrow--next is-disabled" aria-hidden="true">{{ 'Next'|t }} &rarr;</span>
+    {% endif %}
+  </div>
+  <ol class="dj-mix-pager__cards">
+    {% for card in cards %}
+      {% if card.current %}
+        <li class="dj-mix-pager__card is-current" aria-current="page">
+          <div class="dj-mix-pager__placeholder">{{ 'Now viewing'|t }}</div>
+        </li>
+      {% else %}
+        <li class="dj-mix-pager__card">{{ card.content }}</li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</nav>

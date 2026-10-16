@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.card
+label: Card
+description: 'A small card (cover, title, mix date), e.g. in the DJ mix pager.'
+targetEntityType: node
+cache: true

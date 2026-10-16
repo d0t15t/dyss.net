@@ -9,3 +9,9 @@ track-buttons:
     - core/drupal
     - core/once
     - persistent_player/persistent-player
+
+pager:
+  version: 1.x
+  css:
+    component:
+      css/dj-mix-pager.css: {}

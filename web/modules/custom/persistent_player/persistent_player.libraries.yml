@@ -1,11 +1,12 @@
-pjax-nav:
+htmx-nav:
   version: 1.x
   js:
-    js/pjax-nav.js: {}
+    js/htmx-nav.js: {}
   dependencies:
     - core/drupal
-    - core/once
+    - core/drupal.htmx
     - core/drupalSettings
+    - core/once
 
 persistent-player:
   version: 1.x

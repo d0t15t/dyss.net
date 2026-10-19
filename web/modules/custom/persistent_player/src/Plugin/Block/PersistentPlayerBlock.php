@@ -65,7 +65,7 @@ class PersistentPlayerBlock extends BlockBase implements ContainerFactoryPluginI
       '#attached' => [
         'library' => [
           'persistent_player/persistent-player',
-          'persistent_player/pjax-nav',
+          'persistent_player/htmx-nav',
         ],
         'drupalSettings' => [
           'persistentPlayer' => [

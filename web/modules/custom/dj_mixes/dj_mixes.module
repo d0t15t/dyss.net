@@ -82,26 +82,6 @@ function dj_mixes_preprocess_media__mp3__track_row(array &$variables) {
 }
 
 /**
- * Implements hook_views_data().
- *
- * Registers the "Block" area handler (src/Plugin/views/area/Block.php) as a
- * usable Views field. Area handlers are looked up by Views via table+field
- * against hook_views_data(), not by plugin ID directly - defining the
- * #[ViewsArea] plugin alone is not enough, or the handler silently falls
- * back to "Broken" when a view references it.
- */
-function dj_mixes_views_data() {
-  $data['views']['dj_mixes_block'] = [
-    'title' => t('Block'),
-    'help' => t('Embeds an arbitrary block, by plugin ID, as a Views area.'),
-    'area' => [
-      'id' => 'dj_mixes_block',
-    ],
-  ];
-  return $data;
-}
-
-/**
  * The listing parameters for a DJ mix rendered in a listing view mode.
  *
  * The pager block sets "#dj_mix_query" on its cards; elsewhere (the listing

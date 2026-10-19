@@ -20,3 +20,9 @@ pager:
   dependencies:
     - core/drupal
     - core/once
+
+listing:
+  version: 1.x
+  css:
+    component:
+      css/dj-mixes-listing.css: {}

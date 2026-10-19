@@ -9,9 +9,11 @@ dependencies:
     - field.field.node.dj_mix.field_genre
     - field.field.node.dj_mix.field_mix_date
     - field.field.node.dj_mix.field_mixcloud
+    - field.field.node.dj_mix.field_mixcloud_url
+    - field.field.node.dj_mix.field_musical_genres
     - field.field.node.dj_mix.field_tags
     - field.field.node.dj_mix.field_tracks
-    - image.style.large
+    - image.style.dj_mix_card
     - node.type.dj_mix
   module:
     - datetime
@@ -29,7 +31,7 @@ content:
     label: hidden
     settings:
       image_link: content
-      image_style: large
+      image_style: dj_mix_card
       image_loading:
         attribute: lazy
     third_party_settings: {  }
@@ -48,6 +50,8 @@ hidden:
   body: true
   field_genre: true
   field_mixcloud: true
+  field_mixcloud_url: true
+  field_musical_genres: true
   field_tags: true
   field_tracks: true
   langcode: true

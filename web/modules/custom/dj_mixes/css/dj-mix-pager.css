@@ -1,6 +1,6 @@
 /**
  * @file
- * The DJ mix pager: a grid of cards with previous/next arrows.
+ * The DJ mix pager: a row of cards with previous/next arrows.
  */
 
 .dj-mix-pager {
@@ -48,18 +48,24 @@
   opacity: 0.25;
 }
 
-/* All cards visible: as many columns as fit, wrapping onto new rows. */
+/* One row of cards, scrolled sideways where they overflow. Themes can lay
+   them out as a grid instead, e.g. when the pager is a sidebar column. */
 .dj-mix-pager__cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-  gap: 1.25rem 1rem;
+  position: relative;
+  display: flex;
+  gap: 1rem;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0.75rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
   list-style: none;
 }
 
 .dj-mix-pager__card {
+  flex: 0 0 12rem;
   min-width: 0;
+  scroll-snap-align: start;
   font-size: 0.85rem;
   line-height: 1.3;
 }

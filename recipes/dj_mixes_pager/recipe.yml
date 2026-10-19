@@ -1,5 +1,5 @@
 name: 'DJ mix pager'
-description: 'A "DJ mix pager" block below each DJ mix: cards for up to ten mixes before and after the current one in the DJ mixes listing order, with previous/next arrows and a link back to the listing. Filters and sorting from the listing URL are passed on from the listing to the mix and from mix to mix. Adds the "Card" node view mode (cover, title, mix date). Requires recipes/search_view_dj_mixes and the dyssembler theme.'
+description: 'A "DJ mix pager" block below each DJ mix: cards for up to ten mixes before and after the current one in the DJ mixes listing order, with previous/next arrows and a link back to the listing. Filters and sorting from the listing URL are passed on from the listing to the mix and from mix to mix. Adds the "Card" node view mode (cover, title, mix date). Requires recipes/search_view_dj_mixes and the dyssembler theme (the block sits in its sidebar_second region: below the mix on small screens, a column to its right on wide ones).'
 type: 'Content type'
 install:
   - dj_mixes

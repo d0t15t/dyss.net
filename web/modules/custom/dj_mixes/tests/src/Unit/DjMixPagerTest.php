@@ -48,6 +48,8 @@ class DjMixPagerTest extends UnitTestCase {
     $filtered = DjMixPager::nextPageQuery(['name' => 'Radio', 'genre' => '73'], 4, 12, 106);
     $this->assertSame(['name' => 'Radio', 'genre' => '73', 'page' => 5], $filtered, 'The listing parameters are kept.');
     $this->assertSame(['name' => 'Radio', 'page' => 3], DjMixPager::nextPageQuery(['page' => 7, 'name' => 'Radio'], 2, 12, 106), 'A stale page parameter is replaced.');
+    $checkboxes = DjMixPager::nextPageQuery(['genre' => ['73' => '73', '75' => '75']], 0, 12, 49);
+    $this->assertSame(['genre' => ['73' => '73', '75' => '75'], 'page' => 1], $checkboxes, 'Multiple values (checkboxes) are kept.');
     $this->assertSame(['page' => 8], DjMixPager::nextPageQuery([], 7, 12, 106), 'The last, partial page is loaded.');
     $this->assertNull(DjMixPager::nextPageQuery([], 8, 12, 106), 'Nothing after the last page.');
     $this->assertNull(DjMixPager::nextPageQuery([], 0, 12, 12), 'A single full page has no next page.');

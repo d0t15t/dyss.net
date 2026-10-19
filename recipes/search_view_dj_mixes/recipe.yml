@@ -1,5 +1,5 @@
 name: 'DJ Mixes search view'
-description: 'Replaces the plain DJ Mixes listing with a Solr-backed search view (Search API): exposed Name and Tags filters, Tags being a facet with counts (facets_exposed_filters), so that infinite scroll and the DJ mix pager pass it on. Same URL and main-menu entry as before. Requires recipes/dj_mixes and recipes/search_index_content to be applied first.'
+description: 'Replaces the plain DJ Mixes listing with a Solr-backed search view (Search API): exposed Name and Tags filters, Tags being a facet with counts (facets_exposed_filters) shown as checkboxes in a Better Exposed Filters form that submits on change, so that infinite scroll and the DJ mix pager pass it on. Same URL and main-menu entry as before. Requires recipes/dj_mixes and recipes/search_index_content to be applied first.'
 type: 'Search'
 install:
   - dj_mixes

@@ -11,8 +11,8 @@ _core:
   default_config_hash: P5-yM_bWAsReysogEQZduwIBw5vugI6E0_Q2OOrD46w
 id: dyssembler_dj_mix_pager
 theme: dyssembler
-region: content
-weight: 5
+region: sidebar_second
+weight: 0
 provider: null
 plugin: dj_mix_pager
 settings:

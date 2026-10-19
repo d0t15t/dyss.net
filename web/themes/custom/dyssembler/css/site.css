@@ -313,6 +313,69 @@ ul.menu a.is-active {
   margin-block-start: 0.5rem;
 }
 
+/* ----- DJ mix pages with the pager ----- */
+/* The DJ mix pager (sidebar_second) is a sideways-scrolling row of cards
+   across the full width below the mix on small screens. On wide ones it is
+   a column of cards to the right, and the mix stays in view (sticky) while
+   the cards scroll past. */
+
+:root {
+  --player-space: 0rem;
+}
+
+/* Room for the fixed player bar, while it is shown. */
+body:has(.persistent-player:not([hidden])) {
+  --player-space: 3.5rem;
+}
+
+body:has(.dj-mix-pager) .region-header,
+body:has(.dj-mix-pager) .region-primary-menu,
+#pjax-content:has(.dj-mix-pager) {
+  max-width: none;
+}
+
+main:has(> .layout-sidebar-second .dj-mix-pager) > .layout-content {
+  max-width: var(--content-max-width);
+}
+
+@media (min-width: 64rem) {
+  main:has(> .layout-sidebar-second .dj-mix-pager) {
+    display: grid;
+    grid-template-columns: minmax(0, var(--content-max-width)) minmax(0, 1fr);
+    gap: 0 3rem;
+    align-items: start;
+  }
+
+  /* Placed explicitly: <main> also holds the #main-content skip anchor.
+     The mix stays in view; a mix taller than the screen scrolls on its own. */
+  main:has(> .layout-sidebar-second .dj-mix-pager) > .layout-content {
+    grid-area: 1 / 1;
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100dvh - 2rem - var(--player-space));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  main:has(> .layout-sidebar-second .dj-mix-pager) > .layout-sidebar-second {
+    grid-area: 1 / 2;
+  }
+
+  .layout-sidebar-second .dj-mix-pager {
+    margin-block-start: 0;
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+
+  /* In the column, all cards show as a grid. */
+  .layout-sidebar-second .dj-mix-pager__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: 1.25rem 1rem;
+    overflow: visible;
+  }
+}
+
 /* ----- Contact ----- */
 /* The /contact form (dyss_contact module). */
 

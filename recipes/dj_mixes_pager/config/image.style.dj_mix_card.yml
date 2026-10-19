@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: dj_mix_card
+label: 'DJ mix card (480×480)'
+effects:
+  95052c61-7b34-4d92-a9c8-948f6dc83008:
+    uuid: 95052c61-7b34-4d92-a9c8-948f6dc83008
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 480
+      height: 480
+      anchor: center-center

@@ -8,8 +8,8 @@ dependencies:
     - dyssembler
 id: dyssembler_dj_mix_pager
 theme: dyssembler
-region: content
-weight: 5
+region: sidebar_second
+weight: 0
 provider: null
 plugin: dj_mix_pager
 settings:

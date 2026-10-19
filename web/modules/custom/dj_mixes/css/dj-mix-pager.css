@@ -64,10 +64,16 @@
 
 .dj-mix-pager__card {
   flex: 0 0 12rem;
+  list-style: none;
   min-width: 0;
   scroll-snap-align: start;
   font-size: 0.85rem;
   line-height: 1.3;
+}
+
+/* No list numbers, whatever the layout (e.g. a theme's grid). */
+.dj-mix-pager__card::marker {
+  content: none;
 }
 
 .dj-mix-pager__card .node {

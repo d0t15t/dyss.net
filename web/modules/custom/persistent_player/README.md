@@ -1,7 +1,8 @@
 # Persistent Player
 
-A persistent media player and same-site AJAX ("pjax") navigation layer, so
-playback survives the visitor navigating to a new page.
+A persistent media player and same-site AJAX navigation layer (built on
+Drupal core's htmx integration), so playback survives the visitor navigating
+to a new page.
 
 ## Why
 
@@ -11,6 +12,13 @@ page can prevent that. The only way to make playback survive navigation is to
 never actually navigate: intercept same-site link clicks, fetch the
 destination page, and swap only the part of the DOM that changes per route,
 leaving the player untouched in a part of the page that's never replaced.
+
+The page is fetched with htmx (`core/drupal.htmx`), which also loads the CSS,
+JS and settings the new page needs that the current one doesn't have, and
+attaches Drupal behaviors to the new content. Back/forward fetch the page
+again; the title, body classes and active menu link follow. BigPipe is
+skipped for these (htmx) requests, as its streamed replacements would land
+outside the swapped part. Forms are not taken over.
 
 This module has no knowledge of any particular content type. It doesn't know
 what a "track" or a "playlist" is - it just plays one media item at a time and
@@ -36,7 +44,7 @@ player" block) is left alone across a transition.
 Place the "Persistent media player" block (`persistent_player` plugin) in any
 region **outside** that wrapper.
 
-Configure the selector, and whether pjax navigation is enabled at all, at
+Configure the selector, and whether this navigation is enabled at all, at
 `/admin/config/media/persistent-player`.
 
 ## JavaScript API
@@ -70,15 +78,15 @@ Dispatched on `document`:
 | `persistentplayer:stop`         | `{item}`                                    | |
 | `persistentplayer:ended`        | `{item}`                                    | Listen here to implement "play next" - this module has no playlist concept of its own. |
 | `persistentplayer:timeupdate`   | `{item, currentTime, duration}`             | |
-| `persistentplayer:navigate`     | `{url}`                                     | Cancelable. Fired before a pjax swap; call `preventDefault()` to force a normal navigation for that one link. |
-| `persistentplayer:navigated`    | `{url}`                                     | Fired after a pjax swap completes and behaviors are reattached. |
+| `persistentplayer:navigate`     | `{url}`                                     | Cancelable. Fired before a navigation; call `preventDefault()` to force a normal page load for that one link. |
+| `persistentplayer:navigated`    | `{url}`                                     | Fired after a navigation, once the new page's assets are loaded and behaviors attached. |
 
 ## Limitations
 
 A typed URL, a bookmark, a hard refresh, or an external link back into the
 site is a real browser navigation. This module cannot intercept those, and
 playback will stop - that's a platform limitation, not a bug. If you need
-links to be excluded from pjax navigation for other reasons (e.g. a download
+links to be excluded from this navigation for other reasons (e.g. a download
 link, or a route with its own full-page behavior), add `data-no-pjax` to the
 link, or add a path pattern to "Excluded path patterns" in the settings form.
 

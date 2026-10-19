@@ -6,7 +6,7 @@ dependencies:
     - search_api.index.content
     - system.menu.main
   module:
-    - dj_mixes
+    - facets_exposed_filters
     - search_api
     - user
 _core:
@@ -195,6 +195,106 @@ display:
           min_length: null
           fields:
             - title
+        facets_field_tags:
+          id: facets_field_tags
+          table: search_api_index_content
+          field: facets_field_tags
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Tags
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tags
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            hard_limit: 0
+            min_count: 1
+            missing: false
+            missing_label: others
+            show_numbers: true
+            show_only_one_result: false
+            depends_on_exposed_filter: ''
+            processor_configs:
+              translate_entity:
+                processor_id: translate_entity
+                weights:
+                  build: 5
+                settings: {  }
+              count_widget_order:
+                processor_id: count_widget_order
+                weights:
+                  sort: 30
+                settings:
+                  sort: DESC
+        facets_field_musical_genres:
+          id: facets_field_musical_genres
+          table: search_api_index_content
+          field: facets_field_musical_genres
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Genre
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: genre
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            hard_limit: 0
+            min_count: 1
+            missing: false
+            missing_label: others
+            show_numbers: true
+            show_only_one_result: false
+            depends_on_exposed_filter: ''
+            processor_configs:
+              translate_entity:
+                processor_id: translate_entity
+                weights:
+                  build: 5
+                settings: {  }
+              count_widget_order:
+                processor_id: count_widget_order
+                weights:
+                  sort: 30
+                settings:
+                  sort: DESC
       style:
         type: default
         options:
@@ -216,18 +316,7 @@ display:
           preserve_facet_query_args: false
           query_tags: {  }
       relationships: {  }
-      header:
-        dj_mixes_tags_facet:
-          id: dj_mixes_tags_facet
-          table: views
-          field: dj_mixes_block
-          relationship: none
-          group_type: group
-          admin_label: 'Tags facet'
-          plugin_id: dj_mixes_block
-          label: ''
-          empty: true
-          block_id: 'facet_block:field_tags'
+      header: {  }
       footer: {  }
       display_extenders: {  }
     cache_metadata:

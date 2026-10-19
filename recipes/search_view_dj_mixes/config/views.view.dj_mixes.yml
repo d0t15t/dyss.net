@@ -2,14 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.field_tags
-    - field.storage.node.field_mix_date
     - search_api.index.content
     - system.menu.main
   module:
-    - dj_mixes
-    - facets
+    - facets_exposed_filters
     - search_api
+    - user
 id: dj_mixes
 label: 'DJ Mixes'
 module: views
@@ -193,7 +191,57 @@ display:
           parse_mode: terms
           min_length: null
           fields:
-            title: title
+            - title
+        facets_field_tags:
+          id: facets_field_tags
+          table: search_api_index_content
+          field: facets_field_tags
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: facets_filter
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Tags
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tags
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          hierarchy: false
+          label_display: visible
+          facet:
+            query_operator: or
+            hard_limit: 0
+            min_count: 1
+            missing: false
+            missing_label: others
+            show_numbers: true
+            show_only_one_result: false
+            depends_on_exposed_filter: ''
+            processor_configs:
+              translate_entity:
+                processor_id: translate_entity
+                weights:
+                  build: 5
+                settings: {  }
+              count_widget_order:
+                processor_id: count_widget_order
+                weights:
+                  sort: 30
+                settings:
+                  sort: DESC
       style:
         type: default
         options:
@@ -215,28 +263,20 @@ display:
           preserve_facet_query_args: false
           query_tags: {  }
       relationships: {  }
-      header:
-        dj_mixes_tags_facet:
-          id: dj_mixes_tags_facet
-          table: views
-          field: dj_mixes_block
-          relationship: none
-          group_type: group
-          admin_label: 'Tags facet'
-          plugin_id: dj_mixes_block
-          label: ''
-          empty: true
-          block_id: 'facet_block:field_tags'
+      header: {  }
       footer: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_interface'
+        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:search_api.index.content'
+        - 'search_api_list:content'
   page_1:
     id: page_1
     display_title: Page
@@ -249,14 +289,18 @@ display:
         type: normal
         title: 'DJ Mixes'
         description: 'Browse all DJ mixes.'
-        weight: 0
+        weight: -49
+        enabled: false
         menu_name: main
         parent: ''
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_interface'
+        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:search_api.index.content'
+        - 'search_api_list:content'

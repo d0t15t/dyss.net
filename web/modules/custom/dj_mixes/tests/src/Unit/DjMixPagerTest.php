@@ -39,4 +39,20 @@ class DjMixPagerTest extends UnitTestCase {
     $this->assertNull(DjMixPager::window([], 1, 10));
   }
 
+  /**
+   * Tests DjMixPager::nextPageQuery(), used by infinite scroll.
+   */
+  public function testNextPageQuery(): void {
+    // 106 mixes, 12 per page: pages 0-8.
+    $this->assertSame(['page' => 1], DjMixPager::nextPageQuery([], 0, 12, 106));
+    $filtered = DjMixPager::nextPageQuery(['name' => 'Radio', 'genre' => '73'], 4, 12, 106);
+    $this->assertSame(['name' => 'Radio', 'genre' => '73', 'page' => 5], $filtered, 'The listing parameters are kept.');
+    $this->assertSame(['name' => 'Radio', 'page' => 3], DjMixPager::nextPageQuery(['page' => 7, 'name' => 'Radio'], 2, 12, 106), 'A stale page parameter is replaced.');
+    $this->assertSame(['page' => 8], DjMixPager::nextPageQuery([], 7, 12, 106), 'The last, partial page is loaded.');
+    $this->assertNull(DjMixPager::nextPageQuery([], 8, 12, 106), 'Nothing after the last page.');
+    $this->assertNull(DjMixPager::nextPageQuery([], 0, 12, 12), 'A single full page has no next page.');
+    $this->assertNull(DjMixPager::nextPageQuery([], 0, 12, 0));
+    $this->assertNull(DjMixPager::nextPageQuery([], 0, 0, 106), 'No paging.');
+  }
+
 }

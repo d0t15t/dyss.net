@@ -1,0 +1,19 @@
+/**
+ * @file
+ * Infinite scroll on the DJ mixes listing.
+ */
+
+/* With JavaScript, the next pages load on scroll: the pager is only the
+   fallback without it. */
+.js .view-id-dj_mixes:has(.views-row[data-hx-get]) > .pager {
+  display: none;
+}
+
+/* While the next page loads. */
+.view-id-dj_mixes .view-content:has(.htmx-request)::after {
+  content: "Loading more mixes…";
+  grid-column: 1 / -1;
+  padding-block: 1.5rem;
+  color: var(--color-muted, #666);
+  text-align: center;
+}

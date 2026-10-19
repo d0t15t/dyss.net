@@ -39,6 +39,13 @@ final class DjMixPager {
    */
   const LINK_VIEW_MODES = ['teaser', 'card'];
 
+  /**
+   * Infinite scroll: the teaser this far from the end loads the next page.
+   *
+   * Loading starts a little before the visitor reaches the last teaser.
+   */
+  const SCROLL_PREFETCH = 4;
+
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
     private readonly ViewExecutableFactory $viewExecutableFactory,
@@ -145,6 +152,30 @@ final class DjMixPager {
       'position' => $index + 1,
       'total' => count($ids),
     ];
+  }
+
+  /**
+   * The query for the listing page after the current one.
+   *
+   * @param array $parameters
+   *   The listing's exposed input.
+   * @param int $page
+   *   The current page (0-based).
+   * @param int $per_page
+   *   Items per page.
+   * @param int $total
+   *   Items in the listing.
+   *
+   * @return array|null
+   *   The listing parameters with the next page number, or NULL on the last
+   *   page.
+   */
+  public static function nextPageQuery(array $parameters, int $page, int $per_page, int $total): ?array {
+    if ($per_page < 1 || ($page + 1) * $per_page >= $total) {
+      return NULL;
+    }
+    unset($parameters['page']);
+    return $parameters + ['page' => $page + 1];
   }
 
   /**

@@ -50,4 +50,13 @@ final class MixcloudCommands extends DrushCommands {
     $this->logger()->success(dt('@count DJ mixes linked to Mixcloud.', ['@count' => count($linked)]));
   }
 
+  /**
+   * Copies Mixcloud URLs and tags (as musical genres) onto all linked mixes.
+   */
+  #[CLI\Command(name: 'dj-mixes:mixcloud-sync-mixes', aliases: ['mixcloud-sync-mixes'])]
+  #[CLI\Usage(name: 'drush dj-mixes:mixcloud-sync-mixes', description: 'Update every DJ mix from its imported Mixcloud shows, without calling Mixcloud.')]
+  public function syncMixes(): void {
+    $this->logger()->success(dt('@count DJ mixes updated.', ['@count' => $this->importer->syncMixes()]));
+  }
+
 }

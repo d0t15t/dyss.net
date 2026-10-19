@@ -1,0 +1,9 @@
+uuid: 16c9ff25-26b9-492b-bccd-4be12bb48c82
+langcode: en
+status: true
+dependencies: {  }
+name: 'Musical genres'
+vid: musical_genres
+description: 'Genres of DJ mixes, from their tags on Mixcloud.'
+weight: 0
+new_revision: false

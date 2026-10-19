@@ -1,0 +1,26 @@
+uuid: 335ad469-2938-4599-8884-ccf1302cf417
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_musical_genres
+    - node.type.dj_mix
+    - taxonomy.vocabulary.musical_genres
+id: node.dj_mix.field_musical_genres
+field_name: field_musical_genres
+entity_type: node
+bundle: dj_mix
+label: 'Musical genres'
+description: 'Filled from the tags of the mix on Mixcloud by the Mixcloud import.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      musical_genres: musical_genres
+    auto_create: true
+    auto_create_bundle: musical_genres
+field_type: entity_reference

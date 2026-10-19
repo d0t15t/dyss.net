@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\media\MediaInterface;
 use Drupal\node\NodeInterface;
+use Drupal\taxonomy\TermInterface;
 
 /**
  * Imports Mixcloud uploads as media and links them to DJ mixes.
@@ -17,6 +18,11 @@ final class MixcloudImporter {
    * Picture sizes in the API, largest first.
    */
   const PICTURE_SIZES = ['1024wx1024h', '768wx768h', '640wx640h', 'extra_large', 'large', 'medium'];
+
+  /**
+   * The vocabulary Mixcloud tags are saved to as genres of DJ mixes.
+   */
+  const GENRE_VOCABULARY = 'musical_genres';
 
   public function __construct(
     private readonly MixcloudClient $client,
@@ -121,9 +127,83 @@ final class MixcloudImporter {
         continue;
       }
       $items = $this->mergeLinks($node, $by_episode[$episode]);
+      $this->syncMix($node);
       $linked[$node->id()] = array_map(fn(MediaInterface $item) => $item->getName(), $items);
     }
     return $linked;
+  }
+
+  /**
+   * Copies data from a DJ mix's Mixcloud shows onto the mix.
+   *
+   * The mix gets the shows' URLs and their tags as musical genres (terms are
+   * created as needed). Genres already on the mix are kept.
+   *
+   * @return bool
+   *   Whether the mix changed and was saved.
+   */
+  public function syncMix(NodeInterface $node): bool {
+    $urls = [];
+    $genres = array_column($node->get('field_musical_genres')->getValue(), 'target_id');
+    foreach ($node->get('field_mixcloud')->referencedEntities() as $item) {
+      $urls[] = ['uri' => $item->get('field_media_oembed_mixcloud')->value];
+      foreach ($item->get('field_mixcloud_tags') as $tag) {
+        $genres[] = $this->genre($tag->value)->id();
+      }
+    }
+    $genres = array_values(array_unique(array_map('intval', $genres)));
+
+    $changed = FALSE;
+    if (array_column($node->get('field_mixcloud_url')->getValue(), 'uri') !== array_column($urls, 'uri')) {
+      $node->set('field_mixcloud_url', $urls);
+      $changed = TRUE;
+    }
+    if (array_map('intval', array_column($node->get('field_musical_genres')->getValue(), 'target_id')) !== $genres) {
+      $node->set('field_musical_genres', $genres);
+      $changed = TRUE;
+    }
+    if ($changed) {
+      $node->save();
+    }
+    return $changed;
+  }
+
+  /**
+   * Syncs every DJ mix that has Mixcloud shows (see syncMix()).
+   *
+   * @return int
+   *   The number of mixes that changed.
+   */
+  public function syncMixes(): int {
+    $storage = $this->entityTypeManager->getStorage('node');
+    $ids = $storage->getQuery()->accessCheck(FALSE)->condition('type', 'dj_mix')->exists('field_mixcloud')->execute();
+    $changed = 0;
+    foreach ($storage->loadMultiple($ids) as $node) {
+      $changed += (int) $this->syncMix($node);
+    }
+    return $changed;
+  }
+
+  /**
+   * The genre term with a name, created if needed.
+   */
+  private function genre(string $name): TermInterface {
+    $name = trim($name);
+    $storage = $this->entityTypeManager->getStorage('taxonomy_term');
+    foreach ($storage->loadByProperties(['vid' => self::GENRE_VOCABULARY, 'name' => $name]) as $term) {
+      // The database comparison ignores case; keep the first exact match,
+      // else any.
+      if ($term->getName() === $name) {
+        return $term;
+      }
+      $match ??= $term;
+    }
+    if (isset($match)) {
+      return $match;
+    }
+    $term = $storage->create(['vid' => self::GENRE_VOCABULARY, 'name' => $name]);
+    $term->save();
+    return $term;
   }
 
   /**

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Musical genres'
+vid: musical_genres
+description: 'Genres of DJ mixes, from their tags on Mixcloud.'
+weight: 0
+new_revision: false

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mixcloud_tracklist
+    - media.type.mixcloud
+id: media.mixcloud.field_mixcloud_tracklist
+field_name: field_mixcloud_tracklist
+entity_type: media
+bundle: mixcloud
+label: Tracklist
+description: 'Tracks as "Artist – Title", read from the description by the Mixcloud import (Mixcloud has no tracklist data for these shows).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

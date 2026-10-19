@@ -16,6 +16,7 @@ dependencies:
     - field.field.media.mixcloud.field_mixcloud_reposts
     - field.field.media.mixcloud.field_mixcloud_synced
     - field.field.media.mixcloud.field_mixcloud_tags
+    - field.field.media.mixcloud.field_mixcloud_tracklist
     - field.field.media.mixcloud.field_mixcloud_uploaded
     - media.type.mixcloud
   module:
@@ -125,6 +126,14 @@ content:
   field_mixcloud_tags:
     type: string_textfield
     weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixcloud_tracklist:
+    type: string_textfield
+    weight: 5
     region: content
     settings:
       size: 60

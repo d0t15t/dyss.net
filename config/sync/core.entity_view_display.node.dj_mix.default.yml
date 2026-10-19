@@ -8,6 +8,8 @@ dependencies:
     - field.field.node.dj_mix.field_genre
     - field.field.node.dj_mix.field_mix_date
     - field.field.node.dj_mix.field_mixcloud
+    - field.field.node.dj_mix.field_mixcloud_url
+    - field.field.node.dj_mix.field_musical_genres
     - field.field.node.dj_mix.field_tags
     - field.field.node.dj_mix.field_tracks
     - image.style.wide
@@ -15,6 +17,7 @@ dependencies:
   module:
     - datetime
     - image
+    - link
     - text
     - user
 _core:
@@ -44,9 +47,10 @@ content:
     region: content
   field_genre:
     type: string
-    label: above
+    label: visually_hidden
     settings:
       link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 2
     region: content
@@ -61,12 +65,32 @@ content:
     region: content
   field_mixcloud:
     type: entity_reference_entity_view
-    label: above
+    label: visually_hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 20
+    weight: 5
+    region: content
+  field_mixcloud_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: nofollow
+      target: _blank
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_musical_genres:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_tags:
     type: entity_reference_label
@@ -86,7 +110,9 @@ content:
     weight: 4
     region: content
   links:
-    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
     region: content
 hidden:
   langcode: true

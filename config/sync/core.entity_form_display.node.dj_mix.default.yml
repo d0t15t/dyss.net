@@ -8,6 +8,8 @@ dependencies:
     - field.field.node.dj_mix.field_genre
     - field.field.node.dj_mix.field_mix_date
     - field.field.node.dj_mix.field_mixcloud
+    - field.field.node.dj_mix.field_mixcloud_url
+    - field.field.node.dj_mix.field_musical_genres
     - field.field.node.dj_mix.field_tags
     - field.field.node.dj_mix.field_tracks
     - image.style.thumbnail
@@ -15,6 +17,7 @@ dependencies:
   module:
     - datetime
     - image
+    - link
     - media_library
     - path
     - text
@@ -69,6 +72,24 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_mixcloud_url:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_musical_genres:
+    type: entity_reference_autocomplete_tags
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete_tags

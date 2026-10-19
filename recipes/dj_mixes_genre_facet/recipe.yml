@@ -1,5 +1,5 @@
 name: 'DJ mixes genre facet'
-description: 'Adds a Genre facet (musical genres, with counts) to the DJ mixes listing, as an exposed filter (facets_exposed_filters) so that infinite scroll and the DJ mix pager pass the selected genre on. Indexes the Musical genres field in the content index. Requires recipes/search_view_dj_mixes and recipes/dj_mixes_mixcloud.'
+description: 'Adds a Genre facet (musical genres, with counts) to the DJ mixes listing, as an exposed filter (facets_exposed_filters) shown as checkboxes, the top 15 with a show more toggle (Better Exposed Filters), so that infinite scroll and the DJ mix pager pass the selected genres on. Indexes the Musical genres field in the content index. Requires recipes/search_view_dj_mixes and recipes/dj_mixes_mixcloud.'
 type: Search
 install:
   - facets_exposed_filters
@@ -41,7 +41,7 @@ config:
             identifier: genre
             required: false
             remember: false
-            multiple: false
+            multiple: true
             remember_roles:
               authenticated: authenticated
           is_grouped: false
@@ -68,3 +68,28 @@ config:
                   sort: 30
                 settings:
                   sort: DESC
+        display.default.display_options.exposed_form.options.bef.filter.facets_field_musical_genres:
+          plugin_id: bef
+          advanced:
+            sort_options: false
+            sort_options_method: alphabetical_asc
+            sort_options_natural: true
+            placeholder_text: ''
+            rewrite:
+              filter_rewrite_values: ''
+              filter_rewrite_values_key: false
+            collapsible: false
+            collapsible_disable_automatic_open: false
+            open_by_default: false
+            is_secondary: false
+            hide_label: false
+            field_classes: ''
+          select_all_none: false
+          select_all_none_nested: false
+          display_inline: false
+          soft_limit: 15
+          soft_limit_label_less: 'Show fewer genres'
+          soft_limit_label_more: 'Show more genres'
+          soft_limit_include_children: false
+          scrollable: false
+          scrollable_height: 300

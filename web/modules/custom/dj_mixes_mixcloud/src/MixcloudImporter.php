@@ -138,21 +138,25 @@ final class MixcloudImporter {
    * Copies data from a DJ mix's Mixcloud shows onto the mix.
    *
    * The mix gets the shows' URLs and their tags as musical genres (terms are
-   * created as needed). Genres already on the mix are kept.
+   * created as needed). Genres already on the mix are kept, except disabled
+   * (unpublished) ones, which are also never added.
    *
    * @return bool
    *   Whether the mix changed and was saved.
    */
   public function syncMix(NodeInterface $node): bool {
     $urls = [];
-    $genres = array_column($node->get('field_musical_genres')->getValue(), 'target_id');
+    $terms = $node->get('field_musical_genres')->referencedEntities();
     foreach ($node->get('field_mixcloud')->referencedEntities() as $item) {
       $urls[] = ['uri' => $item->get('field_media_oembed_mixcloud')->value];
       foreach ($item->get('field_mixcloud_tags') as $tag) {
-        $genres[] = $this->genre($tag->value)->id();
+        $terms[] = $this->genre($tag->value);
       }
     }
-    $genres = array_values(array_unique(array_map('intval', $genres)));
+    // Unpublished genre terms are disabled: tags that are no genre (e.g. the
+    // show's name) are neither added nor kept.
+    $terms = array_filter($terms, fn(TermInterface $term) => $term->isPublished());
+    $genres = array_values(array_unique(array_map(fn(TermInterface $term) => (int) $term->id(), $terms)));
 
     $changed = FALSE;
     if (array_column($node->get('field_mixcloud_url')->getValue(), 'uri') !== array_column($urls, 'uri')) {

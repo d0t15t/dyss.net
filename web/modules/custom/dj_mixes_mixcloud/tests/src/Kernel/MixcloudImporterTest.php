@@ -201,6 +201,13 @@ class MixcloudImporterTest extends KernelTestBase {
     $this->assertFalse($importer->syncMix($this->reload($mix)));
     $this->assertContains('Dub', $this->genres($this->reload($mix)));
     $this->assertCount(5, $terms->loadByProperties(['vid' => MixcloudImporter::GENRE_VOCABULARY]), 'Existing genre terms are reused.');
+
+    // A disabled (unpublished) genre is removed, and not added back.
+    $disco = $terms->loadByProperties(['vid' => MixcloudImporter::GENRE_VOCABULARY, 'name' => 'Disco']);
+    reset($disco)->setUnpublished()->save();
+    $this->assertTrue($importer->syncMix($this->reload($mix)));
+    $this->assertSame(['House', 'Deep Techno', 'Boogie', 'Dub'], $this->genres($this->reload($mix)));
+    $this->assertFalse($importer->syncMix($this->reload($mix)));
   }
 
   /**

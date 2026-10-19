@@ -51,7 +51,10 @@ final class MixcloudCommands extends DrushCommands {
   }
 
   /**
-   * Copies Mixcloud URLs and tags (as musical genres) onto all linked mixes.
+   * Updates imported shows and linked mixes from the imported data.
+   *
+   * Re-reads the shows' tracklists from their descriptions, and copies their
+   * URLs and tags (as musical genres) onto the DJ mixes they are linked to.
    */
   #[CLI\Command(name: 'dj-mixes:mixcloud-sync-mixes', aliases: ['mixcloud-sync-mixes'])]
   #[CLI\Usage(name: 'drush dj-mixes:mixcloud-sync-mixes', description: 'Update every DJ mix from its imported Mixcloud shows, without calling Mixcloud.')]

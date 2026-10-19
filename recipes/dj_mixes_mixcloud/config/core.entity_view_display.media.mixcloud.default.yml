@@ -15,6 +15,7 @@ dependencies:
     - field.field.media.mixcloud.field_mixcloud_reposts
     - field.field.media.mixcloud.field_mixcloud_synced
     - field.field.media.mixcloud.field_mixcloud_tags
+    - field.field.media.mixcloud.field_mixcloud_tracklist
     - field.field.media.mixcloud.field_mixcloud_uploaded
     - media.type.mixcloud
   module:
@@ -34,6 +35,15 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_mixcloud_tracklist:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   created: true

@@ -85,6 +85,7 @@ final class MixcloudImporter {
     $media->set('field_mixcloud_uploaded', gmdate(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, strtotime($cloudcast['created_time'])));
     $media->set('field_mixcloud_duration', (int) ($cloudcast['audio_length'] ?? 0));
     $media->set('field_mixcloud_description', trim($cloudcast['description'] ?? ''));
+    $media->set('field_mixcloud_tracklist', Tracklist::parse($cloudcast['description'] ?? ''));
     $media->set('field_mixcloud_color', preg_match('/^[0-9a-f]{6}$/i', $color) ? '#' . strtolower($color) : NULL);
     $media->set('field_mixcloud_tags', array_column($cloudcast['tags'] ?? [], 'name'));
     $media->set('field_mixcloud_picture', $picture ? ['uri' => $picture] : NULL);
@@ -175,11 +176,30 @@ final class MixcloudImporter {
    *   The number of mixes that changed.
    */
   public function syncMixes(): int {
+    $this->parseTracklists();
     $storage = $this->entityTypeManager->getStorage('node');
     $ids = $storage->getQuery()->accessCheck(FALSE)->condition('type', 'dj_mix')->exists('field_mixcloud')->execute();
     $changed = 0;
     foreach ($storage->loadMultiple($ids) as $node) {
       $changed += (int) $this->syncMix($node);
+    }
+    return $changed;
+  }
+
+  /**
+   * Re-reads the tracklists of all imported shows from their descriptions.
+   *
+   * @return int
+   *   The number of shows whose tracklist changed.
+   */
+  public function parseTracklists(): int {
+    $changed = 0;
+    foreach ($this->entityTypeManager->getStorage('media')->loadByProperties(['bundle' => 'mixcloud']) as $media) {
+      $tracks = Tracklist::parse($media->get('field_mixcloud_description')->value ?? '');
+      if (array_column($media->get('field_mixcloud_tracklist')->getValue(), 'value') !== $tracks) {
+        $media->set('field_mixcloud_tracklist', $tracks)->save();
+        $changed++;
+      }
     }
     return $changed;
   }

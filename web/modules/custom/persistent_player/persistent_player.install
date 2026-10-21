@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Install and update functions for Persistent Player.
+ */
+
+/**
+ * Move same-site navigation to the htmx_navigation module.
+ */
+function persistent_player_update_11001() {
+  $old = \Drupal::configFactory()->getEditable('persistent_player.settings');
+  if (!\Drupal::moduleHandler()->moduleExists('htmx_navigation')) {
+    \Drupal::service('module_installer')->install(['htmx_navigation']);
+  }
+  if (!$old->isNew()) {
+    \Drupal::configFactory()->getEditable('htmx_navigation.settings')
+      ->set('enabled', (bool) $old->get('enabled_pjax_nav'))
+      ->set('content_selector', $old->get('content_selector') ?: '#pjax-content')
+      ->set('excluded_path_patterns', $old->get('excluded_path_patterns') ?? [])
+      ->save();
+    $old->delete();
+  }
+  return t('Same-site navigation moved to the htmx navigation module, with its settings.');
+}

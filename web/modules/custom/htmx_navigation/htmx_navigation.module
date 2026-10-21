@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Same-site navigation with htmx.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function htmx_navigation_help($route_name, RouteMatchInterface $route_match) {
+  if ($route_name === 'help.page.htmx_navigation') {
+    $output = '<p>' . t('Same-site link clicks and GET form submissions fetch the new page with htmx and swap only the content area (the "content selector"), so anything outside it - the header, a media player - stays as it is. The CSS and JS the new page needs are loaded along the way.') . '</p>';
+    $output .= '<p>' . t('Configure it at <a href=":url">htmx navigation settings</a>. See README.md for the events other modules can listen for.', [':url' => Url::fromRoute('htmx_navigation.settings')->toString()]) . '</p>';
+    return $output;
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * Front-end pages only: administration pages (in the admin theme) have no
+ * content area to swap.
+ */
+function htmx_navigation_page_attachments(array &$attachments) {
+  $config = \Drupal::config('htmx_navigation.settings');
+  $attachments['#cache']['tags'][] = 'config:htmx_navigation.settings';
+  if (!$config->get('enabled') || \Drupal::service('router.admin_context')->isAdminRoute()) {
+    return;
+  }
+  $attachments['#attached']['library'][] = 'htmx_navigation/navigation';
+  $attachments['#attached']['drupalSettings']['htmxNavigation'] = [
+    'contentSelector' => $config->get('content_selector'),
+    'excludedPathPatterns' => $config->get('excluded_path_patterns') ?? [],
+  ];
+}

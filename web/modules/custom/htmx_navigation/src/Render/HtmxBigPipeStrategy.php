@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\persistent_player\Render;
+namespace Drupal\htmx_navigation\Render;
 
 use Drupal\Core\Render\Placeholder\PlaceholderStrategyInterface;
 use Symfony\Component\HttpFoundation\RequestStack;

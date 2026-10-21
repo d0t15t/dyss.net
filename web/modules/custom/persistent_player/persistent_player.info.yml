@@ -1,7 +1,8 @@
 name: 'Persistent Player'
 type: module
-description: 'A persistent media player and same-site AJAX navigation layer, so playback survives the visitor navigating to a new page.'
+description: 'A page-wide media player for MP3s and embeddable media (e.g. Mixcloud) that keeps playing while the visitor navigates the site with htmx navigation.'
 package: Media
-core_version_requirement: ^10.3 || ^11
+core_version_requirement: ^11.3
 dependencies:
   - drupal:block
+  - htmx_navigation:htmx_navigation

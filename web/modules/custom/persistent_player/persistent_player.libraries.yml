@@ -1,13 +1,3 @@
-htmx-nav:
-  version: 1.x
-  js:
-    js/htmx-nav.js: {}
-  dependencies:
-    - core/drupal
-    - core/drupal.htmx
-    - core/drupalSettings
-    - core/once
-
 persistent-player:
   version: 1.x
   css:

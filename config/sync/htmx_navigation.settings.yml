@@ -1,7 +1,7 @@
 _core:
-  default_config_hash: Ae1EqKa00Gq4n5rWodEsyKfOizR2UUKA-L0Efh6r8SU
+  default_config_hash: GpqL57BphqV-pnCiE1_VLx3sLvkcKn2_YkBlYYJsS8M
+enabled: true
 content_selector: '#pjax-content'
-enabled_pjax_nav: true
 excluded_path_patterns:
   - '/admin*'
   - '/user/*/edit'

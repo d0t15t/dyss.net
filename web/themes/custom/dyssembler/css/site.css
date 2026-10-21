@@ -384,6 +384,11 @@ body:has(.persistent-player:not([hidden])) {
   --player-space: 3.5rem;
 }
 
+/* Taller with an embedded player, e.g. Mixcloud's widget. */
+body:has(.persistent-player.is-embedded:not([hidden])) {
+  --player-space: 5rem;
+}
+
 body:has(.dj-mix-pager) .region-header,
 body:has(.dj-mix-pager) .region-primary-menu,
 #pjax-content:has(.dj-mix-pager) {

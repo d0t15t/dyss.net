@@ -1,0 +1,19 @@
+# Mixcloud's Widget API (https://www.mixcloud.com/developers/widget/),
+# loaded from Mixcloud.
+widget-api:
+  version: 1.x
+  js:
+    https://widget.mixcloud.com/media/js/widgetApi.js: { type: external }
+
+player:
+  version: 1.x
+  css:
+    component:
+      css/mixcloud-row.css: {}
+  js:
+    js/mixcloud-player.js: {}
+  dependencies:
+    - core/drupal
+    - persistent_player/persistent-player
+    - dj_mixes_mixcloud/widget-api
+    - dj_mixes/track-buttons

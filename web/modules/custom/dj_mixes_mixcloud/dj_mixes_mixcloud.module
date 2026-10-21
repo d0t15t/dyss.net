@@ -5,6 +5,7 @@
  * Mixcloud media for DJ mixes.
  */
 
+use Drupal\image\Entity\ImageStyle;
 use Drupal\media\OEmbed\Provider;
 
 /**
@@ -33,4 +34,63 @@ function dj_mixes_mixcloud_oembed_resource_url_alter(array &$parsed_url, Provide
     $parsed_url['query']['mini'] = 1;
     $parsed_url['query']['light'] = 1;
   }
+}
+
+/**
+ * Implements hook_theme().
+ *
+ * Declares the "player_row" template suggestion so its file is found.
+ */
+function dj_mixes_mixcloud_theme() {
+  return [
+    'media__mixcloud__player_row' => [
+      'base hook' => 'media',
+      'template' => 'media--mixcloud--player-row',
+      'path' => \Drupal::service('extension.list.module')->getPath('dj_mixes_mixcloud') . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for media.
+ *
+ * Core adds media source suggestions after the bundle/view mode one; the last
+ * (media__source_oembed__derivative_mixcloud__provider_mixcloud) falls back
+ * to plain "media" before the player row template is tried. Make the player
+ * row template the most specific suggestion.
+ */
+function dj_mixes_mixcloud_theme_suggestions_media_alter(array &$suggestions, array $variables) {
+  $suggestion = 'media__mixcloud__player_row';
+  if (in_array($suggestion, $suggestions, TRUE)) {
+    $suggestions = array_values(array_diff($suggestions, [$suggestion]));
+    $suggestions[] = $suggestion;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for media--mixcloud--player-row.
+ *
+ * The data for the play button, which hands the show to the persistent
+ * player's "mixcloud" backend.
+ */
+function dj_mixes_mixcloud_preprocess_media__mixcloud__player_row(array &$variables) {
+  /** @var \Drupal\media\MediaInterface $media */
+  $media = $variables['elements']['#media'];
+  $cover = '';
+  if ($thumbnail = $media->get('thumbnail')->entity) {
+    $style = ImageStyle::load('thumbnail');
+    $cover = $style
+      ? $style->buildUrl($thumbnail->getFileUri())
+      : \Drupal::service('file_url_generator')->generateString($thumbnail->getFileUri());
+  }
+  $seconds = (int) $media->get('field_mixcloud_duration')->value;
+  $variables['show'] = [
+    'media_id' => $media->id(),
+    'src' => $media->get('field_media_oembed_mixcloud')->value,
+    'title' => $media->label(),
+    'subtitle' => 'Mixcloud',
+    'cover' => $cover,
+    'duration' => $seconds ? sprintf('%d:%02d:%02d', intdiv($seconds, 3600), intdiv($seconds % 3600, 60), $seconds % 60) : '',
+  ];
+  $variables['#attached']['library'][] = 'dj_mixes_mixcloud/player';
 }

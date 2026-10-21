@@ -1,0 +1,40 @@
+/**
+ * @file
+ * Mixcloud shows on DJ mix pages, played in the persistent player.
+ */
+
+.mixcloud-row + .mixcloud-row {
+  margin-block-start: 1rem;
+}
+
+.mixcloud-row__main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-block: 0.5rem;
+  border-block-end: 1px solid var(--color-border, #e0e0e0);
+}
+
+.mixcloud-row__cover {
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.mixcloud-row__title {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.mixcloud-row__duration {
+  flex: none;
+  color: var(--color-muted, #666);
+  font-variant-numeric: tabular-nums;
+}
+
+.mixcloud-row .track-row__play-btn {
+  flex: none;
+}

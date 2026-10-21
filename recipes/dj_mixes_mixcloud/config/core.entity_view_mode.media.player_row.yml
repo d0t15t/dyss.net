@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.player_row
+label: 'Player row'
+description: 'A play button for the persistent player, with details such as a tracklist.'
+targetEntityType: media
+cache: true

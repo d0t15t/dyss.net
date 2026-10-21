@@ -1,0 +1,57 @@
+uuid: 9c871afe-e535-4e57-82c5-19d43a117471
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.player_row
+    - field.field.media.mixcloud.field_media_oembed_mixcloud
+    - field.field.media.mixcloud.field_mixcloud_account
+    - field.field.media.mixcloud.field_mixcloud_color
+    - field.field.media.mixcloud.field_mixcloud_comments
+    - field.field.media.mixcloud.field_mixcloud_description
+    - field.field.media.mixcloud.field_mixcloud_duration
+    - field.field.media.mixcloud.field_mixcloud_favorites
+    - field.field.media.mixcloud.field_mixcloud_listeners
+    - field.field.media.mixcloud.field_mixcloud_picture
+    - field.field.media.mixcloud.field_mixcloud_plays
+    - field.field.media.mixcloud.field_mixcloud_reposts
+    - field.field.media.mixcloud.field_mixcloud_synced
+    - field.field.media.mixcloud.field_mixcloud_tags
+    - field.field.media.mixcloud.field_mixcloud_tracklist
+    - field.field.media.mixcloud.field_mixcloud_uploaded
+    - media.type.mixcloud
+id: media.mixcloud.player_row
+targetEntityType: media
+bundle: mixcloud
+mode: player_row
+content:
+  field_mixcloud_tracklist:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_oembed_mixcloud: true
+  field_mixcloud_account: true
+  field_mixcloud_color: true
+  field_mixcloud_comments: true
+  field_mixcloud_description: true
+  field_mixcloud_duration: true
+  field_mixcloud_favorites: true
+  field_mixcloud_listeners: true
+  field_mixcloud_picture: true
+  field_mixcloud_plays: true
+  field_mixcloud_reposts: true
+  field_mixcloud_synced: true
+  field_mixcloud_tags: true
+  field_mixcloud_uploaded: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

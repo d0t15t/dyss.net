@@ -1,6 +1,7 @@
 /**
  * @file
- * Wires a DJ Mix's tracklist play buttons to the persistent player, and
+ * Wires a DJ Mix's play buttons - its MP3 tracks, or its Mixcloud parts
+ * (mediaType "mixcloud", see dj_mixes_mixcloud) - to the persistent player, and
  * implements "auto-advance to the next track" - a DJ Mix specific concept
  * the persistent_player module deliberately knows nothing about.
  */
@@ -11,7 +12,7 @@
   // The playlist currently backing auto-advance: an ordered array of items
   // built from the tracklist the visitor last clicked play in, plus the
   // index of the track that's playing (or just finished). Kept outside any
-  // single node's DOM so it still works after a pjax navigation away from
+  // single node's DOM so it still works after navigating away from
   // that mix's page - the persistent player has no idea what a "mix" is, so
   // this module has to remember it instead.
   let activePlaylist = null;
@@ -24,7 +25,7 @@
       title: button.dataset.trackTitle,
       subtitle: button.dataset.trackArtist,
       artwork: button.dataset.trackCover || undefined,
-      mediaType: 'audio',
+      mediaType: button.dataset.mediaType || 'audio',
     };
   }
 
@@ -39,7 +40,8 @@
     attach(context) {
       once('dj-mix-play-btn', '.track-row__play-btn', context).forEach((button) => {
         button.addEventListener('click', () => {
-          const tracklist = button.closest('.field--name-field-tracks');
+          // The MP3 tracks, or the Mixcloud parts, of the mix play in order.
+          const tracklist = button.closest('.field--name-field-tracks, .field--name-field-mixcloud');
           const buttons = tracklist
             ? Array.from(tracklist.querySelectorAll('.track-row__play-btn'))
             : [button];
@@ -75,7 +77,7 @@
         });
       });
 
-      // A pjax navigation may have just rendered this mix's tracklist again;
+      // A navigation may have just rendered this mix's tracklist again;
       // reflect whatever is already playing.
       updateButtonStates();
     },

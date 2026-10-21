@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * A Mixcloud show on a DJ mix page: a play button handing it to the
+ * persistent player, and its tracklist.
+ *
+ * Available variables:
+ * - show: Keys media_id, src (the Mixcloud URL), title, subtitle, cover
+ *   (image URL) and duration (e.g. "1:02:30").
+ * - content: The rendered fields (the tracklist).
+ * - attributes: HTML attributes for the wrapper.
+ */
+#}
+<div{{ attributes.addClass('mixcloud-row') }}>
+  {{ title_suffix.contextual_links }}
+  <div class="mixcloud-row__main">
+    <button type="button" class="track-row__play-btn"
+      data-media-id="{{ show.media_id }}"
+      data-media-type="mixcloud"
+      data-track-src="{{ show.src }}"
+      data-track-title="{{ show.title }}"
+      data-track-artist="{{ show.subtitle }}"
+      data-track-cover="{{ show.cover }}">
+      <span class="visually-hidden">{{ 'Play @title'|t({'@title': show.title}) }}</span>
+    </button>
+    {% if show.cover %}
+      <img class="mixcloud-row__cover" src="{{ show.cover }}" alt="" loading="lazy" width="48" height="48">
+    {% endif %}
+    <div class="mixcloud-row__title">{{ show.title }}</div>
+    {% if show.duration %}
+      <div class="mixcloud-row__duration">{{ show.duration }}</div>
+    {% endif %}
+  </div>
+  {{ content }}
+</div>

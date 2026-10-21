@@ -2,10 +2,10 @@
  * @file
  * The persistent media player public API.
  *
- * Exposes `Drupal.persistentPlayer` with `play()`, `pause()`, `stop()`, and
- * `getCurrent()`. Other modules should not reach into the DOM directly -
- * depend on this API and the `persistentplayer:*` events it dispatches on
- * `document` instead:
+ * Exposes `Drupal.persistentPlayer` with `play()`, `pause()`, `stop()`,
+ * `getCurrent()` and `registerBackend()`. Other modules should not reach
+ * into the DOM directly - depend on this API and the `persistentplayer:*`
+ * events it dispatches on `document` instead:
  *
  * - `persistentplayer:play`      detail: {item}
  * - `persistentplayer:pause`     detail: {item}
@@ -18,29 +18,40 @@
  * and decides for itself what, if anything, plays next.
  *
  * `item` shape: { id, src, title, subtitle, artwork, mediaType }.
- * `mediaType` is currently always 'audio'.
+ * `mediaType` names the backend that plays it: 'audio' (built in, an
+ * <audio> element) or one another module registered, e.g. 'mixcloud'.
+ *
+ * A backend is registered with a factory, called once with the player's
+ * embed container and a reporter, returning an object with:
+ * - load(item): load (and start playing) an item.
+ * - play(), pause(): control playback.
+ * - isPaused(): whether playback is paused.
+ * - unload(): stop and remove what it loaded.
+ * - embedded: TRUE when the backend shows its own player in the embed
+ *   container (the bar then hides its own play/pause and progress).
+ * The reporter has play(), pause(), ended() and time(currentTime, duration)
+ * for the backend to report what happens.
  */
 
 (function (Drupal, once) {
   'use strict';
 
+  const factories = {};
+  const backends = {};
   let currentItem = null;
-  let audio = null;
+  let currentBackend = null;
   let elements = null;
 
   function dispatch(name, detail) {
     document.dispatchEvent(new CustomEvent(name, { detail: detail }));
   }
 
-  function updatePlayPauseUi() {
-    elements.playPause.classList.toggle('is-playing', !audio.paused && !audio.ended);
-    elements.playPause.setAttribute(
-      'aria-label',
-      !audio.paused && !audio.ended ? Drupal.t('Pause') : Drupal.t('Play'),
-    );
+  function updatePlayPauseUi(playing) {
+    elements.playPause.classList.toggle('is-playing', playing);
+    elements.playPause.setAttribute('aria-label', playing ? Drupal.t('Pause') : Drupal.t('Play'));
   }
 
-  function renderItem(item) {
+  function renderItem(item, backend) {
     elements.title.textContent = item.title || '';
     elements.subtitle.textContent = item.subtitle || '';
     if (item.artwork) {
@@ -51,7 +62,85 @@
       elements.artwork.hidden = true;
       elements.artwork.removeAttribute('src');
     }
+    elements.progress.value = 0;
+    elements.root.classList.toggle('is-embedded', !!backend.embedded);
     elements.root.hidden = false;
+  }
+
+  /**
+   * What a backend calls to report playback; ignored unless it is current.
+   */
+  function reporter(name) {
+    const isCurrent = () => currentBackend === backends[name];
+    return {
+      play() {
+        if (isCurrent()) {
+          updatePlayPauseUi(true);
+          dispatch('persistentplayer:play', { item: currentItem });
+        }
+      },
+      pause() {
+        if (isCurrent()) {
+          updatePlayPauseUi(false);
+          dispatch('persistentplayer:pause', { item: currentItem });
+        }
+      },
+      ended() {
+        if (isCurrent()) {
+          updatePlayPauseUi(false);
+          dispatch('persistentplayer:ended', { item: currentItem });
+        }
+      },
+      time(currentTime, duration) {
+        if (!isCurrent()) {
+          return;
+        }
+        if (duration) {
+          elements.progress.value = (currentTime / duration) * 100;
+        }
+        dispatch('persistentplayer:timeupdate', { item: currentItem, currentTime, duration });
+      },
+    };
+  }
+
+  function backend(name) {
+    if (!backends[name] && factories[name]) {
+      backends[name] = factories[name](elements.embed, reporter(name));
+    }
+    return backends[name] || null;
+  }
+
+  /**
+   * The built-in backend: the <audio> element in the player.
+   */
+  function audioBackend(audio) {
+    return (embed, report) => {
+      audio.addEventListener('play', () => report.play());
+      audio.addEventListener('pause', () => report.pause());
+      audio.addEventListener('ended', () => report.ended());
+      audio.addEventListener('timeupdate', () => report.time(audio.currentTime, audio.duration));
+      return {
+        embedded: false,
+        load(item) {
+          audio.src = item.src;
+          audio.play();
+        },
+        play() {
+          audio.play();
+        },
+        pause() {
+          audio.pause();
+        },
+        isPaused() {
+          return audio.paused || audio.ended;
+        },
+        unload() {
+          audio.pause();
+          audio.removeAttribute('src');
+          audio.load();
+        },
+      };
+    };
   }
 
   const PersistentPlayer = {
@@ -66,26 +155,34 @@
         return;
       }
       if (currentItem && String(currentItem.id) === String(item.id)) {
-        if (audio.paused) {
-          audio.play();
+        if (currentBackend.isPaused()) {
+          currentBackend.play();
         }
         else {
-          audio.pause();
+          currentBackend.pause();
         }
         return;
       }
+      const next = backend(item.mediaType || 'audio');
+      if (!next) {
+        Drupal.throwError(new Error(`No persistent player backend for "${item.mediaType}".`));
+        return;
+      }
+      if (currentBackend) {
+        currentBackend.unload();
+      }
       currentItem = item;
-      renderItem(item);
-      audio.src = item.src;
-      audio.play();
+      currentBackend = next;
+      renderItem(item, next);
+      next.load(item);
     },
 
     /**
      * Pauses playback without clearing the current item.
      */
     pause() {
-      if (audio) {
-        audio.pause();
+      if (currentBackend) {
+        currentBackend.pause();
       }
     },
 
@@ -97,12 +194,13 @@
         return;
       }
       const item = currentItem;
-      audio.pause();
-      audio.removeAttribute('src');
-      audio.load();
+      currentBackend.unload();
       currentItem = null;
+      currentBackend = null;
       elements.root.hidden = true;
+      elements.root.classList.remove('is-embedded');
       elements.progress.value = 0;
+      updatePlayPauseUi(false);
       dispatch('persistentplayer:stop', { item: item });
     },
 
@@ -113,6 +211,18 @@
     getCurrent() {
       return currentItem;
     },
+
+    /**
+     * Registers a backend for a media type (see the file comment).
+     *
+     * @param {string} mediaType
+     *   The item mediaType it plays.
+     * @param {function(HTMLElement, object): object} factory
+     *   Creates the backend from the embed container and a reporter.
+     */
+    registerBackend(mediaType, factory) {
+      factories[mediaType] = factory;
+    },
   };
 
   Drupal.persistentPlayer = PersistentPlayer;
@@ -120,7 +230,6 @@
   Drupal.behaviors.persistentPlayer = {
     attach(context) {
       once('persistent-player-init', '#persistent-player-audio', context).forEach((audioEl) => {
-        audio = audioEl;
         elements = {
           root: document.getElementById('persistent-player'),
           playPause: document.querySelector('.persistent-player__play-pause'),
@@ -129,7 +238,9 @@
           title: document.querySelector('.persistent-player__title'),
           subtitle: document.querySelector('.persistent-player__subtitle'),
           progress: document.querySelector('.persistent-player__progress'),
+          embed: document.querySelector('.persistent-player__embed'),
         };
+        PersistentPlayer.registerBackend('audio', audioBackend(audioEl));
 
         elements.playPause.addEventListener('click', () => {
           if (currentItem) {
@@ -137,29 +248,6 @@
           }
         });
         elements.stop.addEventListener('click', () => PersistentPlayer.stop());
-
-        audio.addEventListener('play', () => {
-          updatePlayPauseUi();
-          dispatch('persistentplayer:play', { item: currentItem });
-        });
-        audio.addEventListener('pause', () => {
-          updatePlayPauseUi();
-          dispatch('persistentplayer:pause', { item: currentItem });
-        });
-        audio.addEventListener('ended', () => {
-          updatePlayPauseUi();
-          dispatch('persistentplayer:ended', { item: currentItem });
-        });
-        audio.addEventListener('timeupdate', () => {
-          if (audio.duration) {
-            elements.progress.value = (audio.currentTime / audio.duration) * 100;
-          }
-          dispatch('persistentplayer:timeupdate', {
-            item: currentItem,
-            currentTime: audio.currentTime,
-            duration: audio.duration,
-          });
-        });
       });
     },
   };

@@ -1,5 +1,5 @@
 name: 'DJ Mixes: Mixcloud'
-description: 'Mixcloud shows as media (dj_mixes_mixcloud): the "Mixcloud" media type (oEmbed player and cover) with fields for the Mixcloud API data - account, upload date, duration, description, cover colour, tags, a tracklist read from the description, picture and play/favorite/comment/repost/listener counts - and on DJ mixes a "Mixcloud" field (one item per part), a "Mixcloud URL" field and "Musical genres" (a vocabulary filled from the Mixcloud tags) (MP3 tracks on DJ mixes become optional). drush dj-mixes:mixcloud-import <account> [--filter=...] imports or refreshes an account and links Dyssembler shows to the DJ mix with the same episode number. Requires recipes/dj_mixes.'
+description: 'Mixcloud shows as media (dj_mixes_mixcloud): the "Mixcloud" media type (oEmbed player and cover; on DJ mixes a play button for the persistent player, whose mixcloud backend plays the show in Mixcloud''s widget in the player bar) with fields for the Mixcloud API data - account, upload date, duration, description, cover colour, tags, a tracklist read from the description, picture and play/favorite/comment/repost/listener counts - and on DJ mixes a "Mixcloud" field (one item per part), a "Mixcloud URL" field and "Musical genres" (a vocabulary filled from the Mixcloud tags) (MP3 tracks on DJ mixes become optional). drush dj-mixes:mixcloud-import <account> [--filter=...] imports or refreshes an account and links Dyssembler shows to the DJ mix with the same episode number. Requires recipes/dj_mixes.'
 type: 'Content type'
 install:
   - dj_mixes_mixcloud
@@ -48,7 +48,7 @@ config:
             type: entity_reference_entity_view
             label: visually_hidden
             settings:
-              view_mode: default
+              view_mode: player_row
               link: false
             third_party_settings: {  }
             weight: 5

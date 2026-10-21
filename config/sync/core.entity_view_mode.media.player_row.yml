@@ -1,0 +1,11 @@
+uuid: 2ced09f7-a5b7-4a21-ba91-bac121b3a7ad
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.player_row
+label: 'Player row'
+description: 'A play button for the persistent player, with details such as a tracklist.'
+targetEntityType: media
+cache: true

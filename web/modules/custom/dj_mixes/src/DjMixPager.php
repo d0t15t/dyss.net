@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
  * when exposed, sorting - is carried in the URL from the listing to a mix
  * and from mix to mix, so paging follows the search the visitor came from.
  */
-final class DjMixPager {
+class DjMixPager {
 
   /**
    * The listing view and display.

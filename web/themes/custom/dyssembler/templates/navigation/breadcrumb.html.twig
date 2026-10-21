@@ -12,7 +12,7 @@
     <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
     <ol>
     {% for item in breadcrumb %}
-      <li>
+      <li{% if loop.last and not item.url %} aria-current="page"{% endif %}>
         {% if item.url %}
           <a href="{{ item.url }}">{{ item.text }}</a>
         {% else %}

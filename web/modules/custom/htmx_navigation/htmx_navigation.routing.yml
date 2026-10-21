@@ -1,0 +1,7 @@
+htmx_navigation.settings:
+  path: '/admin/config/user-interface/htmx-navigation'
+  defaults:
+    _form: '\Drupal\htmx_navigation\Form\SettingsForm'
+    _title: 'htmx navigation'
+  requirements:
+    _permission: 'administer site configuration'

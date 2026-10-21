@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\Tests\persistent_player\Unit;
+namespace Drupal\Tests\htmx_navigation\Unit;
 
 use Drupal\Core\Render\Placeholder\PlaceholderStrategyInterface;
-use Drupal\persistent_player\Render\HtmxBigPipeStrategy;
+use Drupal\htmx_navigation\Render\HtmxBigPipeStrategy;
 use Drupal\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * Tests that BigPipe is skipped for htmx requests only.
  */
-#[Group('persistent_player')]
+#[Group('htmx_navigation')]
 class HtmxBigPipeStrategyTest extends UnitTestCase {
 
   /**

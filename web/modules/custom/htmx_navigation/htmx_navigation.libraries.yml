@@ -1,0 +1,12 @@
+navigation:
+  version: 1.x
+  css:
+    component:
+      css/htmx-navigation.css: {}
+  js:
+    js/htmx-navigation.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.htmx
+    - core/drupalSettings
+    - core/once

@@ -1,8 +1,9 @@
 name: 'Basic site structure'
-description: 'Sets Dyssembler as the site theme and places the main menu, footer, and persistent player blocks.'
+description: 'Sets Dyssembler as the site theme, enables htmx navigation (swapping #pjax-content) and places the main menu, footer, and persistent player blocks.'
 type: 'Themes'
 install:
   - dyssembler
+  - htmx_navigation
   - persistent_player
 config:
   # Leave any pre-existing blocks/menus as-is.
@@ -11,7 +12,7 @@ config:
     system.theme:
       simpleConfigUpdate:
         default: dyssembler
-    persistent_player.settings:
+    htmx_navigation.settings:
       simpleConfigUpdate:
         content_selector: '#pjax-content'
     block.block.dyssembler_branding:

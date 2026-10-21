@@ -1,0 +1,5 @@
+name: 'htmx navigation'
+type: module
+description: 'Same-site navigation with htmx: link clicks and GET forms swap only the content area, loading the assets the new page needs, so e.g. a media player outside it keeps playing.'
+package: User interface
+core_version_requirement: ^11.3

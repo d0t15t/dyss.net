@@ -1,0 +1,5 @@
+htmx_navigation.settings:
+  title: 'htmx navigation'
+  parent: system.admin_config_ui
+  description: 'Same-site navigation that swaps only the content area.'
+  route_name: htmx_navigation.settings

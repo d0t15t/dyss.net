@@ -1,13 +1,13 @@
-persistent_player.settings:
+htmx_navigation.settings:
   type: config_object
-  label: 'Persistent Player settings'
+  label: 'htmx navigation settings'
   mapping:
+    enabled:
+      type: boolean
+      label: 'Enable same-site navigation'
     content_selector:
       type: string
       label: 'Content selector'
-    enabled_pjax_nav:
-      type: boolean
-      label: 'Enable same-site AJAX navigation'
     excluded_path_patterns:
       type: sequence
       label: 'Excluded path patterns'

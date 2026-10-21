@@ -1,0 +1,45 @@
+/**
+ * @file
+ * Loading state and transition for same-site navigation.
+ */
+
+/* A thin bar at the top of the window while a page loads. */
+html.is-navigating::before {
+  content: "";
+  position: fixed;
+  z-index: 1000;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 3px;
+  background: currentColor;
+  transform-origin: left;
+  animation: htmx-navigation-loading 1.2s ease-out infinite;
+}
+
+/* The content dims if loading takes more than a moment. */
+.is-loading {
+  opacity: 0.6;
+  transition: opacity 0.2s ease 0.25s;
+}
+
+@keyframes htmx-navigation-loading {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 0.3;
+  }
+}
+
+/* A short crossfade between pages (View Transitions, where supported). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.18s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.is-navigating::before {
+    animation: none;
+  }
+}

@@ -1,5 +1,5 @@
 services:
-  Drupal\persistent_player\Render\HtmxBigPipeStrategy:
+  Drupal\htmx_navigation\Render\HtmxBigPipeStrategy:
     decorates: placeholder_strategy.big_pipe
     decoration_on_invalid: ignore
     arguments: ['@.inner', '@request_stack']

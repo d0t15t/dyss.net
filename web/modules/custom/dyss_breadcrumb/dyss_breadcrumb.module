@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Ends the breadcrumb with the current page.
+ */
+
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_system_breadcrumb_alter().
+ *
+ * Adds the page title as a last, unlinked item. Core's trail is cached per
+ * parent path, so this one varies by route too, and by the page's entity, so
+ * a renamed node shows its new title.
+ */
+function dyss_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
+  // No trail, e.g. on the front page: leave it out entirely.
+  if (!$breadcrumb->getLinks() || !$route_match->getRouteObject()) {
+    return;
+  }
+  $breadcrumb->addCacheContexts(['route']);
+  foreach ($route_match->getParameters() as $parameter) {
+    if ($parameter instanceof EntityInterface) {
+      $breadcrumb->addCacheableDependency($parameter);
+    }
+  }
+  $title = \Drupal::service('title_resolver')->getTitle(\Drupal::request(), $route_match->getRouteObject());
+  if ($title !== NULL && $title !== '') {
+    $breadcrumb->addLink(Link::fromTextAndUrl($title, Url::fromRoute('<none>')));
+  }
+}

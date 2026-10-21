@@ -1,0 +1,5 @@
+name: 'DYSS breadcrumb'
+type: module
+description: 'Ends the breadcrumb with the current page, unlinked.'
+package: Custom
+core_version_requirement: ^11

@@ -70,10 +70,10 @@ config:
         -
           name: field_musical_genres
           options:
-            type: entity_reference_label
+            type: dj_mixes_listing_filter_link
             label: above
             settings:
-              link: true
+              parameter: genre
             third_party_settings: {  }
             weight: 4
             region: content

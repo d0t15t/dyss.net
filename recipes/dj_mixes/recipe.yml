@@ -29,10 +29,10 @@ config:
       setComponent:
         name: field_tags
         options:
-          type: entity_reference_label
+          type: dj_mixes_listing_filter_link
           label: above
           settings:
-            link: true
+            parameter: tags
           third_party_settings: {  }
           weight: 6
           region: content

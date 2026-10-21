@@ -1,0 +1,7 @@
+field.formatter.settings.dj_mixes_listing_filter_link:
+  type: mapping
+  label: 'Link to the DJ mixes listing settings'
+  mapping:
+    parameter:
+      type: string
+      label: 'Filter parameter'

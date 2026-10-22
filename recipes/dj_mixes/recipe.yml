@@ -34,5 +34,5 @@ config:
           settings:
             parameter: tags
           third_party_settings: {  }
-          weight: 6
+          weight: 3
           region: content

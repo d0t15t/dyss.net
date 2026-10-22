@@ -33,7 +33,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: content
   field_cover_image:
     type: image
@@ -56,11 +56,11 @@ content:
     weight: 2
     region: content
   field_mix_date:
-    type: datetime_default
+    type: datetime_custom
     label: above
     settings:
       timezone_override: ''
-      format_type: medium
+      date_format: 'j M Y'
     third_party_settings: {  }
     weight: 1
     region: content
@@ -71,7 +71,7 @@ content:
       view_mode: player_row
       link: false
     third_party_settings: {  }
-    weight: 5
+    weight: 6
     region: content
   field_mixcloud_url:
     type: link
@@ -91,7 +91,7 @@ content:
     settings:
       parameter: genre
     third_party_settings: {  }
-    weight: 4
+    weight: 2
     region: content
   field_tags:
     type: dj_mixes_listing_filter_link
@@ -99,7 +99,7 @@ content:
     settings:
       parameter: tags
     third_party_settings: {  }
-    weight: 6
+    weight: 3
     region: content
   field_tracks:
     type: entity_reference_entity_view
@@ -108,7 +108,7 @@ content:
       view_mode: track_row
       link: false
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: content
   links:
     settings: {  }

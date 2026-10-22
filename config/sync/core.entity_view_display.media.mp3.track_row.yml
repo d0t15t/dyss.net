@@ -15,7 +15,6 @@ dependencies:
     - image.style.thumbnail
     - media.type.mp3
   module:
-    - datetime
     - image
 _core:
   default_config_hash: ZCKXP9-tgXp6JNgw0-j9qmlZR0e49E2kQ5-pZF4trSI
@@ -24,14 +23,6 @@ targetEntityType: media
 bundle: mp3
 mode: track_row
 content:
-  field_album:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 4
-    region: content
   field_artist:
     type: string
     label: hidden
@@ -59,32 +50,6 @@ content:
     third_party_settings: {  }
     weight: 6
     region: content
-  field_genre:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 5
-    region: content
-  field_release_date:
-    type: datetime_default
-    label: hidden
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 7
-    region: content
-  field_track_number:
-    type: number_integer
-    label: hidden
-    settings:
-      thousand_separator: ''
-      prefix_suffix: false
-    third_party_settings: {  }
-    weight: 2
-    region: content
   name:
     type: string
     label: hidden
@@ -95,7 +60,11 @@ content:
     region: content
 hidden:
   created: true
+  field_album: true
+  field_genre: true
   field_media_mp3_file: true
+  field_release_date: true
+  field_track_number: true
   langcode: true
   search_api_excerpt: true
   status: true

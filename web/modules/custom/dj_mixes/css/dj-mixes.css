@@ -1,29 +1,110 @@
+/**
+ * @file
+ * Track rows on DJ mix pages: play button, cover, title over artist,
+ * duration - as the Mixcloud rows (dj_mixes_mixcloud) are laid out.
+ */
+
 .track-row {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 3rem minmax(0, 1fr) auto;
+  grid-template-areas:
+    "play cover title duration"
+    "play cover artist duration";
   align-items: center;
-  gap: 0.75em;
-  padding: 0.5em 0;
-  border-block-end: 1px solid #e0e0e0;
+  gap: 0 0.75rem;
+  padding-block: 0.5rem;
+  border-block-end: 1px solid var(--color-border, #e0e0e0);
+}
+
+.track-row > .track-row__play-btn {
+  grid-area: play;
+}
+
+.track-row > .field--name-field-cover-art {
+  grid-area: cover;
+}
+
+.track-row > .field--name-field-cover-art img {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: var(--radius, 2px);
+}
+
+.track-row > .field--name-name {
+  grid-area: title;
+  align-self: end;
+  font-weight: 600;
+}
+
+.track-row > .field--name-field-artist {
+  grid-area: artist;
+  align-self: start;
+  color: var(--color-muted, #666);
+  font-size: 0.875rem;
+}
+
+.track-row > .field--name-field-duration {
+  grid-area: duration;
+  color: var(--color-muted, #666);
+  font-variant-numeric: tabular-nums;
 }
 
 .track-row__play-btn {
+  display: grid;
+  place-items: center;
   flex: 0 0 auto;
-  width: 1.75em;
-  height: 1.75em;
-  margin-inline-start: auto;
-  border: 1px solid #999;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--color-text, #1a1a1a);
   border-radius: 50%;
-  background: #fff;
+  background: transparent;
+  color: var(--color-text, #1a1a1a);
   cursor: pointer;
 }
 
+.track-row__play-btn:hover,
+.track-row__play-btn:focus-visible,
+.track-row__play-btn.is-playing {
+  border-color: var(--color-accent, #ac027d);
+  background: var(--color-accent, #ac027d);
+  color: #fff;
+}
+
 .track-row__play-btn::before {
-  content: '\25B6';
-  display: block;
-  font-size: 0.75em;
+  content: "\25B6\FE0E";
+  font-size: 0.7rem;
+  line-height: 1;
 }
 
 .track-row__play-btn.is-playing::before {
-  content: '\23F8';
+  content: "\23F8\FE0E";
+}
+
+/* Narrow screens: the title gets the full width, the duration goes below
+   it. */
+@media (max-width: 30rem) {
+  .track-row {
+    grid-template-columns: auto 2.5rem minmax(0, 1fr) auto;
+    grid-template-areas:
+      "play cover title title"
+      "play cover artist duration";
+  }
+
+  .track-row > .field--name-field-cover-art img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .track-row > .field--name-name {
+    font-size: 0.9375rem;
+  }
+
+  .track-row > .field--name-field-duration {
+    align-self: start;
+    font-size: 0.875rem;
+  }
 }

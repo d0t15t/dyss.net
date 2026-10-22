@@ -3,10 +3,6 @@
  * Mixcloud shows on DJ mix pages, played in the persistent player.
  */
 
-.mixcloud-row + .mixcloud-row {
-  margin-block-start: 1rem;
-}
-
 .mixcloud-row__main {
   display: flex;
   align-items: center;
@@ -20,7 +16,7 @@
   width: 3rem;
   height: 3rem;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: var(--radius, 2px);
 }
 
 .mixcloud-row__title {
@@ -37,4 +33,37 @@
 
 .mixcloud-row .track-row__play-btn {
   flex: none;
+}
+
+/* Narrow screens: the title gets the full width, the duration goes below
+   it - as in the MP3 track rows. */
+@media (max-width: 30rem) {
+  .mixcloud-row__main {
+    display: grid;
+    grid-template-columns: auto 2.5rem minmax(0, 1fr);
+    grid-template-areas:
+      "play cover title"
+      "play cover duration";
+    gap: 0 0.75rem;
+  }
+
+  .mixcloud-row__main > .track-row__play-btn {
+    grid-area: play;
+  }
+
+  .mixcloud-row__cover {
+    grid-area: cover;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .mixcloud-row__title {
+    grid-area: title;
+    font-size: 0.9375rem;
+  }
+
+  .mixcloud-row__duration {
+    grid-area: duration;
+    font-size: 0.875rem;
+  }
 }

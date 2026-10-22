@@ -11,8 +11,12 @@
   --color-text: #1a1a1a;
   --color-muted: #666666;
   --color-border: #e0e0e0;
-  --color-link: #1d4ed8;
-  --color-link-hover: #1e3a8a;
+  /* Magenta, the frontpage's "Listen" accent, marks links and focus
+     site-wide. */
+  --color-accent: #ac027d;
+  --color-link: var(--color-accent);
+  --color-link-hover: #7a0159;
+  --radius: 2px;
   --content-max-width: 46rem;
   --gutter: 1.25rem;
 }
@@ -36,13 +40,23 @@ img {
   height: auto;
 }
 
+/* Links read as text, underlined in the accent colour - as on the
+   frontpage. */
 a {
-  color: var(--color-link);
+  color: var(--color-text);
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
 }
 
 a:hover,
 a:focus {
-  color: var(--color-link-hover);
+  color: var(--color-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 h1,
@@ -53,6 +67,72 @@ h3 {
 
 h1 {
   font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* ----- Labels ----- */
+/* One small, spaced-out caps style for every label: field labels, filter
+   legends, section headings. */
+
+.field__label,
+.views-exposed-form legend,
+.views-exposed-form .form-item-name > label,
+.dyss-contact-form label {
+  margin-block-end: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ----- Forms ----- */
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font: inherit;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+  border-color: var(--color-text);
+  outline: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--color-accent);
+}
+
+.button,
+.form-submit {
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius);
+  background: var(--color-text);
+  color: #fff;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus,
+.form-submit:hover,
+.form-submit:focus {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
 }
 
 h2 {
@@ -150,33 +230,41 @@ ul.menu a {
 }
 
 ul.menu a:hover {
-  color: var(--color-link);
+  color: var(--color-accent);
 }
 
-ul.menu a.is-active {
+ul.menu a.is-active,
+.page-node-type-dj-mix ul.menu a[href$="/dj-mixes"] {
   font-weight: 600;
-  border-bottom-color: var(--color-text);
+  border-bottom-color: var(--color-accent);
 }
 
 /* ----- Breadcrumb ----- */
 
 .breadcrumb {
   padding-block: 0.75rem 0;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-muted);
 }
 
 .breadcrumb a {
   color: var(--color-muted);
+  text-decoration: none;
 }
 
-.breadcrumb li {
-  color: var(--color-border);
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+  color: var(--color-accent);
 }
 
 .breadcrumb li::before {
+  content: "/";
+  margin-inline: 0.5em;
   color: var(--color-border);
-  margin-inline: 0.4em;
+}
+
+.breadcrumb li:first-child::before {
+  content: none;
 }
 
 /* ----- Footer ----- */
@@ -195,39 +283,79 @@ ul.menu a.is-active {
 }
 
 .page-node-type-dj-mix .field--name-field-cover-image img {
-  border-radius: 4px;
+  border-radius: var(--radius);
 }
 
-.page-node-type-dj-mix .field--name-field-mix-date,
-.page-node-type-dj-mix .field--name-field-genre,
-.page-node-type-dj-mix .field--name-field-tags {
-  display: inline-block;
-  margin-inline-end: 1.5rem;
-  margin-block-end: 0.75rem;
+/* Date, genres, tags and Mixcloud links: label on the left, values in a
+   row. */
+.node--view-mode-full :is(
+  .field--name-field-mix-date,
+  .field--name-field-genre,
+  .field--name-field-musical-genres,
+  .field--name-field-tags,
+  .field--name-field-mixcloud-url
+) {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 0 1rem;
+  align-items: baseline;
+  padding-block: 0.4rem;
+  border-block-end: 1px solid var(--color-border);
   font-size: 0.9rem;
 }
 
-.page-node-type-dj-mix .field--name-field-mix-date .field__label,
-.page-node-type-dj-mix .field--name-field-genre .field__label,
-.page-node-type-dj-mix .field--name-field-tags .field__label {
-  font-weight: 600;
-  margin-inline-end: 0.35em;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.03em;
-  color: var(--color-muted);
+.node--view-mode-full :is(
+  .field--name-field-mix-date,
+  .field--name-field-genre,
+  .field--name-field-musical-genres,
+  .field--name-field-tags,
+  .field--name-field-mixcloud-url
+) > .field__label {
+  margin: 0;
 }
 
+.node--view-mode-full :is(
+  .field--name-field-musical-genres,
+  .field--name-field-tags
+) .field__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.9rem;
+}
+
+@media (max-width: 30rem) {
+  .node--view-mode-full :is(
+    .field--name-field-mix-date,
+    .field--name-field-genre,
+    .field--name-field-musical-genres,
+    .field--name-field-tags,
+    .field--name-field-mixcloud-url
+  ) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.node--view-mode-full .field--name-field-mixcloud-url .field__item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.node--view-mode-full .field--name-body {
+  margin-block: 1.5rem;
+}
+
+/* MP3 tracks and Mixcloud shows read as one list. */
 .page-node-type-dj-mix .field--name-field-tracks {
   margin-block-start: 1.5rem;
 }
 
-.page-node-type-dj-mix .field--name-field-tracks > .field__label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--color-muted);
-  margin-block-end: 0.5rem;
+.page-node-type-dj-mix .field--name-field-mixcloud {
+  margin-block-end: 1.5rem;
+}
+
+.field--name-field-mixcloud .field__item + .field__item {
+  margin-block-start: 0;
 }
 
 /* ----- DJ Mixes card grid ----- */
@@ -270,13 +398,11 @@ ul.menu a.is-active {
 }
 
 .view-id-dj_mixes .views-exposed-form legend {
-  margin-block-end: 0.4rem;
   padding: 0;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-muted);
+}
+
+.view-id-dj_mixes .views-exposed-form .form-item-name label {
+  display: block;
 }
 
 .view-id-dj_mixes .bef-checkboxes {
@@ -290,33 +416,32 @@ ul.menu a.is-active {
   margin: 0;
 }
 
+.view-id-dj_mixes .bef-checkboxes label {
+  cursor: pointer;
+}
+
 .view-id-dj_mixes .bef-soft-limit-link {
   display: inline-block;
   margin-block-start: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .view-id-dj_mixes .view-content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
-  gap: 1.5rem;
+  gap: 2rem 1.25rem;
   margin: 0;
   padding: 0;
 }
 
+/* Cards as in the DJ mix pager: cover, then title, no box. */
 .view-id-dj_mixes article.node--view-mode-teaser {
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.view-id-dj_mixes article.node--view-mode-teaser:hover {
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
 }
 
 .view-id-dj_mixes article.node--view-mode-teaser > .node__content {
@@ -333,12 +458,17 @@ ul.menu a.is-active {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  border-radius: var(--radius);
+  transition: opacity 0.15s ease;
+}
+
+.view-id-dj_mixes article.node--view-mode-teaser:hover img {
+  opacity: 0.85;
 }
 
 .view-id-dj_mixes article.node--view-mode-teaser h2 {
-  margin: 0;
-  padding: 0.75rem 0.85rem;
-  font-size: 0.95rem;
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.35;
 }
@@ -352,8 +482,8 @@ ul.menu a.is-active {
   overflow: hidden;
 }
 
-.view-id-dj_mixes article.node--view-mode-teaser h2 a:hover {
-  color: var(--color-link);
+.view-id-dj_mixes article.node--view-mode-teaser:hover h2 a {
+  color: var(--color-accent);
 }
 
 /* ----- Mixcloud ----- */
@@ -363,10 +493,6 @@ ul.menu a.is-active {
   display: block;
   width: 100%;
   border: 0;
-}
-
-.field--name-field-mixcloud .field__item + .field__item {
-  margin-block-start: 0.5rem;
 }
 
 /* ----- DJ mix pages with the pager ----- */
@@ -423,15 +549,6 @@ main:has(> .layout-sidebar-second .dj-mix-pager) > .layout-content {
   counter-reset: track;
 }
 
-.field--name-field-mixcloud-tracklist > .field__label {
-  margin-block-end: 0.35rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
 .field--name-field-mixcloud-tracklist .field__item {
   padding-block: 0.15rem;
   counter-increment: track;
@@ -454,40 +571,12 @@ main:has(> .layout-sidebar-second .dj-mix-pager) > .layout-content {
 
 .dyss-contact-form label {
   display: block;
-  margin-block-end: 0.25rem;
-  font-weight: 600;
 }
 
 .dyss-contact-form input[type="text"],
 .dyss-contact-form input[type="email"],
 .dyss-contact-form textarea {
   width: 100%;
-  padding: 0.5rem 0.6rem;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  font: inherit;
-}
-
-.dyss-contact-form input:focus,
-.dyss-contact-form textarea:focus {
-  border-color: var(--color-link);
-  outline: 2px solid color-mix(in srgb, var(--color-link) 25%, transparent);
-}
-
-.dyss-contact-form .form-submit {
-  padding: 0.55rem 1.25rem;
-  border: 0;
-  border-radius: 4px;
-  background: var(--color-text);
-  color: #fff;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.dyss-contact-form .form-submit:hover,
-.dyss-contact-form .form-submit:focus {
-  background: var(--color-link-hover);
 }
 
 /* ----- Frontpage ----- */

@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * The covers of a multi-part DJ mix's parts: one shown large, and the
+ * others to choose from below it.
+ *
+ * The choices are radio buttons, so choosing needs no JavaScript: the CSS
+ * shows the image of the checked one.
+ *
+ * Available variables:
+ * - covers: Covers in part order, each with:
+ *   - label: The part, e.g. "Part 2".
+ *   - image: The cover, large.
+ *   - thumbnail: The cover, small.
+ * - name: The radio buttons' name, unique on the page.
+ */
+#}
+<div class="dj-mix-covers">
+  <div class="dj-mix-covers__images">
+    {% for cover in covers %}
+      <div class="dj-mix-covers__image">{{ cover.image }}</div>
+    {% endfor %}
+  </div>
+  <fieldset class="dj-mix-covers__choices">
+    <legend class="visually-hidden">{{ 'Cover'|t }}</legend>
+    {% for cover in covers %}
+      <label class="dj-mix-covers__choice">
+        <input type="radio" name="{{ name }}" value="{{ loop.index }}"{{ loop.first ? ' checked' }}>
+        {{ cover.thumbnail }}
+        <span class="dj-mix-covers__label">{{ cover.label }}</span>
+      </label>
+    {% endfor %}
+  </fieldset>
+</div>

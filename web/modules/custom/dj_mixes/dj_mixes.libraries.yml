@@ -26,3 +26,9 @@ listing:
   css:
     component:
       css/dj-mixes-listing.css: {}
+
+covers:
+  version: 1.x
+  css:
+    component:
+      css/dj-mix-covers.css: {}

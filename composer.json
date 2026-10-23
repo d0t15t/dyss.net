@@ -32,6 +32,7 @@
         "drupal/facets": "^3.0",
         "drupal/migrate_plus": "^6.0",
         "drupal/migrate_tools": "^6.1",
+        "drupal/pathauto": "^1.15",
         "drupal/search_api": "^1.41",
         "drupal/search_api_solr": "^4.4",
         "drush/drush": "^13.7",

@@ -1,0 +1,26 @@
+uuid: 2dd6fb7b-654b-40b4-8957-f17c511f4211
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dj_mix
+  module:
+    - node
+_core:
+  default_config_hash: fphYPsQxUxIpf7KHj_0uBhhP71ScYWadaZSzMDVGBOU
+id: dj_mix
+label: 'DJ mix'
+type: 'canonical_entities:node'
+pattern: '/audio/[node:title]'
+selection_criteria:
+  e29c3469-fe9e-4184-9b55-bec22cd77795:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      dj_mix: dj_mix
+    uuid: e29c3469-fe9e-4184-9b55-bec22cd77795
+selection_logic: and
+weight: -10
+relationships: {  }

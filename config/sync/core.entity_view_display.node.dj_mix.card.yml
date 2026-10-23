@@ -16,7 +16,6 @@ dependencies:
     - image.style.dj_mix_card
     - node.type.dj_mix
   module:
-    - datetime
     - image
     - user
 _core:
@@ -37,18 +36,10 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_mix_date:
-    type: datetime_default
-    label: hidden
-    settings:
-      timezone_override: ''
-      format_type: html_date
-    third_party_settings: {  }
-    weight: 1
-    region: content
 hidden:
   body: true
   field_genre: true
+  field_mix_date: true
   field_mixcloud: true
   field_mixcloud_url: true
   field_musical_genres: true

@@ -5,8 +5,11 @@
  * Mixcloud media for DJ mixes.
  */
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Render\Element;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\media\OEmbed\Provider;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_media_source_info_alter().
@@ -93,4 +96,17 @@ function dj_mixes_mixcloud_preprocess_media__mixcloud__player_row(array &$variab
     'duration' => $seconds ? sprintf('%d:%02d:%02d', intdiv($seconds, 3600), intdiv($seconds % 3600, 60), $seconds % 60) : '',
   ];
   $variables['#attached']['library'][] = 'dj_mixes_mixcloud/player';
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter() for node.
+ *
+ * A DJ mix with Mixcloud shows plays those: its MP3 tracks, mostly the same
+ * shows, are not shown next to them. Only when a show actually renders, so
+ * the MP3s stay as a fallback.
+ */
+function dj_mixes_mixcloud_node_view_alter(array &$build, NodeInterface $node, EntityViewDisplayInterface $display) {
+  if ($node->bundle() === 'dj_mix' && isset($build['field_tracks']) && !empty($build['field_mixcloud']) && Element::children($build['field_mixcloud'])) {
+    $build['field_tracks']['#access'] = FALSE;
+  }
 }

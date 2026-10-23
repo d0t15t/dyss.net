@@ -1,0 +1,86 @@
+/**
+ * @file
+ * The covers of a multi-part DJ mix's parts, chosen with radio buttons.
+ */
+
+.dj-mix-covers {
+  margin-block-end: 1rem;
+}
+
+.dj-mix-covers__image {
+  display: none;
+}
+
+.dj-mix-covers__image img {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius, 2px);
+}
+
+/* The image of the checked choice. Mixes have a handful of parts at most. */
+.dj-mix-covers:has(.dj-mix-covers__choice:nth-of-type(1) input:checked) .dj-mix-covers__image:nth-child(1),
+.dj-mix-covers:has(.dj-mix-covers__choice:nth-of-type(2) input:checked) .dj-mix-covers__image:nth-child(2),
+.dj-mix-covers:has(.dj-mix-covers__choice:nth-of-type(3) input:checked) .dj-mix-covers__image:nth-child(3),
+.dj-mix-covers:has(.dj-mix-covers__choice:nth-of-type(4) input:checked) .dj-mix-covers__image:nth-child(4),
+.dj-mix-covers:has(.dj-mix-covers__choice:nth-of-type(5) input:checked) .dj-mix-covers__image:nth-child(5),
+.dj-mix-covers:has(.dj-mix-covers__choice:nth-of-type(6) input:checked) .dj-mix-covers__image:nth-child(6) {
+  display: block;
+}
+
+.dj-mix-covers__choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.dj-mix-covers__choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  color: var(--color-muted, #666);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* The radio button itself is hidden; its thumbnail shows the choice. */
+.dj-mix-covers__choice input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dj-mix-covers__choice img {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  border: 2px solid transparent;
+  border-radius: var(--radius, 2px);
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+
+.dj-mix-covers__choice:hover img {
+  opacity: 1;
+}
+
+.dj-mix-covers__choice:has(input:checked) {
+  color: var(--color-accent, #ac027d);
+}
+
+.dj-mix-covers__choice:has(input:checked) img {
+  border-color: var(--color-accent, #ac027d);
+  opacity: 1;
+}
+
+.dj-mix-covers__choice:has(input:focus-visible) img {
+  outline: 2px solid var(--color-accent, #ac027d);
+  outline-offset: 2px;
+}

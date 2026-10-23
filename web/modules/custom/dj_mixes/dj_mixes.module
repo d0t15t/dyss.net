@@ -31,6 +31,12 @@ function dj_mixes_theme() {
     'media__mp3__track_row' => [
       'base hook' => 'media',
     ],
+    'dj_mix_covers' => [
+      'variables' => [
+        'covers' => [],
+        'name' => '',
+      ],
+    ],
     'dj_mix_pager' => [
       'variables' => [
         'cards' => [],
@@ -117,6 +123,9 @@ function dj_mixes_entity_build_defaults_alter(array &$build, EntityInterface $en
  * Passes the listing parameters on in the cover image link.
  */
 function dj_mixes_node_view_alter(array &$build, NodeInterface $node, EntityViewDisplayInterface $display) {
+  if ($node->bundle() === 'dj_mix' && ($build['#view_mode'] ?? NULL) === 'full') {
+    _dj_mixes_part_covers($build, $node);
+  }
   if ($node->bundle() !== 'dj_mix' || !in_array($display->getMode(), DjMixPager::LINK_VIEW_MODES, TRUE)) {
     return;
   }
@@ -201,4 +210,68 @@ function dj_mixes_preprocess_views_view_unformatted(array &$variables) {
   $keys = array_keys($variables['rows']);
   $trigger = $keys[max(0, count($keys) - DjMixPager::SCROLL_PREFETCH)];
   $variables['rows'][$trigger]['attributes']->merge($htmx->getAttributes());
+}
+
+/**
+ * Shows the covers of a multi-part mix's parts, to choose from.
+ *
+ * Part 1 is the mix's own cover; the other parts show theirs - an MP3's
+ * cover art, else the media thumbnail (e.g. a Mixcloud show's picture). The
+ * parts are the ones the page lists: its Mixcloud shows if it has any, else
+ * its MP3 tracks.
+ */
+function _dj_mixes_part_covers(array &$build, NodeInterface $node): void {
+  if (empty($build['field_cover_image']) || $node->get('field_cover_image')->isEmpty()) {
+    return;
+  }
+  $field = $node->hasField('field_mixcloud') && !$node->get('field_mixcloud')->isEmpty() ? 'field_mixcloud' : 'field_tracks';
+  $parts = $node->get($field)->referencedEntities();
+  if (count($parts) < 2) {
+    return;
+  }
+  $files = [$node->get('field_cover_image')->entity];
+  foreach (array_slice($parts, 1) as $part) {
+    if ($part->access('view')) {
+      $build['#cache']['tags'] = array_merge($build['#cache']['tags'] ?? [], $part->getCacheTags());
+      $files[] = $part->hasField('field_cover_art') && !$part->get('field_cover_art')->isEmpty()
+        ? $part->get('field_cover_art')->entity
+        : $part->get('thumbnail')->entity;
+    }
+  }
+  $covers = [];
+  $seen = [];
+  foreach ($files as $index => $file) {
+    if (!$file || isset($seen[$file->getFileUri()])) {
+      continue;
+    }
+    $seen[$file->getFileUri()] = TRUE;
+    $label = t('Part @number', ['@number' => $index + 1]);
+    $alt = t('@title, cover of part @number', ['@title' => $node->label(), '@number' => $index + 1]);
+    $covers[] = [
+      'label' => $label,
+      'image' => [
+        '#theme' => 'image_style',
+        '#style_name' => 'wide',
+        '#uri' => $file->getFileUri(),
+        '#alt' => $alt,
+        '#attributes' => ['loading' => $index ? 'lazy' : 'eager'],
+      ],
+      'thumbnail' => [
+        '#theme' => 'image_style',
+        '#style_name' => 'thumbnail',
+        '#uri' => $file->getFileUri(),
+        '#alt' => '',
+      ],
+    ];
+  }
+  if (count($covers) < 2) {
+    return;
+  }
+  $build['field_cover_image'] = [
+    '#theme' => 'dj_mix_covers',
+    '#covers' => $covers,
+    '#name' => 'dj-mix-cover-' . $node->id(),
+    '#weight' => $build['field_cover_image']['#weight'] ?? 0,
+    '#attached' => ['library' => ['dj_mixes/covers']],
+  ];
 }

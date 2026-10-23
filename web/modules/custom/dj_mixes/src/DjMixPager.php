@@ -201,7 +201,20 @@ class DjMixPager {
     $view->setExposedInput($parameters);
     $view->setItemsPerPage(self::MAX_ITEMS);
     $view->setCurrentPage(0);
-    $view->execute();
+    // The facets filter writes its value into the current request (and
+    // $_GET) rather than the view's: make the view's request the current one
+    // meanwhile, so the page's own query is left alone.
+    // phpcs:ignore DrupalPractice.Variables.GetRequestData
+    $get = $_GET;
+    $this->requestStack->push($request);
+    try {
+      $view->execute();
+    }
+    finally {
+      $this->requestStack->pop();
+      // phpcs:ignore DrupalPractice.Variables.GetRequestData
+      $_GET = $get;
+    }
     $ids = [];
     foreach ($view->result as $row) {
       $entity = $row->_object?->getValue();

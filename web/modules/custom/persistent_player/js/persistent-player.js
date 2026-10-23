@@ -119,14 +119,24 @@
       audio.addEventListener('pause', () => report.pause());
       audio.addEventListener('ended', () => report.ended());
       audio.addEventListener('timeupdate', () => report.time(audio.currentTime, audio.duration));
+      // play() rejects when the browser won't play, e.g. before the visitor
+      // has interacted with the page: show it as paused, so the play button
+      // works. A load interrupted by the next one (AbortError) is expected.
+      const start = () => {
+        audio.play().catch((error) => {
+          if (error.name !== 'AbortError') {
+            report.pause();
+          }
+        });
+      };
       return {
         embedded: false,
         load(item) {
           audio.src = item.src;
-          audio.play();
+          start();
         },
         play() {
-          audio.play();
+          start();
         },
         pause() {
           audio.pause();

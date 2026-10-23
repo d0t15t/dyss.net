@@ -1,0 +1,11 @@
+uuid: 2b914e58-e1cc-40ee-83ff-83bd7c4a7aa2
+langcode: en
+status: true
+dependencies:
+  module:
+    - ai_chatlog
+id: ai_conversation_message.token
+label: Token
+description: null
+targetEntityType: ai_conversation_message
+cache: true

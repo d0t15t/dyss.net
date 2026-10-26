@@ -286,14 +286,15 @@ ul.menu a.is-active,
   border-radius: var(--radius);
 }
 
-/* Date, genres, tags and Mixcloud links: label on the left, values in a
-   row. */
+/* Date, genres, tags, Mixcloud and other links: label on the left, values
+   in a row. */
 .node--view-mode-full :is(
   .field--name-field-mix-date,
   .field--name-field-genre,
   .field--name-field-musical-genres,
   .field--name-field-tags,
-  .field--name-field-mixcloud-url
+  .field--name-field-mixcloud-url,
+  .field--name-field-external-links
 ) {
   display: grid;
   grid-template-columns: 9rem minmax(0, 1fr);
@@ -309,7 +310,8 @@ ul.menu a.is-active,
   .field--name-field-genre,
   .field--name-field-musical-genres,
   .field--name-field-tags,
-  .field--name-field-mixcloud-url
+  .field--name-field-mixcloud-url,
+  .field--name-field-external-links
 ) > .field__label {
   margin: 0;
 }
@@ -329,7 +331,8 @@ ul.menu a.is-active,
     .field--name-field-genre,
     .field--name-field-musical-genres,
     .field--name-field-tags,
-    .field--name-field-mixcloud-url
+    .field--name-field-mixcloud-url,
+    .field--name-field-external-links
   ) {
     grid-template-columns: minmax(0, 1fr);
   }

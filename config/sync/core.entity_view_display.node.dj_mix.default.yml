@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.dj_mix.body
     - field.field.node.dj_mix.field_cover_image
+    - field.field.node.dj_mix.field_external_links
     - field.field.node.dj_mix.field_genre
     - field.field.node.dj_mix.field_mix_date
     - field.field.node.dj_mix.field_mixcloud
@@ -45,6 +46,18 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_external_links:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: nofollow
+      target: _blank
+    third_party_settings: {  }
+    weight: 22
     region: content
   field_genre:
     type: string

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.dj_mix.body
     - field.field.node.dj_mix.field_cover_image
+    - field.field.node.dj_mix.field_external_links
     - field.field.node.dj_mix.field_genre
     - field.field.node.dj_mix.field_mix_date
     - field.field.node.dj_mix.field_mixcloud
@@ -51,6 +52,14 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_external_links:
+    type: link_default
+    weight: 7
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_genre:
     type: string_textfield

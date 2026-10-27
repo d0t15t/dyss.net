@@ -424,7 +424,15 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'DJ Mixes | [site:name]'
+            description: 'The DJ mix archive of DJ Your Body and Dyssembler Radio (Berlin Community Radio, 2013-2018): mixes by DJ Your Body and guests across house, techno, disco, electro, ambient and more. Filter by artist and genre, and play in the browser.'
+            canonical_url: '[site:url]dj-mixes'
+            og_title: 'DJ Mixes'
+            og_url: '[site:url]dj-mixes'
+          tokenize: false
       path: dj-mixes
       menu:
         type: normal

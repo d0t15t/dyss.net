@@ -1,0 +1,33 @@
+uuid: 313faaaf-96ad-48c1-b7e4-cc04b8f6842e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 1noCXlegCr5HFehQRF1ViXy1jhU1jZ_sNN99a8Sj5jo
+id: front
+label: 'Front page'
+tags:
+  title: 'DYSSEMBLER / Isaac Bigsby Trogdon'
+  description: 'Dyssembler is the umbrella for projects by Isaac Bigsby Trogdon: a radio show, a record label and music events. DJ mixes, releases and code from Berlin.'
+  og_title: 'DYSSEMBLER / Isaac Bigsby Trogdon'
+  og_description: 'Dyssembler is the umbrella for projects by Isaac Bigsby Trogdon: a radio show, a record label and music events. DJ mixes, releases and code from Berlin.'
+  og_type: website
+  schema_web_site_type: WebSite
+  schema_web_site_id: '[site:url]#website'
+  schema_web_site_name: DYSSEMBLER
+  schema_web_site_alternate_name: Dyssembler
+  schema_web_site_url: '[site:url]'
+  schema_web_site_in_language: en
+  schema_web_site_publisher: 'a:3:{s:5:"@type";s:6:"Person";s:3:"@id";s:14:"[site:url]#ibt";s:4:"name";s:20:"Isaac Bigsby Trogdon";}'
+  schema_person_type: Person
+  schema_person_id: '[site:url]#ibt'
+  schema_person_name: 'Isaac Bigsby Trogdon'
+  schema_person_alternate_name: 'DJ Your Body'
+  schema_person_url: '[site:url]'
+  schema_person_job_title: 'DJ, radio host and software engineer'
+  schema_person_description: 'Berlin-based DJ (DJ Your Body), host of Dyssembler Radio on Berlin Community Radio, and software engineer.'
+  schema_person_image: 'a:2:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:55:"[site:url]themes/custom/dyssembler/images/dyss-logo.jpg";}'
+  schema_person_same_as: 'https://www.mixcloud.com/djyourbody/,https://soundcloud.com/dyssembler,https://www.discogs.com/label/375586-Dyssembler/,https://d0t15t.github.io/'
+  canonical_url: '[site:url]'
+  shortlink: '[site:url]'
+  og_url: '[site:url]'

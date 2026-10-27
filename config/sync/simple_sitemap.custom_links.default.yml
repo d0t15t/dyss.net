@@ -1,0 +1,13 @@
+links:
+  -
+    path: /
+    priority: '1.0'
+    changefreq: weekly
+  -
+    path: /dj-mixes
+    priority: '0.9'
+    changefreq: weekly
+  -
+    path: /contact
+    priority: '0.3'
+    changefreq: yearly

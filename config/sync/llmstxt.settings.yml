@@ -1,0 +1,24 @@
+_core:
+  default_config_hash: ceCx5XZ_ay1Mxcv-sB95U_fBKoVkpvo8RaQiwutSZLI
+content: |-
+  # Dyssembler (dyss.net)
+
+  > Dyssembler is the umbrella for projects by Isaac Bigsby Trogdon (IBT), a Berlin-based DJ (as DJ Your Body), radio host and software engineer: the radio show Dyssembler Radio, a record label, and years of music and party events. dyss.net is home to the archive of his DJ mixes, playable in the browser.
+
+  Dyssembler Radio ran on Berlin Community Radio (BCR) from 2013 to 2018: DJ Your Body with guest DJs, artists and friends, mostly from Berlin's underground scenes. Most episodes have two or three parts by different DJs. The archive also holds DJ Your Body's own mixes, some back to back with DJ Sweat (2007-2010).
+
+  Each mix page on dyss.net gives the date, the artists (as tags), the musical genres, the tracklist where known, links to the artists elsewhere, and a player (Mixcloud or MP3) that keeps playing while browsing. Mix pages live at https://dyss.net/audio/<title>.
+
+  ## Main pages
+
+  - [DJ mixes](https://dyss.net/dj-mixes): The full mix archive, newest first. Filter by artist or tag (?tags[ID]=ID) and by genre (?genre[ID]=ID).
+  - [Contact](https://dyss.net/contact): Contact form for mr@dyss.net.
+
+  ## Elsewhere
+
+  - [DJ Your Body on Mixcloud](https://www.mixcloud.com/djyourbody/): Mixes and reposts by DJ Your Body.
+  - [Dyssembler Radio on Berlin Community Radio](https://www.mixcloud.com/BCR_Radio/playlists/dyssembler-season-2/): The show as broadcast on BCR (Mixcloud).
+  - [Dyssembler on SoundCloud](https://soundcloud.com/dyssembler): Original productions by DJ Your Body / IBT.
+  - [Dyssembler on Discogs](https://www.discogs.com/label/375586-Dyssembler/): The Dyssembler record label.
+  - [Payspace on Bandcamp](https://payspace.bandcamp.com): Electronic jazz adjacent behaviours.
+  - [d0t15t](https://d0t15t.github.io/): IBT's portfolio and CV as a software engineer.

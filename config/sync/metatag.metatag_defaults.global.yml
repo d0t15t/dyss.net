@@ -1,0 +1,20 @@
+uuid: 4603638f-6541-4df6-9b96-f9c120d61013
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: sL588ui1E_8-2c_UupwyYxcqX2OVyMFp3HTLbbFqvPc
+id: global
+label: Global
+tags:
+  og_site_name: '[site:name]'
+  og_type: website
+  og_url: '[current-page:url]'
+  og_title: '[current-page:title]'
+  og_image: '[site:url]themes/custom/dyssembler/images/dyss-logo.jpg'
+  og_locale: en_US
+  twitter_cards_type: summary
+  twitter_cards_title: '[current-page:title]'
+  twitter_cards_image: '[site:url]themes/custom/dyssembler/images/dyss-logo.jpg'
+  canonical_url: '[current-page:url]'
+  title: '[current-page:title] | [site:name]'

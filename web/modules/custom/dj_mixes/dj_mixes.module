@@ -5,14 +5,18 @@
  * Provides the DJ Mix content type's track-row rendering and playback wiring.
  */
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Htmx\Htmx;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
+use Drupal\dj_mixes\DjMixMetadata;
 use Drupal\dj_mixes\DjMixPager;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\node\NodeInterface;
+use Drupal\simple_sitemap\Entity\SimpleSitemapInterface;
 use Drupal\views\ViewExecutable;
 
 /**
@@ -274,4 +278,130 @@ function _dj_mixes_part_covers(array &$build, NodeInterface $node): void {
     '#weight' => $build['field_cover_image']['#weight'] ?? 0,
     '#attached' => ['library' => ['dj_mixes/covers']],
   ];
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function dj_mixes_token_info() {
+  return [
+    'tokens' => [
+      'node' => [
+        'dj-mix-description' => [
+          'name' => t('DJ mix description'),
+          'description' => t('One line about a DJ mix: show, artists, station, date and genres. Empty for other content.'),
+        ],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function dj_mixes_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+  if ($type !== 'node' || !isset($tokens['dj-mix-description']) || !($data['node'] ?? NULL) instanceof NodeInterface) {
+    return $replacements;
+  }
+  $node = $data['node'];
+  $bubbleable_metadata->addCacheableDependency($node);
+  $replacements[$tokens['dj-mix-description']] = $node->bundle() === 'dj_mix'
+    ? \Drupal::service(DjMixMetadata::class)->description($node)
+    : '';
+  return $replacements;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view() for node.
+ *
+ * A DJ mix page describes the mix as schema.org JSON-LD for search engines.
+ */
+function dj_mixes_node_view(array &$build, NodeInterface $node, EntityViewDisplayInterface $display, $view_mode) {
+  if ($node->bundle() !== 'dj_mix' || $view_mode !== 'full') {
+    return;
+  }
+  $data = \Drupal::service(DjMixMetadata::class)->structuredData($node);
+  $build['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#attributes' => ['type' => 'application/ld+json'],
+      // JSON_HEX_TAG keeps "</script>" in any text from ending the tag.
+      '#value' => json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP),
+    ],
+    'dj_mixes_structured_data',
+  ];
+}
+
+/**
+ * Implements hook_llmstxt().
+ *
+ * Lists the DJ mixes in /llms.txt, after the text set on its settings form.
+ */
+function dj_mixes_llmstxt() {
+  return [\Drupal::service(DjMixMetadata::class)->llmsTxt()];
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert() for node.
+ */
+function dj_mixes_node_insert(NodeInterface $node) {
+  _dj_mixes_llmstxt_changed($node->bundle());
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update() for node.
+ */
+function dj_mixes_node_update(NodeInterface $node) {
+  _dj_mixes_llmstxt_changed($node->bundle());
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete() for node.
+ */
+function dj_mixes_node_delete(NodeInterface $node) {
+  _dj_mixes_llmstxt_changed($node->bundle());
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update() for taxonomy_term.
+ *
+ * Genre names are part of the mixes in /llms.txt.
+ */
+function dj_mixes_taxonomy_term_update(EntityInterface $term) {
+  _dj_mixes_llmstxt_changed('dj_mix');
+}
+
+/**
+ * Refreshes /llms.txt when DJ mixes change.
+ *
+ * Its response is cached with the "llmstxt" tag only, so the mixes in it
+ * would otherwise go stale.
+ */
+function _dj_mixes_llmstxt_changed(string $bundle): void {
+  if ($bundle === 'dj_mix') {
+    Cache::invalidateTags(['llmstxt']);
+  }
+}
+
+/**
+ * Implements hook_simple_sitemap_links_alter().
+ *
+ * A mix's cover is often also the cover art of its first part, so it would
+ * be listed twice: keep each image once, with the caption it was given.
+ */
+function dj_mixes_simple_sitemap_links_alter(array &$links, SimpleSitemapInterface $sitemap) {
+  foreach ($links as &$link) {
+    if (empty($link['images'])) {
+      continue;
+    }
+    $seen = [];
+    $link['images'] = array_values(array_filter($link['images'], function (array $image) use (&$seen) {
+      if (isset($seen[$image['path']])) {
+        return FALSE;
+      }
+      return $seen[$image['path']] = TRUE;
+    }));
+  }
 }

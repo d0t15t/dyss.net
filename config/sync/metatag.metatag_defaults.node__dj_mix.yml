@@ -1,0 +1,20 @@
+uuid: 6a131c70-379f-4caf-b921-054f3a3b6d35
+langcode: en
+status: true
+dependencies: {  }
+id: node__dj_mix
+label: 'Content: DJ Mix'
+tags:
+  title: '[node:title] | [site:name]'
+  description: '[node:dj-mix-description]'
+  canonical_url: '[node:url]'
+  og_type: music.playlist
+  og_title: '[node:title]'
+  og_description: '[node:dj-mix-description]'
+  og_url: '[node:url]'
+  og_image: '[node:field_cover_image:entity:url]'
+  og_image_alt: '[node:title]'
+  twitter_cards_type: summary_large_image
+  twitter_cards_description: '[node:dj-mix-description]'
+  twitter_cards_image: '[node:field_cover_image:entity:url]'
+  twitter_cards_image_alt: '[node:title]'

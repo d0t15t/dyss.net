@@ -11,3 +11,8 @@ tags:
   canonical_url: '[user:url]'
   description: '[site:name]'
   title: '[user:display-name] | [site:name]'
+  schema_web_page_type: ''
+  schema_web_page_id: ''
+  schema_web_page_breadcrumb: ''
+  schema_web_page_in_language: ''
+  schema_web_page_publisher: ''

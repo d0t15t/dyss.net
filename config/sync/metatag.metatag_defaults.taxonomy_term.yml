@@ -10,3 +10,5 @@ tags:
   canonical_url: '[term:url]'
   description: '[term:description]'
   title: '[term:name] | [site:name]'
+  schema_web_page_type: CollectionPage
+  schema_web_page_description: '[term:description]'

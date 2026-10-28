@@ -31,3 +31,6 @@ tags:
   canonical_url: '[site:url]'
   shortlink: '[site:url]'
   og_url: '[site:url]'
+  schema_web_page_id: '[site:url]#webpage'
+  schema_web_page_description: 'Dyssembler is the umbrella for projects by Isaac Bigsby Trogdon: a radio show, a record label and music events. DJ mixes, releases and code from Berlin.'
+  schema_web_page_breadcrumb: ''

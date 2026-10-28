@@ -18,3 +18,8 @@ tags:
   twitter_cards_image: '[site:url]themes/custom/dyssembler/images/dyss-logo.jpg'
   canonical_url: '[current-page:url]'
   title: '[current-page:title] | [site:name]'
+  schema_web_page_type: WebPage
+  schema_web_page_id: '[current-page:url]#webpage'
+  schema_web_page_breadcrumb: 'Yes'
+  schema_web_page_in_language: en
+  schema_web_page_publisher: 'a:3:{s:5:"@type";s:6:"Person";s:3:"@id";s:14:"[site:url]#ibt";s:4:"name";s:20:"Isaac Bigsby Trogdon";}'

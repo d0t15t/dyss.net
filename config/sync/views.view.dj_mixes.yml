@@ -432,6 +432,9 @@ display:
             canonical_url: '[site:url]dj-mixes'
             og_title: 'DJ Mixes'
             og_url: '[site:url]dj-mixes'
+            schema_web_page_type: CollectionPage
+            schema_web_page_id: '[site:url]dj-mixes#webpage'
+            schema_web_page_description: 'The DJ mix archive of DJ Your Body and Dyssembler Radio (Berlin Community Radio, 2013-2018).'
           tokenize: false
       path: dj-mixes
       menu:

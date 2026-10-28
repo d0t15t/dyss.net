@@ -80,6 +80,8 @@ class DjMixMetadata {
       '@id' => $url . '#mix',
       'name' => $mix->label(),
       'url' => $url,
+      // The page's WebPage, from the schema_web_page meta tags.
+      'mainEntityOfPage' => ['@id' => $url . '#webpage'],
       'description' => $this->description($mix),
     ];
     if ($date = $this->date($mix, 'Y-m-d')) {

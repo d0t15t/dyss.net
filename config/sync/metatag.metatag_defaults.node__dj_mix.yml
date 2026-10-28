@@ -18,3 +18,4 @@ tags:
   twitter_cards_description: '[node:dj-mix-description]'
   twitter_cards_image: '[node:field_cover_image:entity:url]'
   twitter_cards_image_alt: '[node:title]'
+  schema_web_page_description: '[node:dj-mix-description]'

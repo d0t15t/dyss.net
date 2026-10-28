@@ -280,6 +280,20 @@ function _dj_mixes_part_covers(array &$build, NodeInterface $node): void {
 }
 
 /**
+ * Implements hook_metatag_tags_alter().
+ *
+ * A person or a site can go by several names: alternateName takes a list,
+ * comma-separated in the meta tag settings.
+ */
+function dj_mixes_metatag_tags_alter(array &$definitions) {
+  foreach (['schema_person_alternate_name', 'schema_web_site_alternate_name'] as $id) {
+    if (isset($definitions[$id])) {
+      $definitions[$id]['multiple'] = TRUE;
+    }
+  }
+}
+
+/**
  * Implements hook_token_info().
  */
 function dj_mixes_token_info() {

@@ -4,6 +4,8 @@ namespace Drupal\dj_mixes;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
 use Drupal\media\MediaInterface;
 use Drupal\node\NodeInterface;
@@ -19,8 +21,12 @@ use Symfony\Component\Routing\Exception\RouteNotFoundException;
  *   Dyssembler Radio, or else a MusicRecording - with its artists, genres,
  *   cover and its parts as audio.
  * - llmsTxt(): the list of mixes for /llms.txt.
+ *
+ * Descriptions are in the language of the mix translation given.
  */
 class DjMixMetadata {
+
+  use StringTranslationTrait;
 
   /**
    * The radio show; mixes titled "Dyssembler Radio #N | ..." are episodes.
@@ -35,41 +41,56 @@ class DjMixMetadata {
   public function __construct(
     protected EntityTypeManagerInterface $entityTypeManager,
     protected FileUrlGeneratorInterface $fileUrlGenerator,
+    protected LanguageManagerInterface $languageManager,
   ) {}
 
   /**
    * One line about a mix: show, artists, station, date and genres.
    */
   public function description(NodeInterface $mix): string {
+    $langcode = $mix->language()->getId();
     [$show, $artists] = $this->titleParts($mix);
-    $date = $this->date($mix, 'j F Y');
+    $date = $this->date($mix, (string) $this->t('j F Y', [], ['context' => 'DJ mix date', 'langcode' => $langcode]), $langcode);
     $on_air = $this->onStation($mix);
+    $args = ['@show' => $show, '@artists' => $artists, '@station' => self::STATION, '@date' => $date];
 
     if ($this->episodeNumber($mix) !== NULL) {
-      $text = $artists ? "$show with $artists" : $show;
+      $args['@text'] = $artists ? $this->text('@show with @artists', $args, $langcode) : $show;
       if ($on_air) {
-        $text .= ', broadcast on ' . self::STATION . ($date ? " on $date" : '');
+        $text = $date ? $this->text('@text, broadcast on @station on @date', $args, $langcode) : $this->text('@text, broadcast on @station', $args, $langcode);
       }
-      elseif ($date) {
-        $text .= ", $date";
+      else {
+        $text = $date ? $this->text('@text, @date', $args, $langcode) : $args['@text'];
       }
     }
     else {
-      $text = $artists ? "$show, a DJ mix by $artists" : "$show, a DJ mix";
-      $text .= $date ? ", $date" : '';
+      $args['@text'] = $artists ? $this->text('@show, a DJ mix by @artists', $args, $langcode) : $this->text('@show, a DJ mix', $args, $langcode);
+      $text = $date ? $this->text('@text, @date', $args, $langcode) : $args['@text'];
     }
     $text .= '.';
     if ($genres = $this->genres($mix)) {
-      $text .= ' Genres: ' . implode(', ', array_slice($genres, 0, 6)) . '.';
+      $text .= ' ' . $this->text('Genres: @genres.', ['@genres' => implode(', ', array_slice($genres, 0, 6))], $langcode);
     }
     return $text;
+  }
+
+  /**
+   * Translates a sentence and fills in its placeholders as plain text.
+   *
+   * The description goes into meta tags and JSON-LD, which escape it there.
+   */
+  protected function text(string $text, array $args, string $langcode): string {
+    // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
+    return strtr((string) $this->t($text, [], ['langcode' => $langcode]), $args);
   }
 
   /**
    * The mix as schema.org JSON-LD.
    */
   public function structuredData(NodeInterface $mix): array {
-    $site = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+    // The site and its people have one identity in all languages.
+    $default = $this->languageManager->getDefaultLanguage();
+    $site = Url::fromRoute('<front>', [], ['absolute' => TRUE, 'language' => $default])->toString();
     $url = $mix->toUrl('canonical', ['absolute' => TRUE])->toString();
     $episode = $this->episodeNumber($mix);
     $artists = $this->artists($mix);
@@ -83,6 +104,7 @@ class DjMixMetadata {
       // The page's WebPage, from the schema_web_page meta tags.
       'mainEntityOfPage' => ['@id' => $url . '#webpage'],
       'description' => $this->description($mix),
+      'inLanguage' => $mix->language()->getId(),
     ];
     if ($date = $this->date($mix, 'Y-m-d')) {
       $data['datePublished'] = $date;
@@ -204,11 +226,11 @@ class DjMixMetadata {
   }
 
   /**
-   * The mix date in the given format, or '' when unknown.
+   * The mix date in the given format and language, or '' when unknown.
    */
-  protected function date(NodeInterface $mix, string $format): string {
+  protected function date(NodeInterface $mix, string $format, ?string $langcode = NULL): string {
     $item = $mix->get('field_mix_date')->first();
-    return $item?->date ? $item->date->format($format) : '';
+    return $item?->date ? $item->date->format($format, $langcode ? ['langcode' => $langcode] : []) : '';
   }
 
   /**

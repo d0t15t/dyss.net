@@ -4,3 +4,5 @@ description: 'A /contact page whose messages are mailed to a configurable addres
 package: Custom
 core_version_requirement: ^11
 configure: dyss_contact.settings
+interface translation project: dyss_contact
+interface translation server pattern: modules/custom/dyss_contact/translations/%language.po

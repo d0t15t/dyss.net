@@ -7,3 +7,5 @@ dependencies:
   - drupal:media
   - drupal:node
   - persistent_player:persistent_player
+interface translation project: dj_mixes
+interface translation server pattern: modules/custom/dj_mixes/translations/%language.po

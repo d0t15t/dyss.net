@@ -94,7 +94,7 @@ final class ContactForm extends FormBase {
     ];
     $form['message'] = [
       '#type' => 'textarea',
-      '#title' => $this->t('Message'),
+      '#title' => $this->t('Message', [], ['context' => 'Contact form']),
       '#required' => TRUE,
       '#rows' => 8,
     ];

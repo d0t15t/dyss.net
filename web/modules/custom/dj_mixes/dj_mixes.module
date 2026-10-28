@@ -124,22 +124,21 @@ function dj_mixes_entity_build_defaults_alter(array &$build, EntityInterface $en
 /**
  * Implements hook_ENTITY_TYPE_view_alter() for node.
  *
- * Passes the listing parameters on in the cover image link.
+ * The cover image links to the mix in the language shown, with the listing
+ * parameters. The cover is shared by all translations, so the image
+ * formatter links to the original.
  */
 function dj_mixes_node_view_alter(array &$build, NodeInterface $node, EntityViewDisplayInterface $display) {
   if ($node->bundle() === 'dj_mix' && ($build['#view_mode'] ?? NULL) === 'full') {
     _dj_mixes_part_covers($build, $node);
   }
-  if ($node->bundle() !== 'dj_mix' || !in_array($display->getMode(), DjMixPager::LINK_VIEW_MODES, TRUE)) {
+  if ($node->bundle() !== 'dj_mix' || !in_array($display->getMode(), DjMixPager::LINK_VIEW_MODES, TRUE) || empty($build['field_cover_image'])) {
     return;
   }
   $query = _dj_mixes_listing_query($build);
-  if (!$query || empty($build['field_cover_image'])) {
-    return;
-  }
   foreach (Element::children($build['field_cover_image']) as $delta) {
     if (isset($build['field_cover_image'][$delta]['#url'])) {
-      $build['field_cover_image'][$delta]['#url']->setOption('query', $query);
+      $build['field_cover_image'][$delta]['#url'] = $node->toUrl('canonical', $query ? ['query' => $query] : []);
     }
   }
 }

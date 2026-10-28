@@ -3,8 +3,10 @@
 namespace Drupal\Tests\dj_mixes\Kernel;
 
 use Drupal\Core\Config\FileStorage;
+use Drupal\field\Entity\FieldConfig;
 use Drupal\dj_mixes\DjMixMetadata;
 use Drupal\file\Entity\File;
+use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
@@ -42,6 +44,8 @@ class DjMixMetadataTest extends KernelTestBase {
     'views',
     'datetime',
     'taxonomy',
+    'language',
+    'locale',
     'persistent_player',
     'dj_mixes',
   ];
@@ -153,6 +157,38 @@ class DjMixMetadataTest extends KernelTestBase {
     $this->assertSame(['DJ Your Body', 'DJ Sweat'], array_column($data['byArtist'], 'name'));
     $this->assertStringEndsWith('#ibt', $data['byArtist'][0]['@id']);
     $this->assertArrayNotHasKey('@id', $data['byArtist'][1]);
+  }
+
+  /**
+   * A German translation is described in German, with the same identities.
+   */
+  public function testGerman(): void {
+    $this->installSchema('locale', ['locales_source', 'locales_target', 'locales_location', 'locale_file']);
+    $this->installConfig(['language', 'locale']);
+    ConfigurableLanguage::createFromLangcode('de')->save();
+    $storage = $this->container->get('locale.storage');
+    foreach ([
+      ['j F Y', 'DJ mix date', 'j. F Y'],
+      ['October', 'Long month name', 'Oktober'],
+      ['@show with @artists', '', '@show mit @artists'],
+      ['@text, broadcast on @station on @date', '', '@text, gesendet auf @station am @date'],
+    ] as [$source, $context, $translation]) {
+      $string = $storage->createString(['source' => $source, 'context' => $context])->save();
+      $storage->createTranslation(['lid' => $string->lid, 'language' => 'de', 'translation' => $translation])->save();
+    }
+    // As on the site: the tags are the same in all languages.
+    FieldConfig::loadByName('node', 'dj_mix', 'field_tags')->setTranslatable(FALSE)->save();
+    $mix = $this->mix('Dyssembler Radio #2 | DJ Your Body & DJ Sweat', '2013-10-24', [$this->term('tags', DjMixMetadata::STATION)]);
+    $mix->addTranslation('de', ['title' => $mix->label()])->save();
+    $metadata = $this->container->get(DjMixMetadata::class);
+
+    $german = $mix->getTranslation('de');
+    // Names stay as they are, not escaped.
+    $this->assertSame('Dyssembler Radio #2 mit DJ Your Body & DJ Sweat, gesendet auf Berlin Community Radio am 24. Oktober 2013.', $metadata->description($german));
+    $this->assertStringStartsWith('Dyssembler Radio #2 with DJ Your Body & DJ Sweat, broadcast on', $metadata->description($mix));
+    $data = $metadata->structuredData($german);
+    $this->assertSame('de', $data['inLanguage']);
+    $this->assertSame($metadata->structuredData($mix)['publisher']['@id'], $data['publisher']['@id']);
   }
 
   /**

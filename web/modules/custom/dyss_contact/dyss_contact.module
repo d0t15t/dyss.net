@@ -50,6 +50,6 @@ function dyss_contact_preprocess_page_title(&$variables) {
 function dyss_contact_metatags_alter(array &$metatags, array &$context) {
   if (\Drupal::routeMatch()->getRouteName() === 'dyss_contact.form') {
     $metatags['schema_web_page_type'] = 'ContactPage';
-    $metatags['schema_web_page_description'] = 'Contact Isaac Bigsby Trogdon (DJ Your Body, Dyssembler).';
+    $metatags['schema_web_page_description'] = (string) t('Contact Isaac Bigsby Trogdon (DJ Your Body, Dyssembler).');
   }
 }

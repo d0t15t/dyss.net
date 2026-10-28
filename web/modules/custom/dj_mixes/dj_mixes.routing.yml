@@ -1,0 +1,8 @@
+# The listing's old path, from before it moved to /mixes.
+dj_mixes.old_listing:
+  path: '/dj-mixes'
+  defaults:
+    _controller: '\Drupal\dj_mixes\Controller\OldListingController::redirectToListing'
+  requirements:
+    # Only a redirect; the listing checks access itself.
+    _access: 'TRUE'

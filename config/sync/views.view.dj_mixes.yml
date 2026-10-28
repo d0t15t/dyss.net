@@ -476,7 +476,7 @@ display:
             schema_web_page_id: '[view:url]#webpage'
             schema_web_page_description: 'The mix archive of DJ Your Body and Dyssembler Radio (Berlin Community Radio, 2013-2018).'
           tokenize: false
-      path: dj-mixes
+      path: mixes
       menu:
         type: normal
         title: Mixes

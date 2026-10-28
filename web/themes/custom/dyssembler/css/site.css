@@ -276,6 +276,14 @@ ul.menu a.is-active,
   font-size: 0.875rem;
 }
 
+.site-footer ul.menu a {
+  color: var(--color-muted);
+}
+
+.site-footer ul.menu a:hover {
+  color: var(--color-accent);
+}
+
 /* ----- DJ Mix pages ----- */
 
 .page-node-type-dj-mix .field--name-field-cover-image {

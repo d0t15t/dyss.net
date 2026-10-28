@@ -9,3 +9,11 @@ dyss_contact.settings:
   description: 'Set the address contact form messages are sent to.'
   route_name: dyss_contact.settings
   parent: system.admin_config_system
+
+dyss_contact.imprint:
+  title: 'Imprint'
+  route_name: entity.node.canonical
+  route_parameters:
+    node: '4'
+  menu_name: footer
+  weight: 0

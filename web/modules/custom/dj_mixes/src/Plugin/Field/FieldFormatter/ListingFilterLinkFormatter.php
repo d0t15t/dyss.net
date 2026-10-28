@@ -16,7 +16,7 @@ use Drupal\taxonomy\TermInterface;
 /**
  * Links terms to the DJ mixes listing, filtered by that term.
  *
- * E.g. a genre links to /dj-mixes?genre[73]=73 - the query the listing's
+ * E.g. a genre links to /mixes?genre[73]=73 - the query the listing's
  * checkbox filters use, so the term's box shows ticked - instead of to the
  * term's own page. Unpublished (disabled) terms are left out.
  */

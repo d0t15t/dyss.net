@@ -234,7 +234,7 @@ ul.menu a:hover {
 }
 
 ul.menu a.is-active,
-.page-node-type-dj-mix ul.menu a[href$="/dj-mixes"] {
+.page-node-type-dj-mix ul.menu a[href$="/mixes"] {
   font-weight: 600;
   border-bottom-color: var(--color-accent);
 }
@@ -411,9 +411,9 @@ ul.menu a.is-active,
 /* A card grid wants more horizontal room than the readable-prose max-width
    used elsewhere, so widen the content column on this one page. */
 
-.path-dj-mixes #pjax-content,
-.path-dj-mixes .region-header,
-.path-dj-mixes .region-primary-menu {
+.path-mixes #pjax-content,
+.path-mixes .region-header,
+.path-mixes .region-primary-menu {
   max-width: 68rem;
 }
 

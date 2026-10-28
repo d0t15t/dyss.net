@@ -21,7 +21,7 @@ class SitemapImagesTest extends UnitTestCase {
     $part_2 = ['path' => 'https://dyss.net/part-2.png', 'alt' => NULL, 'title' => NULL];
     $links = [
       ['url' => 'https://dyss.net/audio/108', 'images' => [$cover, ['title' => NULL] + $cover, $part_2]],
-      ['url' => 'https://dyss.net/dj-mixes', 'images' => NULL],
+      ['url' => 'https://dyss.net/mixes', 'images' => NULL],
     ];
 
     dj_mixes_simple_sitemap_links_alter($links, $this->createMock(SimpleSitemapInterface::class));

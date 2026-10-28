@@ -13,7 +13,7 @@ content: |-
 
   ## Main pages
 
-  - [Mixes](https://dyss.net/dj-mixes): The full mix archive, newest first. Filter by artist or tag (?tags[ID]=ID) and by genre (?genre[ID]=ID).
+  - [Mixes](https://dyss.net/mixes): The full mix archive, newest first. Filter by artist or tag (?tags[ID]=ID) and by genre (?genre[ID]=ID).
   - [Contact](https://dyss.net/contact): Contact form for mr@dyss.net.
 
   ## Elsewhere

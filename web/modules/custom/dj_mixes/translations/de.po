@@ -1,0 +1,63 @@
+# German translation of the dj_mixes module.
+msgid ""
+msgstr ""
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "DJ Mixes"
+msgstr "DJ-Mixe"
+
+msgid "More DJ mixes"
+msgstr "Weitere DJ-Mixe"
+
+msgid "All DJ mixes"
+msgstr "Alle DJ-Mixe"
+
+msgid "Back to results"
+msgstr "Zurück zu den Ergebnissen"
+
+msgid "@position of @total"
+msgstr "@position von @total"
+
+msgid "Now viewing"
+msgstr "Aktueller Mix"
+
+msgid "Play"
+msgstr "Abspielen"
+
+msgid "Cover"
+msgstr "Cover"
+
+msgid "Part @number"
+msgstr "Teil @number"
+
+msgid "@title, cover of part @number"
+msgstr "@title, Cover von Teil @number"
+
+msgctxt "DJ mix date"
+msgid "j F Y"
+msgstr "j. F Y"
+
+msgid "@show with @artists"
+msgstr "@show mit @artists"
+
+msgid "@text, broadcast on @station on @date"
+msgstr "@text, gesendet auf @station am @date"
+
+msgid "@text, broadcast on @station"
+msgstr "@text, gesendet auf @station"
+
+msgid "@text, @date"
+msgstr "@text, @date"
+
+msgid "@show, a DJ mix by @artists"
+msgstr "@show, ein DJ-Mix von @artists"
+
+msgid "@show, a DJ mix"
+msgstr "@show, ein DJ-Mix"
+
+msgid "Genres: @genres."
+msgstr "Genres: @genres."

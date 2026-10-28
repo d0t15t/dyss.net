@@ -5,6 +5,7 @@ namespace Drupal\dj_mixes\Plugin\Block;
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
+use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -43,6 +44,7 @@ final class DjMixPagerBlock extends BlockBase implements ContainerFactoryPluginI
     private readonly RouteMatchInterface $routeMatch,
     private readonly RequestStack $requestStack,
     private readonly EntityTypeManagerInterface $entityTypeManager,
+    private readonly EntityRepositoryInterface $entityRepository,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
   }
@@ -59,6 +61,7 @@ final class DjMixPagerBlock extends BlockBase implements ContainerFactoryPluginI
       $container->get('current_route_match'),
       $container->get('request_stack'),
       $container->get('entity_type.manager'),
+      $container->get('entity.repository'),
     );
   }
 
@@ -87,6 +90,8 @@ final class DjMixPagerBlock extends BlockBase implements ContainerFactoryPluginI
         continue;
       }
       $mix = $storage->load($nid);
+      // In the language of the page.
+      $mix = $mix ? $this->entityRepository->getTranslationFromContext($mix) : NULL;
       if ($mix && $mix->access('view')) {
         $cards[] = [
           'current' => FALSE,

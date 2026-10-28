@@ -4,6 +4,7 @@ namespace Drupal\Tests\dj_mixes\Unit;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\dj_mixes\DjMixMetadata;
 use Drupal\node\NodeInterface;
 use Drupal\Tests\UnitTestCase;
@@ -23,6 +24,7 @@ class DjMixMetadataTest extends UnitTestCase {
     return new DjMixMetadata(
       $this->createMock(EntityTypeManagerInterface::class),
       $this->createMock(FileUrlGeneratorInterface::class),
+      $this->createMock(LanguageManagerInterface::class),
     );
   }
 

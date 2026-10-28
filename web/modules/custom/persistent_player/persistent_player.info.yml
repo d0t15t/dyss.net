@@ -6,3 +6,5 @@ core_version_requirement: ^11.3
 dependencies:
   - drupal:block
   - htmx_navigation:htmx_navigation
+interface translation project: persistent_player
+interface translation server pattern: modules/custom/persistent_player/translations/%language.po

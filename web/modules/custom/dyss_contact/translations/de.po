@@ -1,0 +1,51 @@
+# German translation of the dyss_contact module.
+msgid ""
+msgstr ""
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Imprint"
+msgstr "Impressum"
+
+msgid "Contact:"
+msgstr "Kontakt:"
+
+msgid "Contact: @recipient"
+msgstr "Kontakt: @recipient"
+
+msgid "Copy email address"
+msgstr "E-Mail-Adresse kopieren"
+
+msgid "Copied"
+msgstr "Kopiert"
+
+msgid "Copy failed"
+msgstr "Kopieren fehlgeschlagen"
+
+msgid "E-mail"
+msgstr "E-Mail"
+
+msgctxt "Contact form"
+msgid "Message"
+msgstr "Nachricht"
+
+msgid "Leave this field empty"
+msgstr "Dieses Feld leer lassen"
+
+msgid "Please keep your message under @count characters."
+msgstr "Bitte halte deine Nachricht unter @count Zeichen."
+
+msgid "You have sent several messages in a short time. Please try again later."
+msgstr "Du hast in kurzer Zeit mehrere Nachrichten gesendet. Bitte versuche es später noch einmal."
+
+msgid "Thank you, your message has been sent."
+msgstr "Danke, deine Nachricht wurde gesendet."
+
+msgid "Sorry, your message could not be sent. Please try again later."
+msgstr "Deine Nachricht konnte leider nicht gesendet werden. Bitte versuche es später noch einmal."
+
+msgid "Contact Isaac Bigsby Trogdon (DJ Your Body, Dyssembler)."
+msgstr "Kontakt zu Isaac Bigsby Trogdon (DJ Your Body, Dyssembler)."

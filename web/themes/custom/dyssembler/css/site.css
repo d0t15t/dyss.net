@@ -249,6 +249,11 @@ ul.menu a.is-active,
   gap: 1rem;
 }
 
+/* Right-aligned, also on pages without a breadcrumb. */
+.region-breadcrumb > .block-language {
+  margin-inline-start: auto;
+}
+
 .language-switcher {
   display: flex;
   gap: 0.75rem;

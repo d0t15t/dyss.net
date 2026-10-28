@@ -1,0 +1,6 @@
+tags:
+  og_locale: de_DE
+  schema_web_page_in_language: de
+  canonical_url: '[current-page:url]'
+  title: '[current-page:title] | [site:name]'
+label: Global

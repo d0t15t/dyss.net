@@ -14,7 +14,7 @@ bundle: dj_mix
 label: 'Mixcloud URL'
 description: 'The original show on Mixcloud, one link per part. Filled by the Mixcloud import.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

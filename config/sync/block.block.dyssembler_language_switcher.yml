@@ -1,0 +1,20 @@
+uuid: cf9e5c76-cdd4-469e-b46a-afba7e085019
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - dyssembler
+id: dyssembler_language_switcher
+theme: dyssembler
+region: breadcrumb
+weight: 10
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: Language
+  label_display: '0'
+  provider: language
+visibility: {  }

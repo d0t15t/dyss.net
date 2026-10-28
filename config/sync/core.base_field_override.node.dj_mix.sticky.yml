@@ -1,0 +1,22 @@
+uuid: c4be0b9f-c502-4bba-8881-4e837e166a78
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dj_mix
+id: node.dj_mix.sticky
+field_name: sticky
+entity_type: node
+bundle: dj_mix
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

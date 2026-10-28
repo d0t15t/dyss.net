@@ -1,0 +1,18 @@
+uuid: 85bdf3be-283f-4db7-8712-c0a8c07f3899
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dj_mix
+id: node.dj_mix.created
+field_name: created
+entity_type: node
+bundle: dj_mix
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

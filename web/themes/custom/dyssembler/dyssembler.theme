@@ -19,3 +19,24 @@ function dyssembler_page_attachments_alter(array &$attachments) {
     ],
   ];
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for links__language_block.
+ *
+ * The language switcher shows language codes ("EN", "DE"), with the native
+ * language names for screen readers. It switches with a full page load: the
+ * header, menus and footer are outside the area htmx navigation replaces.
+ */
+function dyssembler_preprocess_links__language_block(array &$variables) {
+  $names = \Drupal::languageManager()->getStandardLanguageList();
+  foreach ($variables['links'] as $langcode => &$item) {
+    if (!isset($item['link'])) {
+      continue;
+    }
+    $item['link']['#title'] = strtoupper($langcode);
+    $item['link']['#options']['attributes']['lang'] = $langcode;
+    $item['link']['#options']['attributes']['aria-label'] = $names[$langcode][1] ?? $langcode;
+  }
+  $variables['attributes']['class'][] = 'language-switcher';
+  $variables['attributes']['data-no-htmx-navigation'] = '';
+}

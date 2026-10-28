@@ -1,0 +1,49 @@
+label: DJ-Mixe
+display:
+  default:
+    display_options:
+      title: DJ-Mixe
+      pager:
+        options:
+          tags:
+            next: 'Weiter ›'
+            previous: '‹ Zurück'
+            first: '« Erste'
+            last: 'Letzte »'
+      exposed_form:
+        options:
+          submit_button: Anwenden
+          reset_button_label: Zurücksetzen
+          exposed_sorts_label: 'Sortieren nach'
+          sort_asc_label: Aufsteigend
+          sort_desc_label: Absteigend
+          bef:
+            filter:
+              facets_field_tags:
+                soft_limit_label_less: 'Weniger Tags anzeigen'
+                soft_limit_label_more: 'Mehr Tags anzeigen'
+              facets_field_musical_genres:
+                soft_limit_label_less: 'Weniger Genres anzeigen'
+                soft_limit_label_more: 'Mehr Genres anzeigen'
+      empty:
+        area_text_custom:
+          content: 'Noch keine Mixe veröffentlicht.'
+      filters:
+        facets_field_tags:
+          facet:
+            missing_label: andere
+        facets_field_musical_genres:
+          facet:
+            missing_label: andere
+  page_1:
+    display_options:
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'DJ-Mixe | [site:name]'
+            description: 'Das DJ-Mix-Archiv von DJ Your Body und Dyssembler Radio (Berlin Community Radio, 2013-2018): Mixe von DJ Your Body und Gästen, von House, Techno, Disco und Electro bis Ambient. Nach Artist und Genre filtern und im Browser abspielen.'
+            og_title: DJ-Mixe
+            schema_web_page_description: 'Das DJ-Mix-Archiv von DJ Your Body und Dyssembler Radio (Berlin Community Radio, 2013-2018).'
+      menu:
+        title: DJ-Mixe
+        description: 'Alle DJ-Mixe durchsuchen.'

@@ -1,0 +1,38 @@
+display:
+  default:
+    display_title: Standard
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Zurücksetzen
+          exposed_sorts_label: 'Sortieren nach'
+          sort_asc_label: Aufsteigend
+          sort_desc_label: Absteigend
+      pager:
+        options:
+          tags:
+            previous: '‹ Zurück'
+            next: 'Weiter ›'
+            first: '« Erste'
+            last: 'Letzte »'
+      fields:
+        thread_id:
+          label: Thread
+        uid:
+          label: Benutzer
+        assistant_id:
+          label: Assistent
+        message_count:
+          label: Benachrichtigungen
+        total_tokens:
+          label: Tokens
+      filters:
+        uid:
+          expose:
+            label: Benutzer
+        assistant_id:
+          expose:
+            label: Assistent
+  page:
+    display_title: Seite

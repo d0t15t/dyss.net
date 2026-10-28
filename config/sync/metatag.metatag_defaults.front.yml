@@ -15,14 +15,14 @@ tags:
   schema_web_site_type: WebSite
   schema_web_site_id: '[site:base-url]/#website'
   schema_web_site_name: DYSSEMBLER
-  schema_web_site_alternate_name: Dyssembler
+  schema_web_site_alternate_name: 'Dyssembler, Dyss'
   schema_web_site_url: '[site:base-url]/'
   schema_web_site_in_language: en
   schema_web_site_publisher: 'a:3:{s:5:"@type";s:6:"Person";s:3:"@id";s:20:"[site:base-url]/#ibt";s:4:"name";s:20:"Isaac Bigsby Trogdon";}'
   schema_person_type: Person
   schema_person_id: '[site:base-url]/#ibt'
   schema_person_name: 'Isaac Bigsby Trogdon'
-  schema_person_alternate_name: 'DJ Your Body'
+  schema_person_alternate_name: 'Isaac Trogdon, Bigsby, Isaac, IBT, DJ Your Body, Your Body, Dotist, d0t15t, Dyssembler, Dyss'
   schema_person_url: '[site:base-url]/'
   schema_person_job_title: 'DJ, radio host and software engineer'
   schema_person_description: 'Berlin-based DJ (DJ Your Body), host of Dyssembler Radio on Berlin Community Radio, and software engineer.'

@@ -160,6 +160,16 @@ class DjMixMetadataTest extends KernelTestBase {
   }
 
   /**
+   * IBT is the site's Person under any of the names in ALIASES.
+   */
+  public function testAliases(): void {
+    $mix = $this->mix('Lost Tapes | d0t15t, IBT & Dotist / Somebody', NULL);
+    $artists = $this->container->get(DjMixMetadata::class)->structuredData($mix)['byArtist'];
+    $this->assertSame(['d0t15t', 'IBT', 'Dotist', 'Somebody'], array_column($artists, 'name'));
+    $this->assertSame(3, count(array_filter($artists, fn($artist) => str_ends_with($artist['@id'] ?? '', '#ibt'))));
+  }
+
+  /**
    * A German translation is described in German, with the same identities.
    */
   public function testGerman(): void {

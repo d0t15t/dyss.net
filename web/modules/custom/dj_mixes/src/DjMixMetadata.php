@@ -38,6 +38,23 @@ class DjMixMetadata {
    */
   const STATION = 'Berlin Community Radio';
 
+  /**
+   * The names Isaac Bigsby Trogdon goes by, the site's own Person.
+   */
+  const ALIASES = [
+    'Isaac Bigsby Trogdon',
+    'Isaac Trogdon',
+    'Bigsby',
+    'Isaac',
+    'IBT',
+    'DJ Your Body',
+    'Your Body',
+    'Dotist',
+    'd0t15t',
+    'Dyssembler',
+    'Dyss',
+  ];
+
   public function __construct(
     protected EntityTypeManagerInterface $entityTypeManager,
     protected FileUrlGeneratorInterface $fileUrlGenerator,
@@ -249,11 +266,11 @@ class DjMixMetadata {
   }
 
   /**
-   * An artist as schema.org data; DJ Your Body is the site's own Person.
+   * An artist as schema.org data; IBT under any name is the site's Person.
    */
   protected function artist(string $name, string $site): array {
     $artist = ['@type' => 'Person', 'name' => $name];
-    if (in_array($name, ['DJ Your Body', 'Your Body', 'IBT', 'Isaac Bigsby Trogdon'], TRUE)) {
+    if (in_array(mb_strtolower($name), array_map('mb_strtolower', self::ALIASES), TRUE)) {
       $artist['@id'] = $site . '#ibt';
     }
     return $artist;

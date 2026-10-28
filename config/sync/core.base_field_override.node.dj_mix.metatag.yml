@@ -1,0 +1,20 @@
+uuid: 725f3c8d-230e-4a8d-ae49-93a18e4956d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dj_mix
+  module:
+    - metatag
+id: node.dj_mix.metatag
+field_name: metatag
+entity_type: node
+bundle: dj_mix
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

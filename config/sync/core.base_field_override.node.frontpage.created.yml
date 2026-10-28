@@ -1,0 +1,18 @@
+uuid: 781604db-6c59-40b8-bd01-6a05f2392543
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.frontpage
+id: node.frontpage.created
+field_name: created
+entity_type: node
+bundle: frontpage
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

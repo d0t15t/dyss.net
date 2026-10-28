@@ -241,6 +241,39 @@ ul.menu a.is-active,
 
 /* ----- Breadcrumb ----- */
 
+/* The breadcrumb, with the language switcher on the right. */
+.region-breadcrumb {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0 0 0 auto;
+  padding: 0.75rem 0 0;
+  list-style: none;
+  font-size: 0.8125rem;
+}
+
+.language-switcher a {
+  color: var(--color-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.language-switcher a:hover,
+.language-switcher a:focus {
+  color: var(--color-accent);
+}
+
+.language-switcher a.is-active {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
 .breadcrumb {
   padding-block: 0.75rem 0;
   font-size: 0.8125rem;

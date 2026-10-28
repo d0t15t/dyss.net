@@ -237,6 +237,46 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
+        search_api_language:
+          id: search_api_language
+          table: search_api_index_content
+          field: search_api_language
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
         search_api_fulltext:
           id: search_api_fulltext
           table: search_api_index_content
@@ -429,11 +469,11 @@ display:
           metatags:
             title: 'DJ Mixes | [site:name]'
             description: 'The DJ mix archive of DJ Your Body and Dyssembler Radio (Berlin Community Radio, 2013-2018): mixes by DJ Your Body and guests across house, techno, disco, electro, ambient and more. Filter by artist and genre, and play in the browser.'
-            canonical_url: '[site:url]dj-mixes'
+            canonical_url: '[view:url]'
             og_title: 'DJ Mixes'
-            og_url: '[site:url]dj-mixes'
+            og_url: '[view:url]'
             schema_web_page_type: CollectionPage
-            schema_web_page_id: '[site:url]dj-mixes#webpage'
+            schema_web_page_id: '[view:url]#webpage'
             schema_web_page_description: 'The DJ mix archive of DJ Your Body and Dyssembler Radio (Berlin Community Radio, 2013-2018).'
           tokenize: false
       path: dj-mixes

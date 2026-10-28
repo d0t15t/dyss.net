@@ -14,7 +14,7 @@ bundle: dj_mix
 label: Links
 description: "Pages about the mix or its artists elsewhere: their own sites, SoundCloud, Bandcamp, Resident Advisor, the show on the radio station's site. The mix's own Mixcloud page has its own field."
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

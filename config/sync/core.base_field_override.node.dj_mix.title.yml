@@ -1,0 +1,18 @@
+uuid: f1c3cc62-d4b4-439d-9159-75e1c74095cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dj_mix
+id: node.dj_mix.title
+field_name: title
+entity_type: node
+bundle: dj_mix
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

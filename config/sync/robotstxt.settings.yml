@@ -46,6 +46,16 @@ content: |
   Disallow: /user/logout
   Disallow: /media/oembed
   Disallow: /*/media/oembed
+  # The same paths in German (/de).
+  Disallow: /de/admin/
+  Disallow: /de/comment/reply/
+  Disallow: /de/filter/tips
+  Disallow: /de/node/add/
+  Disallow: /de/search/
+  Disallow: /de/user/register
+  Disallow: /de/user/password
+  Disallow: /de/user/login
+  Disallow: /de/user/logout
   # Paths (no clean URLs)
   Disallow: /index.php/admin/
   Disallow: /index.php/comment/reply/

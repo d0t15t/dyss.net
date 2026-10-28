@@ -34,3 +34,4 @@ tags:
   schema_web_page_id: '[site:url]#webpage'
   schema_web_page_description: 'Dyssembler is the umbrella for projects by Isaac Bigsby Trogdon: a radio show, a record label and music events. DJ mixes, releases and code from Berlin.'
   schema_web_page_breadcrumb: ''
+  schema_person_address: 'a:6:{s:5:"@type";s:13:"PostalAddress";s:4:"name";s:20:"Atelierhof Kreuzberg";s:13:"streetAddress";s:21:"Schleiermacherstr. 31";s:10:"postalCode";s:5:"10961";s:15:"addressLocality";s:6:"Berlin";s:14:"addressCountry";s:2:"DE";}'

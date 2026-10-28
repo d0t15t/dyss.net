@@ -7,14 +7,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "DJ Mixes"
-msgstr "DJ-Mixe"
+msgid "Mixes"
+msgstr "Mixe"
 
-msgid "More DJ mixes"
-msgstr "Weitere DJ-Mixe"
+msgid "More mixes"
+msgstr "Weitere Mixe"
 
-msgid "All DJ mixes"
-msgstr "Alle DJ-Mixe"
+msgid "All mixes"
+msgstr "Alle Mixe"
 
 msgid "Back to results"
 msgstr "Zurück zu den Ergebnissen"

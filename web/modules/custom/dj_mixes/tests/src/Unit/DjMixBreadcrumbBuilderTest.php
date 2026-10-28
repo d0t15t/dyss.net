@@ -64,14 +64,14 @@ class DjMixBreadcrumbBuilderTest extends UnitTestCase {
   }
 
   /**
-   * Home › DJ Mixes, with the listing's filters kept and nothing else.
+   * Home › Mixes, with the listing's filters kept and nothing else.
    */
   public function testBuild(): void {
     $breadcrumb = $this->builder('/node/1?genre[73]=73&utm_source=x')->build($this->nodeRoute('dj_mix'));
     $links = $breadcrumb->getLinks();
     $this->assertCount(2, $links);
     $this->assertSame('Home', (string) $links[0]->getText());
-    $this->assertSame('DJ Mixes', (string) $links[1]->getText());
+    $this->assertSame('Mixes', (string) $links[1]->getText());
     $this->assertSame('view.dj_mixes.page_1', $links[1]->getUrl()->getRouteName());
     $this->assertSame(['genre' => ['73' => '73']], $links[1]->getUrl()->getOption('query'));
     $this->assertEqualsCanonicalizing(

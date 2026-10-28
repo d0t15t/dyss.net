@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 #[Block(
   id: 'dj_mix_pager',
   admin_label: new TranslatableMarkup('DJ mix pager'),
-  category: new TranslatableMarkup('DJ Mixes'),
+  category: new TranslatableMarkup('Mixes'),
 )]
 final class DjMixPagerBlock extends BlockBase implements ContainerFactoryPluginInterface {
 

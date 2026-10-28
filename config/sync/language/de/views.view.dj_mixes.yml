@@ -1,8 +1,8 @@
-label: DJ-Mixe
+label: Mixe
 display:
   default:
     display_options:
-      title: DJ-Mixe
+      title: Mixe
       pager:
         options:
           tags:
@@ -40,10 +40,10 @@ display:
       display_extenders:
         metatag_display_extender:
           metatags:
-            title: 'DJ-Mixe | [site:name]'
-            description: 'Das DJ-Mix-Archiv von DJ Your Body und Dyssembler Radio (Berlin Community Radio, 2013-2018): Mixe von DJ Your Body und Gästen, von House, Techno, Disco und Electro bis Ambient. Nach Artist und Genre filtern und im Browser abspielen.'
-            og_title: DJ-Mixe
-            schema_web_page_description: 'Das DJ-Mix-Archiv von DJ Your Body und Dyssembler Radio (Berlin Community Radio, 2013-2018).'
+            title: 'Mixe | [site:name]'
+            description: 'Das Mix-Archiv von DJ Your Body und Dyssembler Radio (Berlin Community Radio, 2013-2018): Mixe von DJ Your Body und Gästen, von House, Techno, Disco und Electro bis Ambient. Nach Artist und Genre filtern und im Browser abspielen.'
+            og_title: Mixe
+            schema_web_page_description: 'Das Mix-Archiv von DJ Your Body und Dyssembler Radio (Berlin Community Radio, 2013-2018).'
       menu:
-        title: DJ-Mixe
-        description: 'Alle DJ-Mixe durchsuchen.'
+        title: Mixe
+        description: 'Alle Mixe durchsuchen.'

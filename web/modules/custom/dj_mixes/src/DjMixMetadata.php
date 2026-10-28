@@ -173,7 +173,7 @@ class DjMixMetadata {
       ->sort('field_mix_date', 'DESC')
       ->sort('nid', 'DESC')
       ->execute();
-    $lines = ['## DJ mixes', ''];
+    $lines = ['## Mixes', ''];
     foreach ($storage->loadMultiple($ids) as $mix) {
       $lines[] = sprintf('- [%s](%s): %s', $mix->label(), $mix->toUrl('canonical', ['absolute' => TRUE])->toString(), $this->description($mix));
     }

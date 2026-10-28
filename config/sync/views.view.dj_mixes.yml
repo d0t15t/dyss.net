@@ -13,7 +13,7 @@ dependencies:
 _core:
   default_config_hash: 4Cz744TC436MyMlEtImSPD9SsvElJN5C2hO1cOby7FM
 id: dj_mixes
-label: 'DJ Mixes'
+label: Mixes
 module: views
 description: 'A search listing of all published DJ Mix nodes, backed by Solr.'
 tag: default
@@ -26,7 +26,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'DJ Mixes'
+      title: Mixes
       fields: {  }
       pager:
         type: full
@@ -467,20 +467,20 @@ display:
       display_extenders:
         metatag_display_extender:
           metatags:
-            title: 'DJ Mixes | [site:name]'
-            description: 'The DJ mix archive of DJ Your Body and Dyssembler Radio (Berlin Community Radio, 2013-2018): mixes by DJ Your Body and guests across house, techno, disco, electro, ambient and more. Filter by artist and genre, and play in the browser.'
+            title: 'Mixes | [site:name]'
+            description: 'The mix archive of DJ Your Body and Dyssembler Radio (Berlin Community Radio, 2013-2018): mixes by DJ Your Body and guests across house, techno, disco, electro, ambient and more. Filter by artist and genre, and play in the browser.'
             canonical_url: '[view:url]'
-            og_title: 'DJ Mixes'
+            og_title: Mixes
             og_url: '[view:url]'
             schema_web_page_type: CollectionPage
             schema_web_page_id: '[view:url]#webpage'
-            schema_web_page_description: 'The DJ mix archive of DJ Your Body and Dyssembler Radio (Berlin Community Radio, 2013-2018).'
+            schema_web_page_description: 'The mix archive of DJ Your Body and Dyssembler Radio (Berlin Community Radio, 2013-2018).'
           tokenize: false
       path: dj-mixes
       menu:
         type: normal
-        title: 'DJ Mixes'
-        description: 'Browse all DJ mixes.'
+        title: Mixes
+        description: 'Browse all mixes.'
         weight: -49
         enabled: true
         menu_name: main

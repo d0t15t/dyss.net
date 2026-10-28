@@ -210,7 +210,7 @@ class DjMixMetadataTest extends KernelTestBase {
     $this->mix('Hidden | DJ Your Body', '2013-12-01')->setUnpublished()->save();
 
     $lines = explode("\n", $this->container->get(DjMixMetadata::class)->llmsTxt());
-    $this->assertSame('## DJ mixes', $lines[0]);
+    $this->assertSame('## Mixes', $lines[0]);
     $this->assertCount(4, $lines);
     $this->assertStringStartsWith('- [Dyssembler Radio #3 | DJ Your Body](http', $lines[2]);
     $this->assertStringContainsString('#2 with DJ Your Body, 24 October 2013.', $lines[3]);

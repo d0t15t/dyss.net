@@ -13,7 +13,7 @@ use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Puts DJ mixes under the DJ mixes listing: Home › DJ Mixes › the mix.
+ * Puts DJ mixes under the DJ mixes listing: Home › Mixes › the mix.
  *
  * The listing link keeps the filters and sorting the mix was reached with,
  * as the DJ mix pager does. The mix's title is added by dyss_breadcrumb.
@@ -51,7 +51,7 @@ class DjMixBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     $query = $request && $names ? $this->pager->parameters($request) : [];
     return $breadcrumb->setLinks([
       Link::createFromRoute($this->t('Home'), '<front>'),
-      Link::fromTextAndUrl($this->t('DJ Mixes'), Url::fromRoute('view.' . DjMixPager::VIEW . '.' . DjMixPager::DISPLAY, [], ['query' => $query])),
+      Link::fromTextAndUrl($this->t('Mixes'), Url::fromRoute('view.' . DjMixPager::VIEW . '.' . DjMixPager::DISPLAY, [], ['query' => $query])),
     ]);
   }
 

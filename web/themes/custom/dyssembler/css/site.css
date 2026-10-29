@@ -332,6 +332,13 @@ ul.menu a.is-active,
   border-radius: var(--radius);
 }
 
+/* As in the part covers: no taller than most of the screen. */
+.page-node-type-dj-mix .layout-content .field--name-field-cover-image img {
+  max-height: 80vh;
+  object-fit: contain;
+  object-position: left top;
+}
+
 /* Date, genres, tags, Mixcloud and other links: label on the left, values
    in a row. */
 .node--view-mode-full :is(

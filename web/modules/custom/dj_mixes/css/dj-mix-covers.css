@@ -11,9 +11,15 @@
   display: none;
 }
 
+/* Full width, but no taller than most of the screen: portrait covers shrink
+   to fit on the left, so the player and tracklist stay in reach. */
 .dj-mix-covers__image img {
   display: block;
   width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  object-position: left top;
   border-radius: var(--radius, 2px);
 }
 

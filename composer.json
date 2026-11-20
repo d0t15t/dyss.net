@@ -130,7 +130,6 @@
                 "Fix filtering on multi-value fields (missing elseif, getPluginId() on the client, single values stored as scalars)": "patches/ai_vdb_provider_milvus-multivalue-filter.patch"
             },
             "drupal/ai": {
-                "AI Search: don't Markdown-escape plain metadata values (breaks vector DB filters on values with underscores)": "patches/ai-ai_search-plain-metadata-values.patch",
                 "VDB indexing: reset record data per chunk (metadata leaks between items)": "patches/ai-vdb-reset-record-metadata.patch",
                 "Assistant API: don't return the user's question as the agent's answer when the agent fails": "patches/ai-assistant-api-agent-no-echo.patch"
             }

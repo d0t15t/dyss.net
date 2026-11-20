@@ -1,7 +1,7 @@
 --- a/modules/ai_assistant_api/src/Service/AgentRunner.php
 +++ b/modules/ai_assistant_api/src/Service/AgentRunner.php
-@@ -137,9 +137,17 @@
-     $message = new ChatMessage('assistant', $response ?? '');
+@@ -148,9 +148,17 @@
+     $message = new ChatMessage('assistant', is_string($response) ? $response : '');
  
      if ($history = $agent->getChatHistory()) {
 -      // Get the last message from the history.

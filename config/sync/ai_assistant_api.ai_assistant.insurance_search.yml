@@ -10,8 +10,7 @@ description: 'AI answers above the /admin/content/insurances/search results, bas
 system_prompt: ''
 pre_action_prompt: ''
 instructions: ''
-allow_history: none
-history_context_length: '2'
+allow_history: ''
 error_message: 'The AI search could not answer right now. The regular search results below still work.'
 specific_error_messages: {  }
 llm_provider: anthropic

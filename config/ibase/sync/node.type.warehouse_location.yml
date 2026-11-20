@@ -1,0 +1,11 @@
+uuid: d5bec26a-f14e-4557-b598-1493e05cc3b7
+langcode: en
+status: true
+dependencies: {  }
+name: 'Warehouse Location'
+type: warehouse_location
+description: 'Warehouse Location content type.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

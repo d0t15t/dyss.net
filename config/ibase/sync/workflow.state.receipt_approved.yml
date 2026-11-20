@@ -1,0 +1,15 @@
+uuid: 57b80876-3169-45e7-8a58-1d66023a8aee
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+_core:
+  default_config_hash: HwWUgSXt8tImRv0uTO081RA62xdoCBa24Ri-5CXqiMs
+id: receipt_approved
+label: Approved
+weight: 20
+module: receipt_workflow
+wid: receipt
+sysid: 0
+single_state_widget: ''

@@ -1,0 +1,20 @@
+uuid: ceafb32b-52cd-48f6-b656-4362ed17b7ba
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_expense_category
+field_name: field_expense_category
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

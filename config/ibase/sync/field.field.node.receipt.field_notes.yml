@@ -1,0 +1,24 @@
+uuid: 5ee00846-2cd6-47ae-b7d9-219a8b5b79e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notes
+    - filter.format.plain_text
+    - node.type.receipt
+  module:
+    - text
+id: node.receipt.field_notes
+field_name: field_notes
+entity_type: node
+bundle: receipt
+label: Notes
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    plain_text: plain_text
+field_type: text_long

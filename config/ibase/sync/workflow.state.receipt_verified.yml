@@ -1,0 +1,15 @@
+uuid: e364d3b8-1f20-4680-82ad-e6cac8811fb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+_core:
+  default_config_hash: rxW9tYCY7sk4tT7Vwp1rHRfLCYktcmMAP7tRGsMTkfk
+id: receipt_verified
+label: Verified
+weight: 5
+module: receipt_vision_verify
+wid: receipt
+sysid: 0
+single_state_widget: ''

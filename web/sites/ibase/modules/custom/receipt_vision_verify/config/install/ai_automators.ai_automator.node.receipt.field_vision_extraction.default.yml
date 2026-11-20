@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.receipt.field_vision_extraction
+id: node.receipt.field_vision_extraction.default
+label: 'Receipt: Vision extraction + verify'
+rule: 'receipt_vision:extract_and_verify'
+input_mode: base
+weight: 50
+worker_type: direct
+entity_type: node
+bundle: receipt
+field_name: field_vision_extraction
+edit_mode: false
+base_field: field_receipt
+prompt: ''
+token: ''
+plugin_config:
+  automator_rule: 'receipt_vision:extract_and_verify'
+  automator_mode: base
+  automator_weight: 50
+  automator_worker_type: direct
+  automator_edit_mode: false
+  automator_base_field: field_receipt
+  automator_prompt: ''
+  automator_token: ''
+  automator_ai_provider: default
+  automator_ai_model: ''

@@ -1,0 +1,9 @@
+uuid: be22ab93-4457-449f-91ca-27e47904eebf
+langcode: und
+status: true
+dependencies: {  }
+name: 'Payment method'
+vid: payment_method
+description: 'Methods of payment used on receipts (e.g., cash, credit card, bank transfer).'
+weight: 0
+new_revision: null

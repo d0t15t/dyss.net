@@ -1,0 +1,24 @@
+uuid: f9fe6ca8-b02e-469b-ad9b-2aa6ca31d969
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - workflow
+_core:
+  default_config_hash: _uL51igiDbVCEG8U6HQpgxR3S7J0BzUSH60arG6wC4w
+id: node.field_receipt_status
+field_name: field_receipt_status
+entity_type: node
+type: workflow
+settings:
+  workflow_type: receipt
+  allowed_values: {  }
+  allowed_values_function: ''
+module: workflow
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

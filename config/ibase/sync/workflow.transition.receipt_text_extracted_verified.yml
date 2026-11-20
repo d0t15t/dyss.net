@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.receipt_text_extracted
+    - workflow.state.receipt_verified
+id: receipt_text_extracted_verified
+label: 'Vision verify complete'
+module: receipt_vision_verify
+from_sid: receipt_text_extracted
+to_sid: receipt_verified
+roles:
+  - administrator
+wid: receipt

@@ -1,0 +1,9 @@
+uuid: 0d059b69-c5f7-4a90-a27a-215ea38d1616
+langcode: en
+status: true
+dependencies: {  }
+name: 'Plant family'
+vid: plant_family
+description: 'Plant family taxonomy (hierarchical).'
+weight: 0
+new_revision: false

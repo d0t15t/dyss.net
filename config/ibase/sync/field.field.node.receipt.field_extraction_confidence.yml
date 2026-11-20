@@ -1,0 +1,25 @@
+uuid: 1677f177-1259-427d-8cac-cf857c6178b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_extraction_confidence
+    - node.type.receipt
+_core:
+  default_config_hash: IIoiwyWHwv-Ksot_KOe2f24RPCURMdsu4q3B6-NoV5w
+id: node.receipt.field_extraction_confidence
+field_name: field_extraction_confidence
+entity_type: node
+bundle: receipt
+label: 'Extraction confidence (0-100)'
+description: 'Weighted agreement score between OCR and vision extraction.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 100
+  prefix: ''
+  suffix: '%'
+field_type: integer

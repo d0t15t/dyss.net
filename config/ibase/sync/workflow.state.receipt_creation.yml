@@ -1,0 +1,13 @@
+uuid: 7fe7e1df-d107-4b85-9d62-60859d203a7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+id: receipt_creation
+label: Creation
+weight: -50
+module: workflow
+wid: receipt
+sysid: 1
+single_state_widget: ''

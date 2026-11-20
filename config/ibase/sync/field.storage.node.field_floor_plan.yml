@@ -1,0 +1,20 @@
+uuid: 4eeb41c6-d0db-402d-9a36-7015644aa42b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: node.field_floor_plan
+field_name: field_floor_plan
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

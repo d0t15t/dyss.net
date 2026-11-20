@@ -1,0 +1,9 @@
+uuid: 9e79a998-083c-407e-b472-fe1a62478b48
+langcode: en
+status: true
+dependencies: {  }
+name: 'Installation style'
+vid: installation_style
+description: 'Describes the style/type of installation (e.g., tabletop, floor-standing, living wall).'
+weight: 0
+new_revision: true

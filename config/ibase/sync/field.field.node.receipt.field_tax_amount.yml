@@ -1,0 +1,23 @@
+uuid: 527f28b3-2b77-43a5-a879-ff11b94b25ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tax_amount
+    - node.type.receipt
+id: node.receipt.field_tax_amount
+field_name: field_tax_amount
+entity_type: node
+bundle: receipt
+label: 'Tax amount'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

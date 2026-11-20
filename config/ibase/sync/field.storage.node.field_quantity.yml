@@ -1,0 +1,20 @@
+uuid: aa01b7d5-00ff-4c07-8ea9-d4fb7725fe36
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_quantity
+field_name: field_quantity
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

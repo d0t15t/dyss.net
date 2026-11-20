@@ -1,0 +1,23 @@
+uuid: e2239d6a-8614-4add-9999-ae539997254a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_floor_area_m2
+    - node.type.installation
+id: node.installation.field_floor_area_m2
+field_name: field_floor_area_m2
+entity_type: node
+bundle: installation
+label: 'Floor area (m²)'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

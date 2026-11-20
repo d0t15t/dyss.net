@@ -1,0 +1,24 @@
+uuid: ef261d17-0aa7-4bee-bdde-e210c813894d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_placement_description
+    - filter.format.plain_text
+    - node.type.installation_item
+  module:
+    - text
+id: node.installation_item.field_placement_description
+field_name: field_placement_description
+entity_type: node
+bundle: installation_item
+label: 'Placement description'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    plain_text: plain_text
+field_type: text_long

@@ -1,0 +1,19 @@
+uuid: e8c852cd-f61a-451a-922e-3368547c12df
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_health_notes
+field_name: field_health_notes
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,65 @@
+uuid: 2f46a75f-0cc5-4af7-860b-f6fc734b7fa4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.client.field_active_installations
+    - field.field.node.client.field_billing_address
+    - field.field.node.client.field_industry
+    - field.field.node.client.field_notes
+    - field.field.node.client.field_primary_contact
+    - node.type.client
+  module:
+    - address
+    - text
+    - user
+id: node.client.default
+targetEntityType: node
+bundle: client
+mode: default
+content:
+  field_active_installations:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_billing_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_industry:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_notes:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_primary_contact:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

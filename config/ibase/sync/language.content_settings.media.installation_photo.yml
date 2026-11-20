@@ -1,0 +1,11 @@
+uuid: f0231984-be46-469f-9871-ba1e7b2a9a66
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.installation_photo
+id: media.installation_photo
+target_entity_type_id: media
+target_bundle: installation_photo
+default_langcode: site_default
+language_alterable: false

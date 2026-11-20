@@ -1,0 +1,21 @@
+uuid: 371df28e-3d3f-42db-985a-81c1325e16e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_light_requirements
+    - node.type.plant
+  module:
+    - options
+id: node.plant.field_light_requirements
+field_name: field_light_requirements
+entity_type: node
+bundle: plant
+label: 'Light requirements'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

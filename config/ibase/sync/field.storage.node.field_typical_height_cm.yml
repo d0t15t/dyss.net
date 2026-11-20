@@ -1,0 +1,20 @@
+uuid: 7c865d29-437f-4e50-8df9-48d8770c784c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_typical_height_cm
+field_name: field_typical_height_cm
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

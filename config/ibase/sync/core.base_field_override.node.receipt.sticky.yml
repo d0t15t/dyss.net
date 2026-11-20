@@ -1,0 +1,22 @@
+uuid: 844ff236-a5aa-400c-bc23-50e4c826e1f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.receipt
+id: node.receipt.sticky
+field_name: sticky
+entity_type: node
+bundle: receipt
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

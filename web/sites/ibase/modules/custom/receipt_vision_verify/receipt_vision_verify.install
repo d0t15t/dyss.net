@@ -1,0 +1,119 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * Install / uninstall hooks for receipt_vision_verify.
+ */
+
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+
+/**
+ * Implements hook_requirements().
+ */
+function receipt_vision_verify_requirements(string $phase): array {
+  $requirements = [];
+  if ($phase === 'install' || $phase === 'runtime') {
+    $gs = trim((string) shell_exec('which gs 2>/dev/null'));
+    $requirements['receipt_vision_verify_ghostscript'] = [
+      'title' => t('Ghostscript (receipt_vision_verify)'),
+      'value' => $gs ?: t('Not found'),
+      'severity' => $gs ? REQUIREMENT_OK : REQUIREMENT_ERROR,
+      'description' => $gs
+        ? t('Ghostscript found at @path — PDF-to-image rendering will work.', ['@path' => $gs])
+        : t('Ghostscript (gs) is required to render PDF pages as images for vision AI. Install with your OS package manager (e.g. apt-get install ghostscript).'),
+    ];
+  }
+  return $requirements;
+}
+
+/**
+ * Implements hook_install().
+ */
+function receipt_vision_verify_install(): void {
+  // Create workflow transitions by writing config directly — same pattern as
+  // receipt_workflow to avoid the workflow module's calculateDependencies() race.
+  $wid = 'receipt';
+  $transitions = [
+    ['receipt_text_extracted', 'receipt_verified', 'Vision verify complete', ['administrator']],
+    ['receipt_verified', 'receipt_approved', 'Auto-approve (high confidence)', ['administrator']],
+    ['receipt_verified', 'receipt_needs_review', 'Flag for review (low confidence)', ['administrator']],
+  ];
+
+  foreach ($transitions as [$from, $to, $label, $roles]) {
+    $id = $wid . substr($from, strlen($wid)) . substr($to, strlen($wid));
+    \Drupal::configFactory()->getEditable("workflow.transition.{$id}")->setData([
+      'langcode' => 'en',
+      'status' => TRUE,
+      'dependencies' => [
+        'config' => [
+          "workflow.state.{$from}",
+          "workflow.state.{$to}",
+        ],
+      ],
+      'id' => $id,
+      'label' => $label,
+      'module' => 'receipt_vision_verify',
+      'wid' => $wid,
+      'from_sid' => $from,
+      'to_sid' => $to,
+      'roles' => $roles,
+    ])->save();
+  }
+
+  // Wire the 3 new fields into the default form display.
+  if ($formDisplay = EntityFormDisplay::load('node.receipt.default')) {
+    $formDisplay->setComponent('field_vision_extraction', [
+      'type' => 'string_textarea',
+      'weight' => 110,
+      'region' => 'content',
+      'settings' => ['rows' => 5, 'placeholder' => ''],
+    ])->setComponent('field_extraction_confidence', [
+      'type' => 'number',
+      'weight' => 105,
+      'region' => 'content',
+      'settings' => ['placeholder' => ''],
+    ])->setComponent('field_extraction_discrepancies', [
+      'type' => 'string_textarea',
+      'weight' => 115,
+      'region' => 'content',
+      'settings' => ['rows' => 5, 'placeholder' => ''],
+    ])->save();
+  }
+
+  // Wire the 3 new fields into the default view display.
+  if ($viewDisplay = EntityViewDisplay::load('node.receipt.default')) {
+    $viewDisplay->setComponent('field_extraction_confidence', [
+      'type' => 'number_integer',
+      'label' => 'inline',
+      'weight' => 105,
+      'region' => 'content',
+      'settings' => ['thousand_separator' => '', 'prefix_suffix' => TRUE],
+    ])->setComponent('field_extraction_discrepancies', [
+      'type' => 'receipt_discrepancy_table',
+      'label' => 'above',
+      'weight' => 115,
+      'region' => 'content',
+      'settings' => [],
+    ])->removeComponent('field_vision_extraction')->save();
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function receipt_vision_verify_uninstall(): void {
+  // Delete transitions created by this module.
+  foreach ([
+    'receipt_text_extracted_verified',
+    'receipt_verified_approved',
+    'receipt_verified_needs_review',
+  ] as $id) {
+    $config = \Drupal::configFactory()->getEditable("workflow.transition.{$id}");
+    if (!$config->isNew()) {
+      $config->delete();
+    }
+  }
+}

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.receipt_verified
+    - workflow.state.receipt_approved
+id: receipt_verified_approved
+label: 'Auto-approve (high confidence)'
+module: receipt_vision_verify
+from_sid: receipt_verified
+to_sid: receipt_approved
+roles:
+  - administrator
+wid: receipt

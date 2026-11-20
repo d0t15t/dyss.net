@@ -1,0 +1,7 @@
+services:
+  receipt_vision_verify.commands:
+    class: \Drupal\receipt_vision_verify\Commands\ReceiptVisionVerifyCommands
+    arguments:
+      - '@entity_type.manager'
+    tags:
+      - { name: drush.command }

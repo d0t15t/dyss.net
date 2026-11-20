@@ -1,0 +1,31 @@
+uuid: cef22221-e0c4-4255-ab6b-dab73419b975
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.installation_photo.field_media_image
+    - image.style.thumbnail
+    - media.type.installation_photo
+  module:
+    - image
+id: media.installation_photo.media_library
+targetEntityType: media
+bundle: installation_photo
+mode: media_library
+content:
+  field_media_image:
+    type: image_image
+    weight: -50
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  name: true
+  path: true
+  status: true
+  uid: true

@@ -1,0 +1,21 @@
+uuid: 5a5725cf-1e66-4439-b0a7-c49776327662
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_watering_frequency
+field_name: field_watering_frequency
+entity_type: node
+type: list_string
+settings:
+  allowed_values: {  }
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

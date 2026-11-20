@@ -1,0 +1,19 @@
+uuid: 694b3e45-a6b0-4d6e-9075-84aaad790bdb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_placement_description
+field_name: field_placement_description
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

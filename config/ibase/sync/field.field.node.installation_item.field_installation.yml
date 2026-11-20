@@ -1,0 +1,24 @@
+uuid: efb20a9c-abbd-47c0-b91c-c91c2e900581
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_installation
+    - node.type.installation
+    - node.type.installation_item
+id: node.installation_item.field_installation
+field_name: field_installation
+entity_type: node
+bundle: installation_item
+label: Installation
+description: null
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      installation: installation
+field_type: entity_reference

@@ -1,0 +1,183 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * Hooks for the Receipt Vision Verify module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_update().
+ */
+function receipt_vision_verify_entity_update(EntityInterface $entity): void {
+  $original = $entity->original ?? NULL;
+  \Drupal::service('receipt_vision_verify.subscriber')->onEntityUpdate($entity, $original);
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function receipt_vision_verify_entity_insert(EntityInterface $entity): void {
+  \Drupal::service('receipt_vision_verify.subscriber')->onEntityInsert($entity);
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function receipt_vision_verify_entity_delete(EntityInterface $entity): void {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'receipt') {
+    \Drupal::service('receipt_vision_verify.pdf_to_image')->deleteCacheForNode($entity->id());
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node_receipt_edit_form.
+ *
+ * Adds a top-of-form alert listing discrepancies and highlights affected
+ * fields so reviewers can quickly see what needs attention.
+ */
+function receipt_vision_verify_form_node_receipt_edit_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state): void {
+  _receipt_vision_verify_alter_receipt_form($form, $form_state);
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node_receipt_form.
+ */
+function receipt_vision_verify_form_node_receipt_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state): void {
+  _receipt_vision_verify_alter_receipt_form($form, $form_state);
+}
+
+/**
+ * Shared form-alter logic for receipt node forms.
+ */
+function _receipt_vision_verify_alter_receipt_form(array &$form, \Drupal\Core\Form\FormStateInterface $form_state): void {
+  /** @var \Drupal\node\NodeInterface|null $node */
+  $node = $form_state->getFormObject()?->getEntity();
+  if (!$node || $node->isNew() || !$node->hasField('field_extraction_discrepancies')) {
+    return;
+  }
+  if ($node->get('field_extraction_discrepancies')->isEmpty()) {
+    return;
+  }
+  $raw = (string) $node->get('field_extraction_discrepancies')->value;
+  $discrepancies = json_decode($raw, TRUE);
+  if (!is_array($discrepancies) || empty($discrepancies)) {
+    return;
+  }
+
+  $canAccept = \Drupal::currentUser()->hasPermission('rerun receipt verification');
+  $confidence = $node->hasField('field_extraction_confidence') ? (int) ($node->get('field_extraction_confidence')->value ?? 0) : 0;
+
+  // Render the discrepancy table at the top of the form.
+  $rows = [];
+  foreach ($discrepancies as $fieldName => $disc) {
+    $severity = $disc['severity'] ?? 'medium';
+    $actionCell = ['data' => ''];
+    if ($canAccept) {
+      $url = \Drupal\Core\Url::fromRoute('receipt_vision_verify.accept_field', [
+        'node' => $node->id(),
+        'field_name' => $fieldName,
+      ]);
+      $token = \Drupal::csrfToken()->get($url->getInternalPath());
+      $url->setOption('query', ['token' => $token]);
+      $actionCell = [
+        'data' => [
+          '#type' => 'link',
+          '#title' => t('Use vision'),
+          '#url' => $url,
+          '#attributes' => ['class' => ['button', 'button--small']],
+        ],
+      ];
+    }
+    $rows[] = [
+      ['data' => $fieldName],
+      ['data' => (string) ($disc['ocr'] ?? '—')],
+      ['data' => (string) ($disc['vision'] ?? '—')],
+      [
+        'data' => $severity,
+        'class' => ['receipt-severity', 'receipt-severity--' . $severity],
+      ],
+      $actionCell,
+    ];
+  }
+
+  $form['vision_verify_alert'] = [
+    '#type' => 'details',
+    '#title' => t('AI Verification — @count discrepancy(ies), confidence @c%', [
+      '@count' => count($discrepancies),
+      '@c' => $confidence,
+    ]),
+    '#open' => TRUE,
+    '#weight' => -100,
+    '#attributes' => ['class' => ['receipt-discrepancy-alert']],
+    'table' => [
+      '#type' => 'table',
+      '#header' => [t('Field'), t('OCR value'), t('Vision value'), t('Severity'), t('Action')],
+      '#rows' => $rows,
+      '#attributes' => ['class' => ['receipt-discrepancy-table']],
+    ],
+  ];
+
+  if ($canAccept && count($discrepancies) > 1) {
+    $allUrl = \Drupal\Core\Url::fromRoute('receipt_vision_verify.accept_all', ['node' => $node->id()]);
+    $allToken = \Drupal::csrfToken()->get($allUrl->getInternalPath());
+    $allUrl->setOption('query', ['token' => $allToken]);
+    $form['vision_verify_alert']['accept_all'] = [
+      '#type' => 'link',
+      '#title' => t('Accept all vision values'),
+      '#url' => $allUrl,
+      '#attributes' => ['class' => ['button', 'button--primary']],
+      '#prefix' => '<div class="receipt-discrepancy-actions">',
+      '#suffix' => '</div>',
+    ];
+  }
+
+  // Highlight each field on the form that has a discrepancy.
+  foreach (array_keys($discrepancies) as $fieldName) {
+    if (empty($form[$fieldName])) {
+      continue;
+    }
+    $form[$fieldName]['#attributes']['class'][] = 'receipt-field-discrepancy';
+    $visionHint = $discrepancies[$fieldName]['vision'] ?? '';
+    if ($visionHint !== '' && $visionHint !== NULL) {
+      $existing = $form[$fieldName]['widget']['#description'] ?? '';
+      $hint = t('Vision extracted: <strong>@v</strong>', ['@v' => (string) $visionHint]);
+      $form[$fieldName]['widget']['#description'] = $existing
+        ? [['#markup' => (string) $existing], ['#markup' => '<br>'], ['#markup' => (string) $hint]]
+        : $hint;
+    }
+  }
+
+  // Attach the styling library.
+  $form['#attached']['library'][] = 'receipt_vision_verify/discrepancy';
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ *
+ * Ensure this module's entity_update / entity_insert hooks run BEFORE
+ * receipt_workflow's, so we can intercept the text_extracted → needs_review
+ * transition and route it through receipt_verified instead.
+ */
+function receipt_vision_verify_module_implements_alter(array &$implementations, string $hook): void {
+  if (!in_array($hook, ['entity_update', 'entity_insert'], TRUE)) {
+    return;
+  }
+  if (!isset($implementations['receipt_vision_verify']) || !isset($implementations['receipt_workflow'])) {
+    return;
+  }
+  // Move receipt_vision_verify right before receipt_workflow.
+  $own = $implementations['receipt_vision_verify'];
+  unset($implementations['receipt_vision_verify']);
+  $reordered = [];
+  foreach ($implementations as $module => $group) {
+    if ($module === 'receipt_workflow') {
+      $reordered['receipt_vision_verify'] = $own;
+    }
+    $reordered[$module] = $group;
+  }
+  $implementations = $reordered;
+}

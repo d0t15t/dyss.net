@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.receipt_needs_review
+    - workflow.state.receipt_approved
+id: receipt_needs_review_approved
+label: Approve
+module: receipt_workflow
+from_sid: receipt_needs_review
+to_sid: receipt_approved
+roles:
+  - administrator
+wid: receipt

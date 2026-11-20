@@ -1,0 +1,23 @@
+uuid: 98e6627f-63f7-4bc9-8c07-6f87cb1f4238
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_typical_spread_cm
+    - node.type.plant
+id: node.plant.field_typical_spread_cm
+field_name: field_typical_spread_cm
+entity_type: node
+bundle: plant
+label: 'Typical spread (cm)'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,17 @@
+uuid: 04f8b9e4-bce8-4331-a7ae-16cc749f98be
+langcode: en
+status: true
+dependencies: {  }
+id: offtopic_alert
+label: 'Off-Topic Alert'
+rule_type: topic_alert
+topics:
+  - 127
+threshold_value: 1
+threshold_type: count
+baseline_window: 7
+frequency: daily
+source_filter: all
+recipient_emails: alerts@example.com
+recipient_roles: ''
+max_emails_per_day: 5

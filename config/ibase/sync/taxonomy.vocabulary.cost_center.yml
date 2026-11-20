@@ -1,0 +1,9 @@
+uuid: c1bfb221-ef96-4e9f-8368-08dd57f99cc4
+langcode: und
+status: true
+dependencies: {  }
+name: 'Cost center'
+vid: cost_center
+description: 'Cost center codes/names used for receipt allocation. Terms can be added over time.'
+weight: 0
+new_revision: null

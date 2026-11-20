@@ -1,0 +1,38 @@
+uuid: 9cebfbf4-e6d5-4ba3-8595-bedbce43100e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.receipt.field_receipt_date
+id: node.receipt.field_receipt_date.default
+label: 'Receipt: Extract date'
+rule: 'receipt:text_to_datetime'
+input_mode: base
+weight: 10
+worker_type: direct
+entity_type: node
+bundle: receipt
+field_name: field_receipt_date
+edit_mode: false
+base_field: field_receipt_text
+prompt: |-
+  Extract the purchase date from the following receipt.
+  Return ONLY the date in ISO 8601 format (YYYY-MM-DD). If not found, return null.
+
+  [receipt_text]
+token: ''
+plugin_config:
+  automator_rule: 'receipt:text_to_datetime'
+  automator_mode: base
+  automator_weight: 10
+  automator_worker_type: direct
+  automator_edit_mode: false
+  automator_base_field: field_receipt_text
+  automator_prompt: |-
+    Extract the purchase date from the following receipt.
+    Return ONLY the date in ISO 8601 format (YYYY-MM-DD). If not found, return null.
+
+    [receipt_text]
+  automator_token: ''
+  automator_ai_provider: default
+  automator_ai_model: ''

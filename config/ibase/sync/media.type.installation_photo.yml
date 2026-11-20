@@ -1,0 +1,14 @@
+uuid: 21d6444d-733e-4dc1-b73e-4e1679682421
+langcode: en
+status: true
+dependencies: {  }
+id: installation_photo
+label: 'Installation Photo'
+description: 'Extends the core Image type. Powers the portfolio and client-facing reports, with phase tracking for before/during/after documentation.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - workflow
+id: node.field_receipt_status
+field_name: field_receipt_status
+entity_type: node
+type: workflow
+settings:
+  workflow_type: receipt
+  allowed_values: []
+  allowed_values_function: ''
+module: workflow
+locked: false
+cardinality: 1
+translatable: false
+indexes: {}
+persist_with_no_fields: false
+custom_storage: false

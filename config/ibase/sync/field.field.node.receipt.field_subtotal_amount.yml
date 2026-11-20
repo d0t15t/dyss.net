@@ -1,0 +1,23 @@
+uuid: c053a463-2f8c-41fb-b7a5-32dcbd748dab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subtotal_amount
+    - node.type.receipt
+id: node.receipt.field_subtotal_amount
+field_name: field_subtotal_amount
+entity_type: node
+bundle: receipt
+label: 'Subtotal amount'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

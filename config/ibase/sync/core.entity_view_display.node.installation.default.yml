@@ -1,0 +1,134 @@
+uuid: a6e19ba9-bd37-4f3b-9f0f-3dfee6c5f794
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.installation.field_client
+    - field.field.node.installation.field_contract_status
+    - field.field.node.installation.field_end_date
+    - field.field.node.installation.field_floor_area_m2
+    - field.field.node.installation.field_floor_plan
+    - field.field.node.installation.field_industry
+    - field.field.node.installation.field_installation_photos
+    - field.field.node.installation.field_installation_style
+    - field.field.node.installation.field_site_address
+    - field.field.node.installation.field_space_type
+    - field.field.node.installation.field_start_date
+    - image.style.media_library
+    - node.type.installation
+  module:
+    - address
+    - datetime
+    - media
+    - options
+    - user
+id: node.installation.default
+targetEntityType: node
+bundle: installation
+mode: default
+content:
+  field_client:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_contract_status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_end_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_floor_area_m2:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_floor_plan:
+    type: media_thumbnail
+    label: above
+    settings:
+      image_link: media
+      image_style: media_library
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_industry:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_installation_photos:
+    type: media_thumbnail
+    label: above
+    settings:
+      image_link: media
+      image_style: media_library
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_installation_style:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_site_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_space_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_start_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

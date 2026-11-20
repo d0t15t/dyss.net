@@ -1,0 +1,11 @@
+uuid: 285e4413-ca4e-4d1c-9419-cc8e1394e0f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.receipt_pdf
+id: media.receipt_pdf
+target_entity_type_id: media
+target_bundle: receipt_pdf
+default_langcode: site_default
+language_alterable: false

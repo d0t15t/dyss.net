@@ -1,0 +1,20 @@
+uuid: c32203c0-d57e-465e-88b1-a7651bbc1a9a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.field_technician
+field_name: field_technician
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

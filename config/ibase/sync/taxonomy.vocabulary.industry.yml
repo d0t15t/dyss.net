@@ -1,0 +1,9 @@
+uuid: dd40ad92-adf2-49ab-b084-809bb97d7fff
+langcode: en
+status: true
+dependencies: {  }
+name: Industry
+vid: industry
+description: 'Industry classification for customer/site context (e.g., hospitality, healthcare, retail).'
+weight: 0
+new_revision: true

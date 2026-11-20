@@ -1,0 +1,64 @@
+/* Alert container at the top of the edit form */
+.receipt-discrepancy-alert {
+  background: #fff8e1;
+  border-left: 4px solid #f5a623;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+}
+
+.receipt-discrepancy-alert summary {
+  font-weight: bold;
+  color: #5d3b0a;
+}
+
+/* Fields flagged as having a discrepancy */
+.receipt-field-discrepancy {
+  border-left: 4px solid #f5a623;
+  padding-left: 0.75rem;
+  background: #fffbf0;
+}
+
+.receipt-field-discrepancy .description {
+  color: #5d3b0a;
+}
+
+/* Action area below the table */
+.receipt-discrepancy-actions {
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+/* Severity badges inside the table */
+.receipt-severity {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  border-radius: 3px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.receipt-severity--low {
+  background: #e6f4ea;
+  color: #1e7a3c;
+}
+
+.receipt-severity--medium {
+  background: #fff4cc;
+  color: #7a5a00;
+}
+
+.receipt-severity--high {
+  background: #fce8e6;
+  color: #a52714;
+}
+
+/* Tighten the discrepancy table */
+.receipt-discrepancy-table {
+  width: 100%;
+}
+
+.receipt-discrepancy-table td,
+.receipt-discrepancy-table th {
+  padding: 0.35rem 0.6rem;
+}

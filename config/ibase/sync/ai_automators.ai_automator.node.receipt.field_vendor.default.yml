@@ -1,0 +1,44 @@
+uuid: eb31e1ae-ffc0-4866-8092-4ea99c5c96d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.receipt.field_vendor
+id: node.receipt.field_vendor.default
+label: 'Receipt: Extract vendor'
+rule: 'receipt:text_to_taxonomy_term'
+input_mode: base
+weight: 10
+worker_type: direct
+entity_type: node
+bundle: receipt
+field_name: field_vendor
+edit_mode: false
+base_field: field_receipt_text
+prompt: |-
+  From the receipt below, identify the vendor or merchant name.
+  Return ONLY the name. Pick from the list if it matches, otherwise return the raw name from the receipt. If not found, return null.
+
+  Available vendors:
+  [available_terms]
+
+  [receipt_text]
+token: ''
+plugin_config:
+  automator_rule: 'receipt:text_to_taxonomy_term'
+  automator_mode: base
+  automator_weight: 10
+  automator_worker_type: direct
+  automator_edit_mode: false
+  automator_base_field: field_receipt_text
+  automator_prompt: |-
+    From the receipt below, identify the vendor or merchant name.
+    Return ONLY the name. Pick from the list if it matches, otherwise return the raw name from the receipt. If not found, return null.
+
+    Available vendors:
+    [available_terms]
+
+    [receipt_text]
+  automator_token: ''
+  automator_ai_provider: default
+  automator_ai_model: ''

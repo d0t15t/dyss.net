@@ -1,0 +1,78 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * Install hooks for the receipt_workflow module.
+ */
+
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+/**
+ * Implements hook_install().
+ */
+function receipt_workflow_install(): void {
+  // Create workflow transitions by writing config directly.
+  // WorkflowConfigTransition::save() calls calculateDependencies() which
+  // loads state entities, but during module install the entity static cache
+  // may not yet see the just-imported state config. Writing raw config
+  // side-steps this entirely — the workflow module picks them up on next load.
+  $transitions = [
+    ['receipt_new', 'receipt_file_attached', 'Attach File', ['authenticated']],
+    ['receipt_file_attached', 'receipt_text_extracted', 'OCR Complete', ['administrator']],
+    ['receipt_new', 'receipt_text_extracted', 'OCR Complete (direct)', ['administrator']],
+    ['receipt_text_extracted', 'receipt_needs_review', 'Submit for Review', ['authenticated']],
+    ['receipt_needs_review', 'receipt_approved', 'Approve', ['administrator']],
+    ['receipt_needs_review', 'receipt_rejected', 'Reject', ['administrator']],
+    ['receipt_rejected', 'receipt_text_extracted', 'Re-extract', ['authenticated']],
+    ['receipt_approved', 'receipt_archived', 'Archive', ['administrator']],
+  ];
+
+  $wid = 'receipt';
+  foreach ($transitions as [$from, $to, $label, $roles]) {
+    $id = $wid . substr($from, strlen($wid)) . substr($to, strlen($wid));
+    \Drupal::configFactory()->getEditable("workflow.transition.{$id}")->setData([
+      'langcode' => 'en',
+      'status' => TRUE,
+      'dependencies' => [
+        'config' => [
+          "workflow.state.{$from}",
+          "workflow.state.{$to}",
+        ],
+      ],
+      'id' => $id,
+      'label' => $label,
+      'module' => 'receipt_workflow',
+      'wid' => $wid,
+      'from_sid' => $from,
+      'to_sid' => $to,
+      'roles' => $roles,
+    ])->save();
+  }
+
+  // Add the workflow field widget to the receipt node default form display.
+  $form_display = EntityFormDisplay::load('node.receipt.default');
+  if ($form_display) {
+    $form_display->setComponent('field_receipt_status', [
+      'type' => 'workflow_default',
+      'weight' => 100,
+      'region' => 'content',
+      'settings' => [],
+      'third_party_settings' => [],
+    ])->save();
+  }
+
+  // Add the workflow field formatter to the receipt node default view display.
+  $view_display = EntityViewDisplay::load('node.receipt.default');
+  if ($view_display) {
+    $view_display->setComponent('field_receipt_status', [
+      'type' => 'workflow_default',
+      'label' => 'inline',
+      'weight' => 100,
+      'region' => 'content',
+      'settings' => [],
+      'third_party_settings' => [],
+    ])->save();
+  }
+}

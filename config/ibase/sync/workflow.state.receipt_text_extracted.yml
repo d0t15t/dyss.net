@@ -1,0 +1,15 @@
+uuid: 42306a27-48b3-42a2-9169-3bdfc91f72f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+_core:
+  default_config_hash: rO-5dfumBdQlTop4LF6OwAaDy4WlRFVu-ELOdGaurBs
+id: receipt_text_extracted
+label: 'Text Extracted'
+weight: 0
+module: receipt_workflow
+wid: receipt
+sysid: 0
+single_state_widget: ''

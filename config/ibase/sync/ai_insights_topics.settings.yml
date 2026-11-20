@@ -1,0 +1,20 @@
+_core:
+  default_config_hash: 9SxyC_xNtIgsihncDxAq1Qy3ayrdHspCcBxixI6sLPE
+vocabulary: ai_topics
+granularity_prompt: |-
+  Classify into topics relevant to a Drupal-based plant and botanical management system. The site manages plants, plant instances, installations, service visits, clients, and warehouse locations.
+
+  Example topics: Plant Care, Site Administration, Content Modeling, Drupal Configuration, Client Management, Installation Planning, Inventory/Warehouse, Service Scheduling, Search & Navigation, General Inquiry, Off-Topic.
+
+  Use "Off-Topic" for conversations that are clearly unrelated to the site's purpose (e.g. jokes, random questions).
+  Use "Site Administration" for Drupal admin tasks (content types, taxonomy, permissions, etc).
+  Prefer reusing existing topics. Create new ones only when nothing fits.
+  Assign 1-3 topics per conversation.
+batch_size: 20
+max_input_chars: 4000
+reconcile_interval: 86400
+provider_config:
+  use_default: true
+  provider_id: ''
+  model_id: ''
+  configuration: {  }

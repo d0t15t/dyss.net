@@ -1,0 +1,19 @@
+uuid: e24700c4-f067-4816-ae13-42967b0068c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_instance_id
+    - node.type.plant_instance
+id: node.plant_instance.field_instance_id
+field_name: field_instance_id
+entity_type: node
+bundle: plant_instance
+label: 'Instance ID'
+description: null
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: 450af2be-5a87-44b0-8176-b5169d64fc7c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: bdSoIx5hDrE8r_B2BCuQHaqnIH2MDF_yCDgrqaOEmpg
+id: node.field_vision_extraction
+field_name: field_vision_extraction
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

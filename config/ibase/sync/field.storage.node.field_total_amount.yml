@@ -1,0 +1,20 @@
+uuid: c619f5e9-093c-4739-87ef-3e6f2c848e2e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_total_amount
+field_name: field_total_amount
+entity_type: node
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

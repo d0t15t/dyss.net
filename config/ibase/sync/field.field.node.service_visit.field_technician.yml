@@ -1,0 +1,21 @@
+uuid: 9c37994a-cf45-4184-bd88-ecd15e48a410
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_technician
+    - node.type.service_visit
+id: node.service_visit.field_technician
+field_name: field_technician
+entity_type: node
+bundle: service_visit
+label: Technician
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings: {  }
+field_type: entity_reference

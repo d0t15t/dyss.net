@@ -1,0 +1,25 @@
+uuid: 8dada67c-ec35-470a-8ec3-68922200ecd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_installation_style
+    - node.type.installation
+    - taxonomy.vocabulary.installation_style
+id: node.installation.field_installation_style
+field_name: field_installation_style
+entity_type: node
+bundle: installation
+label: 'Installation style'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      installation_style: installation_style
+    auto_create: false
+field_type: entity_reference

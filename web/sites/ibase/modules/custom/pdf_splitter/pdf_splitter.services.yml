@@ -1,0 +1,14 @@
+services:
+  pdf_splitter.form_alter:
+    class: \Drupal\pdf_splitter\Service\PdfSplitterFormAlter
+    arguments:
+      - '@pdf_splitter.splitter'
+
+  pdf_splitter.splitter:
+    class: \Drupal\pdf_splitter\Service\PdfSplitterService
+    arguments:
+      - '@entity_type.manager'
+      - '@file_system'
+      - '@logger.factory'
+      - '@messenger'
+      - '@token'

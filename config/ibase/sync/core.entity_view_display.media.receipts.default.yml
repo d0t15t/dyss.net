@@ -1,0 +1,38 @@
+uuid: ab809122-6b19-4078-94b6-9ff8f373a57c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.receipts.field_media_audio_file
+    - field.field.media.receipts.field_receipts
+    - media.type.receipts
+  module:
+    - file
+id: media.receipts.default
+targetEntityType: media
+bundle: receipts
+mode: default
+content:
+  field_media_audio_file:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_receipts:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

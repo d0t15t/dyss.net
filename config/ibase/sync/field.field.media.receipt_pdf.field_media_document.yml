@@ -1,0 +1,27 @@
+uuid: c6a33a9e-5cfb-4807-8157-2ad494a17e92
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_document
+    - media.type.receipt_pdf
+  module:
+    - file
+id: media.receipt_pdf.field_media_document
+field_name: field_media_document
+entity_type: media
+bundle: receipt_pdf
+label: File
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt doc docx pdf'
+  max_filesize: ''
+  description_field: false
+field_type: file

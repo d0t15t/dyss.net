@@ -1,0 +1,11 @@
+uuid: 4867ba5c-8b9f-4e80-8566-6bdc33416a59
+langcode: en
+status: true
+dependencies: {  }
+name: 'Installation Item'
+type: installation_item
+description: 'Installation Item content type.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

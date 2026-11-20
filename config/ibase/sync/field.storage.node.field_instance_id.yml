@@ -1,0 +1,21 @@
+uuid: 57c2e1c5-c03b-4239-a7e3-0255312d2dd5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_instance_id
+field_name: field_instance_id
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

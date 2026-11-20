@@ -1,0 +1,123 @@
+uuid: 6616fdc6-c4d9-4495-9803-b0f9a7af2780
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.plant.field_care_profile
+    - field.field.node.plant.field_description
+    - field.field.node.plant.field_latin_name
+    - field.field.node.plant.field_light_requirements
+    - field.field.node.plant.field_plant_family
+    - field.field.node.plant.field_plant_photos
+    - field.field.node.plant.field_space_type
+    - field.field.node.plant.field_toxic
+    - field.field.node.plant.field_typical_height_cm
+    - field.field.node.plant.field_typical_spread_cm
+    - field.field.node.plant.field_watering_frequency
+    - node.type.plant
+  module:
+    - options
+    - text
+    - user
+id: node.plant.default
+targetEntityType: node
+bundle: plant
+mode: default
+content:
+  field_care_profile:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_latin_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_light_requirements:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_plant_family:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_plant_photos:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_space_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_toxic:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_typical_height_cm:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_typical_spread_cm:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_watering_frequency:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

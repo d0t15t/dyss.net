@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+id: receipt_archived
+label: 'Archived'
+module: receipt_workflow
+wid: receipt
+weight: 30
+sysid: 0

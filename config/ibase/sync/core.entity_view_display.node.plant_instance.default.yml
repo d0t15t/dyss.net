@@ -1,0 +1,96 @@
+uuid: f4c817f5-43e7-4e98-88f3-65912ddd4d71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.plant_instance.field_acquisition_date
+    - field.field.node.plant_instance.field_current_installation_item
+    - field.field.node.plant_instance.field_current_warehouse_location
+    - field.field.node.plant_instance.field_health_notes
+    - field.field.node.plant_instance.field_instance_id
+    - field.field.node.plant_instance.field_last_service_date
+    - field.field.node.plant_instance.field_plant
+    - field.field.node.plant_instance.field_plant_status
+    - node.type.plant_instance
+  module:
+    - datetime
+    - text
+    - user
+id: node.plant_instance.default
+targetEntityType: node
+bundle: plant_instance
+mode: default
+content:
+  field_acquisition_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_current_installation_item:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_current_warehouse_location:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_health_notes:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_instance_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 50
+    region: content
+  field_last_service_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_plant:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_plant_status:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

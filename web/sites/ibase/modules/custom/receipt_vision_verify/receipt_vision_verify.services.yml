@@ -1,0 +1,23 @@
+services:
+  receipt_vision_verify.subscriber:
+    class: Drupal\receipt_vision_verify\EventSubscriber\VisionVerifySubscriber
+    arguments:
+      - '@entity_type.manager'
+      - '@logger.factory'
+      - '@receipt_vision_verify.comparator'
+      - '@config.factory'
+
+  receipt_vision_verify.comparator:
+    class: Drupal\receipt_vision_verify\Service\VisionComparator
+    arguments:
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@logger.factory'
+
+  receipt_vision_verify.pdf_to_image:
+    class: Drupal\receipt_vision_verify\Service\PdfToImage
+    arguments:
+      - '@file_system'
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@logger.factory'

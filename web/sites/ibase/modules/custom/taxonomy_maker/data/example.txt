@@ -1,0 +1,87 @@
+# Taxonomy Maker — example list file
+#
+# Format rules:
+#   - Lines starting with # are comments (ignored).
+#   - Blank lines are ignored.
+#   - [vocabulary_machine_name] starts a new section.
+#   - Each following non-blank, non-comment line is one term name.
+#   - Multiple vocabulary sections are allowed in one file.
+#   - Hierarchy is not supported; all terms are created at the root level.
+#   - Terms that already exist in the vocabulary are silently skipped.
+#
+# Usage (path is relative to the Drupal root, i.e. the web/ directory):
+#   drush taxonomy-maker:import modules/taxonomy_maker/data/example.txt
+#   drush txm-import modules/taxonomy_maker/data/example.txt
+
+[care_profile]
+Full Sun
+Partial Sun / Partial Shade
+Full Shade
+Low Light
+Bright Indirect Light
+High Humidity
+Drought Tolerant
+
+[space_type]
+Office
+Lobby
+Retail
+Hospitality
+Healthcare
+Residential
+Outdoor / Patio
+
+[industry]
+Corporate
+Healthcare
+Hospitality
+Retail
+Education
+Government
+Residential
+
+[installation_style]
+Potted
+Planted Bed
+Green Wall
+Hanging
+Trough
+Window Box
+
+[container_type]
+Nursery Pot
+Decorative Pot
+Self-Watering Pot
+Planter Box
+Trough
+Hanging Basket
+
+[plant_family]
+Araceae
+Asparagaceae
+Cactaceae
+Marantaceae
+Moraceae
+Orchidaceae
+Piperaceae
+Polypodiaceae
+
+[plant_status]
+Available
+On Order
+In Quarantine
+Retired
+
+[visit_type]
+Scheduled Maintenance
+Emergency
+Assessment
+Installation
+Removal
+
+[tags]
+Feature Plant
+Low Maintenance
+Air Purifying
+Pet Friendly
+Fast Growing

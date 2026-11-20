@@ -1,0 +1,15 @@
+enabled: true
+ai_provider: ''
+ai_model: ''
+auto_approve_threshold: 95
+image_dpi: 200
+field_weights:
+  field_total_amount: 30
+  field_receipt_date: 20
+  field_vendor: 20
+  field_currency: 10
+  field_subtotal_amount: 5
+  field_tax_amount: 5
+  field_receipt_number: 5
+  field_payment_method: 3
+  field_expense_category: 2

@@ -1,0 +1,21 @@
+uuid: beff896e-1581-4918-b0b5-2060b1b2f95f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_start_date
+    - node.type.installation
+  module:
+    - datetime
+id: node.installation.field_start_date
+field_name: field_start_date
+entity_type: node
+bundle: installation
+label: 'Start date'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

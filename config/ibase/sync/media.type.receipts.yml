@@ -1,0 +1,14 @@
+uuid: 332e388e-5e6a-4ebd-8bf1-a099e1689885
+langcode: en
+status: true
+dependencies: {  }
+id: receipts
+label: Receipts
+description: 'A multi-page PDF receipts document.'
+source: file
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_audio_file
+field_map:
+  name: name

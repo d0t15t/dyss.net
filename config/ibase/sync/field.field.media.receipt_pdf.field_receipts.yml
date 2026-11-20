@@ -1,0 +1,29 @@
+uuid: a735a905-4a14-419e-ade9-64561ebb9040
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_receipts
+    - media.type.receipt
+    - media.type.receipt_pdf
+id: media.receipt_pdf.field_receipts
+field_name: field_receipts
+entity_type: media
+bundle: receipt_pdf
+label: Receipts
+description: 'The individual receipt PDFs.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      receipt: receipt
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

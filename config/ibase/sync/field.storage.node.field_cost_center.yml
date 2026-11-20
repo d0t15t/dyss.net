@@ -1,0 +1,20 @@
+uuid: 2e639643-187b-4c66-9fe2-052cce4e6987
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_cost_center
+field_name: field_cost_center
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,15 @@
+uuid: 5a0e604c-97cd-4be8-8d17-c5b87a86c7b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+_core:
+  default_config_hash: CEWy0tovSfr-UdF-5T-tx-YwygQSkBuifFtmk6c9MgY
+id: receipt_archived
+label: Archived
+weight: 30
+module: receipt_workflow
+wid: receipt
+sysid: 0
+single_state_widget: ''

@@ -1,0 +1,25 @@
+uuid: 0288fe35-f6ea-4817-8709-081fe60552ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_payment_method
+    - node.type.receipt
+    - taxonomy.vocabulary.payment_method
+id: node.receipt.field_payment_method
+field_name: field_payment_method
+entity_type: node
+bundle: receipt
+label: 'Payment method'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      payment_method: payment_method
+    auto_create: false
+field_type: entity_reference

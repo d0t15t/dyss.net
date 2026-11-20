@@ -1,0 +1,25 @@
+uuid: 8c9173b5-d406-41c1-87fb-bcf43a31f284
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plant_status
+    - node.type.plant_instance
+    - taxonomy.vocabulary.plant_status
+id: node.plant_instance.field_plant_status
+field_name: field_plant_status
+entity_type: node
+bundle: plant_instance
+label: 'Plant status'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      plant_status: plant_status
+    auto_create: false
+field_type: entity_reference

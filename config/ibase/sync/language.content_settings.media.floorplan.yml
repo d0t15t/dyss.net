@@ -1,0 +1,11 @@
+uuid: c0bfff2a-baeb-4a75-99a8-1fd9674d94cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.floorplan
+id: media.floorplan
+target_entity_type_id: media
+target_bundle: floorplan
+default_langcode: site_default
+language_alterable: false

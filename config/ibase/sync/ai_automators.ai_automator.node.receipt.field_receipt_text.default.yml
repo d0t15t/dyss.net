@@ -1,0 +1,28 @@
+uuid: 738ff377-baa8-4db5-8dc3-668ba0bae625
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.receipt.field_receipt_text
+id: node.receipt.field_receipt_text.default
+label: 'OCR: Receipt file to text'
+rule: 'ocr:image_to_string_long'
+input_mode: base
+weight: 0
+worker_type: direct
+entity_type: node
+bundle: receipt
+field_name: field_receipt_text
+edit_mode: false
+base_field: field_receipt
+prompt: ''
+token: ''
+plugin_config:
+  automator_rule: 'ocr:image_to_string_long'
+  automator_mode: base
+  automator_weight: 0
+  automator_worker_type: direct
+  automator_edit_mode: false
+  automator_base_field: field_receipt
+  automator_prompt: ''
+  automator_token: ''

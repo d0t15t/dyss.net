@@ -1,0 +1,22 @@
+uuid: e3b1456b-5ee8-405a-a63e-15d0304855e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_primary_contact
+    - node.type.client
+  module:
+    - text
+id: node.client.field_primary_contact
+field_name: field_primary_contact
+entity_type: node
+bundle: client
+label: 'Primary contact'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

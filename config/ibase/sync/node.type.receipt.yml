@@ -1,0 +1,17 @@
+uuid: fe7ddb0b-894b-485b-a02c-a0119362c6d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Receipt
+type: receipt
+description: "A content with a receipt PDF and it's extracted text components."
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

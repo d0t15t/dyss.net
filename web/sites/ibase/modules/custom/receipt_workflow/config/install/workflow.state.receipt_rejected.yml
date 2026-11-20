@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+id: receipt_rejected
+label: 'Rejected'
+module: receipt_workflow
+wid: receipt
+weight: 15
+sysid: 0

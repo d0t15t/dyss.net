@@ -1,0 +1,10 @@
+name: 'Receipt Workflow'
+type: module
+description: 'Defines the receipt node lifecycle workflow and AI-powered field extraction automators.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:node
+  - workflow:workflow
+  - ai:ai_automators
+  - ocr_api:ocr_api

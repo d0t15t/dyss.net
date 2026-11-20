@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.receipt_needs_review
+    - workflow.state.receipt_rejected
+id: receipt_needs_review_rejected
+label: Reject
+module: receipt_workflow
+from_sid: receipt_needs_review
+to_sid: receipt_rejected
+roles:
+  - administrator
+wid: receipt

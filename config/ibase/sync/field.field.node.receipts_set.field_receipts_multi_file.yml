@@ -1,0 +1,27 @@
+uuid: 160db981-ddcd-4edd-9211-0ddf9efe164d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_receipts_multi_file
+    - node.type.receipts_set
+  module:
+    - file
+id: node.receipts_set.field_receipts_multi_file
+field_name: field_receipts_multi_file
+entity_type: node
+bundle: receipts_set
+label: 'Receipts Multi-file'
+description: 'A PDF file containing 1 receipt per page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

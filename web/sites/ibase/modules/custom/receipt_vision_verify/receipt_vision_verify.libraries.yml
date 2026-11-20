@@ -1,0 +1,5 @@
+discrepancy:
+  version: 1.x
+  css:
+    component:
+      css/discrepancy.css: {}

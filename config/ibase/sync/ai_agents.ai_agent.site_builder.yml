@@ -1,0 +1,26 @@
+uuid: 13aa888b-c790-4eec-87f3-053d51ce0274
+langcode: en
+status: true
+dependencies: {  }
+id: site_builder
+label: 'Site Builder'
+description: 'This is an AI assistant for helping to build Drupal sites.'
+system_prompt: 'You are an expert Drupal site builder and admin. Use your tools and best practice Drupal knowledge to help the user build the site.'
+secured_system_prompt: null
+tools:
+  'ai_agents::ai_agent::content_type_agent_triage': true
+  'ai_agents::ai_agent::field_agent_triage': true
+  'ai_agents::ai_agent::taxonomy_agent_config': true
+tool_settings: {  }
+orchestration_agent: true
+triage_agent: false
+max_loops: 3
+max_loops_message: ''
+default_information_tools: null
+tool_usage_limits: {  }
+exclude_users_role: false
+masquerade_roles: {  }
+structured_output_enabled: null
+structured_output_schema: null
+hostname_filter_disabled: false
+guardrail_set: null

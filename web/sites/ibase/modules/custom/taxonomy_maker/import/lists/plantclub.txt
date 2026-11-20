@@ -1,0 +1,48 @@
+[care_profile]
+Low-light tolerant
+Drought-resistant
+High-humidity
+Pet-safe
+Air-purifying
+
+[plant_status]
+Available
+Reserved
+Rented out
+In quarantine
+Under treatment
+
+[space_type]
+Office
+Lobby
+Retail floor
+Restaurant
+Healthcare
+
+[industry]
+Finance
+Hospitality
+Healthcare
+Retail
+Co-working
+
+[installation_style] 
+Biophilic
+Minimalist
+Tropical
+Sculptural
+Living wall
+
+[container_type]
+Standard pot
+Designer planter
+Hanging basket
+Trough
+Moss wall panel
+
+[visit_type]
+Routine maintenance
+Emergency call-out
+Initial delivery
+Plant swap
+Final removal

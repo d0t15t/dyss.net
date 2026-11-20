@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+id: receipt_verified
+label: 'Verified'
+module: receipt_vision_verify
+wid: receipt
+weight: 5
+sysid: 0

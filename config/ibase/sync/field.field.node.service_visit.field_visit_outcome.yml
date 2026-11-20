@@ -1,0 +1,21 @@
+uuid: 32775ea1-7ef6-49a6-a6e2-38f0ffce4129
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visit_outcome
+    - node.type.service_visit
+  module:
+    - options
+id: node.service_visit.field_visit_outcome
+field_name: field_visit_outcome
+entity_type: node
+bundle: service_visit
+label: 'Visit outcome'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

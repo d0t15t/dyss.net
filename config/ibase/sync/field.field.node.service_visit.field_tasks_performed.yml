@@ -1,0 +1,21 @@
+uuid: 6fc2401f-e2aa-422a-b071-4ebb412de1a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tasks_performed
+    - node.type.service_visit
+  module:
+    - options
+id: node.service_visit.field_tasks_performed
+field_name: field_tasks_performed
+entity_type: node
+bundle: service_visit
+label: 'Tasks performed'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

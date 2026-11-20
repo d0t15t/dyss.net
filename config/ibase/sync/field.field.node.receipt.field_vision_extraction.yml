@@ -1,0 +1,21 @@
+uuid: 1f3fcf4a-8da8-4faa-a098-4a9f070b6909
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vision_extraction
+    - node.type.receipt
+_core:
+  default_config_hash: JUXTxNwkji2VM4d2ieSJXKAo2NimBYlcbgk7Xf9gnis
+id: node.receipt.field_vision_extraction
+field_name: field_vision_extraction
+entity_type: node
+bundle: receipt
+label: 'Vision extraction (JSON)'
+description: 'Raw JSON response from the AI vision pass over the receipt image.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

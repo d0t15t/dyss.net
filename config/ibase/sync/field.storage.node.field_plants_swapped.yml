@@ -1,0 +1,19 @@
+uuid: 674cba62-5a72-47fe-96be-bf6be85ebb13
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_plants_swapped
+field_name: field_plants_swapped
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

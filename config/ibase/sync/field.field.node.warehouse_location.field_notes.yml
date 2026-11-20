@@ -1,0 +1,22 @@
+uuid: 667e9de1-b652-4f9d-9ccd-56632e8bdd4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notes
+    - node.type.warehouse_location
+  module:
+    - text
+id: node.warehouse_location.field_notes
+field_name: field_notes
+entity_type: node
+bundle: warehouse_location
+label: Notes
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

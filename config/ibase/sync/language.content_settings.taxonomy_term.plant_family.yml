@@ -1,0 +1,11 @@
+uuid: 3a77b4c3-e9ff-45c2-b6dc-1f4a5f1a6f49
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.plant_family
+id: taxonomy_term.plant_family
+target_entity_type_id: taxonomy_term
+target_bundle: plant_family
+default_langcode: site_default
+language_alterable: false

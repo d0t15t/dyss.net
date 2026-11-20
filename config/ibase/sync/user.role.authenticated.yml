@@ -1,0 +1,29 @@
+uuid: 2e0757bd-1eba-43b2-a3c6-24be11072ad0
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - workflow.workflow.receipt
+  module:
+    - file
+    - filter
+    - media
+    - search
+    - shortcut
+    - system
+    - workflow
+_core:
+  default_config_hash: hcfESiA8tr3D1muRk2KF7tbcun16ZJlG1R5SzKGed6g
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access shortcuts'
+  - 'create receipt workflow_transition'
+  - 'delete own files'
+  - 'search content'
+  - 'use text format basic_html'
+  - 'view media'

@@ -1,0 +1,16 @@
+uuid: 51a2ee2e-0d2e-4cd6-8c45-1c74fd08de58
+langcode: en
+status: true
+dependencies: {  }
+id: weekly_digest
+label: 'Weekly Topic Digest'
+rule_type: digest
+topics: {  }
+threshold_value: 1
+threshold_type: count
+baseline_window: 7
+frequency: weekly
+source_filter: all
+recipient_emails: alerts@example.com
+recipient_roles: ''
+max_emails_per_day: 1

@@ -1,0 +1,76 @@
+uuid: 72242ef7-0fe1-45a6-9dd7-aec500c781be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.installation_item.field_container_type
+    - field.field.node.installation_item.field_installation
+    - field.field.node.installation_item.field_placement_description
+    - field.field.node.installation_item.field_plant
+    - field.field.node.installation_item.field_plant_instances
+    - field.field.node.installation_item.field_quantity
+    - node.type.installation_item
+  module:
+    - text
+    - user
+id: node.installation_item.default
+targetEntityType: node
+bundle: installation_item
+mode: default
+content:
+  field_container_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_installation:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_placement_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_plant:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_plant_instances:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_quantity:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

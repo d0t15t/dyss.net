@@ -1,0 +1,20 @@
+uuid: b53b54cc-530c-4b7c-8de0-f0c5a139afca
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: node.field_installation_photos
+field_name: field_installation_photos
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: -1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

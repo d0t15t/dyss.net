@@ -1,0 +1,55 @@
+receipt_vision_verify.settings:
+  path: '/admin/config/ai/receipt-vision-verify'
+  defaults:
+    _form: '\Drupal\receipt_vision_verify\Form\SettingsForm'
+    _title: 'Receipt Vision Verify'
+  requirements:
+    _permission: 'administer receipt vision verify'
+
+receipt_vision_verify.dashboard:
+  path: '/admin/reports/receipts/verification'
+  defaults:
+    _controller: '\Drupal\receipt_vision_verify\Controller\VerificationDashboard::build'
+    _title: 'Receipt Verification Dashboard'
+  requirements:
+    _permission: 'view receipt verification reports'
+
+receipt_vision_verify.rerun:
+  path: '/node/{node}/verification/rerun'
+  defaults:
+    _controller: '\Drupal\receipt_vision_verify\Controller\RerunController::rerun'
+  requirements:
+    _permission: 'rerun receipt verification'
+    _csrf_token: 'TRUE'
+    node: \d+
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+receipt_vision_verify.accept_field:
+  path: '/node/{node}/vision/accept/{field_name}'
+  defaults:
+    _controller: '\Drupal\receipt_vision_verify\Controller\AcceptVisionController::acceptField'
+  requirements:
+    _permission: 'rerun receipt verification'
+    _csrf_token: 'TRUE'
+    node: \d+
+    field_name: '[a-z_]+'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+receipt_vision_verify.accept_all:
+  path: '/node/{node}/vision/accept-all'
+  defaults:
+    _controller: '\Drupal\receipt_vision_verify\Controller\AcceptVisionController::acceptAll'
+  requirements:
+    _permission: 'rerun receipt verification'
+    _csrf_token: 'TRUE'
+    node: \d+
+  options:
+    parameters:
+      node:
+        type: entity:node

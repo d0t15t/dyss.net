@@ -1,0 +1,21 @@
+uuid: 48ae63a1-a5ad-4ca7-9d5c-84441589ccb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_extraction_discrepancies
+    - node.type.receipt
+_core:
+  default_config_hash: mCtUq61jUUi-IjAuyLaFvsyRedeD4nM2RwS0JNQvhns
+id: node.receipt.field_extraction_discrepancies
+field_name: field_extraction_discrepancies
+entity_type: node
+bundle: receipt
+label: 'Extraction discrepancies (JSON)'
+description: 'Per-field diff between OCR and vision values.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

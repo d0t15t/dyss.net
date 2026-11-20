@@ -1,0 +1,11 @@
+uuid: f184ec47-8f7b-4662-9e47-7d45c155eb6d
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ai_ckeditor
+id: ai_ckeditor_complete
+label: 'AI CKEditor completion prompt'
+variables: {  }
+tokens: {  }

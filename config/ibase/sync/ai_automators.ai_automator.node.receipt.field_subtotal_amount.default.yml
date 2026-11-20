@@ -1,0 +1,38 @@
+uuid: 54fce436-9728-4c4d-b404-35d64a838d5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.receipt.field_subtotal_amount
+id: node.receipt.field_subtotal_amount.default
+label: 'Receipt: Extract subtotal amount'
+rule: 'receipt:text_to_decimal'
+input_mode: base
+weight: 10
+worker_type: direct
+entity_type: node
+bundle: receipt
+field_name: field_subtotal_amount
+edit_mode: false
+base_field: field_receipt_text
+prompt: |-
+  Extract the subtotal amount (before tax) from the following receipt.
+  Return ONLY the number without any currency symbol, spaces, or commas (e.g. 10.00). If not found, return null.
+
+  [receipt_text]
+token: ''
+plugin_config:
+  automator_rule: 'receipt:text_to_decimal'
+  automator_mode: base
+  automator_weight: 10
+  automator_worker_type: direct
+  automator_edit_mode: false
+  automator_base_field: field_receipt_text
+  automator_prompt: |-
+    Extract the subtotal amount (before tax) from the following receipt.
+    Return ONLY the number without any currency symbol, spaces, or commas (e.g. 10.00). If not found, return null.
+
+    [receipt_text]
+  automator_token: ''
+  automator_ai_provider: default
+  automator_ai_model: ''

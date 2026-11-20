@@ -1,0 +1,37 @@
+uuid: 4207f93c-2287-407d-842c-73e3e1e3725e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.receipt.field_media_video_file
+    - field.field.media.receipt.field_receipt_text
+    - media.type.receipt
+  module:
+    - file
+id: media.receipt.default
+targetEntityType: media
+bundle: receipt
+mode: default
+content:
+  field_media_video_file:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_receipt_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

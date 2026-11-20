@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+id: receipt_approved
+label: 'Approved'
+module: receipt_workflow
+wid: receipt
+weight: 20
+sysid: 0

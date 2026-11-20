@@ -1,0 +1,11 @@
+uuid: 7d80e062-1298-4f80-b693-8fb5dfc53ed6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Plant Instance'
+type: plant_instance
+description: 'Plant Instance content type.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

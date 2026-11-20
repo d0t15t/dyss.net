@@ -1,0 +1,25 @@
+uuid: 158c43e9-d561-46c2-b628-f46909eac26c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_billing_address
+    - node.type.client
+  module:
+    - address
+id: node.client.field_billing_address
+field_name: field_billing_address
+entity_type: node
+bundle: client
+label: 'Billing address'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: null
+  field_overrides: {  }
+  fields: {  }
+field_type: address

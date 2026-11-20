@@ -1,0 +1,8 @@
+name: 'PDF Splitter'
+type: module
+description: 'Splits a multi-page PDF into per-page files on receipts_set nodes.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:file
+  - drupal:node

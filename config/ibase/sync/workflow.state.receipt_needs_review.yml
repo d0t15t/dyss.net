@@ -1,0 +1,15 @@
+uuid: 77e4c6b8-6372-42d5-a722-d84fd9915302
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+_core:
+  default_config_hash: TK5JqTe9ZAEiAAbIkcOpbT2r77hRMEx0q_cxHpP-Fqw
+id: receipt_needs_review
+label: 'Needs Review'
+weight: 10
+module: receipt_workflow
+wid: receipt
+sysid: 0
+single_state_widget: ''

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.receipt_approved
+    - workflow.state.receipt_archived
+id: receipt_approved_archived
+label: Archive
+module: receipt_workflow
+from_sid: receipt_approved
+to_sid: receipt_archived
+roles:
+  - administrator
+wid: receipt

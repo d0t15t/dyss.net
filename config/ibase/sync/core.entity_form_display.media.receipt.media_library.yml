@@ -1,0 +1,23 @@
+uuid: 040e8fb6-d1e1-4d18-9261-7a95d92ab9f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.receipt.field_media_video_file
+    - field.field.media.receipt.field_receipt_text
+    - media.type.receipt
+id: media.receipt.media_library
+targetEntityType: media
+bundle: receipt
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  field_media_video_file: true
+  field_receipt_text: true
+  langcode: true
+  name: true
+  path: true
+  status: true
+  uid: true

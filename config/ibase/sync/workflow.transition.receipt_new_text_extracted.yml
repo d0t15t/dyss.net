@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.receipt_new
+    - workflow.state.receipt_text_extracted
+id: receipt_new_text_extracted
+label: 'OCR Complete (direct)'
+module: receipt_workflow
+from_sid: receipt_new
+to_sid: receipt_text_extracted
+roles:
+  - administrator
+wid: receipt

@@ -63,7 +63,9 @@ class PdfSplitterService {
     $fileDirectory = $receiptFieldDefs ? ($receiptFieldDefs->getSetting('file_directory') ?? '') : '';
     $fileDirectory = $this->token->replace($fileDirectory, [], ['clear' => TRUE]);
     $fileDirectory = trim($fileDirectory, '/');
-    $destDir = 'public://' . ($fileDirectory ? $fileDirectory . '/' : '');
+    // Same storage as field_receipt itself (private on ibase).
+    $scheme = $receiptFieldDefs ? ($receiptFieldDefs->getFieldStorageDefinition()->getSetting('uri_scheme') ?? 'private') : 'private';
+    $destDir = $scheme . '://' . ($fileDirectory ? $fileDirectory . '/' : '');
     $this->fileSystem->prepareDirectory(
       $destDir,
       FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS,

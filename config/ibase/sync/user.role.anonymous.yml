@@ -1,25 +1,11 @@
 uuid: 5c479334-7eaf-49ba-9082-616faa5e0539
 langcode: en
 status: true
-dependencies:
-  config:
-    - filter.format.restricted_html
-    - workflow.workflow.receipt
-  module:
-    - filter
-    - media
-    - search
-    - system
-    - workflow
+dependencies: {  }
 _core:
   default_config_hash: xLG41YbRo2NP-0SgRNTkMzLEuaeibanGXgUTbdIcIIg
 id: anonymous
 label: 'Anonymous user'
 weight: 0
 is_admin: false
-permissions:
-  - 'access content'
-  - 'create receipt workflow_transition'
-  - 'search content'
-  - 'use text format restricted_html'
-  - 'view media'
+permissions: {  }

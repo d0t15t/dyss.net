@@ -16,13 +16,13 @@ use Drupal\file\FileInterface;
  * Renders a PDF page as a PNG image for vision AI consumption.
  *
  * Uses Ghostscript (`gs`) — must be installed at the OS level.
- * Images are cached as managed File entities under public://receipt_vision_cache/
+ * Images are cached as managed File entities under private://receipt_vision_cache/
  * and keyed by source file URI + mtime + DPI so the same input produces a
- * single cached render.
+ * single cached render. Private, as the renders show the receipts' contents.
  */
 class PdfToImage {
 
-  protected const CACHE_DIR = 'public://receipt_vision_cache/';
+  protected const CACHE_DIR = 'private://receipt_vision_cache/';
 
   public function __construct(
     protected FileSystemInterface $fileSystem,

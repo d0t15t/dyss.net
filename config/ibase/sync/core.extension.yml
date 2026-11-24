@@ -49,6 +49,7 @@ module:
   filter: 0
   help: 0
   history: 0
+  ibase_private: 0
   image: 0
   insurance_records: 0
   insurance_records_ai: 0
@@ -74,7 +75,6 @@ module:
   ocr_api: 0
   ocr_api_tesseract: 0
   options: 0
-  page_cache: 0
   path: 0
   path_alias: 0
   pdf_splitter: 0

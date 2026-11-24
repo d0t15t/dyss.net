@@ -7,10 +7,14 @@
  * The site is public and anonymous users have "access content" and
  * "view media", so the insurance bundles need their own access layer:
  * - Nodes: node grants, so policies are also filtered out of every node
- *   query (Views listings, search, entity reference autocomplete).
+ *   query (Views listings, search, entity reference autocomplete). Core skips
+ *   both grants and hook_node_access() for "bypass node access", so the node
+ *   access handler is replaced and node queries get an extra bundle filter.
  * - Media: hook_media_access() for direct access - which also governs
  *   downloads of the private PDF files, since private file access defers to
  *   the referencing media entity - plus a query alter for media listings.
+ * - Files: hook_file_access() and a query alter for file listings, as the
+ *   file names alone say a lot (e.g. which policy was cancelled when).
  * - Taxonomy: hook_taxonomy_term_access() for the insurance vocabularies,
  *   which name household members and insurers.
  */
@@ -19,8 +23,10 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Database\Query\AlterableInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\insurance_records\InsuranceNodeAccessControlHandler;
 use Drupal\node\NodeInterface;
 use Drupal\views\ViewExecutable;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Node bundles only visible with "view insurance records".
@@ -36,6 +42,19 @@ const INSURANCE_RECORDS_MEDIA_BUNDLES = ['insurance_document'];
  * Vocabularies only visible with "view insurance records".
  */
 const INSURANCE_RECORDS_VOCABULARIES = ['insurance_company', 'insurance_category', 'insurance_party'];
+
+/**
+ * URI prefix of the insurance PDFs (field_insurance_file and the import).
+ */
+const INSURANCE_RECORDS_FILE_URI_PREFIX = 'private://insurance/';
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function insurance_records_entity_type_alter(array &$entity_types) {
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+  $entity_types['node']->setAccessClass(InsuranceNodeAccessControlHandler::class);
+}
 
 /**
  * Node access realm and grant ID used for insurance nodes.
@@ -101,13 +120,81 @@ function insurance_records_taxonomy_term_access(EntityInterface $term, $operatio
 }
 
 /**
+ * Implements hook_file_access().
+ */
+function insurance_records_file_access(EntityInterface $file, $operation, AccountInterface $account) {
+  /** @var \Drupal\file\FileInterface $file */
+  return _insurance_records_access(str_starts_with($file->getFileUri(), INSURANCE_RECORDS_FILE_URI_PREFIX), $account);
+}
+
+/**
+ * Implements hook_views_pre_view().
+ *
+ * The file usage page (/admin/content/files/usage/{fid}) titles itself with
+ * the file name, which core's file_fid argument loads without an access
+ * check, so deny the page for insurance files without the permission.
+ */
+function insurance_records_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  if ($view->id() !== 'files' || empty($args[0]) || !ctype_digit((string) $args[0])) {
+    return;
+  }
+  /** @var \Drupal\file\FileInterface|null $file */
+  $file = \Drupal::entityTypeManager()->getStorage('file')->load($args[0]);
+  if ($file && _insurance_records_access(str_starts_with($file->getFileUri(), INSURANCE_RECORDS_FILE_URI_PREFIX), \Drupal::currentUser())->isForbidden()) {
+    throw new AccessDeniedHttpException();
+  }
+}
+
+/**
+ * Implements hook_query_TAG_alter() for node_access.
+ *
+ * Node grants already hide policies from everyone without the permission,
+ * except users with "bypass node access", for whom core skips the grants.
+ */
+function insurance_records_query_node_access_alter(AlterableInterface $query) {
+  if (_insurance_records_query_account($query)->hasPermission('view insurance records')) {
+    return;
+  }
+  foreach ($query->getTables() as $alias => $table) {
+    if (in_array($table['table'] ?? NULL, ['node', 'node_field_data', 'node_revision', 'node_field_revision'], TRUE)) {
+      // IS NULL keeps rows where the node table is only LEFT JOINed.
+      $query->condition($query->orConditionGroup()
+        ->condition("$alias.type", INSURANCE_RECORDS_NODE_BUNDLES, 'NOT IN')
+        ->isNull("$alias.type"));
+      return;
+    }
+  }
+}
+
+/**
+ * Implements hook_query_TAG_alter() for file_access.
+ *
+ * Hides the insurance PDFs from file listings (/admin/content/files and its
+ * usage page, file entity queries), which Views and entity queries tag with
+ * "file_access".
+ */
+function insurance_records_query_file_access_alter(AlterableInterface $query) {
+  if (_insurance_records_query_account($query)->hasPermission('view insurance records')) {
+    return;
+  }
+  foreach ($query->getTables() as $alias => $table) {
+    if (($table['table'] ?? NULL) === 'file_managed') {
+      $query->condition($query->orConditionGroup()
+        ->condition("$alias.uri", \Drupal::database()->escapeLike(INSURANCE_RECORDS_FILE_URI_PREFIX) . '%', 'NOT LIKE')
+        ->isNull("$alias.uri"));
+      return;
+    }
+  }
+}
+
+/**
  * Implements hook_query_TAG_alter() for media_access.
  *
  * Media has no grants system, so hide insurance media from media listings
  * (media overview, media library, entity reference selection) instead.
  */
 function insurance_records_query_media_access_alter(AlterableInterface $query) {
-  if (\Drupal::currentUser()->hasPermission('view insurance records')) {
+  if (_insurance_records_query_account($query)->hasPermission('view insurance records')) {
     return;
   }
   foreach ($query->getTables() as $alias => $table) {
@@ -122,7 +209,7 @@ function insurance_records_query_media_access_alter(AlterableInterface $query) {
  * Implements hook_query_TAG_alter() for taxonomy_term_access.
  */
 function insurance_records_query_taxonomy_term_access_alter(AlterableInterface $query) {
-  if (\Drupal::currentUser()->hasPermission('view insurance records')) {
+  if (_insurance_records_query_account($query)->hasPermission('view insurance records')) {
     return;
   }
   foreach ($query->getTables() as $alias => $table) {
@@ -134,11 +221,23 @@ function insurance_records_query_taxonomy_term_access_alter(AlterableInterface $
 }
 
 /**
+ * Returns the account a tagged query is run for.
+ *
+ * Like core's node access alter: the "account" metadata if a caller set it
+ * (e.g. access checks on behalf of another user), else the current user.
+ */
+function _insurance_records_query_account(AlterableInterface $query): AccountInterface {
+  return $query->getMetaData('account') ?: \Drupal::currentUser();
+}
+
+/**
  * Forbids any operation on insurance entities without the permission.
  *
  * Forbidden wins over every other access result, so even "administer
- * media" or "bypass node access" can't reveal the records without it.
- * The administrator role still has it, as admin roles get all permissions.
+ * media" can't reveal the records without it. "bypass node access" is
+ * handled by InsuranceNodeAccessControlHandler, as core grants it before
+ * any access hook runs. The administrator role still has the permission, as
+ * admin roles get all permissions.
  */
 function _insurance_records_access(bool $is_insurance, AccountInterface $account) {
   if (!$is_insurance) {

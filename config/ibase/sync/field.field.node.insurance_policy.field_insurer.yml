@@ -1,0 +1,31 @@
+uuid: 14596d74-8573-4a23-b33a-caec5884afcf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_insurer
+    - node.type.insurance_policy
+    - taxonomy.vocabulary.insurance_company
+_core:
+  default_config_hash: uCUyryNpryITi5XcSYAwIEtvTlM77IW7QzWTSDYZA6M
+id: node.insurance_policy.field_insurer
+field_name: field_insurer
+entity_type: node
+bundle: insurance_policy
+label: Insurer
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      insurance_company: insurance_company
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: insurance_company
+field_type: entity_reference

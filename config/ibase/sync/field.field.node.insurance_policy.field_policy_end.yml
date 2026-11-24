@@ -1,0 +1,23 @@
+uuid: 2e23d9ac-38c8-42d5-8b35-529f3f2bac22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_policy_end
+    - node.type.insurance_policy
+  module:
+    - datetime
+_core:
+  default_config_hash: aRanHL9rRei8wS9p4TWbPTS53RKvYObP7eXEQapShnU
+id: node.insurance_policy.field_policy_end
+field_name: field_policy_end
+entity_type: node
+bundle: insurance_policy
+label: 'End date'
+description: 'Contract end or effective cancellation date.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

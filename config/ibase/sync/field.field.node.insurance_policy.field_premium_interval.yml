@@ -1,0 +1,23 @@
+uuid: fc6d9536-f7ce-4eaa-ae14-47f2d3ab56a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_premium_interval
+    - node.type.insurance_policy
+  module:
+    - options
+_core:
+  default_config_hash: wl7md8tlt3q-O59oabevUFq8zf5Ae_wpabCpPr8yHhE
+id: node.insurance_policy.field_premium_interval
+field_name: field_premium_interval
+entity_type: node
+bundle: insurance_policy
+label: 'Premium interval'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

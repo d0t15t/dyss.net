@@ -18,11 +18,15 @@ module:
   ai_insights_alerts: 0
   ai_insights_topics: 0
   ai_observability: 0
+  ai_provider_anthropic: 0
+  ai_provider_ollama: 0
   ai_provider_openai: 0
+  ai_sanitize: 0
   ai_search: 0
   ai_vdb_provider_milvus: 0
   announcements_feed: 0
   automated_cron: 0
+  better_exposed_filters: 0
   block: 0
   block_content: 0
   breakpoint: 0
@@ -35,6 +39,7 @@ module:
   dynamic_page_cache: 0
   editor: 0
   facets: 0
+  facets_exposed_filters: 0
   facets_rest: 0
   facets_searchbox_widget: 0
   field: 0
@@ -45,6 +50,9 @@ module:
   help: 0
   history: 0
   image: 0
+  insurance_records: 0
+  insurance_records_ai: 0
+  insurance_records_migrate: 0
   key: 0
   language: 0
   link: 0
@@ -56,6 +64,9 @@ module:
   menu_ui: 0
   metatag: 0
   metatag_google_cse: 0
+  migrate: 0
+  migrate_plus: 0
+  migrate_tools: 0
   modeler_api: 0
   mysql: 0
   node: 0

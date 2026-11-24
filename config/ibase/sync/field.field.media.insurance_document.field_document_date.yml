@@ -1,0 +1,23 @@
+uuid: 4feda5ae-985b-4321-a827-b6ea08c23f2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_document_date
+    - media.type.insurance_document
+  module:
+    - datetime
+_core:
+  default_config_hash: T7wntel7HhZzf56Q5V8iT3Sc7VGUkx5hzLvlPlNYXDc
+id: media.insurance_document.field_document_date
+field_name: field_document_date
+entity_type: media
+bundle: insurance_document
+label: 'Document date'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

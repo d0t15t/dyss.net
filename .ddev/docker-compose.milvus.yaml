@@ -7,7 +7,7 @@
 # `ddev delete` removes it.
 services:
   milvus:
-    image: milvusdb/milvus:v2.5.27
+    image: milvusdb/milvus:v2.6.24
     container_name: ddev-${DDEV_SITENAME}-milvus
     command: ["milvus", "run", "standalone"]
     security_opt:
@@ -17,6 +17,7 @@ services:
       ETCD_DATA_DIR: /var/lib/milvus/etcd
       ETCD_CONFIG_PATH: /milvus/configs/embedEtcd.yaml
       COMMON_STORAGETYPE: local
+      DEPLOY_MODE: STANDALONE
     volumes:
       - milvus:/var/lib/milvus
       - ./milvus/embedEtcd.yaml:/milvus/configs/embedEtcd.yaml:ro

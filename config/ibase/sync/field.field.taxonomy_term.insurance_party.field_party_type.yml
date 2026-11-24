@@ -1,0 +1,23 @@
+uuid: f01ebe56-9187-4fa7-9b62-0046f2f9fc31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_party_type
+    - taxonomy.vocabulary.insurance_party
+  module:
+    - options
+_core:
+  default_config_hash: 3s3XdF-_tc9tHxubLS2tiAARg2h-ylTu0Bj5CeGK8bw
+id: taxonomy_term.insurance_party.field_party_type
+field_name: field_party_type
+entity_type: taxonomy_term
+bundle: insurance_party
+label: Type
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

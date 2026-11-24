@@ -1,0 +1,22 @@
+uuid: 024ac1e3-7523-43d0-8603-145f15a6d92c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: GKQ5TJT-XrbLxLIxiTQMdHSNwI0POwREr2ION2DShVw
+id: node.field_policyholder
+field_name: field_policyholder
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

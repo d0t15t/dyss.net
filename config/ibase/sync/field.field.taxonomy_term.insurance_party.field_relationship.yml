@@ -1,0 +1,21 @@
+uuid: 27128e36-6685-41d6-b4c7-49eeb108cb60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_relationship
+    - taxonomy.vocabulary.insurance_party
+_core:
+  default_config_hash: U5DgHGyirQHDH6zZSTc9Fhnecl-W9JIaEvjLHTXydw0
+id: taxonomy_term.insurance_party.field_relationship
+field_name: field_relationship
+entity_type: taxonomy_term
+bundle: insurance_party
+label: Relationship
+description: 'How this party relates to the household, e.g. "self", "partner", "son", "employer".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

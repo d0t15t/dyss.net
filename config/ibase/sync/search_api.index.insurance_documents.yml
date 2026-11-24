@@ -1,0 +1,231 @@
+uuid: 641e0eb1-da0f-4d8b-bfae-0283c3b22779
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_document_date
+    - field.storage.media.field_document_type
+    - field.storage.media.field_ocr_text
+    - field.storage.media.field_policy
+    - field.storage.media.field_reported_value
+    - field.storage.media.field_tax_years
+    - field.storage.node.field_insurance_category
+    - field.storage.node.field_insured_persons
+    - field.storage.node.field_insurer
+    - field.storage.node.field_policy_number
+    - search_api.server.solr
+  module:
+    - media
+    - node
+    - search_api_solr
+    - taxonomy
+_core:
+  default_config_hash: I863kA6hAAwcBMGJegScMZyPC7jF8yaeNUXi2IKt74s
+id: insurance_documents
+name: 'Insurance documents'
+description: 'Indexes Insurance document media: title, OCR text and the linked policy (title, number, insurer, category, insured persons), plus type, date, value and tax years for facets and sorting. Private: only searchable through views restricted to "View insurance records".'
+read_only: false
+field_settings:
+  category:
+    label: 'Policy » Category'
+    datasource_id: 'entity:media'
+    property_path: 'field_policy:entity:field_insurance_category:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.media.field_policy
+        - field.storage.node.field_insurance_category
+      module:
+        - node
+        - taxonomy
+  field_document_date:
+    label: 'Document date'
+    datasource_id: 'entity:media'
+    property_path: field_document_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.media.field_document_date
+  field_document_type:
+    label: 'Document type'
+    datasource_id: 'entity:media'
+    property_path: field_document_type
+    type: string
+    dependencies:
+      config:
+        - field.storage.media.field_document_type
+  field_ocr_text:
+    label: 'OCR text'
+    datasource_id: 'entity:media'
+    property_path: field_ocr_text
+    type: text
+    dependencies:
+      config:
+        - field.storage.media.field_ocr_text
+  field_policy:
+    label: Policy
+    datasource_id: 'entity:media'
+    property_path: field_policy
+    type: integer
+    dependencies:
+      config:
+        - field.storage.media.field_policy
+  field_reported_value:
+    label: 'Contract / fund value'
+    datasource_id: 'entity:media'
+    property_path: field_reported_value
+    type: decimal
+    dependencies:
+      config:
+        - field.storage.media.field_reported_value
+  field_tax_years:
+    label: 'Tax years'
+    datasource_id: 'entity:media'
+    property_path: field_tax_years
+    type: integer
+    dependencies:
+      config:
+        - field.storage.media.field_tax_years
+  insured:
+    label: 'Policy » Insured persons'
+    datasource_id: 'entity:media'
+    property_path: 'field_policy:entity:field_insured_persons:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.media.field_policy
+        - field.storage.node.field_insured_persons
+      module:
+        - node
+        - taxonomy
+  insurer:
+    label: 'Policy » Insurer'
+    datasource_id: 'entity:media'
+    property_path: 'field_policy:entity:field_insurer:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.media.field_policy
+        - field.storage.node.field_insurer
+      module:
+        - node
+        - taxonomy
+  insurer_text:
+    label: 'Policy » Insurer (fulltext)'
+    datasource_id: 'entity:media'
+    property_path: 'field_policy:entity:field_insurer:entity:name'
+    type: text
+    boost: 3.0
+    dependencies:
+      config:
+        - field.storage.media.field_policy
+        - field.storage.node.field_insurer
+      module:
+        - node
+        - taxonomy
+  name:
+    label: Title
+    datasource_id: 'entity:media'
+    property_path: name
+    type: text
+    boost: 8.0
+    dependencies:
+      module:
+        - media
+  policy_number:
+    label: 'Policy » Policy number'
+    datasource_id: 'entity:media'
+    property_path: 'field_policy:entity:field_policy_number'
+    type: text
+    boost: 5.0
+    dependencies:
+      config:
+        - field.storage.media.field_policy
+        - field.storage.node.field_policy_number
+      module:
+        - node
+  policy_title:
+    label: 'Policy » Title'
+    datasource_id: 'entity:media'
+    property_path: 'field_policy:entity:title'
+    type: text
+    boost: 5.0
+    dependencies:
+      config:
+        - field.storage.media.field_policy
+      module:
+        - node
+  status:
+    label: Published
+    datasource_id: 'entity:media'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - media
+datasource_settings:
+  'entity:media':
+    bundles:
+      default: false
+      selected:
+        - insurance_document
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url:
+    weights:
+      preprocess_index: -30
+  aggregated_field:
+    weights:
+      add_properties: 20
+  auto_aggregated_fulltext_field: {  }
+  custom_value: {  }
+  entity_status:
+    weights:
+      preprocess_index: -10
+  entity_type: {  }
+  highlight:
+    weights:
+      postprocess_query: 0
+    prefix: '<strong>'
+    suffix: '</strong>'
+    excerpt: true
+    excerpt_always: false
+    excerpt_length: 256
+    exclude_fields: {  }
+    highlight: always
+    highlight_partial: true
+  ignorecase:
+    weights:
+      preprocess_index: -5
+      preprocess_query: -8
+    all_fields: false
+    fields:
+      - field_ocr_text
+      - insurer_text
+      - name
+      - policy_number
+      - policy_title
+  language_with_fallback: {  }
+  rendered_item: {  }
+  solr_date_range: {  }
+  transliteration:
+    weights:
+      preprocess_index: -4
+      preprocess_query: -7
+    all_fields: false
+    fields:
+      - field_ocr_text
+      - insurer_text
+      - name
+      - policy_title
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  delete_on_fail: true
+  index_directly: true
+  track_changes_in_references: true
+server: solr

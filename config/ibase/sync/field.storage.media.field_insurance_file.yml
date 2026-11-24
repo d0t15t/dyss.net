@@ -1,0 +1,25 @@
+uuid: 60a30c12-f729-4163-ad5b-eca70b3a533a
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - media
+_core:
+  default_config_hash: vtD4M2CLaignhfGAcmSwjGLYoLjysTPijVUcMWYCyR0
+id: media.field_insurance_file
+field_name: field_insurance_file
+entity_type: media
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: private
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

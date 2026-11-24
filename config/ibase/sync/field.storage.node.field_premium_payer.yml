@@ -1,0 +1,22 @@
+uuid: b436d77c-9767-47e9-a1bf-fe7a2ce5b9c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: wAzb3wBtXuq-w_0pG6zJezdu3j3Z0oOuit2cuQeIwWs
+id: node.field_premium_payer
+field_name: field_premium_payer
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

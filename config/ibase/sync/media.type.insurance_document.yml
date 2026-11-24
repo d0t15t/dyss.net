@@ -1,0 +1,16 @@
+uuid: f40082c8-0a64-4fdc-b28a-72a44f05d8d8
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 0tuoMI4wPanYyk-RzpMRmyQMf97BOuYd1VmRjAn1O9E
+id: insurance_document
+label: 'Insurance document'
+description: 'A scanned insurance letter, statement or invoice (PDF, stored privately) with its OCR text and key figures. Private: only visible with "View insurance records".'
+source: file
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_insurance_file
+field_map:
+  name: name

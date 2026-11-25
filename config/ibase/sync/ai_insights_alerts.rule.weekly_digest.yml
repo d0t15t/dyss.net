@@ -11,6 +11,6 @@ threshold_type: count
 baseline_window: 7
 frequency: weekly
 source_filter: all
-recipient_emails: alerts@example.com
+recipient_emails: ''
 recipient_roles: ''
 max_emails_per_day: 1

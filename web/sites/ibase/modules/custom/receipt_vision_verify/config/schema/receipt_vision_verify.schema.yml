@@ -1,0 +1,50 @@
+receipt_vision_verify.settings:
+  type: config_object
+  label: 'Receipt Vision Verify settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Vision verification enabled'
+    ai_provider:
+      type: string
+      label: 'AI vision provider'
+    ai_model:
+      type: string
+      label: 'AI vision model'
+    auto_approve_threshold:
+      type: integer
+      label: 'Auto-approve confidence threshold (0-100)'
+    image_dpi:
+      type: integer
+      label: 'Image render DPI'
+    field_weights:
+      type: mapping
+      label: 'Field importance weights (summing to 100)'
+      mapping:
+        field_total_amount:
+          type: integer
+          label: 'Total amount weight'
+        field_receipt_date:
+          type: integer
+          label: 'Receipt date weight'
+        field_vendor:
+          type: integer
+          label: 'Vendor weight'
+        field_currency:
+          type: integer
+          label: 'Currency weight'
+        field_subtotal_amount:
+          type: integer
+          label: 'Subtotal amount weight'
+        field_tax_amount:
+          type: integer
+          label: 'Tax amount weight'
+        field_receipt_number:
+          type: integer
+          label: 'Receipt number weight'
+        field_payment_method:
+          type: integer
+          label: 'Payment method weight'
+        field_expense_category:
+          type: integer
+          label: 'Expense category weight'

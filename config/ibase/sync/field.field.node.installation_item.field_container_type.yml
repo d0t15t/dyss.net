@@ -1,0 +1,24 @@
+uuid: bb4a8db0-cc08-44a6-a730-183892baf701
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_container_type
+    - node.type.installation_item
+    - taxonomy.vocabulary.container_type
+id: node.installation_item.field_container_type
+field_name: field_container_type
+entity_type: node
+bundle: installation_item
+label: 'Container type'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      container_type: container_type
+field_type: entity_reference

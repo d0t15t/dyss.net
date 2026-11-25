@@ -1,0 +1,19 @@
+uuid: 566c6e84-def8-4570-9ab8-8c31ef9bd619
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_current_installation_item
+field_name: field_current_installation_item
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

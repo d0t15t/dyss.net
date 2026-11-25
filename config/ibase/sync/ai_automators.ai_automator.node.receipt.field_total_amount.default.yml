@@ -1,0 +1,38 @@
+uuid: 90c662f3-75f9-4ec6-8965-4237bb303542
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.receipt.field_total_amount
+id: node.receipt.field_total_amount.default
+label: 'Receipt: Extract total amount'
+rule: 'receipt:text_to_decimal'
+input_mode: base
+weight: 10
+worker_type: direct
+entity_type: node
+bundle: receipt
+field_name: field_total_amount
+edit_mode: false
+base_field: field_receipt_text
+prompt: |-
+  Extract the total amount from the following receipt.
+  Return ONLY the number without any currency symbol, spaces, or commas (e.g. 12.50). If not found, return null.
+
+  [receipt_text]
+token: ''
+plugin_config:
+  automator_rule: 'receipt:text_to_decimal'
+  automator_mode: base
+  automator_weight: 10
+  automator_worker_type: direct
+  automator_edit_mode: false
+  automator_base_field: field_receipt_text
+  automator_prompt: |-
+    Extract the total amount from the following receipt.
+    Return ONLY the number without any currency symbol, spaces, or commas (e.g. 12.50). If not found, return null.
+
+    [receipt_text]
+  automator_token: ''
+  automator_ai_provider: default
+  automator_ai_model: ''

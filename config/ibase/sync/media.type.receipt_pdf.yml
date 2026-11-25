@@ -1,0 +1,14 @@
+uuid: 7da3e4bb-b954-41b0-9c6e-6e4d5c25ffe8
+langcode: en
+status: true
+dependencies: {  }
+id: receipt_pdf
+label: 'Receipt PDF'
+description: 'A multi-page, multi-receipt document with one or more items.'
+source: file
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_document
+field_map:
+  name: name

@@ -1,0 +1,14 @@
+uuid: 9bd280f2-f5ae-4b2d-9452-15f77c03e0c6
+langcode: en
+status: true
+dependencies: {  }
+id: plant_photo
+label: 'Plant Photo'
+description: 'Extends the core Image type. Keeps species imagery separate from project photos. Supports optional display in the public-facing plant catalog.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

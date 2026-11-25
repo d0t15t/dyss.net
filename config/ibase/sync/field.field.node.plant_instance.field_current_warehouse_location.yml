@@ -1,0 +1,24 @@
+uuid: 995aa114-0245-40c5-a34b-597444f36e1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_current_warehouse_location
+    - node.type.plant_instance
+    - node.type.warehouse_location
+id: node.plant_instance.field_current_warehouse_location
+field_name: field_current_warehouse_location
+entity_type: node
+bundle: plant_instance
+label: 'Current warehouse location'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      warehouse_location: warehouse_location
+field_type: entity_reference

@@ -1,0 +1,24 @@
+uuid: d142b05e-3989-4073-bbff-5852da61dc62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plant_instances
+    - node.type.installation_item
+    - node.type.plant_instance
+id: node.installation_item.field_plant_instances
+field_name: field_plant_instances
+entity_type: node
+bundle: installation_item
+label: 'Plant instances'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      plant_instance: plant_instance
+field_type: entity_reference

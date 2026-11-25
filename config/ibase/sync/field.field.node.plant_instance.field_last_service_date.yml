@@ -1,0 +1,21 @@
+uuid: 630d349b-19de-4374-ab73-f1de2dfebb4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_last_service_date
+    - node.type.plant_instance
+  module:
+    - datetime
+id: node.plant_instance.field_last_service_date
+field_name: field_last_service_date
+entity_type: node
+bundle: plant_instance
+label: 'Last service date'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

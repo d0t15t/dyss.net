@@ -45,3 +45,5 @@
 
 # Import tmp
 import-tmp
+# ibase site: ocr_api is its own git repository, maintained separately.
+/web/sites/ibase/modules/custom/ocr_api

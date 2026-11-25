@@ -1,0 +1,5 @@
+name: 'Taxonomy maker'
+type: module
+description: 'Makes taxonomy terms with list files.'
+package: Custom
+core_version_requirement: ^10 || ^11

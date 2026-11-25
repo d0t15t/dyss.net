@@ -1,0 +1,15 @@
+uuid: 7e35b77d-8246-4028-909a-372c23fa4692
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+_core:
+  default_config_hash: h09hzr3SxEn6m8uE711J0bi_pG4rwhPZoeevOTlhHqg
+id: receipt_new
+label: New
+weight: -20
+module: receipt_workflow
+wid: receipt
+sysid: 1
+single_state_widget: ''

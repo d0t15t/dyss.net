@@ -1,0 +1,27 @@
+uuid: 2934b367-953c-4ec2-bdb1-d5b67257aa54
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_document
+    - media.type.floorplan
+  module:
+    - file
+id: media.floorplan.field_media_document
+field_name: field_media_document
+entity_type: media
+bundle: floorplan
+label: File
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt doc docx pdf'
+  max_filesize: ''
+  description_field: false
+field_type: file

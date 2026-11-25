@@ -1,0 +1,22 @@
+uuid: 20d1f771-47e2-4805-929a-574122d40301
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_health_notes
+    - node.type.plant_instance
+  module:
+    - text
+id: node.plant_instance.field_health_notes
+field_name: field_health_notes
+entity_type: node
+bundle: plant_instance
+label: 'Health notes'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

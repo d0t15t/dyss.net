@@ -1,0 +1,34 @@
+uuid: c3e53806-0edd-4b17-a3ec-8fba6e655bd4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.plant_photo.field_media_image
+    - image.style.medium
+    - media.type.plant_photo
+  module:
+    - image
+id: media.plant_photo.media_library
+targetEntityType: media
+bundle: plant_photo
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_image: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  uid: true

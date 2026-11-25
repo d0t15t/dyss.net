@@ -1,0 +1,22 @@
+uuid: ce979175-9e50-46d8-b6ee-b70597e7802f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.plant_instance
+id: node.plant_instance.sticky
+field_name: sticky
+entity_type: node
+bundle: plant_instance
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

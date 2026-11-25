@@ -1,0 +1,33 @@
+uuid: e1a94f46-8fd9-4943-a899-f8b352737719
+langcode: en
+status: true
+dependencies:
+  module:
+    - ai_assistant_ui
+  theme:
+    - olivero
+id: olivero_aiassistantchatbot
+theme: olivero
+region: content
+weight: 0
+provider: null
+plugin: ai_assistant_chatbot
+settings:
+  id: ai_assistant_chatbot
+  label: 'AI Assistant Chatbot'
+  label_display: '0'
+  provider: ai_assistant_ui
+  ai_assistant: site_builder
+  bot_name: 'Site Builder'
+  suggested_questions: "List the content types\r\nList the taxonomy types"
+  chat_launch_text: "Let's build"
+  clear_chat_message: 'Start a new chat'
+  chat_input_placeholder: 'Type your message...'
+  stream: false
+  confirm_clear: false
+  remember_history: true
+  introduction_text: ''
+  test_questions: ''
+  allowed_html: 'a b blockquote br code del em h1 h2 h3 h4 h5 h6 hr i img li ol p pre strong table tbody td th thead tr ul'
+  close_on_internal_link_click: true
+visibility: {  }

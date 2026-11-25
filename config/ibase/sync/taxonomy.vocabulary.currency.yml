@@ -1,0 +1,9 @@
+uuid: 38c160f0-9687-44df-8158-8eda040af105
+langcode: und
+status: true
+dependencies: {  }
+name: Currency
+vid: currency
+description: 'ISO 4217 currencies (e.g., USD, EUR, GBP). Can store currency code/symbol/numeric code for use in receipts or pricing.'
+weight: 0
+new_revision: null

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.receipt_verified
+    - workflow.state.receipt_needs_review
+id: receipt_verified_needs_review
+label: 'Flag for review (low confidence)'
+module: receipt_vision_verify
+from_sid: receipt_verified
+to_sid: receipt_needs_review
+roles:
+  - administrator
+wid: receipt

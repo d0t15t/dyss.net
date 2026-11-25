@@ -1,0 +1,21 @@
+uuid: 564f0859-5d2d-42f8-b39a-8a4d6fa1c623
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_watering_frequency
+    - node.type.plant
+  module:
+    - options
+id: node.plant.field_watering_frequency
+field_name: field_watering_frequency
+entity_type: node
+bundle: plant
+label: 'Watering frequency'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

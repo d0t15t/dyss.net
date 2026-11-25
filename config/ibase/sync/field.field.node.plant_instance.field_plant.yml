@@ -1,0 +1,24 @@
+uuid: 17778418-9761-48ea-8015-98618815e4f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plant
+    - node.type.plant
+    - node.type.plant_instance
+id: node.plant_instance.field_plant
+field_name: field_plant
+entity_type: node
+bundle: plant_instance
+label: Plant
+description: null
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      plant: plant
+field_type: entity_reference

@@ -1,0 +1,22 @@
+uuid: e9e8f991-a259-4273-bc6f-9fcc7d4e6dbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.client
+id: node.client.status
+field_name: status
+entity_type: node
+bundle: client
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

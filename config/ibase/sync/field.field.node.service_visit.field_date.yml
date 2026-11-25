@@ -1,0 +1,21 @@
+uuid: aef5c218-83f0-4782-92b9-c773e2a97f60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date
+    - node.type.service_visit
+  module:
+    - datetime
+id: node.service_visit.field_date
+field_name: field_date
+entity_type: node
+bundle: service_visit
+label: Date
+description: null
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

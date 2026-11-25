@@ -1,0 +1,24 @@
+uuid: 66af21a1-cf79-4e0a-a64c-01784e2c522f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plant
+    - node.type.installation_item
+    - node.type.plant
+id: node.installation_item.field_plant
+field_name: field_plant
+entity_type: node
+bundle: installation_item
+label: Plant
+description: null
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      plant: plant
+field_type: entity_reference

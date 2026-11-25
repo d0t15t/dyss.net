@@ -1,0 +1,22 @@
+uuid: 19ced9c1-393f-4320-82e2-fc2a14d16e34
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.installation
+id: node.installation.promote
+field_name: promote
+entity_type: node
+bundle: installation
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,11 @@
+uuid: 13a7d19f-5a3e-4dc2-bc52-49d8e19e8283
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.plant_photo
+id: media.plant_photo
+target_entity_type_id: media
+target_bundle: plant_photo
+default_langcode: site_default
+language_alterable: false

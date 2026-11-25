@@ -1,0 +1,27 @@
+uuid: a17a181f-9cdd-4924-a9e4-d5c867dfc9a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_receipt
+    - node.type.receipt
+  module:
+    - file
+id: node.receipt.field_receipt
+field_name: field_receipt
+entity_type: node
+bundle: receipt
+label: Receipt
+description: 'A receipt as PDF image.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf txt'
+  max_filesize: ''
+  description_field: false
+field_type: file

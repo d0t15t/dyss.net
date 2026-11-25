@@ -1,0 +1,9 @@
+uuid: ac075ff5-51ea-4ed2-9cf0-e1858be0ec3f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Plant status'
+vid: plant_status
+description: 'Tracks the current status/condition of a plant (e.g., healthy, stressed, quarantined, replaced).'
+weight: 0
+new_revision: true

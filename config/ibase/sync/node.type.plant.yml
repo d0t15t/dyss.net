@@ -1,0 +1,17 @@
+uuid: 7f5b7f41-bd8c-4cc6-8259-fdee97c60418
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Plant
+type: plant
+description: 'The species catalog entry. One node per species/variety — not a physical specimen.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

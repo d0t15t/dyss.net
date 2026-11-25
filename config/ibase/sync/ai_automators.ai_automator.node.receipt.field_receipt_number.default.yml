@@ -1,0 +1,38 @@
+uuid: 33a318af-9087-4c41-930d-cbca1eff4fa1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.receipt.field_receipt_number
+id: node.receipt.field_receipt_number.default
+label: 'Receipt: Extract receipt number'
+rule: 'receipt:text_to_string'
+input_mode: base
+weight: 10
+worker_type: direct
+entity_type: node
+bundle: receipt
+field_name: field_receipt_number
+edit_mode: false
+base_field: field_receipt_text
+prompt: |-
+  Extract the receipt or invoice number from the following receipt text.
+  Return ONLY the number/code, nothing else. If not found, return null.
+
+  [receipt_text]
+token: ''
+plugin_config:
+  automator_rule: 'receipt:text_to_string'
+  automator_mode: base
+  automator_weight: 10
+  automator_worker_type: direct
+  automator_edit_mode: false
+  automator_base_field: field_receipt_text
+  automator_prompt: |-
+    Extract the receipt or invoice number from the following receipt text.
+    Return ONLY the number/code, nothing else. If not found, return null.
+
+    [receipt_text]
+  automator_token: ''
+  automator_ai_provider: default
+  automator_ai_model: ''

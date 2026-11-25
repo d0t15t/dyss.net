@@ -1,0 +1,11 @@
+uuid: f99c8b25-e0db-409b-abbb-bf91fc39cd36
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.receipts_set
+id: node.receipts_set
+target_entity_type_id: node
+target_bundle: receipts_set
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,21 @@
+uuid: 7aa78e95-c448-48e2-8026-a04115f6b1e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.floorplan.field_media_document
+    - media.type.floorplan
+id: media.floorplan.media_library
+targetEntityType: media
+bundle: floorplan
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  field_media_document: true
+  langcode: true
+  name: true
+  path: true
+  status: true
+  uid: true

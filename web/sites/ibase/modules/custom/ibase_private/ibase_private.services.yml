@@ -1,0 +1,6 @@
+services:
+  ibase_private.subscriber:
+    class: Drupal\ibase_private\EventSubscriber\PrivateSiteSubscriber
+    arguments: ['@current_user', '@current_route_match']
+    tags:
+      - { name: event_subscriber }

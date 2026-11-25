@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'Insurance companies'
-vid: insurance_company
-description: 'Insurers and pension institutions.'
-weight: 0
-new_revision: false

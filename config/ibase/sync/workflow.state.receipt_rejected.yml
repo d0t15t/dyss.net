@@ -1,0 +1,15 @@
+uuid: 7d354c3c-5ca0-4d07-8cae-54132b722f23
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+_core:
+  default_config_hash: MQnT5RMQljVgiwSqpnP6KkXfMf1bOA3VpR1QK8PjixQ
+id: receipt_rejected
+label: Rejected
+weight: 15
+module: receipt_workflow
+wid: receipt
+sysid: 0
+single_state_widget: ''

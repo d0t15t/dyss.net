@@ -1,0 +1,23 @@
+uuid: 8a8e9621-d9f9-4be9-a090-f0fdc0eb0ffc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quantity
+    - node.type.installation_item
+id: node.installation_item.field_quantity
+field_name: field_quantity
+entity_type: node
+bundle: installation_item
+label: Quantity
+description: null
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

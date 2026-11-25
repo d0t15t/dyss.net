@@ -1,0 +1,17 @@
+uuid: 041193ae-065d-48ce-8151-f669b694ea81
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Receipts set'
+type: receipts_set
+description: 'A set of receipts.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,22 @@
+uuid: decb41df-cd01-464c-8f77-4a75a1963b1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.warehouse_location
+id: node.warehouse_location.promote
+field_name: promote
+entity_type: node
+bundle: warehouse_location
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

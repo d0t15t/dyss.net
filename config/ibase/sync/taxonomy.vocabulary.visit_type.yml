@@ -1,0 +1,9 @@
+uuid: 35dedfce-849c-4237-b937-78c74a50f53f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Visit type'
+vid: visit_type
+description: 'Types of service visits (e.g., regular maintenance, installation, replacement, audit).'
+weight: 0
+new_revision: true

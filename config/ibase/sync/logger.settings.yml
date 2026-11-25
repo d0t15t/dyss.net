@@ -1,0 +1,76 @@
+_core:
+  default_config_hash: mRXMZdxCx6if3K29TjgQoVslLE2pBs9rOgmRdbHDnWQ
+fields_defined_status:
+  -
+    field: service.name
+    enabled: true
+  -
+    field: time
+    enabled: true
+  -
+    field: timestamp
+    enabled: false
+  -
+    field: timestamp_float
+    enabled: true
+  -
+    field: uuid
+    enabled: false
+  -
+    field: level
+    enabled: true
+  -
+    field: severity
+    enabled: false
+  -
+    field: channel
+    enabled: true
+  -
+    field: message
+    enabled: true
+  -
+    field: message_raw
+    enabled: true
+  -
+    field: base_url
+    enabled: true
+  -
+    field: request_uri
+    enabled: true
+  -
+    field: request_time_float
+    enabled: true
+  -
+    field: request_time
+    enabled: false
+  -
+    field: ip
+    enabled: true
+  -
+    field: referer
+    enabled: true
+  -
+    field: uid
+    enabled: true
+  -
+    field: link
+    enabled: true
+  -
+    field: exception
+    enabled: true
+  -
+    field: backtrace
+    enabled: false
+  -
+    field: metadata
+    enabled: true
+fields_store_not_defined: true
+entry_exclude_empty: true
+service_name: drupal
+targets:
+  -
+    plugin: db
+    log_level: 7
+    configuration: '{}'
+exception_backlog_items_limit: 8
+skip_event_dispatch: false

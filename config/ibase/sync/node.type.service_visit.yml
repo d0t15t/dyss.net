@@ -1,0 +1,11 @@
+uuid: cd185853-1fa9-4285-87b7-412424855f52
+langcode: en
+status: true
+dependencies: {  }
+name: 'Service Visit'
+type: service_visit
+description: 'Service Visit content type.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vision_extraction
+    - node.type.receipt
+id: node.receipt.field_vision_extraction
+field_name: field_vision_extraction
+entity_type: node
+bundle: receipt
+label: 'Vision extraction (JSON)'
+description: 'Raw JSON response from the AI vision pass over the receipt image.'
+required: false
+translatable: false
+default_value: []
+default_value_callback: ''
+settings: {}
+field_type: string_long

@@ -1,0 +1,19 @@
+uuid: e109a297-10b5-495a-a1c8-5ecf7429b76f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_receipt_text
+    - node.type.receipt
+id: node.receipt.field_receipt_text
+field_name: field_receipt_text
+entity_type: node
+bundle: receipt
+label: 'Receipt text'
+description: 'The text of a receipt.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

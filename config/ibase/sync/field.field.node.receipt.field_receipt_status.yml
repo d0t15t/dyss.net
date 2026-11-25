@@ -1,0 +1,23 @@
+uuid: 615ddd26-8267-46e2-a590-fe177a8e75cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_receipt_status
+    - node.type.receipt
+  module:
+    - workflow
+_core:
+  default_config_hash: r6pSr3tSjgW7lwfqaEGDGq_3oS7xhsDJ7lUD9A2DFJI
+id: node.receipt.field_receipt_status
+field_name: field_receipt_status
+entity_type: node
+bundle: receipt
+label: 'Workflow Status'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: workflow

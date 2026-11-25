@@ -1,0 +1,12 @@
+administer receipt vision verify:
+  title: 'Administer Receipt Vision Verify settings'
+  description: 'Configure the vision provider, confidence threshold, and field weights.'
+  restrict access: true
+
+view receipt verification reports:
+  title: 'View receipt verification dashboard'
+  description: 'Access the admin report showing vision/OCR verification stats.'
+
+rerun receipt verification:
+  title: 'Re-run receipt verification'
+  description: 'Manually trigger a fresh vision pass on a receipt node.'

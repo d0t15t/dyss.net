@@ -1,0 +1,9 @@
+uuid: 95a08e6b-1411-4f59-a71d-0526fdf29813
+langcode: en
+status: true
+dependencies: {  }
+name: 'Container type'
+vid: container_type
+description: 'Types of plant containers/planters (e.g., ceramic pot, self-watering planter, hanging basket).'
+weight: 0
+new_revision: true

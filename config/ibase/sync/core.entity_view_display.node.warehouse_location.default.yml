@@ -1,0 +1,49 @@
+uuid: 47d3df89-c6ab-44df-8e77-83b2463a92c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.warehouse_location.field_capacity
+    - field.field.node.warehouse_location.field_location_code
+    - field.field.node.warehouse_location.field_notes
+    - node.type.warehouse_location
+  module:
+    - text
+    - user
+id: node.warehouse_location.default
+targetEntityType: node
+bundle: warehouse_location
+mode: default
+content:
+  field_capacity:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_location_code:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_notes:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+id: receipt_text_extracted
+label: 'Text Extracted'
+module: receipt_workflow
+wid: receipt
+weight: 0
+sysid: 0

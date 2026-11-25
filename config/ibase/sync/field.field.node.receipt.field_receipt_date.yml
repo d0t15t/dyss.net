@@ -1,0 +1,21 @@
+uuid: 5fda729d-e1d5-4b36-abda-e7996ccf8967
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_receipt_date
+    - node.type.receipt
+  module:
+    - datetime
+id: node.receipt.field_receipt_date
+field_name: field_receipt_date
+entity_type: node
+bundle: receipt
+label: 'Receipt date'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

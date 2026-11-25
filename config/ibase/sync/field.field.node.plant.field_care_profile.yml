@@ -1,0 +1,25 @@
+uuid: 34963e9d-2026-4618-abac-aec93db7f4a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_care_profile
+    - node.type.plant
+    - taxonomy.vocabulary.care_profile
+id: node.plant.field_care_profile
+field_name: field_care_profile
+entity_type: node
+bundle: plant
+label: 'Care profile'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      care_profile: care_profile
+    auto_create: false
+field_type: entity_reference

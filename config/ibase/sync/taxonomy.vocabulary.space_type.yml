@@ -1,0 +1,9 @@
+uuid: fd53e2dd-793a-4d12-b834-9e1b7769b153
+langcode: en
+status: true
+dependencies: {  }
+name: 'Space type'
+vid: space_type
+description: 'Classifies the type of space where plants are placed (e.g., office, lobby, meeting room, outdoor patio).'
+weight: 0
+new_revision: true

@@ -1,0 +1,21 @@
+uuid: 24392397-3589-4b36-b087-4894dd7f2a00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_toxic
+    - node.type.plant
+id: node.plant.field_toxic
+field_name: field_toxic
+entity_type: node
+bundle: plant
+label: Toxic
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

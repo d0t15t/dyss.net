@@ -1,0 +1,22 @@
+uuid: fbc74738-65e4-4a70-a6a9-00555084dbcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.installation_item
+id: node.installation_item.sticky
+field_name: sticky
+entity_type: node
+bundle: installation_item
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

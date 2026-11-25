@@ -1,0 +1,7 @@
+name: 'ibase private'
+type: module
+description: 'Keeps the ibase site private: anonymous visitors are sent to the login page for every page except login and password reset, and no page may be indexed by search engines.'
+package: Custom
+core_version_requirement: ^10.3 || ^11
+dependencies:
+  - drupal:user

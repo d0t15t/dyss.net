@@ -1,0 +1,16 @@
+uuid: 3454ba39-58d5-4b08-82e8-25267d439673
+langcode: en
+status: true
+dependencies: {  }
+id: new_topic_watch
+label: 'New Topic Watch'
+rule_type: new_topic
+topics: {  }
+threshold_value: 1
+threshold_type: count
+baseline_window: 7
+frequency: hourly
+source_filter: all
+recipient_emails: ''
+recipient_roles: ''
+max_emails_per_day: 10

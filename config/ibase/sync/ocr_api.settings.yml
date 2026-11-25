@@ -1,0 +1,7 @@
+_core:
+  default_config_hash: smUfJA3n4e1BmBfYTVBHm0ZSUgvieVo5UxX7xwxNqx4
+provider: tesseract
+provider_settings:
+  tesseract:
+    binary: tesseract
+    language: eng

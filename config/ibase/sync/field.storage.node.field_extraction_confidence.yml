@@ -1,0 +1,22 @@
+uuid: 2bbd92d9-f6f6-47e2-9b04-6d5029a97555
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 89qyObo0nC65UFmCkGLKy1QSocDiyMCoukHu1Th2ng4
+id: node.field_extraction_confidence
+field_name: field_extraction_confidence
+entity_type: node
+type: integer
+settings:
+  unsigned: true
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

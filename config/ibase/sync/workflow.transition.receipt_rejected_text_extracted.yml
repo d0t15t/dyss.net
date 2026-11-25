@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.receipt_rejected
+    - workflow.state.receipt_text_extracted
+id: receipt_rejected_text_extracted
+label: Re-extract
+module: receipt_workflow
+from_sid: receipt_rejected
+to_sid: receipt_text_extracted
+roles:
+  - authenticated
+wid: receipt

@@ -1,0 +1,11 @@
+uuid: e54322e9-baf2-41f1-81c3-9e55f68e6e03
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.plant
+id: node.plant
+target_entity_type_id: node
+target_bundle: plant
+default_langcode: site_default
+language_alterable: false

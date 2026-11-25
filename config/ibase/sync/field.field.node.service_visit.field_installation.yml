@@ -1,0 +1,24 @@
+uuid: 54d0ed86-16e1-4724-88b3-d4836fac4740
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_installation
+    - node.type.installation
+    - node.type.service_visit
+id: node.service_visit.field_installation
+field_name: field_installation
+entity_type: node
+bundle: service_visit
+label: Installation
+description: null
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      installation: installation
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: 2f0f5b51-d4e3-4ac1-9cb7-ea7fbe8e57b7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_currency
+field_name: field_currency
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

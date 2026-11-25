@@ -1,0 +1,21 @@
+uuid: 79c9c582-da28-47e5-b403-9d22483fb984
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_tasks_performed
+field_name: field_tasks_performed
+entity_type: node
+type: list_string
+settings:
+  allowed_values: {  }
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

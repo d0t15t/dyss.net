@@ -1,0 +1,27 @@
+uuid: e8aff18f-b3ff-4438-8e9c-76a3a30b6352
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_video_file
+    - media.type.receipt
+  module:
+    - file
+id: media.receipt.field_media_video_file
+field_name: field_media_video_file
+entity_type: media
+bundle: receipt
+label: File
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt doc docx pdf'
+  max_filesize: ''
+  description_field: false
+field_type: file

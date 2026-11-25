@@ -1,0 +1,17 @@
+_core:
+  default_config_hash: A2SQzXkR9e5HGLlLSQQ2BE7HJypkQSin0aaYahF1o1A
+enabled: true
+ai_provider: openai
+ai_model: gpt-4.1-mini
+auto_approve_threshold: 95
+image_dpi: 200
+field_weights:
+  field_total_amount: 30
+  field_receipt_date: 20
+  field_vendor: 20
+  field_currency: 10
+  field_subtotal_amount: 5
+  field_tax_amount: 5
+  field_receipt_number: 5
+  field_payment_method: 3
+  field_expense_category: 2

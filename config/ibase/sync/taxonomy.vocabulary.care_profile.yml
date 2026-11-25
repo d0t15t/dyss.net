@@ -1,0 +1,9 @@
+uuid: 45990309-72a8-458e-9d76-f6ee0968a462
+langcode: en
+status: true
+dependencies: {  }
+name: 'Care profile'
+vid: care_profile
+description: 'Defines care/maintenance profiles for plants or installations (e.g., low maintenance, weekly care).'
+weight: 0
+new_revision: true

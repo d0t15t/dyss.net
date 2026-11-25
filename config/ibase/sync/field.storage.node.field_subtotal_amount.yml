@@ -1,0 +1,20 @@
+uuid: ea3a1084-8a12-42d5-833d-a583eb0f78f4
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_subtotal_amount
+field_name: field_subtotal_amount
+entity_type: node
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

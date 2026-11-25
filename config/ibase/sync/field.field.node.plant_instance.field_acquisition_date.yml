@@ -1,0 +1,21 @@
+uuid: 59b3fce0-4be0-4948-9630-d08af50fb582
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_acquisition_date
+    - node.type.plant_instance
+  module:
+    - datetime
+id: node.plant_instance.field_acquisition_date
+field_name: field_acquisition_date
+entity_type: node
+bundle: plant_instance
+label: 'Acquisition date'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

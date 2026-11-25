@@ -1,0 +1,22 @@
+uuid: 7ab335a5-0378-4cdc-a602-e73738b2e88a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.installation_item
+id: node.installation_item.promote
+field_name: promote
+entity_type: node
+bundle: installation_item
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,29 @@
+uuid: 14b737b9-f850-4cdd-bf39-b49505e38f05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_receipts
+    - node.type.receipt
+    - node.type.receipts_set
+id: node.receipts_set.field_receipts
+field_name: field_receipts
+entity_type: node
+bundle: receipts_set
+label: Receipts
+description: 'Reference each individual receipt content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      receipt: receipt
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

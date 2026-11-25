@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+id: receipt_needs_review
+label: 'Needs Review'
+module: receipt_workflow
+wid: receipt
+weight: 10
+sysid: 0

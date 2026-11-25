@@ -1,0 +1,14 @@
+name: 'Receipt Vision Verify'
+type: module
+description: 'Second-pass AI vision verification for receipt nodes. Compares OCR + text-extraction values against an independent vision-model read of the receipt image, producing a confidence score and per-field discrepancy report.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:node
+  - drupal:file
+  - drupal:taxonomy
+  - ai:ai
+  - ai:ai_automators
+  - workflow:workflow
+  - receipt_workflow:receipt_workflow
+configure: receipt_vision_verify.settings

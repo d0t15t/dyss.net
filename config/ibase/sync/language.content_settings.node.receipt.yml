@@ -1,0 +1,11 @@
+uuid: af51a85b-80e4-4038-ae91-a20163a7e43c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.receipt
+id: node.receipt
+target_entity_type_id: node
+target_bundle: receipt
+default_langcode: site_default
+language_alterable: false

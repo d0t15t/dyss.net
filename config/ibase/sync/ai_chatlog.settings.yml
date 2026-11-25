@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: F-oIkos3_6wbzszNiv6dFq0RqyKBBDQo9VJo94BUR6s
+retention_days: 90
+reconcile_interval: 86400
+on_user_delete: anonymize
+log_input: true
+log_output: true
+render_mode: raw
+render_user_input_as_markdown: false
+markdown_extensions:
+  - autolink
+  - tables
+  - strikethrough
+  - task_list
+  - disallowed_raw_html

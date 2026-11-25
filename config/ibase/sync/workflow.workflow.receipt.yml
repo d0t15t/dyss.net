@@ -1,0 +1,18 @@
+uuid: 64112f44-5b14-4895-96bb-09ce8e6ce1e1
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: RAOxqmxO3KZ3qJOm6O6jgojwcd8lqTqFMZnQGALIStk
+id: receipt
+label: 'Receipt Lifecycle'
+module: receipt_workflow
+options:
+  name_as_title: 0
+  fieldset: 0
+  options: select
+  schedule_enable: false
+  schedule_timezone: 0
+  always_update_entity: 0
+  comment_log_node: 0
+  watchdog_log: 1

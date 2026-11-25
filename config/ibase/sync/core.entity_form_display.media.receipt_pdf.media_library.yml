@@ -1,0 +1,23 @@
+uuid: 3224f84c-9684-4a21-a816-ad7e493ad897
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.receipt_pdf.field_media_document
+    - field.field.media.receipt_pdf.field_receipts
+    - media.type.receipt_pdf
+id: media.receipt_pdf.media_library
+targetEntityType: media
+bundle: receipt_pdf
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  field_media_document: true
+  field_receipts: true
+  langcode: true
+  name: true
+  path: true
+  status: true
+  uid: true

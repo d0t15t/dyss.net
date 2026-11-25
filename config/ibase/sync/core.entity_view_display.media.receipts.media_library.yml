@@ -1,0 +1,36 @@
+uuid: 381790c4-cdef-4c35-bae0-42048f110ef4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.receipts.field_media_audio_file
+    - field.field.media.receipts.field_receipts
+    - image.style.medium
+    - media.type.receipts
+  module:
+    - image
+id: media.receipts.media_library
+targetEntityType: media
+bundle: receipts
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_audio_file: true
+  field_receipts: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  uid: true

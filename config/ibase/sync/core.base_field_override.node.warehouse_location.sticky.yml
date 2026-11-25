@@ -1,0 +1,22 @@
+uuid: ef44bef7-c671-4599-9c2d-d3697272437b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.warehouse_location
+id: node.warehouse_location.sticky
+field_name: sticky
+entity_type: node
+bundle: warehouse_location
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

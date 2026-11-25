@@ -1,0 +1,19 @@
+uuid: 8541bf87-2468-4b37-a95a-47e605892f64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location_code
+    - node.type.warehouse_location
+id: node.warehouse_location.field_location_code
+field_name: field_location_code
+entity_type: node
+bundle: warehouse_location
+label: 'Location code'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

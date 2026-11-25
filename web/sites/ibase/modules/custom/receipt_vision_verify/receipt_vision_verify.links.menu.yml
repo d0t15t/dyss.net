@@ -1,0 +1,13 @@
+receipt_vision_verify.settings:
+  title: 'Receipt Vision Verify'
+  description: 'Configure vision-based receipt verification.'
+  route_name: receipt_vision_verify.settings
+  parent: system.admin_config_ai
+  weight: 50
+
+receipt_vision_verify.dashboard:
+  title: 'Receipt Verification'
+  description: 'Reports on AI vision verification of receipts.'
+  route_name: receipt_vision_verify.dashboard
+  parent: system.admin_reports
+  weight: 10

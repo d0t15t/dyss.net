@@ -1,0 +1,44 @@
+uuid: c227aa64-5529-4e3b-86eb-aafcda64754c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.receipt.field_expense_category
+id: node.receipt.field_expense_category.default
+label: 'Receipt: Extract expense category'
+rule: 'receipt:text_to_taxonomy_term'
+input_mode: base
+weight: 10
+worker_type: direct
+entity_type: node
+bundle: receipt
+field_name: field_expense_category
+edit_mode: false
+base_field: field_receipt_text
+prompt: |-
+  Based on the merchant name and items purchased in the receipt below, choose the most appropriate expense category.
+  Return ONLY the category name. Pick from the list. If none fit, return null.
+
+  Available categories:
+  [available_terms]
+
+  [receipt_text]
+token: ''
+plugin_config:
+  automator_rule: 'receipt:text_to_taxonomy_term'
+  automator_mode: base
+  automator_weight: 10
+  automator_worker_type: direct
+  automator_edit_mode: false
+  automator_base_field: field_receipt_text
+  automator_prompt: |-
+    Based on the merchant name and items purchased in the receipt below, choose the most appropriate expense category.
+    Return ONLY the category name. Pick from the list. If none fit, return null.
+
+    Available categories:
+    [available_terms]
+
+    [receipt_text]
+  automator_token: ''
+  automator_ai_provider: default
+  automator_ai_model: ''

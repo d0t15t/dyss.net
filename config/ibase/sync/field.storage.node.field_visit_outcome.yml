@@ -1,0 +1,21 @@
+uuid: 22421109-4383-4c8e-bf6f-fa8cd0130c12
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_visit_outcome
+field_name: field_visit_outcome
+entity_type: node
+type: list_string
+settings:
+  allowed_values: {  }
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

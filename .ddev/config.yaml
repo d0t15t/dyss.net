@@ -4,7 +4,9 @@ docroot: web
 php_version: "8.5"
 webserver_type: nginx-fpm
 xdebug_enabled: false
-additional_hostnames: []
+webimage_extra_packages: [tesseract-ocr, tesseract-ocr-eng, poppler-utils]
+additional_hostnames:
+    - ibase
 additional_fqdns: []
 database:
     type: mariadb

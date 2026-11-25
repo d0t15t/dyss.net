@@ -1,0 +1,14 @@
+uuid: f1cd751a-5d1d-483c-95b8-75ec5b595a4f
+langcode: en
+status: true
+dependencies: {  }
+id: floorplan
+label: Floorplan
+description: 'Accepts PDF or SVG files. Stores placement diagrams directly attached to a project, with version tracking.'
+source: file
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_document
+field_map:
+  name: name

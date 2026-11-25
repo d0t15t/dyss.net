@@ -1,0 +1,24 @@
+uuid: 395eb52c-a092-40ee-aafa-82f90f43b7f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visit_type
+    - node.type.service_visit
+    - taxonomy.vocabulary.visit_type
+id: node.service_visit.field_visit_type
+field_name: field_visit_type
+entity_type: node
+bundle: service_visit
+label: 'Visit type'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      visit_type: visit_type
+field_type: entity_reference

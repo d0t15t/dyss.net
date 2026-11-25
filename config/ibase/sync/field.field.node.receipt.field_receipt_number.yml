@@ -1,0 +1,19 @@
+uuid: 4645331c-67cd-4948-aaae-f1f6aa7fba17
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_receipt_number
+    - node.type.receipt
+id: node.receipt.field_receipt_number
+field_name: field_receipt_number
+entity_type: node
+bundle: receipt
+label: 'Receipt number'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

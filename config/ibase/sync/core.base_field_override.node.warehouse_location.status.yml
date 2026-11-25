@@ -1,0 +1,22 @@
+uuid: b00d41c5-f9b3-44b5-9aae-768859705c47
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.warehouse_location
+id: node.warehouse_location.status
+field_name: status
+entity_type: node
+bundle: warehouse_location
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

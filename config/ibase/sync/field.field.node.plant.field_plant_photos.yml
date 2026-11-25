@@ -1,0 +1,24 @@
+uuid: 817b3826-6ca8-4751-8d6a-8a136174319c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plant_photos
+    - media.type.plant_photo
+    - node.type.plant
+id: node.plant.field_plant_photos
+field_name: field_plant_photos
+entity_type: node
+bundle: plant
+label: 'Plant photos'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      plant_photo: plant_photo
+field_type: entity_reference

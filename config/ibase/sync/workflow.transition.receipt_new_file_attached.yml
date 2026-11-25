@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.state.receipt_new
+    - workflow.state.receipt_file_attached
+id: receipt_new_file_attached
+label: 'Attach File'
+module: receipt_workflow
+from_sid: receipt_new
+to_sid: receipt_file_attached
+roles:
+  - authenticated
+wid: receipt

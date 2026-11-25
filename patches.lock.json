@@ -1,5 +1,5 @@
 {
-    "_hash": "f6d3dc53749b577c7681c6cab55c3fd904d66d152d7d360a711416c7fc62ca3c",
+    "_hash": "79ab558c9ec5c55f5a8a3d9d6c3401c2ed19bcf9c1370b78d39f95ca6bee0152",
     "patches": {
         "drupal/ai_vdb_provider_milvus": [
             {
@@ -16,16 +16,6 @@
         "drupal/ai": [
             {
                 "package": "drupal/ai",
-                "description": "AI Search: don't Markdown-escape plain metadata values (breaks vector DB filters on values with underscores)",
-                "url": "patches/ai-ai_search-plain-metadata-values.patch",
-                "sha256": "34bc0a9b97e84b952c2ec7b2c650419341c41320ce01f949cfdac0714e4de05a",
-                "depth": 1,
-                "extra": {
-                    "provenance": "root"
-                }
-            },
-            {
-                "package": "drupal/ai",
                 "description": "VDB indexing: reset record data per chunk (metadata leaks between items)",
                 "url": "patches/ai-vdb-reset-record-metadata.patch",
                 "sha256": "546d856571957458bd6017df7b39f92e3c6a8f1aee37ee17e5598d76746f2bfb",
@@ -38,7 +28,7 @@
                 "package": "drupal/ai",
                 "description": "Assistant API: don't return the user's question as the agent's answer when the agent fails",
                 "url": "patches/ai-assistant-api-agent-no-echo.patch",
-                "sha256": "7162dd5d611ff950f44298a61264c99c009aef7826ce30493901f1a8edc89432",
+                "sha256": "a473f7e7686a64dfb80473b2178aa368c2bcdd46a303a544141e80f021960ceb",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"

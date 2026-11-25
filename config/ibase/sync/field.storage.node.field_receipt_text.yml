@@ -1,0 +1,19 @@
+uuid: 599fe6b3-e1f2-4f83-bff8-9206978fe582
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_receipt_text
+field_name: field_receipt_text
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,22 @@
+uuid: ea9c9e62-0667-4616-bd0c-13d2e4fea129
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.plant
+id: node.plant.status
+field_name: status
+entity_type: node
+bundle: plant
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

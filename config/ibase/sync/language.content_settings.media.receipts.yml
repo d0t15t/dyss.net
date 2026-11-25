@@ -1,0 +1,11 @@
+uuid: a7608507-128b-4eda-8059-2a1d20ddc3d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.receipts
+id: media.receipts
+target_entity_type_id: media
+target_bundle: receipts
+default_langcode: site_default
+language_alterable: false

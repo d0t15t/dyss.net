@@ -1,0 +1,38 @@
+uuid: 8522f987-13e1-4c28-93d9-035ed1d3ac71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.receipt_pdf.field_media_document
+    - field.field.media.receipt_pdf.field_receipts
+    - media.type.receipt_pdf
+  module:
+    - file
+id: media.receipt_pdf.default
+targetEntityType: media
+bundle: receipt_pdf
+mode: default
+content:
+  field_media_document:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_receipts:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

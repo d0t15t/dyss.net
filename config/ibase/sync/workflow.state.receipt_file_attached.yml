@@ -1,0 +1,15 @@
+uuid: 4494f250-bd90-464b-920b-278b3ae7146f
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+_core:
+  default_config_hash: Sq2aVJoIIvg01qtE3-RtPFnnuO4sj1m_EavkthjsBsI
+id: receipt_file_attached
+label: 'File Attached'
+weight: -10
+module: receipt_workflow
+wid: receipt
+sysid: 0
+single_state_widget: ''

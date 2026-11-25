@@ -1,0 +1,23 @@
+uuid: 755ee9fe-1ba5-41cd-aa50-0b0c6edc900e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_typical_height_cm
+    - node.type.plant
+id: node.plant.field_typical_height_cm
+field_name: field_typical_height_cm
+entity_type: node
+bundle: plant
+label: 'Typical height (cm)'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflow.workflow.receipt
+id: receipt_new
+label: 'New'
+module: receipt_workflow
+wid: receipt
+weight: -20
+sysid: 1

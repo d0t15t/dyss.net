@@ -1,0 +1,20 @@
+uuid: 7e08c55f-0310-47e9-97e7-d565e5121469
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_installation_style
+field_name: field_installation_style
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

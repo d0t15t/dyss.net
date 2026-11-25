@@ -1,0 +1,44 @@
+uuid: 97f8f781-cff3-4f21-a1fa-be345bca294f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.receipt.field_payment_method
+id: node.receipt.field_payment_method.default
+label: 'Receipt: Extract payment method'
+rule: 'receipt:text_to_taxonomy_term'
+input_mode: base
+weight: 10
+worker_type: direct
+entity_type: node
+bundle: receipt
+field_name: field_payment_method
+edit_mode: false
+base_field: field_receipt_text
+prompt: |-
+  From the receipt below, identify the payment method used (credit card, cash, debit, etc.).
+  Return ONLY the payment method. Pick from the list if it matches. If not found, return null.
+
+  Available payment methods:
+  [available_terms]
+
+  [receipt_text]
+token: ''
+plugin_config:
+  automator_rule: 'receipt:text_to_taxonomy_term'
+  automator_mode: base
+  automator_weight: 10
+  automator_worker_type: direct
+  automator_edit_mode: false
+  automator_base_field: field_receipt_text
+  automator_prompt: |-
+    From the receipt below, identify the payment method used (credit card, cash, debit, etc.).
+    Return ONLY the payment method. Pick from the list if it matches. If not found, return null.
+
+    Available payment methods:
+    [available_terms]
+
+    [receipt_text]
+  automator_token: ''
+  automator_ai_provider: default
+  automator_ai_model: ''

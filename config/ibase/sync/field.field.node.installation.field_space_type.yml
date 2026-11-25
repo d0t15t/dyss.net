@@ -1,0 +1,25 @@
+uuid: e7700b9c-c795-45b2-9682-0ca1d6535f25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_space_type
+    - node.type.installation
+    - taxonomy.vocabulary.space_type
+id: node.installation.field_space_type
+field_name: field_space_type
+entity_type: node
+bundle: installation
+label: 'Space type'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      space_type: space_type
+    auto_create: false
+field_type: entity_reference

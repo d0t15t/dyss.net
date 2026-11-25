@@ -1,0 +1,8 @@
+services:
+  receipt_workflow.subscriber:
+    class: Drupal\receipt_workflow\EventSubscriber\ReceiptWorkflowSubscriber
+    arguments:
+      - '@entity_type.manager'
+      - '@logger.factory'
+    tags:
+      - { name: event_subscriber }

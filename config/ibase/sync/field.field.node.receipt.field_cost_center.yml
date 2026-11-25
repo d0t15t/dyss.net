@@ -1,0 +1,25 @@
+uuid: 863fbbb6-5278-4e3f-8540-92e7ee4663f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cost_center
+    - node.type.receipt
+    - taxonomy.vocabulary.cost_center
+id: node.receipt.field_cost_center
+field_name: field_cost_center
+entity_type: node
+bundle: receipt
+label: 'Cost center'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cost_center: cost_center
+    auto_create: false
+field_type: entity_reference

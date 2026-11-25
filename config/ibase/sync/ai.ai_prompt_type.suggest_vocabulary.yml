@@ -1,0 +1,13 @@
+uuid: 2447eb0b-2e60-4417-a424-3f52d836c38e
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ai_content_suggestions
+_core:
+  default_config_hash: VG28hPWAxFrO0ER9t-nq35g4z6F5aG1pEz02DLxHIuY
+id: suggest_vocabulary
+label: 'Suggest vocabulary'
+variables: {  }
+tokens: {  }

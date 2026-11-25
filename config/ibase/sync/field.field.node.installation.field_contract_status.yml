@@ -1,0 +1,21 @@
+uuid: b40c5e20-d7f6-4b6a-ad8c-64c921374019
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contract_status
+    - node.type.installation
+  module:
+    - options
+id: node.installation.field_contract_status
+field_name: field_contract_status
+entity_type: node
+bundle: installation
+label: 'Contract status'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

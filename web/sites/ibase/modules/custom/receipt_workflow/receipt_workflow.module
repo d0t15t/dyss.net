@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * Hooks for the receipt_workflow module.
+ *
+ * Bridges Drupal entity hooks to the ReceiptWorkflowSubscriber service so
+ * the subscriber can be unit-tested without a full Drupal bootstrap.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_insert().
+ */
+function receipt_workflow_entity_insert(EntityInterface $entity): void {
+  \Drupal::service('receipt_workflow.subscriber')->onEntityInsert($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function receipt_workflow_entity_update(EntityInterface $entity): void {
+  $original = $entity->original ?? NULL;
+  \Drupal::service('receipt_workflow.subscriber')->onEntityUpdate($entity, $original);
+}

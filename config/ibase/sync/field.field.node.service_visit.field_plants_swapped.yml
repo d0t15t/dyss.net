@@ -1,0 +1,24 @@
+uuid: 57e0ddd2-4109-4d97-83da-3d1b554c9cba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plants_swapped
+    - node.type.plant_instance
+    - node.type.service_visit
+id: node.service_visit.field_plants_swapped
+field_name: field_plants_swapped
+entity_type: node
+bundle: service_visit
+label: 'Plants swapped'
+description: null
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      plant_instance: plant_instance
+field_type: entity_reference

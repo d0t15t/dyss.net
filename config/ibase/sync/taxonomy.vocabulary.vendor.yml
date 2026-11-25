@@ -1,0 +1,9 @@
+uuid: 7ea09c4f-0a33-4d99-8ecb-5225bf93027a
+langcode: und
+status: true
+dependencies: {  }
+name: Vendor
+vid: vendor
+description: 'Merchants/vendors used for receipt tracking and reporting. Create one term per merchant (e.g., Amazon, Uber).'
+weight: 0
+new_revision: true

@@ -1,0 +1,29 @@
+uuid: 3208226f-5d44-4665-b0f0-84c01ab46225
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.floorplan.field_media_document
+    - media.type.floorplan
+  module:
+    - file
+id: media.floorplan.default
+targetEntityType: media
+bundle: floorplan
+mode: default
+content:
+  field_media_document:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true
